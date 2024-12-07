@@ -10,3 +10,6 @@ vim.cmd.colorscheme 'catppuccin'
 
 -- [[ Keymaps ]]
 require 'config.keymaps'
+
+-- [[ Autocmds ]]
+require 'config.autocmds'

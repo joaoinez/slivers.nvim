@@ -77,6 +77,8 @@ end)
 
 vim.opt.shortmess:append { W = true, I = true, c = true, C = true } -- Disable various messages.
 
+-- TODO: Set folding to use treesitter if it is available
+
 -- [[ Apply Variables ]]
 for scope, table in pairs(options) do
   for setting, value in pairs(table) do
