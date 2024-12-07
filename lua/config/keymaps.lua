@@ -22,4 +22,3 @@ local map = vim.keymap.set
 map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 map('n', '<leader>s', '<cmd>w<cr>')
 map('n', '<leader>x', '<cmd>xa<cr>')
-map('n', '<leader>fe', '<cmd>Oil<cr>')

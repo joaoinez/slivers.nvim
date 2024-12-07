@@ -1,7 +1,12 @@
 return {
   'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
+  keys = {
+    {
+      "<leader>fe",
+      '<cmd>Oil<cr>',
+      desc = "File Explorer (Oil)",
+    },
+  },
   opts = {
     view_options = {
       show_hidden = true
