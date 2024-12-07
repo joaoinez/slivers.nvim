@@ -29,6 +29,7 @@ return {
   config = function()
     local telescope = require 'telescope'
 
+    -- TODO: Setup Telescope
     telescope.setup {}
 
     pcall(telescope.load_extension, 'fzf')
