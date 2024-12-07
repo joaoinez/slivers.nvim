@@ -1,16 +1,17 @@
+local utils = require 'utils'
 local autocmd = vim.api.nvim_create_autocmd
 
 local function augroup(name)
   return vim.api.nvim_create_augroup('slivers_' .. name, { clear = true })
 end
 
--- Check if we need to reload the file when it changed
--- autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
---   group = augroup 'checktime',
---   callback = function()
---     if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end
---   end,
--- })
+-- Check if we need to reload the file when it is changed
+autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+  group = augroup 'checktime',
+  callback = function()
+    if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end
+  end,
+})
 
 -- Highlight on yank
 autocmd('TextYankPost', {
@@ -28,7 +29,7 @@ autocmd({ 'VimResized' }, {
   end,
 })
 
--- close some filetypes with <q>
+-- Close some filetypes with <q>
 autocmd('FileType', {
   group = augroup 'close_with_q',
   pattern = {
@@ -61,5 +62,28 @@ autocmd('FileType', {
         desc = 'Quit buffer',
       })
     end)
+  end,
+})
+
+-- Effect: URL underline.
+vim.api.nvim_set_hl(0, 'HighlightURL', { underline = true })
+autocmd({ 'VimEnter', 'FileType', 'BufEnter', 'WinEnter' }, {
+  desc = 'URL Highlighting',
+  callback = function() utils.set_url_effect() end,
+})
+
+-- Create parent directories when saving a file.
+autocmd('BufWritePre', {
+  desc = "Automatically create parent directories if they don't exist when saving a file",
+  callback = function(args)
+    local buf_is_valid_and_listed = vim.api.nvim_buf_is_valid(args.buf)
+      and vim.bo[args.buf].buflisted
+
+    if buf_is_valid_and_listed then
+      vim.fn.mkdir(
+        vim.fn.fnamemodify(vim.uv.fs_realpath(args.match) or args.match, ':p:h'),
+        'p'
+      )
+    end
   end,
 })

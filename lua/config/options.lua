@@ -4,6 +4,7 @@ local options = {
     have_nerd_font = true, -- If a Nerd Font is installed and set in the terminal.
     mapleader = ' ', -- Set leader key.
     maplocalleader = ' ', -- Set default local leader key.
+    url_effect_enabled = true,
   },
   opt = {
     breakindent = true, -- Wrap indent to match line start.
