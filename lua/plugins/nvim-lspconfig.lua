@@ -12,7 +12,7 @@ return {
     },
     'hrsh7th/cmp-nvim-lsp',
   },
-  event = 'BufRead',
+  -- event = 'BufRead',
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup(
