@@ -29,9 +29,9 @@ local options = {
     },
     foldcolumn = '1', -- Show fold column.
     foldenable = true, -- Enable folds.
-    foldexpr = 'v:lua.vim.treesitter.foldexpr()',
-    foldmethod = 'expr',
-    foldtext = '',
+    foldexpr = 'v:lua.vim.treesitter.foldexpr()', -- Folding based on treesitter.
+    foldmethod = 'expr', -- Set fold method to expression.
+    foldtext = '', -- Remove fold text.
     foldlevel = 99, -- Set fold level to highest value.
     foldlevelstart = 99, -- Start with all code unfolded.
     ignorecase = true, -- Case insensitive searching.
