@@ -8,11 +8,11 @@ local options = {
   opt = {
     breakindent = true, -- Wrap indent to match line start.
     cmdheight = 0, -- Hide command line unless needed.
-    colorcolumn = "80", -- Show character limit vertical bar.
+    colorcolumn = '80', -- Show character limit vertical bar.
     completeopt = { -- Options for insert mode completion.
-      "menu",
-      "menuone",
-      "noselect"
+      'menu',
+      'menuone',
+      'noselect',
     },
     copyindent = true, -- Copy the previous indentation on autoindenting.
     conceallevel = 2, -- Hide markup symbols for bold and italic, but not markers with substitutions.
@@ -20,19 +20,19 @@ local options = {
     cursorline = true, -- Highlight the text line of the cursor.
     expandtab = true, -- Enable the use of space in tab.
     fillchars = { -- Characters to fill the statuslines, vertical separators and special lines in the window.
-      foldopen = "",
-      foldclose = "",
-      fold = " ",
-      foldsep = " ",
-      diff = "╱",
-      eob = " ",
+      foldopen = '',
+      foldclose = '',
+      fold = ' ',
+      foldsep = ' ',
+      diff = '╱',
+      eob = ' ',
     },
-    foldcolumn = "1", -- Show fold column.
+    foldcolumn = '1', -- Show fold column.
     foldenable = true, -- Enable folds.
     foldlevel = 99, -- Set fold level to highest value.
     foldlevelstart = 99, -- Start with all code unfolded.
     ignorecase = true, -- Case insensitive searching.
-    inccommand = "split", -- Show incremental substitute in a preview window.
+    inccommand = 'split', -- Show incremental substitute in a preview window.
     infercase = true, -- Infer cases in keyword completion.
     laststatus = 3, -- Show global status.
     linebreak = true, -- Wrap lines at convenient places (`breakat`).
@@ -40,7 +40,7 @@ local options = {
     listchars = { -- List of whitespace characters.
       tab = '» ',
       trail = '·',
-      nbsp = '␣'
+      nbsp = '␣',
     },
     mouse = 'a', -- Enable mouse mode.
     number = true, -- Show numberline.
@@ -54,7 +54,7 @@ local options = {
     shiftwidth = 2, -- Number of space inserted for indentation.
     showmode = false, -- Disable showing modes in command line.
     sidescrolloff = 8, -- Same as vim.opt.scrolloff but for side scrolling.
-    signcolumn = "yes", -- Always show the sign column.
+    signcolumn = 'yes', -- Always show the sign column.
     smartcase = true, -- Case sensitivie searching.
     smartindent = false, -- Smarter autoindentation.
     smoothscroll = true, -- Enable smooth scrolling.
@@ -65,9 +65,9 @@ local options = {
     timeoutlen = 300, -- Shorten key timeout length a little bit for which-key.
     undofile = true, -- Enable persistent undo between session and reboots.
     updatetime = 250, -- Length of time to wait before triggering the plugin.
-    virtualedit = "block", -- Allow going past end of line in visual block mode.
-    wildmode = "longest:full,full", -- Command line completion mode.
-  }
+    virtualedit = 'block', -- Allow going past end of line in visual block mode.
+    wildmode = 'longest:full,full', -- Command line completion mode.
+  },
 }
 
 -- [[ Misc Options ]]

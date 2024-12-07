@@ -2,14 +2,14 @@ return {
   'stevearc/oil.nvim',
   keys = {
     {
-      "<leader>fe",
+      '<leader>fe',
       '<cmd>Oil<cr>',
-      desc = "File Explorer (Oil)",
+      desc = 'File Explorer (Oil)',
     },
   },
   opts = {
     view_options = {
-      show_hidden = true
+      show_hidden = true,
     },
   },
 }

@@ -1,7 +1,7 @@
 -- [[ Setup lazy.nvim ]]
-require("lazy").setup({
+require('lazy').setup({
   spec = {
-    { import = "plugins" },
+    { import = 'plugins' },
   },
   checker = { enabled = true, notify = false },
 }, {

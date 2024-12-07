@@ -7,7 +7,6 @@ require 'config.lazy'
 -- [[ Apply Colorscheme ]]
 vim.cmd.colorscheme 'catppuccin'
 
-
 -- [[ Keymaps ]]
 require 'config.keymaps'
 
