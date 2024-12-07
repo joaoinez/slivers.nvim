@@ -26,7 +26,6 @@ return {
     'hrsh7th/cmp-path',
   },
   config = function()
-    -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     luasnip.config.setup {}
