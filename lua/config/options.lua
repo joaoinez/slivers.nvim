@@ -29,6 +29,9 @@ local options = {
     },
     foldcolumn = '1', -- Show fold column.
     foldenable = true, -- Enable folds.
+    foldexpr = 'v:lua.vim.treesitter.foldexpr()',
+    foldmethod = 'expr',
+    foldtext = '',
     foldlevel = 99, -- Set fold level to highest value.
     foldlevelstart = 99, -- Start with all code unfolded.
     ignorecase = true, -- Case insensitive searching.
@@ -45,7 +48,6 @@ local options = {
     mouse = 'a', -- Enable mouse mode.
     number = true, -- Show numberline.
     preserveindent = true, -- Preserve indent structure as much as possible.
-    pumblend = 10, -- Popup blend
     pumheight = 10, -- Maximum number of entries in a popup.
     relativenumber = true, -- Show relative numberline.
     ruler = false, -- Disable the default ruler.
@@ -76,8 +78,6 @@ vim.schedule(function() -- Schedule the setting after `UiEnter`.
 end)
 
 vim.opt.shortmess:append { W = true, I = true, c = true, C = true } -- Disable various messages.
-
--- TODO: Set folding to use treesitter if it is available
 
 -- [[ Apply Variables ]]
 for scope, table in pairs(options) do
