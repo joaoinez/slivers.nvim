@@ -1,9 +1,6 @@
 local utils = require 'utils'
-local autocmd = vim.api.nvim_create_autocmd
-
-local function augroup(name)
-  return vim.api.nvim_create_augroup('slivers_' .. name, { clear = true })
-end
+local autocmd = utils.autocmd
+local augroup = utils.augroup
 
 -- Check if we need to reload the file when it is changed
 autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
