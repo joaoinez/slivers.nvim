@@ -1,3 +1,5 @@
+---@diagnostic disable: undefined-global
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
@@ -24,5 +26,8 @@ return {
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+  },
+  keys = {
+    { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
   },
 }

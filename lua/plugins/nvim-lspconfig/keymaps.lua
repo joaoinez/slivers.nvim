@@ -3,7 +3,7 @@ local M = {}
 --- @param client vim.lsp.Client|nil The client where the lsp mappings will load.
 --- @param bufnr integer The bufnr where the lsp mappings will load.
 function M.apply_user_lsp_mappings(client, bufnr)
-  local builtin = require('telescope.builtin')
+  local builtin = require 'telescope.builtin'
   local utils = require 'utils'
   local supports = utils.supports(client)
   local maps = utils.get_mappings_template()

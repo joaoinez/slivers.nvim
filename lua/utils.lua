@@ -20,7 +20,7 @@ function M.add_autocmds_to_buffer(augroup, bufnr, autocmds)
 
   -- Attempt to retrieve existing autocmds associated with the specified augroup and bufnr
   local cmds_found, cmds =
-      pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
+    pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
 
   -- If no existing autocmds are found or the cmds_found call fails
   if not cmds_found or vim.tbl_isempty(cmds) then
@@ -50,7 +50,7 @@ end
 function M.del_autocmds_from_buffer(augroup, bufnr)
   -- Attempt to retrieve existing autocmds associated with the specified augroup and bufnr
   local cmds_found, cmds =
-      pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
+    pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
 
   -- If retrieval was successful
   if cmds_found then
@@ -145,11 +145,11 @@ end
 function M.set_url_effect()
   --- regex used for matching a valid URL/URI string
   local url_matcher = '\\v\\c%(%(h?ttps?|ftp|file|ssh|git)://|[a-z]+[@][a-z]+[.][a-z]+:)'
-      .. '%([&:#*@~%_\\-=?!+;/0-9a-z]+%(%([.;/?]|[.][.]+)'
-      .. '[&:#*@~%_\\-=?!+/0-9a-z]+|:\\d+|,%(%(%(h?ttps?|ftp|file|ssh|git)://|'
-      .. '[a-z]+[@][a-z]+[.][a-z]+:)@![0-9a-z]+))*|\\([&:#*@~%_\\-=?!+;/.0-9a-z]*\\)'
-      .. '|\\[[&:#*@~%_\\-=?!+;/.0-9a-z]*\\]|\\{%([&:#*@~%_\\-=?!+;/.0-9a-z]*'
-      .. '|\\{[&:#*@~%_\\-=?!+;/.0-9a-z]*})\\})+'
+    .. '%([&:#*@~%_\\-=?!+;/0-9a-z]+%(%([.;/?]|[.][.]+)'
+    .. '[&:#*@~%_\\-=?!+/0-9a-z]+|:\\d+|,%(%(%(h?ttps?|ftp|file|ssh|git)://|'
+    .. '[a-z]+[@][a-z]+[.][a-z]+:)@![0-9a-z]+))*|\\([&:#*@~%_\\-=?!+;/.0-9a-z]*\\)'
+    .. '|\\[[&:#*@~%_\\-=?!+;/.0-9a-z]*\\]|\\{%([&:#*@~%_\\-=?!+;/.0-9a-z]*'
+    .. '|\\{[&:#*@~%_\\-=?!+;/.0-9a-z]*})\\})+'
 
   M.delete_url_effect()
   if vim.g.url_effect_enabled then
@@ -173,10 +173,10 @@ end
 function M.trigger_event(event, is_urgent)
   -- define behavior
   local function trigger()
-    local is_user_event = string.match(event, "^User ") ~= nil
+    local is_user_event = string.match(event, '^User ') ~= nil
     if is_user_event then
-      event = event:gsub("^User ", "")
-      vim.api.nvim_exec_autocmds("User", { pattern = event, modeline = false })
+      event = event:gsub('^User ', '')
+      vim.api.nvim_exec_autocmds('User', { pattern = event, modeline = false })
     else
       vim.api.nvim_exec_autocmds(event, { modeline = false })
     end

@@ -9,13 +9,14 @@ return {
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
       mode = '',
-      desc = '[F]ormat buffer',
+      desc = 'Format buffer',
     },
   },
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
-      local disable_filetypes = require('config.lang').get_ft_with_disabled_formatters()
+      local disable_filetypes =
+        require('config.lang').get_ft_with_disabled_formatters()
       local lsp_format_opt
       if disable_filetypes[vim.bo[bufnr].filetype] then
         lsp_format_opt = 'never'

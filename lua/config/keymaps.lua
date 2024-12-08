@@ -36,9 +36,52 @@ maps.n['|'] = { '<cmd>vsplit<cr>', desc = 'Vertical Split' }
 maps.n['\\'] = { '<cmd>split<cr>', desc = 'Horizontal Split' }
 maps.n['<leader>s'] = { '<cmd>w<cr>', desc = 'Save File' }
 maps.n['<leader>x'] = { '<cmd>wqa<cr>', desc = 'Save and Quit Neovim' }
+maps.n['<leader>dy'] = { 'gg0yG', desc = 'Yank File' }
 maps.n['yc'] =
   { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment original' }
-maps.n['<leader>dy'] = { 'gg0yG', desc = 'Yank File' }
+maps.v['yc'] = {
+  'ygvgc`>p',
+  remap = true,
+  desc = 'Duplicate selection and comment original',
+}
+
+-- TODO: Check for conflicting keymap here
+--
+-- Insert arrow
+-- maps.i['<C-l>'] = { '<space>=><space>', desc = 'Inserts arrow' }
+
+-- From the Vim wiki: https://bit.ly/4eLAARp
+-- Search and replace word under the cursor
+-- vim.keymap.set("n", "<Leader>r", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
+
+-- vim.keymap.set('i', '++', ' = <Esc>^yt=f=lpa+ 1', {
+--   -- buffer = 0,
+-- })
+--
+-- vim.keymap.set('i', '+=', '= <Esc>^yt=f=lpa+', {
+--   -- buffer = 0,
+-- })
+
+vim.keymap.set(
+  'n',
+  'gy',
+  '`[v`]',
+  { desc = 'Select recently pasted, yanked or changed text' }
+)
+
+-- Block insert in line visual mode
+-- vim.keymap.set(
+--   'x',
+--   'I',
+--   function() return vim.fn.mode() == 'V' and '^<C-v>I' or 'I' end,
+--   { expr = true }
+-- )
+-- vim.keymap.set(
+--   'x',
+--   'A',
+--   function() return vim.fn.mode() == 'V' and '$<C-v>A' or 'A' end,
+--   { expr = true }
+-- )
 
 -- Page jumping centers cursor
 maps.n['<C-d>'] =
@@ -134,6 +177,16 @@ maps.n['<ESC>'] = {
     end
   end,
 }
+
+-- TODO: See git conflict
+--
+-- nmap('<leader>fc', '/<<<<CR>', '[F]ind [C]onflicts')
+--
+-- nmap('<leader>gcu', 'dd/|||<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [U]pstream')
+--
+-- nmap('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [B]ase')
+--
+-- nmap('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', '[G]it [C]onflict Choose [S]tashed')
 
 -- Disable arrow keys in normal mode
 maps.n['<left>'] = { '<nop>' }
