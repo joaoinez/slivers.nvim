@@ -35,4 +35,5 @@ return {
     event = 'VeryLazy',
     opts = { n_lines = 500 },
   },
+  { 'echasnovski/mini.surround', version = false, event = 'VeryLazy', opts = {} },
 }

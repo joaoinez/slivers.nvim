@@ -15,7 +15,6 @@
 --   l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
 --   -------------------------------------------------------------------
 
--- [[ Map Shorthand ]]
 local utils = require 'utils'
 local maps = utils.get_mappings_template()
 
@@ -24,22 +23,8 @@ maps.n['j'] =
   { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = 'Move cursor down' }
 maps.n['k'] =
   { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = 'Move cursor up' }
-maps.n['<leader>s'] = { '<cmd>w<cr>', desc = 'Save File' }
-maps.n['<leader>x'] = { '<cmd>wqa<cr>', desc = 'Save and Quit Neovim' }
 maps.n['<leader>/'] = { 'gcc', remap = true, desc = 'Toggle comment line' }
 maps.x['<leader>/'] = { 'gc', remap = true, desc = 'Toggle comment' }
--- maps.n['<leader>qq'] = {
---   function()
---     -- Ask user for confirmation
---     local choice =
---       vim.fn.confirm('Do you really want to exit nvim?', '&Yes\n&No', 2)
---     if choice == 1 then
---       -- If user confirms, but there are still files to be saved: Ask
---       vim.cmd 'confirm quit'
---     end
---   end,
---   desc = 'Quit',
--- }
 maps.n['<Tab>'] = {
   '<Tab>',
   noremap = true,
@@ -47,6 +32,44 @@ maps.n['<Tab>'] = {
   expr = false,
   desc = 'FIX: Prevent TAB from behaving like <C-i>, as they share the same internal code',
 }
+maps.n['|'] = { '<cmd>vsplit<cr>', desc = 'Vertical Split' }
+maps.n['\\'] = { '<cmd>split<cr>', desc = 'Horizontal Split' }
+maps.n['<leader>s'] = { '<cmd>w<cr>', desc = 'Save File' }
+maps.n['<leader>x'] = { '<cmd>wqa<cr>', desc = 'Save and Quit Neovim' }
+maps.n['yc'] =
+  { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment original' }
+maps.n['<leader>dy'] = { 'gg0yG', desc = 'Yank File' }
+
+-- Page jumping centers cursor
+maps.n['<C-d>'] =
+  { '<C-d>zz', desc = 'Scrolls down the page and center the cursor' }
+maps.n['<C-u>'] =
+  { '<C-u>zz', desc = 'Scrolls up the page and center the cursor' }
+
+-- Search centers cursor
+maps.n['n'] =
+  { 'nzzzv', desc = 'Jump to next search result and center the cursor' }
+maps.n['N'] =
+  { 'Nzzzv', desc = 'Jump to previous search result and center the cursor' }
+
+--  Use CTRL+<hjkl> to switch between windows
+maps.n['<C-h>'] = {
+  '<C-w><C-h>',
+  desc = 'Move focus to the left window',
+}
+maps.n['<C-j>'] = {
+  '<C-w><C-j>',
+  desc = 'Move focus to the lower window',
+}
+maps.n['<C-k>'] = {
+  '<C-w><C-k>',
+  desc = 'Move focus to the upper window',
+}
+maps.n['<C-l>'] = {
+  '<C-w><C-l>',
+  desc = 'Move focus to the right window',
+}
+
 -- Make 'c' key not copy to clipboard when changing a character.
 maps.n['c'] = { '"_c', desc = 'Change without yanking' }
 maps.n['C'] = { '"_C', desc = 'Change without yanking' }
@@ -97,11 +120,7 @@ maps.x['X'] = { '"_X', desc = 'Delete all characters in line' }
 maps.x['p'] = { 'P', desc = "Paste content you've previourly yanked" }
 maps.x['P'] = { 'p', desc = 'Yank what you are going to override, then paste' }
 
--- search highlighting ------------------------------------------------------
 -- use ESC to clear hlsearch, while preserving its original functionality.
---
--- TIP: If you prefer,  use <leader>ENTER instead of <ESC>
---      to avoid triggering it by accident.
 maps.n['<ESC>'] = {
   function()
     if vim.fn.hlexists 'Search' then
@@ -116,43 +135,13 @@ maps.n['<ESC>'] = {
   end,
 }
 
-utils.set_mappings(maps)
+-- Disable arrow keys in normal mode
+maps.n['<left>'] = { '<nop>' }
+maps.n['<down>'] = { '<nop>' }
+maps.n['<up>'] = { '<nop>' }
+maps.n['<right>'] = { '<nop>' }
 
--- map('n', '<Esc>', '<cmd>nohlsearch<CR>')
--- map('n', '<leader>s', '<cmd>w<cr>')
--- map('n', '<leader>x', '<cmd>xa<cr>')
--- -- Keybinds to make split navigation easier.
--- --  Use CTRL+<hjkl> to switch between windows
--- --
--- --  See `:help wincmd` for a list of all window commands
--- vim.keymap.set(
---   'n',
---   '<C-h>',
---   '<C-w><C-h>',
---   { desc = 'Move focus to the left window' }
--- )
--- vim.keymap.set(
---   'n',
---   '<C-l>',
---   '<C-w><C-l>',
---   { desc = 'Move focus to the right window' }
--- )
--- vim.keymap.set(
---   'n',
---   '<C-j>',
---   '<C-w><C-j>',
---   { desc = 'Move focus to the lower window' }
--- )
--- vim.keymap.set(
---   'n',
---   '<C-k>',
---   '<C-w><C-k>',
---   { desc = 'Move focus to the upper window' }
--- )
--- -- Diagnostic keymaps
--- vim.keymap.set(
---   'n',
---   '<leader>q',
---   vim.diagnostic.setloclist,
---   { desc = 'Open diagnostic [Q]uickfix list' }
--- )
+maps.n['s'] = { '<nop>' }
+maps.v['s'] = { '<nop>' }
+
+utils.set_mappings(maps)
