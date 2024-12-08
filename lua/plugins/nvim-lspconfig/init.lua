@@ -11,7 +11,7 @@ return {
     },
     'hrsh7th/cmp-nvim-lsp',
   },
-  event = 'BufRead',
+  event = 'User LazyFile',
   config = function()
     local servers = require('config.lsp').servers
     local utils = require 'utils'
@@ -22,47 +22,57 @@ return {
       group = augroup 'lsp_attach',
       callback = function(event)
         local maps = utils.get_mappings_template()
-        local builtin = require 'telescope.builtin'
+        local builtin = require('telescope.builtin')
 
         maps.n['gd'] = {
           function() builtin.lsp_definitions() end,
           desc = 'Goto Definition',
         }
         maps.n['gr'] = {
-          function() builtin.lsp_references() end,
-          desc = 'Goto References',
+          function ()
+          builtin.lsp_references()
+          end,
+          desc = 'Goto References'
         }
         maps.n['gI'] = {
-          function() builtin.lsp_implementations() end,
-          desc = 'Goto Implementation',
+          function ()
+            builtin.lsp_implementations()
+          end,
+          desc = 'Goto Implementation'
         }
         maps.n['<leader>D'] = {
-          function() builtin.lsp_type_definitions() end,
-          desc = 'Type Definition',
+          function ()
+            builtin.lsp_type_definitions()
+          end,
+          desc = 'Type Definition'
         }
         maps.n['<leader>ds'] = {
-          function() builtin.lsp_document_symbols() end,
-          desc = 'Document Symbols',
+          function ()
+            builtin.lsp_document_symbols()
+          end,
+          desc = 'Document Symbols'
         }
         maps.n['<leader>ws'] = {
-          function() builtin.lsp_dynamic_workspace_symbols() end,
-          desc = 'Workspace Symbols',
+          function ()
+            builtin.lsp_dynamic_workspace_symbols()
+          end,
+          desc = 'Workspace Symbols'
         }
         maps.n['gD'] = {
           vim.lsp.buf.declaration,
-          desc = 'Goto Declaration',
+          desc = 'Goto Declaration'
         }
         maps.n['<leader>rn'] = {
           vim.lsp.buf.rename,
-          desc = 'Rename',
+          desc = 'Rename'
         }
         maps.n['<leader>ca'] = {
           vim.lsp.buf.code_action,
-          desc = 'Code Action',
+          desc = 'Code Action'
         }
         maps.x['<leader>ca'] = {
           vim.lsp.buf.code_action,
-          desc = 'Code Action',
+          desc = 'Code Action'
         }
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -99,12 +109,14 @@ return {
           )
         then
           maps.n['<leader>th'] = {
-            function()
+            function ()
+
               vim.lsp.inlay_hint.enable(
                 not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }
               )
+              
             end,
-            desc = 'Toggle Inlay Hints',
+            desc = 'Toggle Inlay Hints'
           }
         end
 

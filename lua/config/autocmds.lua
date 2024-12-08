@@ -84,3 +84,21 @@ autocmd('BufWritePre', {
     end
   end,
 })
+
+--    This is pretty much the same thing as the event 'BufEnter',
+--    but without increasing the startup time displayed in the greeter.
+autocmd({ 'BufReadPost', 'BufNewFile', 'BufWritePost' }, {
+  desc = 'Nvim user event for file detection (LazyFile)',
+  callback = function(args)
+    local empty_buffer = vim.fn.resolve(vim.fn.expand '%') == ''
+    local greeter = vim.api.nvim_get_option_value(
+      'filetype',
+      { buf = args.buf }
+    ) == 'snacks_dashboard'
+
+    -- For any file exept empty buffer, or the greeter (alpha)
+    if not (empty_buffer or greeter) then
+      utils.trigger_event 'User LazyFile'
+    end
+  end,
+})
