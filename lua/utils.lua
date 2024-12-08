@@ -20,7 +20,7 @@ function M.add_autocmds_to_buffer(augroup, bufnr, autocmds)
 
   -- Attempt to retrieve existing autocmds associated with the specified augroup and bufnr
   local cmds_found, cmds =
-    pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
+      pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
 
   -- If no existing autocmds are found or the cmds_found call fails
   if not cmds_found or vim.tbl_isempty(cmds) then
@@ -50,7 +50,7 @@ end
 function M.del_autocmds_from_buffer(augroup, bufnr)
   -- Attempt to retrieve existing autocmds associated with the specified augroup and bufnr
   local cmds_found, cmds =
-    pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
+      pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
 
   -- If retrieval was successful
   if cmds_found then
@@ -145,11 +145,11 @@ end
 function M.set_url_effect()
   --- regex used for matching a valid URL/URI string
   local url_matcher = '\\v\\c%(%(h?ttps?|ftp|file|ssh|git)://|[a-z]+[@][a-z]+[.][a-z]+:)'
-    .. '%([&:#*@~%_\\-=?!+;/0-9a-z]+%(%([.;/?]|[.][.]+)'
-    .. '[&:#*@~%_\\-=?!+/0-9a-z]+|:\\d+|,%(%(%(h?ttps?|ftp|file|ssh|git)://|'
-    .. '[a-z]+[@][a-z]+[.][a-z]+:)@![0-9a-z]+))*|\\([&:#*@~%_\\-=?!+;/.0-9a-z]*\\)'
-    .. '|\\[[&:#*@~%_\\-=?!+;/.0-9a-z]*\\]|\\{%([&:#*@~%_\\-=?!+;/.0-9a-z]*'
-    .. '|\\{[&:#*@~%_\\-=?!+;/.0-9a-z]*})\\})+'
+      .. '%([&:#*@~%_\\-=?!+;/0-9a-z]+%(%([.;/?]|[.][.]+)'
+      .. '[&:#*@~%_\\-=?!+/0-9a-z]+|:\\d+|,%(%(%(h?ttps?|ftp|file|ssh|git)://|'
+      .. '[a-z]+[@][a-z]+[.][a-z]+:)@![0-9a-z]+))*|\\([&:#*@~%_\\-=?!+;/.0-9a-z]*\\)'
+      .. '|\\[[&:#*@~%_\\-=?!+;/.0-9a-z]*\\]|\\{%([&:#*@~%_\\-=?!+;/.0-9a-z]*'
+      .. '|\\{[&:#*@~%_\\-=?!+;/.0-9a-z]*})\\})+'
 
   M.delete_url_effect()
   if vim.g.url_effect_enabled then
@@ -187,6 +187,15 @@ function M.trigger_event(event, is_urgent)
     trigger()
   else
     vim.schedule(trigger)
+  end
+end
+
+--- Check if lsp client supports a certain method
+--- @param client vim.lsp.Client|nil The client where the lsp mappings will load.
+function M.supports(client)
+  --- @param method string The name of the method
+  return function(method)
+    return client and client.supports_method(vim.lsp.protocol.Methods[method])
   end
 end
 

@@ -3,17 +3,18 @@ return {
   cmd = 'Mason',
   keys = { { '<leader>,m', '<cmd>Mason<cr>', desc = 'Mason' } },
   build = ':MasonUpdate',
+  -- PERF: Change this
+  lazy = false,
   dependencies = {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
   config = function()
-    local servers = require('config.lsp').servers
+    local lang = require 'config.lang'
+
     require('mason').setup()
 
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua',
-    })
+    local ensure_installed = vim.tbl_keys(lang.get_servers() or {})
+    vim.list_extend(ensure_installed, lang.get_formatters())
 
     require('mason-tool-installer').setup {
       ensure_installed = ensure_installed,

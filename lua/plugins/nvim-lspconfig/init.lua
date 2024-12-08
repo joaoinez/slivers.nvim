@@ -16,7 +16,7 @@ return {
   --
   -- event = 'User Lazyfile',
   config = function()
-    local servers = require('config.lsp').servers
+    local servers = require('config.lang').get_servers()
     local utils = require 'utils'
     local autocmd = utils.autocmd
     local augroup = utils.augroup
@@ -24,94 +24,10 @@ return {
     autocmd('LspAttach', {
       group = augroup 'lsp_attach',
       callback = function(event)
-        local maps = utils.get_mappings_template()
-        local builtin = require 'telescope.builtin'
-
-        maps.n['gd'] = {
-          function() builtin.lsp_definitions() end,
-          desc = 'Goto Definition',
-        }
-        maps.n['gr'] = {
-          function() builtin.lsp_references() end,
-          desc = 'Goto References',
-        }
-        maps.n['gI'] = {
-          function() builtin.lsp_implementations() end,
-          desc = 'Goto Implementation',
-        }
-        maps.n['<leader>D'] = {
-          function() builtin.lsp_type_definitions() end,
-          desc = 'Type Definition',
-        }
-        maps.n['<leader>ds'] = {
-          function() builtin.lsp_document_symbols() end,
-          desc = 'Document Symbols',
-        }
-        maps.n['<leader>ws'] = {
-          function() builtin.lsp_dynamic_workspace_symbols() end,
-          desc = 'Workspace Symbols',
-        }
-        maps.n['gD'] = {
-          vim.lsp.buf.declaration,
-          desc = 'Goto Declaration',
-        }
-        maps.n['<leader>rn'] = {
-          vim.lsp.buf.rename,
-          desc = 'Rename',
-        }
-        maps.n['<leader>ca'] = {
-          vim.lsp.buf.code_action,
-          desc = 'Code Action',
-        }
-        maps.x['<leader>ca'] = {
-          vim.lsp.buf.code_action,
-          desc = 'Code Action',
-        }
-
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if
-          client
-          and client.supports_method(
-            vim.lsp.protocol.Methods.textDocument_documentHighlight
-          )
-        then
-          utils.add_autocmds_to_buffer('slivers_lsp_highlight', event.buf, {
-            {
-              events = { 'CursorHold', 'CursorHoldI' },
-              callback = vim.lsp.buf.document_highlight,
-            },
-            {
-              events = { 'CursorMoved', 'CursorMovedI' },
-              callback = vim.lsp.buf.clear_references,
-            },
-          })
 
-          autocmd('LspDetach', {
-            group = augroup 'lsp_detach',
-            callback = function(e)
-              vim.lsp.buf.clear_references()
-              utils.del_autocmds_from_buffer('slivers_lsp_highlight', e.buf)
-            end,
-          })
-        end
-
-        if
-          client
-          and client.supports_method(
-            vim.lsp.protocol.Methods.textDocument_inlayHint
-          )
-        then
-          maps.n['<leader>th'] = {
-            function()
-              vim.lsp.inlay_hint.enable(
-                not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }
-              )
-            end,
-            desc = 'Toggle Inlay Hints',
-          }
-        end
-
-        utils.set_mappings(maps)
+        require('plugins.nvim-lspconfig.keymaps').apply_user_lsp_mappings(client, event.buf)
+        require('plugins.nvim-lspconfig.autocmds').apply_user_lsp_autocmds(client, event.buf)
       end,
     })
 
