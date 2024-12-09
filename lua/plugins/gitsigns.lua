@@ -23,33 +23,23 @@ return {
 
       -- Actions
       -- visual mode
-      maps.v['<leader>gs'] = {
-        function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-        buffer = bufnr,
-        desc = 'Stage Hunk',
-      }
-      maps.v['<leader>gr'] = {
-        function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-        buffer = bufnr,
-        desc = 'Reset Hunk',
-      }
+      maps.v['<leader>gs'] =
+        { function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end, desc = 'Stage Hunk' }
+      maps.v['<leader>gr'] =
+        { function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end, desc = 'Reset Hunk' }
       -- normal mode
-      maps.n['<leader>gs'] = { gitsigns.stage_hunk, buffer = bufnr, desc = 'Stage Hunk' }
-      maps.n['<leader>gr'] = { gitsigns.reset_hunk, buffer = bufnr, desc = 'Reset Hunk' }
-      maps.n['<leader>gS'] = { gitsigns.stage_buffer, buffer = bufnr, desc = 'Stage File' }
-      maps.n['<leader>gu'] = { gitsigns.undo_stage_hunk, buffer = bufnr, desc = 'Undo Stage Hunk' }
-      maps.n['<leader>gR'] = { gitsigns.reset_buffer, buffer = bufnr, desc = 'Reset File' }
-      maps.n['<leader>gp'] = { gitsigns.preview_hunk, buffer = bufnr, desc = 'Preview Hunk' }
-      maps.n['<leader>gb'] = { gitsigns.blame_line, buffer = bufnr, desc = 'Blame Line' }
-      maps.n['<leader>gd'] = { gitsigns.diffthis, buffer = bufnr, desc = 'Diff against index' }
-      maps.n['<leader>gD'] = {
-        function() gitsigns.diffthis '@' end,
-        buffer = bufnr,
-        desc = 'Diff against last commit',
-      }
+      maps.n['<leader>gs'] = { gitsigns.stage_hunk, desc = 'Stage Hunk' }
+      maps.n['<leader>gr'] = { gitsigns.reset_hunk, desc = 'Reset Hunk' }
+      maps.n['<leader>gS'] = { gitsigns.stage_buffer, desc = 'Stage File' }
+      maps.n['<leader>gu'] = { gitsigns.undo_stage_hunk, desc = 'Undo Stage Hunk' }
+      maps.n['<leader>gR'] = { gitsigns.reset_buffer, desc = 'Reset File' }
+      maps.n['<leader>gp'] = { gitsigns.preview_hunk, desc = 'Preview Hunk' }
+      maps.n['<leader>gb'] = { gitsigns.blame_line, desc = 'Blame Line' }
+      maps.n['<leader>gd'] = { gitsigns.diffthis, desc = 'Diff against index' }
+      maps.n['<leader>gD'] = { function() gitsigns.diffthis '@' end, desc = 'Diff against last commit' }
       -- Toggles
-      maps.n['<leader>tb'] = { gitsigns.toggle_current_line_blame, buffer = bufnr, desc = 'Blame Line (git)' }
-      maps.n['<leader>td'] = { gitsigns.toggle_deleted, buffer = bufnr, desc = 'Deleted Hunks (git)' }
+      maps.n['<leader>tb'] = { gitsigns.toggle_current_line_blame, desc = 'Blame Line (git)' }
+      maps.n['<leader>td'] = { gitsigns.toggle_deleted, desc = 'Deleted Hunks (git)' }
       -- Navigation
       maps.n[']c'] = {
         function()
@@ -59,7 +49,6 @@ return {
             gitsigns.nav_hunk 'next'
           end
         end,
-        buffer = bufnr,
         desc = 'Next Change (git)',
       }
       maps.n['[c'] = {
@@ -70,11 +59,10 @@ return {
             gitsigns.nav_hunk 'prev'
           end
         end,
-        buffer = bufnr,
         desc = 'Previous Git Change (git)',
       }
 
-      utils.set_mappings(maps)
+      utils.set_mappings(maps, { buffer = bufnr })
     end,
   },
 }
