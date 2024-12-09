@@ -19,8 +19,11 @@ local utils = require 'utils'
 local maps = utils.get_mappings_template()
 
 -- [[ Keymaps ]]
+-- Better up/down
 maps.n['j'] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = 'Move cursor down' }
 maps.n['k'] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = 'Move cursor up' }
+
+-- Move to window using the <ctrl> hjkl keys
 maps.n['<leader>/'] = { 'gcc', remap = true, desc = 'Toggle comment line' }
 maps.x['<leader>/'] = { 'gc', remap = true, desc = 'Toggle comment' }
 maps.n['<Tab>'] = {
@@ -165,6 +168,14 @@ maps.n['<ESC>'] = {
 -- nmap('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [B]ase')
 --
 -- nmap('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', '[G]it [C]onflict Choose [S]tashed')
+
+-- Improved tabulation
+maps.x['<S-Tab>'] = { '<gv', desc = 'unindent line' }
+maps.x['<Tab>'] = { '>gv', desc = 'indent line' }
+maps.x['<'] = { '<gv', desc = 'unindent line' }
+maps.x['>'] = { '>gv', desc = 'indent line' }
+
+maps.i['<C-BS>'] = { '<C-W>', desc = 'Enable CTRL+backsace to delete.' }
 
 -- Disable arrow keys in normal mode
 maps.n['<left>'] = { '<nop>' }
