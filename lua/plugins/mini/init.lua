@@ -41,4 +41,10 @@ return {
     event = 'VeryLazy',
     opts = {},
   },
+  {
+    'echasnovski/mini.move',
+    version = false,
+    event = 'VeryLazy',
+    opts = {},
+  },
 }
