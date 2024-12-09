@@ -1,13 +1,18 @@
 return {
   'williamboman/mason.nvim',
-  cmd = 'Mason',
-  keys = { { '<leader>,m', '<cmd>Mason<cr>', desc = 'Mason' } },
-  build = ':MasonUpdate',
-  -- PERF: Change this
-  lazy = false,
   dependencies = {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
+  cmd = {
+    'Mason',
+    'MasonInstall',
+    'MasonUninstall',
+    'MasonUninstallAll',
+    'MasonLog',
+    'MasonUpdate',
+  },
+  keys = { { '<leader>,m', '<cmd>Mason<cr>', desc = 'Mason' } },
+  build = ':MasonUpdate',
   config = function()
     local lang = require 'config.lang'
 

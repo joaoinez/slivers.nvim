@@ -1,6 +1,6 @@
 return {
   'lewis6991/satellite.nvim',
-  event = 'BufRead',
+  event = 'User LazyFile',
   opts = {
     current_only = false,
     winblend = 0,

@@ -2,7 +2,7 @@
 return {
   'folke/todo-comments.nvim',
   cmd = { 'TodoTrouble', 'TodoTelescope' },
-  event = 'BufRead',
+  event = 'User LazyFile',
   opts = { signs = false },
   keys = {
     {

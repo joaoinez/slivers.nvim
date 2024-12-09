@@ -18,7 +18,7 @@ return {
     -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require 'lualine_require'
     lualine_require.require = require
-
+    local is_available = require('utils').is_available
     local mocha = require('catppuccin.palettes').get_palette 'mocha'
 
     local function get_harpoon_indicator(prefix, suffix)
@@ -34,9 +34,7 @@ return {
           i = i + 1
         end
 
-        local trimmed_filename = #path > 1
-            and path[#path - 1] .. '/' .. path[#path]
-          or path[1]
+        local trimmed_filename = #path > 1 and path[#path - 1] .. '/' .. path[#path] or path[1]
 
         return (prefix or '') .. trimmed_filename .. (suffix or '')
       end
@@ -172,21 +170,21 @@ return {
       extensions = { 'neo-tree', 'lazy' },
     }
 
-    -- do not add trouble symbols if aerial is enabled
-    -- And allow it to be overriden for some buffer types (see autocmds)
-    -- local trouble = require 'trouble'
-    -- local symbols = trouble.statusline {
-    --   mode = 'symbols',
-    --   groups = {},
-    --   title = false,
-    --   filter = { range = true },
-    --   format = '{kind_icon}{symbol.name:Normal}',
-    --   hl_group = 'lualine_c_normal',
-    -- }
-    -- table.insert(opts.sections.lualine_c, {
-    --   symbols and symbols.get,
-    --   cond = function() return vim.b.trouble_lualine ~= false and symbols.has() end,
-    -- })
+    if is_available 'trouble.nvim' then
+      local trouble = require 'trouble'
+      local symbols = trouble.statusline {
+        mode = 'symbols',
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = '{kind_icon}{symbol.name:Normal}',
+        hl_group = 'lualine_c_normal',
+      }
+      table.insert(opts.sections.lualine_c, {
+        symbols and symbols.get,
+        cond = function() return vim.b.trouble_lualine ~= false and symbols.has() end,
+      })
+    end
 
     return opts
   end,

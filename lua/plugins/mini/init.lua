@@ -15,7 +15,7 @@ return {
   {
     'echasnovski/mini.pairs',
     version = false,
-    event = 'InsertEnter',
+    event = 'VeryLazy',
     opts = {
       modes = { insert = true, command = true, terminal = false },
       -- skip autopair when next character is one of these

@@ -2,10 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
-  -- TODO: See why this isn't working
-  --
-  -- event = { 'User LazyFile', 'VeryLazy' },
-  event = { 'BufRead', 'VeryLazy' },
+  event = { 'User LazyFile', 'VeryLazy' },
   lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
   -- dependencies = {
   --   "windwp/nvim-ts-autotag",
@@ -24,10 +21,8 @@ return {
     incremental_selection = {
       enable = true,
       keymaps = {
-        -- FIXME: control space is reserved for tmux
-        --
-        -- init_selection = '<C-space>',
-        -- node_incremental = '<C-space>',
+        init_selection = '<C-enter>',
+        node_incremental = '<C-enter>',
         scope_incremental = false,
         node_decremental = '<bs>',
       },
