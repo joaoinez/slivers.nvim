@@ -9,8 +9,8 @@ return {
     },
   },
   keys = {
-    { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Find Files (Root Dir)' },
-    { '<leader>ft', function() require('telescope.builtin').live_grep() end, desc = 'Find Text (Grep)' },
+    { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Find Files' },
+    { '<leader>ft', function() require('telescope.builtin').live_grep() end, desc = 'Find Text' },
     { '<leader><leader>', function() require('telescope.builtin').buffers() end, desc = 'Open Buffers' },
     { '<leader>f?', function() require('telescope.builtin').keymaps() end, desc = 'Buffer Keymaps (telescope)' },
   },

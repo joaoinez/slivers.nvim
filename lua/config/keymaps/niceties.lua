@@ -1,6 +1,12 @@
 local utils = require 'utils'
 local maps = utils.get_mappings_template()
 
+--  Use CTRL+<hjkl> to switch between windows
+maps.n['<C-h>'] = { '<C-w><C-h>', desc = 'Move focus to the left window' }
+maps.n['<C-j>'] = { '<C-w><C-j>', desc = 'Move focus to the lower window' }
+maps.n['<C-k>'] = { '<C-w><C-k>', desc = 'Move focus to the upper window' }
+maps.n['<C-l>'] = { '<C-w><C-l>', desc = 'Move focus to the right window' }
+
 -- Save file
 maps.n['<leader>s'] = { '<cmd>w<cr>', desc = 'Save File' }
 
@@ -22,6 +28,12 @@ maps.n['<ESC>'] = {
 maps.n['<leader>/'] = { 'gcc', remap = true, desc = 'Toggle comment line' }
 maps.x['<leader>/'] = { 'gc', remap = true, desc = 'Toggle comment selection' }
 
+-- Improved tabulation
+maps.x['<S-Tab>'] = { '<gv', desc = 'unindent line' }
+maps.x['<Tab>'] = { '>gv', desc = 'indent line' }
+maps.x['<'] = { '<gv', desc = 'unindent line' }
+maps.x['>'] = { '>gv', desc = 'indent line' }
+
 -- Splits
 maps.n['<leader>|'] = { '<cmd>vsplit<cr>', desc = 'Vertical Split' }
 maps.n['<leader>\\'] = { '<cmd>split<cr>', desc = 'Horizontal Split' }
@@ -39,6 +51,36 @@ maps.n['<leader>cR'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename W
 
 -- Diagnostic keymaps
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }
+maps.n['<leader>qd'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
+
+-- keywordprg
+maps.n['<leader>K'] = { '<cmd>norm! K<cr>', desc = 'Keywordprg' }
+
+-- Lazy
+maps.n['<leader>,l'] = { function() require('lazy').check() end, desc = 'Lazy open' }
+
+-- Inspect Tree
+maps.n['<leader>cI'] = { '<cmd>InspectTree<cr>', desc = 'Inspect Tree' }
+
+-- Terminal Mappings
+maps.t['<C-/>'] = { '<cmd>close<cr>', desc = 'Hide Terminal' }
+maps.t['<c-_>'] = { '<cmd>close<cr>', desc = 'which_key_ignore' }
+maps.t['<C-h>'] = { '<C-\\><C-n><C-w>h', desc = 'Move focus to the left window' }
+maps.t['<C-j>'] = { '<C-\\><C-n><C-w>j', desc = 'Move focus to the lower window' }
+maps.t['<C-k>'] = { '<C-\\><C-n><C-w>k', desc = 'Move focus to the upper window' }
+maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window' }
+
+-- -- mason
+-- if is_available 'mason.nvim' then
+--   maps.n['<leader>pm'] = { '<cmd>Mason<cr>', desc = 'Mason open' }
+--   maps.n['<leader>pM'] = { '<cmd>MasonUpdateAll<cr>', desc = 'Mason update' }
+-- end
+--
+-- -- treesitter
+-- if is_available 'nvim-treesitter' then
+--   maps.n['<leader>pT'] = { '<cmd>TSUpdate<cr>', desc = 'Treesitter update' }
+--   maps.n['<leader>pt'] = { '<cmd>TSInstallInfo<cr>', desc = 'Treesitter open' }
+-- end
 
 -- TODO: Check for conflicting keymap here
 --

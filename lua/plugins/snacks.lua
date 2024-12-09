@@ -53,7 +53,7 @@ return {
         {
           pane = 2,
           icon = ' ',
-          desc = 'Browse Repo',
+          desc = 'Browse Repo (open)',
           padding = 1,
           key = 'b',
           action = function() Snacks.gitbrowse() end,
@@ -86,8 +86,15 @@ return {
   },
   keys = {
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
-    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse' },
-    { '<leader>fmh', function() Snacks.notifier.show_history() end, 'Message History' },
+    { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Current File History (lazygit)' },
+    {
+      '<leader>gl',
+      function() Snacks.lazygit.log { cwd = LazyVim.root.git() } end,
+      desc = 'Git Log (lazygit)',
+    },
+    { '<leader>gf', function() Snacks.lazygit() end, desc = 'Current File History (lazygit)' },
+    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse (open)' },
+    { '<leader>mh', function() Snacks.notifier.show_history() end, desc = 'Message History' },
     {
       '<leader>N',
       desc = 'Neovim News',
@@ -106,7 +113,7 @@ return {
         }
       end,
     },
-    { '<C-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
+    { '<leader>tt', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
     { '<C-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
     { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next Reference (snacks)', mode = { 'n', 't' } },
     { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev Reference (snacks)', mode = { 'n', 't' } },

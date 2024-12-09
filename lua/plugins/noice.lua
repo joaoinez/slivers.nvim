@@ -27,9 +27,9 @@ return {
       mode = 'c',
       desc = 'Redirect Cmdline',
     },
-    { '<leader>fml', function() require('noice').cmd 'last' end, desc = 'Last Message (noice)' },
-    { '<leader>fmH', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
-    { '<leader>fmd', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
-    { '<leader>fmt', function() require('noice').cmd 'pick' end, desc = 'Noice Picker (Telescope/FzfLua)' },
+    { '<leader>ml', function() require('noice').cmd 'last' end, desc = 'Last Message (noice)' },
+    { '<leader>mH', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
+    { '<leader>md', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
+    { '<leader>mt', function() require('noice').cmd 'pick' end, desc = 'Noice Picker (telescope)' },
   },
 }

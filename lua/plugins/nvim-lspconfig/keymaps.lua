@@ -24,13 +24,13 @@ function M.apply_user_lsp_mappings(client, bufnr)
     function() builtin.lsp_type_definitions() end,
     desc = 'Goto Type Definition (telescope)',
   }
-  maps.n['<leader>cgs'] = {
+  maps.n['<leader>fs'] = {
     function() builtin.lsp_document_symbols() end,
-    desc = 'Goto Symbols (telescope)',
+    desc = 'Find Symbols',
   }
-  maps.n['<leader>cgS'] = {
+  maps.n['<leader>fS'] = {
     function() builtin.lsp_dynamic_workspace_symbols() end,
-    desc = 'Goto Workspace Symbols (telescope)',
+    desc = 'Find Workspace Symbols',
   }
   maps.n['gD'] = {
     vim.lsp.buf.declaration,
@@ -38,7 +38,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
   }
   maps.n['<leader>cr'] = {
     vim.lsp.buf.rename,
-    desc = 'Rename Variable (LSP)',
+    desc = 'Rename Variable (lsp)',
   }
   maps.n['<leader>ca'] = {
     vim.lsp.buf.code_action,
