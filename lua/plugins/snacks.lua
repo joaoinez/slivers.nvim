@@ -8,8 +8,26 @@ return {
     bigfile = { enabled = true },
     dashboard = {
       enabled = true,
+      pane_gap = 8,
       preset = {
+        keys = {
+          { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+          { icon = ' ', key = 't', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
+          {
+            icon = ' ',
+            key = 'c',
+            desc = 'Config',
+            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+          },
+          { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
+          { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+          { icon = '󰟾 ', key = 'm', desc = 'Mason', action = ':Mason' },
+          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+        },
         header = [[
+
+
            ▄ ▄                   
        ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     
        █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     
@@ -21,13 +39,73 @@ return {
     █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    
 ]],
       },
+      formats = {
+        header = { '%s', align = 'center', hl = 'SnacksDashboardFooter' },
+      },
+      sections = {
+        { section = 'header' },
+        { title = 'Quick Actions', padding = 1, align = 'center' },
+        { section = 'keys', gap = 2, padding = 1 },
+        { pane = 2, text = '', padding = 4 },
+        { pane = 2, section = 'terminal', cmd = 'gh contrib --style dot', height = 5, padding = 4, indent = 4 },
+        { pane = 2, icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+        { pane = 2, icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+        {
+          pane = 2,
+          icon = ' ',
+          desc = 'Browse Repo',
+          padding = 1,
+          key = 'b',
+          action = function() Snacks.gitbrowse() end,
+        },
+        {
+          pane = 2,
+          icon = ' ',
+          title = 'Git Status',
+          section = 'terminal',
+          enabled = function() return Snacks.git.get_root() ~= nil end,
+          cmd = 'hub --no-pager diff --stat -B -M -C',
+          key = 'g',
+          action = function() Snacks.lazygit() end,
+          height = 10,
+          padding = 1,
+          indent = 3,
+        },
+        { pane = 2, section = 'startup' },
+      },
     },
     notifier = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    styles = {
+      notification = {
+        wo = { wrap = true }, -- Wrap notifications
+      },
+    },
   },
   keys = {
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
+    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse' },
+    {
+      '<leader>N',
+      desc = 'Neovim News',
+      function()
+        Snacks.win {
+          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
+          width = 0.6,
+          height = 0.6,
+          wo = {
+            spell = false,
+            wrap = false,
+            signcolumn = 'yes',
+            statuscolumn = ' ',
+            conceallevel = 3,
+          },
+        }
+      end,
+    },
+    { '<c-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
+    { '<c-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
   },
 }

@@ -19,10 +19,8 @@ local utils = require 'utils'
 local maps = utils.get_mappings_template()
 
 -- [[ Keymaps ]]
-maps.n['j'] =
-  { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = 'Move cursor down' }
-maps.n['k'] =
-  { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = 'Move cursor up' }
+maps.n['j'] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = 'Move cursor down' }
+maps.n['k'] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = 'Move cursor up' }
 maps.n['<leader>/'] = { 'gcc', remap = true, desc = 'Toggle comment line' }
 maps.x['<leader>/'] = { 'gc', remap = true, desc = 'Toggle comment' }
 maps.n['<Tab>'] = {
@@ -37,13 +35,12 @@ maps.n['\\'] = { '<cmd>split<cr>', desc = 'Horizontal Split' }
 maps.n['<leader>s'] = { '<cmd>w<cr>', desc = 'Save File' }
 maps.n['<leader>x'] = { '<cmd>wqa<cr>', desc = 'Save and Quit Neovim' }
 maps.n['<leader>dy'] = { 'gg0yG', desc = 'Yank File' }
-maps.n['yc'] =
-  { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment original' }
-maps.v['yc'] = {
-  'ygvgc`>p',
-  remap = true,
-  desc = 'Duplicate selection and comment original',
-}
+maps.n['yc'] = { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment original' }
+-- maps.v['yc'] = {
+--   'ygvgc`>p',
+--   remap = true,
+--   desc = 'Duplicate selection and comment original',
+-- }
 
 -- TODO: Check for conflicting keymap here
 --
@@ -62,12 +59,7 @@ maps.v['yc'] = {
 --   -- buffer = 0,
 -- })
 
-vim.keymap.set(
-  'n',
-  'gy',
-  '`[v`]',
-  { desc = 'Select recently pasted, yanked or changed text' }
-)
+vim.keymap.set('n', 'gy', '`[v`]', { desc = 'Select recently pasted, yanked or changed text' })
 
 -- Block insert in line visual mode
 -- vim.keymap.set(
@@ -84,34 +76,18 @@ vim.keymap.set(
 -- )
 
 -- Page jumping centers cursor
-maps.n['<C-d>'] =
-  { '<C-d>zz', desc = 'Scrolls down the page and center the cursor' }
-maps.n['<C-u>'] =
-  { '<C-u>zz', desc = 'Scrolls up the page and center the cursor' }
+maps.n['<C-d>'] = { '<C-d>zz', desc = 'Scrolls down the page and center the cursor' }
+maps.n['<C-u>'] = { '<C-u>zz', desc = 'Scrolls up the page and center the cursor' }
 
 -- Search centers cursor
-maps.n['n'] =
-  { 'nzzzv', desc = 'Jump to next search result and center the cursor' }
-maps.n['N'] =
-  { 'Nzzzv', desc = 'Jump to previous search result and center the cursor' }
+maps.n['n'] = { 'nzzzv', desc = 'Jump to next search result and center the cursor' }
+maps.n['N'] = { 'Nzzzv', desc = 'Jump to previous search result and center the cursor' }
 
 --  Use CTRL+<hjkl> to switch between windows
-maps.n['<C-h>'] = {
-  '<C-w><C-h>',
-  desc = 'Move focus to the left window',
-}
-maps.n['<C-j>'] = {
-  '<C-w><C-j>',
-  desc = 'Move focus to the lower window',
-}
-maps.n['<C-k>'] = {
-  '<C-w><C-k>',
-  desc = 'Move focus to the upper window',
-}
-maps.n['<C-l>'] = {
-  '<C-w><C-l>',
-  desc = 'Move focus to the right window',
-}
+-- maps.n['<C-h>'] = { '<C-w><C-h>', desc = 'Move focus to the left window' }
+-- maps.n['<C-j>'] = { '<C-w><C-j>', desc = 'Move focus to the lower window' }
+-- maps.n['<C-k>'] = { '<C-w><C-k>', desc = 'Move focus to the upper window' }
+-- maps.n['<C-l>'] = { '<C-w><C-l>', desc = 'Move focus to the right window' }
 
 -- Make 'c' key not copy to clipboard when changing a character.
 maps.n['c'] = { '"_c', desc = 'Change without yanking' }
@@ -169,11 +145,7 @@ maps.n['<ESC>'] = {
     if vim.fn.hlexists 'Search' then
       vim.cmd 'nohlsearch'
     else
-      vim.api.nvim_feedkeys(
-        vim.api.nvim_replace_termcodes('<ESC>', true, true, true),
-        'n',
-        true
-      )
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<ESC>', true, true, true), 'n', true)
     end
   end,
 }
