@@ -13,42 +13,32 @@ return {
         focus = true,
       },
     },
-    -- preview = {
-    --   type = 'float',
-    --   relative = 'editor',
-    --   border = 'none',
-    --   title = 'Preview',
-    --   title_pos = 'center',
-    --   position = { 0, 0 },
-    --   size = { width = 0.8, height = 1 },
-    --   zindex = 200,
-    -- },
   },
   keys = {
     {
-      '<leader>dx',
+      '<leader>qX',
       '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-      desc = 'Diagnostics (Trouble)',
+      desc = 'Diagnostics (trouble)',
     },
     {
-      '<leader>dS',
-      '<cmd>Trouble symbols toggle<cr>',
-      desc = 'Symbols (Trouble)',
-    },
-    {
-      '<leader>wx',
+      '<leader>qx',
       '<cmd>Trouble diagnostics toggle<cr>',
-      desc = 'Diagnostics (Trouble)',
+      desc = 'Workspace Diagnostics (trouble)',
     },
     {
-      '<leader>jR',
-      '<cmd>Trouble lsp toggle<cr>',
-      desc = 'References/Definitions/... (Trouble)',
-    },
-    {
-      '<leader>q',
+      '<leader>qq',
       '<cmd>Trouble telescope toggle<cr>',
-      desc = 'Telescope Quicklist (Trouble)',
+      desc = 'Telescope Quicklist (trouble)',
+    },
+    {
+      '<leader>cd',
+      '<cmd>Trouble lsp toggle<cr>',
+      desc = 'References/Definitions/... (trouble)',
+    },
+    {
+      '<leader>cs',
+      '<cmd>Trouble symbols toggle<cr>',
+      desc = 'Symbols (trouble)',
     },
     {
       '[q',
@@ -60,7 +50,7 @@ return {
           if not ok then vim.notify(err, vim.log.levels.ERROR) end
         end
       end,
-      desc = 'Previous Trouble/Quickfix Item',
+      desc = 'Previous Trouble/Quickfix Item (trouble)',
     },
     {
       ']q',
@@ -72,7 +62,7 @@ return {
           if not ok then vim.notify(err, vim.log.levels.ERROR) end
         end
       end,
-      desc = 'Next Trouble/Quickfix Item',
+      desc = 'Next Trouble/Quickfix Item (trouble)',
     },
   },
 }

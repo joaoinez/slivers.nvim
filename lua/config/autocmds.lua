@@ -73,14 +73,10 @@ autocmd({ 'VimEnter', 'FileType', 'BufEnter', 'WinEnter' }, {
 autocmd('BufWritePre', {
   desc = "Automatically create parent directories if they don't exist when saving a file",
   callback = function(args)
-    local buf_is_valid_and_listed = vim.api.nvim_buf_is_valid(args.buf)
-      and vim.bo[args.buf].buflisted
+    local buf_is_valid_and_listed = vim.api.nvim_buf_is_valid(args.buf) and vim.bo[args.buf].buflisted
 
     if buf_is_valid_and_listed then
-      vim.fn.mkdir(
-        vim.fn.fnamemodify(vim.uv.fs_realpath(args.match) or args.match, ':p:h'),
-        'p'
-      )
+      vim.fn.mkdir(vim.fn.fnamemodify(vim.uv.fs_realpath(args.match) or args.match, ':p:h'), 'p')
     end
   end,
 })
@@ -91,14 +87,9 @@ autocmd({ 'BufReadPost', 'BufNewFile', 'BufWritePost' }, {
   desc = 'Nvim user event for file detection (LazyFile)',
   callback = function(args)
     local empty_buffer = vim.fn.resolve(vim.fn.expand '%') == ''
-    local greeter = vim.api.nvim_get_option_value(
-      'filetype',
-      { buf = args.buf }
-    ) == 'snacks_dashboard'
+    local greeter = vim.api.nvim_get_option_value('filetype', { buf = args.buf }) == 'snacks_dashboard'
 
     -- For any file exept empty buffer, or the greeter (alpha)
-    if not (empty_buffer or greeter) then
-      utils.trigger_event 'User LazyFile'
-    end
+    if not (empty_buffer or greeter) then utils.trigger_event 'User LazyFile' end
   end,
 })

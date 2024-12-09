@@ -10,35 +10,35 @@ function M.apply_user_lsp_mappings(client, bufnr)
 
   maps.n['gd'] = {
     function() builtin.lsp_definitions() end,
-    desc = 'Goto Definition',
+    desc = 'Goto Definition (telescope)',
   }
   maps.n['gr'] = {
     function() builtin.lsp_references() end,
-    desc = 'Goto References',
+    desc = 'Goto References (telescope)',
   }
   maps.n['gI'] = {
     function() builtin.lsp_implementations() end,
-    desc = 'Goto Implementation',
+    desc = 'Goto Implementation (telescope)',
   }
-  maps.n['<leader>D'] = {
+  maps.n['gy'] = {
     function() builtin.lsp_type_definitions() end,
-    desc = 'Type Definition',
+    desc = 'Goto Type Definition (telescope)',
   }
-  maps.n['<leader>ds'] = {
+  maps.n['<leader>cgs'] = {
     function() builtin.lsp_document_symbols() end,
-    desc = 'Document Symbols',
+    desc = 'Goto Symbols (telescope)',
   }
-  maps.n['<leader>ws'] = {
+  maps.n['<leader>cgS'] = {
     function() builtin.lsp_dynamic_workspace_symbols() end,
-    desc = 'Workspace Symbols',
+    desc = 'Goto Workspace Symbols (telescope)',
   }
   maps.n['gD'] = {
     vim.lsp.buf.declaration,
     desc = 'Goto Declaration',
   }
-  maps.n['<leader>rn'] = {
+  maps.n['<leader>cr'] = {
     vim.lsp.buf.rename,
-    desc = 'Rename',
+    desc = 'Rename Variable',
   }
   maps.n['<leader>ca'] = {
     vim.lsp.buf.code_action,
@@ -51,11 +51,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
 
   if supports 'textDocument_documentHighlight' then
     maps.n['<leader>th'] = {
-      function()
-        vim.lsp.inlay_hint.enable(
-          not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
-        )
-      end,
+      function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }) end,
       desc = 'Toggle Inlay Hints',
     }
   end

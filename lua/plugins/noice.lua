@@ -1,5 +1,8 @@
 return {
   'folke/noice.nvim',
+  dependencies = {
+    'MunifTanjim/nui.nvim',
+  },
   event = 'VeryLazy',
   opts = {
     lsp = {
@@ -17,7 +20,16 @@ return {
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
   },
-  dependencies = {
-    'MunifTanjim/nui.nvim',
+  keys = {
+    {
+      '<S-Enter>',
+      function() require('noice').redirect(vim.fn.getcmdline()) end,
+      mode = 'c',
+      desc = 'Redirect Cmdline',
+    },
+    { '<leader>fml', function() require('noice').cmd 'last' end, desc = 'Last Message (noice)' },
+    { '<leader>fmH', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
+    { '<leader>fmd', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
+    { '<leader>fmt', function() require('noice').cmd 'pick' end, desc = 'Noice Picker (Telescope/FzfLua)' },
   },
 }

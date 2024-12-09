@@ -8,14 +8,14 @@ return {
     {
       ']t',
       function() require('todo-comments').jump_next() end,
-      desc = 'Next Todo Comment',
+      desc = 'Next Todo Comment (todo-comments)',
     },
     {
       '[t',
       function() require('todo-comments').jump_prev() end,
-      desc = 'Previous Todo Comment',
+      desc = 'Previous Todo Comment (todo-comments)',
     },
-    { '<leader>wt', '<cmd>Trouble todo toggle<cr>', desc = 'Todo (Trouble)' },
-    { '<leader>wT', '<cmd>TodoTelescope<cr>', desc = 'Todo (Telescope)' },
+    { '<leader>qt', '<cmd>Trouble todo toggle<cr>', desc = 'Todos (trouble)' },
+    { '<leader>qT', '<cmd>TodoTelescope<cr>', desc = 'Todos (telescope)' },
   },
 }

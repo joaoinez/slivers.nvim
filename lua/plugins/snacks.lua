@@ -12,8 +12,8 @@ return {
       preset = {
         keys = {
           { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
           { icon = ' ', key = 't', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':Oil' },
           {
             icon = ' ',
             key = 'c',
@@ -87,6 +87,7 @@ return {
   keys = {
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
     { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse' },
+    { '<leader>fmh', function() Snacks.notifier.show_history() end, 'Message History' },
     {
       '<leader>N',
       desc = 'Neovim News',
@@ -105,7 +106,9 @@ return {
         }
       end,
     },
-    { '<c-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
-    { '<c-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
+    { '<C-/>', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
+    { '<C-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
+    { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next Reference (snacks)', mode = { 'n', 't' } },
+    { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev Reference (snacks)', mode = { 'n', 't' } },
   },
 }

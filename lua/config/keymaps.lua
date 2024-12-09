@@ -34,8 +34,11 @@ maps.n['|'] = { '<cmd>vsplit<cr>', desc = 'Vertical Split' }
 maps.n['\\'] = { '<cmd>split<cr>', desc = 'Horizontal Split' }
 maps.n['<leader>s'] = { '<cmd>w<cr>', desc = 'Save File' }
 maps.n['<leader>x'] = { '<cmd>wqa<cr>', desc = 'Save and Quit Neovim' }
-maps.n['<leader>dy'] = { 'gg0yG', desc = 'Yank File' }
+maps.n['<leader>y'] = { 'gg0yG', desc = 'Yank File' }
+maps.n['yd'] = { '<cmd>norm yy<cr>p', desc = 'Duplicate line' }
 maps.n['yc'] = { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment original' }
+-- maps.v['yy'] = { 'y', desc = 'Yank selection' }
+-- maps.v['yd'] = { 'ygv`>p', remap = true, desc = 'Duplicate selection' }
 -- maps.v['yc'] = {
 --   'ygvgc`>p',
 --   remap = true,
@@ -61,6 +64,9 @@ maps.n['yc'] = { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment orig
 
 vim.keymap.set('n', 'gy', '`[v`]', { desc = 'Select recently pasted, yanked or changed text' })
 
+-- Diagnostic keymaps
+vim.keymap.set('n', '<leader>qQ', vim.diagnostic.setloclist, { desc = 'Diagnostic Quickfix List' })
+
 -- Block insert in line visual mode
 -- vim.keymap.set(
 --   'x',
@@ -84,10 +90,10 @@ maps.n['n'] = { 'nzzzv', desc = 'Jump to next search result and center the curso
 maps.n['N'] = { 'Nzzzv', desc = 'Jump to previous search result and center the cursor' }
 
 --  Use CTRL+<hjkl> to switch between windows
--- maps.n['<C-h>'] = { '<C-w><C-h>', desc = 'Move focus to the left window' }
--- maps.n['<C-j>'] = { '<C-w><C-j>', desc = 'Move focus to the lower window' }
--- maps.n['<C-k>'] = { '<C-w><C-k>', desc = 'Move focus to the upper window' }
--- maps.n['<C-l>'] = { '<C-w><C-l>', desc = 'Move focus to the right window' }
+maps.n['<C-h>'] = { '<C-w><C-h>', desc = 'Move focus to the left window' }
+maps.n['<C-j>'] = { '<C-w><C-j>', desc = 'Move focus to the lower window' }
+maps.n['<C-k>'] = { '<C-w><C-k>', desc = 'Move focus to the upper window' }
+maps.n['<C-l>'] = { '<C-w><C-l>', desc = 'Move focus to the right window' }
 
 -- Make 'c' key not copy to clipboard when changing a character.
 maps.n['c'] = { '"_c', desc = 'Change without yanking' }

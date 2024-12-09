@@ -1,14 +1,14 @@
 -- [[ Options ]]
 require 'config.options'
 
+-- [[ Keymaps ]]
+require 'config.keymaps'
+
 -- [[ Lazy ]]
 require 'config.lazy'
 
 -- [[ Apply Colorscheme ]]
 vim.cmd.colorscheme 'catppuccin'
-
--- [[ Keymaps ]]
-require 'config.keymaps'
 
 -- [[ Autocmds ]]
 require 'config.autocmds'

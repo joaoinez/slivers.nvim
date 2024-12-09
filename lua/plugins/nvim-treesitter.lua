@@ -24,8 +24,10 @@ return {
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<C-space>',
-        node_incremental = '<C-space>',
+        -- FIXME: control space is reserved for tmux
+        --
+        -- init_selection = '<C-space>',
+        -- node_incremental = '<C-space>',
         scope_incremental = false,
         node_decremental = '<bs>',
       },

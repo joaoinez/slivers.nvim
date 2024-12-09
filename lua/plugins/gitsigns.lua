@@ -17,49 +17,57 @@ return {
       changedelete = { text = '▎' },
     },
     on_attach = function(bufnr)
-      -- local gitsigns = require 'gitsigns'
-      -- local bmap = require('util').bmap(bufnr)
-      --
-      -- -- Navigation
-      -- bmap(']c', function()
-      --   if vim.wo.diff then
-      --     vim.cmd.normal { ']c', bang = true }
-      --   else
-      --     gitsigns.nav_hunk 'next'
-      --   end
-      -- end, { desc = 'Next Git Change' })
-      --
-      -- bmap('[c', function()
-      --   if vim.wo.diff then
-      --     vim.cmd.normal { '[c', bang = true }
-      --   else
-      --     gitsigns.nav_hunk 'prev'
-      --   end
-      -- end, { desc = 'Previous Git Change' })
-      --
-      -- -- Actions
-      -- -- visual mode
-      -- bmap('<leader>gs', function()
-      --   gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      -- end, { desc = 'Stage Hunk' }, 'v')
-      -- bmap('<leader>gr', function()
-      --   gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      -- end, { desc = 'Reset Hunk' }, 'v')
-      -- -- normal mode
-      -- bmap('<leader>gs', gitsigns.stage_hunk, { desc = 'Stage Hunk' })
-      -- bmap('<leader>gr', gitsigns.reset_hunk, { desc = 'Reset Hunk' })
-      -- bmap('<leader>gS', gitsigns.stage_buffer, { desc = 'Stage File' })
-      -- bmap('<leader>gu', gitsigns.undo_stage_hunk, { desc = 'Undo Stage Hunk' })
-      -- bmap('<leader>gR', gitsigns.reset_buffer, { desc = 'Reset File' })
-      -- bmap('<leader>gp', gitsigns.preview_hunk, { desc = 'Preview Hunk' })
-      -- bmap('<leader>gb', gitsigns.blame_line, { desc = 'Blame Line' })
-      -- bmap('<leader>gd', gitsigns.diffthis, { desc = 'Diff against index' })
-      -- bmap('<leader>gD', function()
-      --   gitsigns.diffthis '@'
-      -- end, { desc = 'Diff against last commit' })
-      -- -- Toggles
-      -- bmap('<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (Git)' })
-      -- bmap('<leader>td', gitsigns.toggle_deleted, { desc = 'Deleted Hunks (Git)' })
+      local gitsigns = require 'gitsigns'
+      local utils = require 'utils'
+      local maps = utils.get_mappings_template()
+
+      -- Actions
+      -- visual mode
+      maps.v['<leader>gs'] = {
+        function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
+        { buffer = bufnr, desc = 'Stage Hunk' },
+      }
+      maps.v['<leader>gr'] = {
+        function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
+        { buffer = bufnr, desc = 'Reset Hunk' },
+      }
+      -- normal mode
+      maps.n['<leader>gs'] = { gitsigns.stage_hunk, { buffer = bufnr, desc = 'Stage Hunk' } }
+      maps.n['<leader>gr'] = { gitsigns.reset_hunk, { buffer = bufnr, desc = 'Reset Hunk' } }
+      maps.n['<leader>gS'] = { gitsigns.stage_buffer, { buffer = bufnr, desc = 'Stage File' } }
+      maps.n['<leader>gu'] = { gitsigns.undo_stage_hunk, { buffer = bufnr, desc = 'Undo Stage Hunk' } }
+      maps.n['<leader>gR'] = { gitsigns.reset_buffer, { buffer = bufnr, desc = 'Reset File' } }
+      maps.n['<leader>gp'] = { gitsigns.preview_hunk, { buffer = bufnr, desc = 'Preview Hunk' } }
+      maps.n['<leader>gb'] = { gitsigns.blame_line, { buffer = bufnr, desc = 'Blame Line' } }
+      maps.n['<leader>gd'] = { gitsigns.diffthis, { buffer = bufnr, desc = 'Diff against index' } }
+      maps.n['<leader>gD'] = {
+        function() gitsigns.diffthis '@' end,
+        { buffer = bufnr, desc = 'Diff against last commit' },
+      }
+      -- Toggles
+      maps.n['<leader>tb'] = { gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = 'Blame Line (git)' } }
+      maps.n['<leader>td'] = { gitsigns.toggle_deleted, { buffer = bufnr, desc = 'Deleted Hunks (git)' } }
+      -- Navigation
+      maps.n[']c'] = {
+        function()
+          if vim.wo.diff then
+            vim.cmd.normal { ']c', bang = true }
+          else
+            gitsigns.nav_hunk 'next'
+          end
+        end,
+        { buffer = bufnr, desc = 'Next Change (git)' },
+      }
+      maps.n['[c'] = {
+        function()
+          if vim.wo.diff then
+            vim.cmd.normal { '[c', bang = true }
+          else
+            gitsigns.nav_hunk 'prev'
+          end
+        end,
+        { buffer = bufnr, desc = 'Previous Git Change (git)' },
+      }
     end,
   },
 }
