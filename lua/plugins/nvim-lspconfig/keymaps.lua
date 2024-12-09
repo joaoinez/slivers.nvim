@@ -38,7 +38,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
   }
   maps.n['<leader>cr'] = {
     vim.lsp.buf.rename,
-    desc = 'Rename Variable',
+    desc = 'Rename Variable (LSP)',
   }
   maps.n['<leader>ca'] = {
     vim.lsp.buf.code_action,

@@ -3,7 +3,9 @@ local maps = utils.get_mappings_template()
 
 -- Better up/down
 maps.n['j'] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = 'Move cursor down' }
+maps.x['j'] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = 'Move cursor down' }
 maps.n['k'] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = 'Move cursor up' }
+maps.x['k'] = { "v:count == 0 ? 'gk' : 'k'", expr = true, desc = 'Move cursor up' }
 
 -- Page jumping centers cursor
 maps.n['<C-d>'] = { '<C-d>zz', desc = 'Scrolls down the page and center the cursor' }
