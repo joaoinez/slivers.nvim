@@ -3,12 +3,23 @@ return {
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
   event = { 'User LazyFile', 'VeryLazy' },
+  cmd = {
+    'TSBufDisable',
+    'TSBufEnable',
+    'TSBufToggle',
+    'TSDisable',
+    'TSEnable',
+    'TSToggle',
+    'TSInstall',
+    'TSInstallInfo',
+    'TSInstallSync',
+    'TSModuleInfo',
+    'TSUninstall',
+    'TSUpdate',
+    'TSUpdateSync',
+  },
   lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-  -- dependencies = {
-  --   "windwp/nvim-ts-autotag",
-  --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   "JoosepAlviste/nvim-ts-context-commentstring",
-  -- },
+  dependencies = { 'nvim-treesitter/nvim-treesitter-context' },
   opts = {
     ensure_installed = require('config.lang').get_highlighters(),
     auto_install = false,
@@ -17,10 +28,23 @@ return {
       disable = function(_, bufnr) return vim.b[bufnr].large_buf end,
       additional_vim_regex_highlighting = { 'ruby' },
     },
-    indent = { enable = true },
     matchup = {
       enable = true,
       enable_quotes = true,
+      disable = function(_, bufnr) return vim.b[bufnr].large_buf end,
+    },
+    indent = {
+      enable = true,
+      disable = { 'ruby' },
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = 'gnn', -- in normal mode, start incremental selection
+        node_incremental = 'grn', -- in visual mode, increment to the upper named parent
+        scope_incremental = 'grc', -- in visual mode, increment to the upper scope
+        node_decremental = 'grm', -- in visual mode, decrement to the previous named node
+      },
     },
   },
 }

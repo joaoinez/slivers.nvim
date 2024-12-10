@@ -5,9 +5,7 @@ local M = {}
 M.autocmd = vim.api.nvim_create_autocmd
 
 --- @param name string
-function M.augroup(name)
-  return vim.api.nvim_create_augroup('slivers_' .. name, { clear = true })
-end
+function M.augroup(name) return vim.api.nvim_create_augroup('slivers_' .. name, { clear = true }) end
 
 --- Adds autocmds to a specific buffer if they don't already exist.
 ---
@@ -19,8 +17,7 @@ function M.add_autocmds_to_buffer(augroup, bufnr, autocmds)
   if not vim.islist(autocmds) then autocmds = { autocmds } end
 
   -- Attempt to retrieve existing autocmds associated with the specified augroup and bufnr
-  local cmds_found, cmds =
-    pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
+  local cmds_found, cmds = pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
 
   -- If no existing autocmds are found or the cmds_found call fails
   if not cmds_found or vim.tbl_isempty(cmds) then
@@ -49,8 +46,7 @@ end
 --- @param bufnr number The buffer number from which the autocmds should be removed.
 function M.del_autocmds_from_buffer(augroup, bufnr)
   -- Attempt to retrieve existing autocmds associated with the specified augroup and bufnr
-  local cmds_found, cmds =
-    pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
+  local cmds_found, cmds = pcall(vim.api.nvim_get_autocmds, { group = augroup, buffer = bufnr })
 
   -- If retrieval was successful
   if cmds_found then
@@ -152,9 +148,7 @@ function M.set_url_effect()
     .. '|\\{[&:#*@~%_\\-=?!+;/.0-9a-z]*})\\})+'
 
   M.delete_url_effect()
-  if vim.g.url_effect_enabled then
-    vim.fn.matchadd('HighlightURL', url_matcher, 15)
-  end
+  if vim.g.url_effect_enabled then vim.fn.matchadd('HighlightURL', url_matcher, 15) end
 end
 
 --- Delete the syntax matching rules for URLs/URIs if set.
@@ -194,9 +188,7 @@ end
 --- @param client vim.lsp.Client|nil The client where the lsp mappings will load.
 function M.supports(client)
   --- @param method string The name of the method
-  return function(method)
-    return client and client.supports_method(vim.lsp.protocol.Methods[method])
-  end
+  return function(method) return client and client.supports_method(vim.lsp.protocol.Methods[method]) end
 end
 
 return M
