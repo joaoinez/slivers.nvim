@@ -13,7 +13,7 @@ return {
     'MasonToolsUpdate',
   },
   keys = {
-    { '<leader>,mo', '<cmd>Mason<cr>', desc = 'Open Mason' },
+    { '<leader>,mo', '<cmd>Mason<cr>', desc = 'Mason open' },
     { '<leader>,mu', '<cmd>MasonToolsUpdate<cr>', desc = 'Mason Update Tools' },
   },
   build = ':MasonUpdate',
@@ -23,7 +23,8 @@ return {
     require('mason').setup()
 
     local ensure_installed = vim.tbl_keys(lang.get_servers() or {})
-    vim.list_extend(ensure_installed, lang.get_formatters())
+    vim.list_extend(ensure_installed, lang.get_formatters() or {})
+    vim.list_extend(ensure_installed, lang.get_linters() or {})
 
     require('mason-tool-installer').setup {
       ensure_installed = ensure_installed,

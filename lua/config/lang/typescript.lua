@@ -141,6 +141,19 @@ M.formatters_by_ft = {
   javascriptreact = { 'prettierd' },
   typescript = { 'prettierd' },
   typescriptreact = { 'prettierd' },
+  vue = { 'prettierd' },
+}
+
+M.linters = {
+  'eslint_d',
+}
+
+M.linters_by_ft = {
+  javascript = { 'eslint_d' },
+  javascriptreact = { 'eslint_d' },
+  typescript = { 'eslint_d' },
+  typescriptreact = { 'eslint_d' },
+  vue = { 'eslint_d' },
 }
 
 return M

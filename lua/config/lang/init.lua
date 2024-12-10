@@ -1,73 +1,85 @@
 local M = {}
 
-function M.get_highlighters()
-  local core = require 'config.lang.core'
-  local lua = require 'config.lang.lua'
-  local typescript = require 'config.lang.typescript'
+M.langs = {
+  require 'config.lang.core',
+  require 'config.lang.lua',
+  require 'config.lang.typescript',
+}
 
+function M.get_highlighters()
   local highlighters = {}
 
-  vim.list_extend(highlighters, core.highlighters)
-  vim.list_extend(highlighters, lua.highlighters)
-  vim.list_extend(highlighters, typescript.highlighters)
+  for _, lang in ipairs(M.langs) do
+    vim.list_extend(highlighters, lang.highlighters or {})
+  end
 
   return highlighters
 end
 
 function M.get_servers()
-  local lua = require 'config.lang.lua'
-  local typescript = require 'config.lang.typescript'
-
   local servers = {}
 
-  for server, opts in pairs(lua.servers) do
-    servers[server] = opts
-  end
-
-  for server, opts in pairs(typescript.servers) do
-    servers[server] = opts
+  for _, lang in ipairs(M.langs) do
+    for server, opts in pairs(lang.servers or {}) do
+      servers[server] = opts
+    end
   end
 
   return servers
 end
 
 function M.get_formatters()
-  local lua = require 'config.lang.lua'
-  local typescript = require 'config.lang.typescript'
-
   local formatters = {}
 
-  vim.list_extend(formatters, lua.formatters)
-  vim.list_extend(formatters, typescript.formatters)
+  for _, lang in ipairs(M.langs) do
+    vim.list_extend(formatters, lang.formatters or {})
+  end
 
   return formatters
 end
 
 function M.get_formatters_by_ft()
-  local lua = require 'config.lang.lua'
-  local typescript = require 'config.lang.typescript'
-
   local formatters_by_ft = {}
 
-  for filetype, formatters in pairs(lua.formatters_by_ft) do
-    formatters_by_ft[filetype] = formatters
-  end
-
-  for filetype, formatters in pairs(typescript.formatters_by_ft) do
-    formatters_by_ft[filetype] = formatters
+  for _, lang in ipairs(M.langs) do
+    for filetype, formatters in pairs(lang.formatters_by_ft or {}) do
+      formatters_by_ft[filetype] = formatters
+    end
   end
 
   return formatters_by_ft
 end
 
 function M.get_ft_with_disabled_formatters()
-  local core = require 'config.lang.core'
-
   local ft_with_disabled_formatters = {}
 
-  vim.list_extend(ft_with_disabled_formatters, core.ft_with_disabled_formatters)
+  for _, lang in ipairs(M.langs) do
+    vim.list_extend(ft_with_disabled_formatters, lang.ft_with_disabled_formatters or {})
+  end
 
   return ft_with_disabled_formatters
+end
+
+function M.get_linters()
+  local linters = {}
+
+  for _, lang in ipairs(M.langs) do
+    vim.list_extend(linters, lang.linters or {})
+  end
+
+  return linters
+end
+
+function M.get_linters_by_ft()
+  local linters_by_ft = {}
+
+  for _, lang in ipairs(M.langs) do
+    for filetype, linters in pairs(lang.linters_by_ft or {}) do
+      linters_by_ft[filetype] = linters
+    end
+  end
+
+  return linters_by_ft
 end
 
 return M
