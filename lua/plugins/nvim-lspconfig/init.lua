@@ -13,6 +13,16 @@ return {
     local autocmd = utils.autocmd
     local augroup = utils.augroup
 
+    local vue_plugin = {
+      name = '@vue/typescript-plugin',
+      location = utils.get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
+      languages = { 'vue' },
+      configNamespace = 'typescript',
+      enableForWorkspaceTypeScriptVersions = true,
+    }
+
+    table.insert(servers.vtsls.settings.vtsls.tsserver.globalPlugins, vue_plugin)
+
     autocmd('LspAttach', {
       group = augroup 'lsp_attach',
       callback = function(event)

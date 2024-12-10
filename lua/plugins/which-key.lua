@@ -46,6 +46,7 @@ return {
       { '<leader>q', group = 'quickfix/diagnostics' },
       { '<leader>t', group = 'toggle' },
       { '<leader>,', group = 'settings', icon = '󰒓' },
+      { '<leader>,m', group = 'mason', icon = '󱌢' },
       { '<leader>|', icon = '' },
       { '<leader>\\', icon = '' },
     },

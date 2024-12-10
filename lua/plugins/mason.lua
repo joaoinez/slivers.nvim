@@ -10,8 +10,12 @@ return {
     'MasonUninstallAll',
     'MasonLog',
     'MasonUpdate',
+    'MasonToolsUpdate',
   },
-  keys = { { '<leader>,m', '<cmd>Mason<cr>', desc = 'Mason' } },
+  keys = {
+    { '<leader>,mo', '<cmd>Mason<cr>', desc = 'Open Mason' },
+    { '<leader>,mu', '<cmd>MasonToolsUpdate<cr>', desc = 'Mason Update Tools' },
+  },
   build = ':MasonUpdate',
   config = function()
     local lang = require 'config.lang'

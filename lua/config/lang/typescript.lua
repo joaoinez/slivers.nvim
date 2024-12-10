@@ -1,12 +1,21 @@
 local M = {}
 
 M.highlighters = {
+  'css',
   'javascript',
   'tsx',
   'typescript',
+  'vue',
 }
 
 M.servers = {
+  volar = {
+    init_options = {
+      vue = {
+        hybridMode = true,
+      },
+    },
+  },
   vtsls = {
     filetypes = {
       'javascript',
@@ -15,6 +24,7 @@ M.servers = {
       'typescript',
       'typescriptreact',
       'typescript.tsx',
+      'vue',
     },
     settings = {
       complete_function_calls = true,
@@ -26,6 +36,9 @@ M.servers = {
           completion = {
             enableServerSideFuzzyMatch = true,
           },
+        },
+        tsserver = {
+          globalPlugins = {},
         },
       },
       javascript = {
@@ -97,6 +110,10 @@ M.servers = {
       maps.n['<leader>cF'] = {
         utils.action['source.fixAll.ts'],
         desc = 'Fix all diagnostics',
+      }
+      maps.n['<leader>cV'] = {
+        function() utils.execute { command = 'typescript.selectTypeScriptVersion' } end,
+        desc = 'Select TS workspace version',
       }
 
       utils.set_mappings(maps)
