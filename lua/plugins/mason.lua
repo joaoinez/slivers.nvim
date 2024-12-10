@@ -13,6 +13,7 @@ return {
   },
   keys = { { '<leader>,m', '<cmd>Mason<cr>', desc = 'Mason' } },
   build = ':MasonUpdate',
+  lazy = false,
   config = function()
     local lang = require 'config.lang'
 

@@ -5,7 +5,6 @@ M.highlighters = {
   'c',
   'diff',
   'html',
-  'javascript',
   'jsdoc',
   'json',
   'jsonc',
@@ -16,8 +15,6 @@ M.highlighters = {
   'query',
   'regex',
   'toml',
-  'tsx',
-  'typescript',
   'vim',
   'vimdoc',
   'xml',
@@ -26,7 +23,7 @@ M.highlighters = {
 
 M.ft_with_disabled_formatters = {
   c = true,
-  cpp = true
+  cpp = true,
 }
 
 return M

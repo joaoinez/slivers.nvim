@@ -38,7 +38,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
   }
   maps.n['<leader>cr'] = {
     vim.lsp.buf.rename,
-    desc = 'Rename Variable (lsp)',
+    desc = 'Rename Variable',
   }
   maps.n['<leader>ca'] = {
     vim.lsp.buf.code_action,
@@ -48,6 +48,17 @@ function M.apply_user_lsp_mappings(client, bufnr)
     vim.lsp.buf.code_action,
     desc = 'Code Action',
   }
+  maps.x['<leader>cl'] = {
+    vim.lsp.codelens.run,
+    desc = 'Code Lens',
+  }
+
+  if supports 'workspace_didRenameFiles' and supports 'workspace_willRenameFiles' then
+    maps.n['<leader>cR'] = {
+      function() Snacks.rename.rename_file() end,
+      desc = 'Rename File',
+    }
+  end
 
   if supports 'textDocument_documentHighlight' then
     maps.n['<leader>th'] = {
