@@ -5,10 +5,7 @@ return {
   dependencies = {
     'mason.nvim',
     { 'williamboman/mason-lspconfig.nvim', config = function() end },
-    {
-      'j-hui/fidget.nvim',
-      opts = { notification = { window = { winblend = 0 } } },
-    },
+    { 'j-hui/fidget.nvim', opts = { notification = { window = { winblend = 0 } } } },
     'hrsh7th/cmp-nvim-lsp',
   },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },

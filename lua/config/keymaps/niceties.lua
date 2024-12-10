@@ -82,11 +82,6 @@ maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window'
 --   maps.n['<leader>pt'] = { '<cmd>TSInstallInfo<cr>', desc = 'Treesitter open' }
 -- end
 
--- TODO: Check for conflicting keymap here
---
--- Insert arrow
--- maps.i['<C-l>'] = { '<space>=><space>', desc = 'Inserts arrow' }
-
 -- TODO: See git conflict
 --
 -- nmap('<leader>fc', '/<<<<CR>', '[F]ind [C]onflicts')

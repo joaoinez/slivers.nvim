@@ -17,7 +17,7 @@ maps.n['<Tab>'] = {
   noremap = true,
   silent = true,
   expr = false,
-  desc = 'FIX: Prevent Tab from behaving like <C-i>, as they share the same internal code',
+  desc = 'Prevent Tab from behaving like <C-i>, as they share the same internal code',
 }
 
 -- From https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n

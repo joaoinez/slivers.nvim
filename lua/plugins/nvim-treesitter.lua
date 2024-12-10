@@ -15,18 +15,9 @@ return {
     highlight = {
       enable = true,
       disable = function(_, bufnr) return vim.b[bufnr].large_buf end,
-      -- additional_vim_regex_highlighting = { 'ruby' },
+      additional_vim_regex_highlighting = { 'ruby' },
     },
     indent = { enable = true },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = '<C-enter>',
-        node_incremental = '<C-enter>',
-        scope_incremental = false,
-        node_decremental = '<bs>',
-      },
-    },
     matchup = {
       enable = true,
       enable_quotes = true,
