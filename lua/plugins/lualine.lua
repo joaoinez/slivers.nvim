@@ -65,9 +65,9 @@ return {
           {
             'diagnostics',
             symbols = {
-              error = ' ',
-              warn = ' ',
-              info = ' ',
+              error = ' ',
+              warn = ' ',
+              info = ' ',
               hint = ' ',
             },
           },
@@ -146,9 +146,9 @@ return {
           {
             'diff',
             symbols = {
-              added = ' ',
-              modified = ' ',
-              removed = ' ',
+              added = ' ',
+              modified = ' ',
+              removed = ' ',
             },
             source = function()
               local gitsigns = vim.b.gitsigns_status_dict

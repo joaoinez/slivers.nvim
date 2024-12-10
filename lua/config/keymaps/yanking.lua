@@ -14,7 +14,11 @@ maps.n['yc'] = { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment orig
 maps.x['yy'] = { 'y', desc = 'Yank selection' }
 
 -- Dupicate text selection
--- maps.v['yd'] = { 'ygv`>p', remap = true, desc = 'Duplicate selection' }
+maps.x['yd'] = {
+  'y`>p',
+  remap = true,
+  desc = 'Duplicate selection',
+}
 
 -- Duplicate selection and comment the original
 maps.x['yc'] = {

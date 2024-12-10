@@ -9,6 +9,17 @@ M.highlighters = {
 }
 
 M.servers = {
+  tailwindcss = {
+    settings = {
+      tailwindCSS = {
+        includeLanguages = {
+          elixir = 'html-eex',
+          eelixir = 'html-eex',
+          heex = 'html-eex',
+        },
+      },
+    },
+  },
   volar = {
     init_options = {
       vue = {

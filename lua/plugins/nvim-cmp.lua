@@ -17,6 +17,7 @@ return {
         },
       },
     },
+    { 'roobert/tailwindcss-colorizer-cmp.nvim', opts = {} },
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
@@ -25,12 +26,76 @@ return {
   config = function()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+
+    local kind_icons = {
+      Array = '',
+      Boolean = '󰨙',
+      Class = '',
+      Codeium = '󰘦',
+      Color = '',
+      Control = '',
+      Collapsed = '',
+      Constant = '󰏿',
+      Constructor = '',
+      Copilot = '',
+      Enum = '',
+      EnumMember = '',
+      Event = '',
+      Field = '',
+      File = '',
+      Folder = '',
+      Function = '󰊕',
+      Interface = '',
+      Key = '',
+      Keyword = '',
+      Method = '󰊕',
+      Module = '',
+      Namespace = '󰦮',
+      Null = '',
+      Number = '󰎠',
+      Object = '',
+      Operator = '',
+      Package = '',
+      Property = '',
+      Reference = '',
+      Snippet = '',
+      String = '',
+      Struct = '󰆼',
+      Supermaven = '',
+      TabNine = '󰏚',
+      Text = '',
+      TypeParameter = '',
+      Unit = '',
+      Value = '',
+      Variable = '󰀫',
+    }
+
+    local format_kinds = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
+        -- buffer = '[Buffer]',
+        -- nvim_lsp = '[LSP]',
+        -- luasnip = '[LuaSnip]',
+        -- nvim_lua = '[Lua]',
+        -- latex_symbols = '[LaTeX]',
+      })[entry.source.name]
+      return vim_item
+    end
+
     luasnip.config.setup {}
 
     cmp.setup {
       performance = {
         debounce = 0, -- default is 60ms
         throttle = 0, -- default is 30ms
+      },
+      formatting = {
+        format = function(entry, item)
+          format_kinds(entry, item) -- add icons
+          return require('tailwindcss-colorizer-cmp').formatter(entry, item)
+        end,
       },
       snippet = {
         expand = function(args) luasnip.lsp_expand(args.body) end,

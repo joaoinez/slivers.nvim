@@ -11,4 +11,7 @@ maps.n['<right>'] = { '<nop>' }
 maps.n['s'] = { '<nop>' }
 maps.x['s'] = { '<nop>' }
 
+-- Disable `y` default behaviour
+maps.x['y'] = { '<nop>' }
+
 utils.set_mappings(maps)
