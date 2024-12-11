@@ -57,6 +57,7 @@ return {
         { section = 'keys', gap = 2, padding = 1 },
         { pane = 2, text = '', padding = 4 },
         { pane = 2, section = 'terminal', cmd = 'gh contrib --style dot', height = 5, padding = 4, indent = 4 },
+        { pane = 2, title = 'More Actions', padding = 1, align = 'center' },
         { pane = 2, icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
         { pane = 2, icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
         {

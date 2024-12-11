@@ -49,13 +49,15 @@ return {
 
     local dropdown = {
       theme = 'dropdown',
-      layout_config = { width = 0.66 },
+      layout_config = {
+        anchor = 'N',
+        width = 0.66,
+      },
     }
 
     telescope.setup {
       defaults = {
         layout_config = {
-          anchor = 'N',
           height = 0.75,
           width = 0.66,
           preview_width = 0.66,
@@ -82,8 +84,24 @@ return {
       },
       pickers = {
         find_files = {
+          layout_config = {
+            anchor = 'N',
+            height = 0.75,
+            width = 0.66,
+            preview_width = 0.66,
+            prompt_position = 'top',
+          },
           find_command = find_command,
           hidden = true,
+        },
+        live_grep = {
+          layout_config = {
+            anchor = 'N',
+            height = 0.75,
+            width = 0.66,
+            preview_width = 0.66,
+            prompt_position = 'top',
+          },
         },
         keymaps = {
           theme = 'ivy',
