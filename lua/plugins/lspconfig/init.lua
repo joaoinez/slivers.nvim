@@ -28,8 +28,8 @@ return {
       callback = function(event)
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-        require('plugins.nvim-lspconfig.keymaps').apply_user_lsp_mappings(client, event.buf)
-        require('plugins.nvim-lspconfig.autocmds').apply_user_lsp_autocmds(client, event.buf)
+        require('plugins.lspconfig.keymaps').apply_user_lsp_mappings(client, event.buf)
+        require('plugins.lspconfig.autocmds').apply_user_lsp_autocmds(client, event.buf)
       end,
     })
 

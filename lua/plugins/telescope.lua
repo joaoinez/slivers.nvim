@@ -47,8 +47,21 @@ return {
       end
     end
 
+    local dropdown = {
+      theme = 'dropdown',
+      layout_config = { width = 0.66 },
+    }
+
     telescope.setup {
       defaults = {
+        layout_config = {
+          anchor = 'N',
+          height = 0.75,
+          width = 0.66,
+          preview_width = 0.66,
+          prompt_position = 'top',
+        },
+        sorting_strategy = 'ascending',
         prompt_prefix = ' ',
         selection_caret = ' ',
         mappings = {
@@ -72,30 +85,15 @@ return {
           find_command = find_command,
           hidden = true,
         },
-        live_grep = {
-          theme = 'dropdown',
-        },
         keymaps = {
           theme = 'ivy',
         },
-        lsp_definitions = {
-          theme = 'dropdown',
-        },
-        lsp_references = {
-          theme = 'dropdown',
-        },
-        lsp_implementations = {
-          theme = 'dropdown',
-        },
-        lsp_type_definitions = {
-          theme = 'dropdown',
-        },
-        lsp_document_symbols = {
-          theme = 'dropdown',
-        },
-        lsp_dynamic_workspace_symbols = {
-          theme = 'dropdown',
-        },
+        lsp_definitions = dropdown,
+        lsp_references = dropdown,
+        lsp_implementations = dropdown,
+        lsp_type_definitions = dropdown,
+        lsp_document_symbols = dropdown,
+        lsp_dynamic_workspace_symbols = dropdown,
       },
     }
 

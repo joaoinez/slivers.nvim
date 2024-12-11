@@ -52,6 +52,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
     vim.lsp.codelens.run,
     desc = 'Code Lens',
   }
+  maps.n['<leader>cA'] = { utils.action.source, desc = 'Available Code Actions' }
 
   if supports 'workspace_didRenameFiles' and supports 'workspace_willRenameFiles' then
     maps.n['<leader>cR'] = {
