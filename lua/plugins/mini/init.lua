@@ -81,7 +81,6 @@ return {
     event = 'VeryLazy',
     opts = {},
   },
-  -- { 'echasnovski/mini.comment', version = false, event = 'VeryLazy', opts = {} },
   {
     'echasnovski/mini.indentscope',
     version = false, -- wait till new 0.7.0 release to put it back on semver
@@ -142,7 +141,7 @@ return {
         },
         symbols = {
           encode = map.gen_encode_symbols.dot '4x2',
-          scroll_line = '',
+          scroll_line = '',
           scroll_view = '',
         },
         window = {

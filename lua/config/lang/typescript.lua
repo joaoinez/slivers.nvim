@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-fields, redundant-return-value
+
 local M = {}
 
 M.highlighters = {

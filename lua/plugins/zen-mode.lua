@@ -2,12 +2,6 @@
 
 return {
   'folke/zen-mode.nvim',
-  dependencies = {
-    'folke/twilight.nvim',
-    opts = {
-      context = 16,
-    },
-  },
   keys = {
     {
       '<leader>tz',
