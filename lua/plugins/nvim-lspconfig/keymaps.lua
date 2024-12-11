@@ -55,7 +55,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
 
   if supports 'workspace_didRenameFiles' and supports 'workspace_willRenameFiles' then
     maps.n['<leader>cR'] = {
-      function() Snacks.rename.rename_file() end,
+      function() require('snacks').rename.rename_file() end,
       desc = 'Rename File',
     }
   end

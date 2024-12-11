@@ -114,6 +114,7 @@ return {
           'snacks_win',
           'toggleterm',
           'trouble',
+          '*oil*',
         },
         callback = function() vim.b.miniindentscope_disable = true end,
       })
@@ -141,13 +142,13 @@ return {
         },
         symbols = {
           encode = map.gen_encode_symbols.dot '4x2',
-          scroll_line = '',
+          scroll_line = '',
           scroll_view = '',
         },
         window = {
-          focusable = true,
+          focusable = false,
           show_integration_count = false,
-          width = 20,
+          width = 25,
           winblend = 0,
           zindex = 25,
         },

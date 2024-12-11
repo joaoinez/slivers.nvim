@@ -7,6 +7,8 @@ return {
       pattern = 'PersistenceSavePre',
       callback = function()
         if require('trouble').is_open() then require('trouble').close() end
+
+        require('snacks').bufdelete.other { force = true }
       end,
     })
   end,

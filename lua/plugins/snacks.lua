@@ -1,9 +1,20 @@
+---@diagnostic disable: missing-fields
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
   opts = {
-    bigfile = { enabled = true },
+    bigfile = {
+      enabled = true,
+      setup = function(ctx)
+        vim.cmd [[NoMatchParen]]
+        Snacks.util.wo(0, { foldmethod = 'manual', statuscolumn = '', conceallevel = 0 })
+        vim.b.minianimate_disable = true
+        vim.b.minimap_disable = true
+        vim.schedule(function() vim.bo[ctx.buf].syntax = ctx.ft end)
+      end,
+    },
     dashboard = {
       enabled = true,
       pane_gap = 8,
@@ -72,27 +83,20 @@ return {
         { pane = 2, section = 'startup' },
       },
     },
-    notifier = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    styles = {
-      notification = {
-        wo = { wrap = true }, -- Wrap notifications
-      },
-    },
   },
   keys = {
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
     { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Current File History (lazygit)' },
-    {
-      '<leader>gl',
-      function() Snacks.lazygit.log { cwd = LazyVim.root.git() } end,
-      desc = 'Git Log (lazygit)',
-    },
+    -- {
+    --   '<leader>gl',
+    --   function() Snacks.lazygit.log { cwd = LazyVim.root.git() } end,
+    --   desc = 'Git Log (lazygit)',
+    -- },
     { '<leader>gf', function() Snacks.lazygit() end, desc = 'Current File History (lazygit)' },
     { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse (open)' },
-    { '<leader>mh', function() Snacks.notifier.show_history() end, desc = 'Message History' },
     {
       '<leader>N',
       desc = 'Neovim News',

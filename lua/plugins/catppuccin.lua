@@ -34,7 +34,7 @@ return {
       neotest = true,
       neotree = true,
       noice = true,
-      notify = true,
+      notify = false,
       semantic_tokens = true,
       snacks = true,
       telescope = true,

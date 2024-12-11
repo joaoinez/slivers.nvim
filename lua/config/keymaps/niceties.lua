@@ -51,7 +51,7 @@ maps.n['<leader>cR'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename W
 
 -- Diagnostic keymaps
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }
-maps.n['<leader>qd'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
+maps.n['<leader>ql'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
 
 -- keywordprg
 maps.n['<leader>K'] = { '<cmd>norm! K<cr>', desc = 'Keywordprg' }
