@@ -124,4 +124,33 @@ return {
       })
     end,
   },
+  {
+    'echasnovski/mini.map',
+    version = false,
+    keys = {
+      { '<leader>tm', function() require('mini.map').toggle() end, desc = 'Toggle Minimap' },
+    },
+    opts = function()
+      local map = require 'mini.map'
+      return {
+        integrations = {
+          -- map.gen_integration.builtin_search(),
+          map.gen_integration.diff(),
+          map.gen_integration.diagnostic(),
+          -- map.gen_integration.gitsigns(),
+        },
+        symbols = {
+          encode = map.gen_encode_symbols.dot '4x2',
+          scroll_line = '▶',
+          scroll_view = '',
+        },
+        window = {
+          focusable = true,
+          width = 20,
+          winblend = 0,
+        },
+      }
+    end,
+    -- TODO: Make minimap autostart using autocmd like mini indent above
+  },
 }

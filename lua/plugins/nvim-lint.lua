@@ -5,7 +5,7 @@ return {
     local lint = require 'lint'
     local lang = require 'config.lang'
 
-    lint.linters_by_ft = lang.get_formatters_by_ft()
+    lint.linters_by_ft = lang.get_linters_by_ft()
 
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
