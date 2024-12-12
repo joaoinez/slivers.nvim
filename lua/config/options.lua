@@ -1,5 +1,4 @@
 -- [[ Globals ]]
-vim.g.have_nerd_font = true -- If a Nerd Font is installed and set in the terminal.
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
 vim.g.url_effect_enabled = true
@@ -18,15 +17,14 @@ vim.opt.conceallevel = 2 -- Hide markup symbols for bold and italic, but not mar
 vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer.
 vim.opt.cursorline = true -- Highlight the text line of the cursor.
 vim.opt.expandtab = true -- Enable the use of space in tab.
-vim.opt.fillchars =
-  { -- Characters to fill the statuslines, vertical separators and special lines in the window.
-    foldopen = '',
-    foldclose = '',
-    fold = ' ',
-    foldsep = ' ',
-    diff = '╱',
-    eob = ' ',
-  }
+vim.opt.fillchars = { -- Characters to fill the statuslines, vertical separators and special lines in the window.
+  foldopen = '',
+  foldclose = '',
+  fold = ' ',
+  foldsep = ' ',
+  diff = '╱',
+  eob = ' ',
+}
 vim.opt.foldcolumn = '1' -- Show fold column.
 vim.opt.foldenable = true -- Enable folds.
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- Folding based on treesitter.

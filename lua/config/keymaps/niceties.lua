@@ -52,6 +52,8 @@ maps.n['<leader>cW'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename W
 -- Diagnostic keymaps
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }
 maps.n['<leader>ql'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
+maps.n['<leader>qE'] = { function() vim.diagnostic.config { virtual_text = true } end, desc = 'Enable Diagnostics' }
+maps.n['<leader>qD'] = { function() vim.diagnostic.config { virtual_text = false } end, desc = 'Disable Diagnostics' }
 
 -- keywordprg
 maps.n['<leader>K'] = { '<cmd>norm! K<cr>', desc = 'Keywordprg' }

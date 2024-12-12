@@ -3,7 +3,6 @@ return {
     'echasnovski/mini.icons',
     version = false,
     lazy = true,
-    enabled = vim.g.have_nerd_font,
     opts = {},
   },
   {
