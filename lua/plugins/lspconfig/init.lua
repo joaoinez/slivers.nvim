@@ -9,12 +9,12 @@ return {
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   config = function()
     local servers = require('config.lang').get_servers()
-    local autocmd = Slivers.autocmds.autocmd
-    local augroup = Slivers.autocmds.augroup
+    local autocmd = SliverUtils.autocmds.autocmd
+    local augroup = SliverUtils.autocmds.augroup
 
     local vue_plugin = {
       name = '@vue/typescript-plugin',
-      location = Slivers.mason.get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
+      location = SliverUtils.mason.get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
       languages = { 'vue' },
       configNamespace = 'typescript',
       enableForWorkspaceTypeScriptVersions = true,

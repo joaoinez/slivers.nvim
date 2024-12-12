@@ -1,5 +1,5 @@
-local autocmd = Slivers.autocmds.autocmd
-local augroup = Slivers.autocmds.augroup
+local autocmd = SliverUtils.autocmds.autocmd
+local augroup = SliverUtils.autocmds.augroup
 
 -- Check if we need to reload the file when it is changed
 autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
@@ -66,7 +66,7 @@ autocmd('FileType', {
 vim.api.nvim_set_hl(0, 'HighlightURL', { underline = true })
 autocmd({ 'VimEnter', 'FileType', 'BufEnter', 'WinEnter' }, {
   desc = 'URL Highlighting',
-  callback = function() Slivers.misc.set_url_effect() end,
+  callback = function() SliverUtils.misc.set_url_effect() end,
 })
 
 -- Create parent directories when saving a file.
@@ -90,6 +90,6 @@ autocmd({ 'BufReadPost', 'BufNewFile', 'BufWritePost' }, {
     local greeter = vim.api.nvim_get_option_value('filetype', { buf = args.buf }) == 'snacks_dashboard'
 
     -- For any file exept empty buffer, or the greeter (snacks dashboard)
-    if not (empty_buffer or greeter) then Slivers.actions.trigger_event 'User LazyFile' end
+    if not (empty_buffer or greeter) then SliverUtils.actions.trigger_event 'User LazyFile' end
   end,
 })

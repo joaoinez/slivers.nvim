@@ -1,4 +1,4 @@
-_G.Slivers = require 'utils'
+_G.SliverUtils = require 'utils'
 
 -- [[ Options ]]
 require 'config.options'

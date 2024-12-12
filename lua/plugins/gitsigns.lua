@@ -19,7 +19,7 @@ return {
     },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
-      local maps = Slivers.keymaps.get_mappings_template()
+      local maps = SliverUtils.keymaps.get_mappings_template()
 
       -- Actions
       -- visual mode
@@ -62,7 +62,7 @@ return {
         desc = 'Previous Git Change (git)',
       }
 
-      Slivers.keymaps.set_mappings(maps, { buffer = bufnr })
+      SliverUtils.keymaps.set_mappings(maps, { buffer = bufnr })
     end,
   },
 }

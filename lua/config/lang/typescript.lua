@@ -84,8 +84,8 @@ M.servers = {
       },
     },
     on_attach = function(client)
-      local maps = Slivers.keymaps.get_mappings_template()
-      local lsp = Slivers.lsp
+      local maps = SliverUtils.keymaps.get_mappings_template()
+      local lsp = SliverUtils.lsp
 
       maps.n['gD'] = {
         function()
@@ -174,7 +174,7 @@ M.servers = {
         end)
       end
 
-      Slivers.keymaps.set_mappings(maps)
+      SliverUtils.keymaps.set_mappings(maps)
     end,
   },
 }

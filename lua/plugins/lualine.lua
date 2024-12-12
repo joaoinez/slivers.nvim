@@ -168,7 +168,7 @@ return {
       extensions = { 'neo-tree', 'lazy' },
     }
 
-    if Slivers.lazy.is_available 'trouble.nvim' then
+    if SliverUtils.lazy.is_available 'trouble.nvim' then
       local trouble = require 'trouble'
       local symbols = trouble.statusline {
         mode = 'symbols',
