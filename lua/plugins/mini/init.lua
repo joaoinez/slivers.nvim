@@ -128,7 +128,7 @@ return {
     'echasnovski/mini.map',
     version = false,
     keys = {
-      { '<leader>tm', function() require('mini.map').toggle() end, desc = 'Toggle Minimap' },
+      { '<leader>tm', function() require('mini.map').toggle() end, desc = 'Minimap' },
     },
     opts = function()
       local map = require 'mini.map'

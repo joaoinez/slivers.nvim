@@ -37,7 +37,7 @@ return {
     },
     spec = {
       { '<leader>c', group = 'code', mode = { 'n', 'x' } },
-      { '<leader>d', group = 'debug', mode = { 'n', 'x' } },
+      { '<leader>d', group = 'debug', mode = { 'n', 'v' } },
       { '<leader>f', group = 'find' },
       { '<leader>m', group = 'messages', icon = '󰍡' },
       { '<leader>mh', icon = '󰍡' },

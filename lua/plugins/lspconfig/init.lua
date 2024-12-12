@@ -4,7 +4,7 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     'mason.nvim',
-    { 'williamboman/mason-lspconfig.nvim', config = function() end },
+    'williamboman/mason-lspconfig.nvim',
   },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   config = function()

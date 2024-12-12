@@ -39,8 +39,8 @@ return {
       maps.n['<leader>gd'] = { gitsigns.diffthis, desc = 'Diff against index' }
       maps.n['<leader>gD'] = { function() gitsigns.diffthis '@' end, desc = 'Diff against last commit' }
       -- Toggles
-      maps.n['<leader>tb'] = { gitsigns.toggle_current_line_blame, desc = 'Blame Line (gitsigns)' }
-      maps.n['<leader>td'] = { gitsigns.toggle_deleted, desc = 'Deleted Hunks (gitsigns)' }
+      maps.n['<leader>tB'] = { gitsigns.toggle_current_line_blame, desc = 'Blame Line (git)' }
+      maps.n['<leader>tD'] = { gitsigns.toggle_deleted, desc = 'Deleted Hunks (git)' }
       -- Navigation
       maps.n[']c'] = {
         function()

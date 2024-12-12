@@ -116,7 +116,7 @@ return {
         }
       end,
     },
-    { '<leader>tt', function() Snacks.terminal() end, desc = 'Toggle Terminal' },
+    { '<leader>tt', function() Snacks.terminal() end, desc = 'Terminal' },
     { '<C-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
     { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next Reference (snacks)', mode = { 'n', 't' } },
     { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev Reference (snacks)', mode = { 'n', 't' } },
