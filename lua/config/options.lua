@@ -1,7 +1,7 @@
 -- [[ Globals ]]
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
-vim.g.url_effect_enabled = true
+vim.g.diagnostics_enabled = true
 
 -- [[ Options ]]
 vim.opt.breakindent = true -- Wrap indent to match line start.

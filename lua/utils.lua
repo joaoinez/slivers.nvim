@@ -148,7 +148,7 @@ function M.set_url_effect()
     .. '|\\{[&:#*@~%_\\-=?!+;/.0-9a-z]*})\\})+'
 
   M.delete_url_effect()
-  if vim.g.url_effect_enabled then vim.fn.matchadd('HighlightURL', url_matcher, 15) end
+  vim.fn.matchadd('HighlightURL', url_matcher, 15)
 end
 
 --- Delete the syntax matching rules for URLs/URIs if set.
