@@ -11,6 +11,8 @@ return {
   keys = {
     { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Find Files' },
     { '<leader>ft', function() require('telescope.builtin').live_grep() end, desc = 'Find Text' },
+    { '<leader>fH', function() require('telescope.builtin').help_tags() end, desc = 'Find Help' },
+    { '<leader>fr', function() require('telescope.builtin').resume() end, desc = 'Resume Search' },
     { '<leader><leader>', function() require('telescope.builtin').buffers() end, desc = 'Open Buffers' },
     { '<leader>f?', function() require('telescope.builtin').keymaps() end, desc = 'Buffer Keymaps (telescope)' },
   },
@@ -52,17 +54,12 @@ return {
       layout_config = {
         anchor = 'N',
         width = 0.66,
+        height = 0.33,
       },
     }
 
     telescope.setup {
       defaults = {
-        layout_config = {
-          height = 0.75,
-          width = 0.66,
-          preview_width = 0.66,
-          prompt_position = 'top',
-        },
         sorting_strategy = 'ascending',
         prompt_prefix = ' ',
         selection_caret = ' ',
@@ -103,8 +100,24 @@ return {
             prompt_position = 'top',
           },
         },
+        buffers = {
+          layout_config = {
+            anchor = 'N',
+            height = 0.75,
+            width = 0.66,
+            preview_width = 0.66,
+            prompt_position = 'top',
+          },
+        },
         keymaps = {
           theme = 'ivy',
+        },
+        help_tags = {
+          theme = 'dropdown',
+          previewer = false,
+          layout_config = {
+            anchor = 'N',
+          },
         },
         lsp_definitions = dropdown,
         lsp_references = dropdown,

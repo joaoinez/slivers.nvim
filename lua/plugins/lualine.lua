@@ -38,6 +38,9 @@ return {
       end
     end
 
+    -- Set global lualine
+    vim.o.laststatus = vim.g.lualine_laststatus
+
     local opts = {
       options = {
         theme = 'auto',
