@@ -47,7 +47,7 @@ maps.x['A'] = { function() return vim.fn.mode() == 'V' and '$<C-v>A' or 'A' end,
 
 -- From the Vim wiki: https://bit.ly/4eLAARp
 -- Search and replace word under the cursor
-maps.n['<leader>cR'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename Word' }
+maps.n['<leader>cW'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename Word' }
 
 -- Diagnostic keymaps
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }

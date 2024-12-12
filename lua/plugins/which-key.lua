@@ -37,6 +37,7 @@ return {
     },
     spec = {
       { '<leader>c', group = 'code', mode = { 'n', 'x' } },
+      { '<leader>cW', icon = '' },
       { '<leader>d', group = 'debug', mode = { 'n', 'v' } },
       { '<leader>f', group = 'find' },
       { '<leader>m', group = 'messages', icon = '󰍡' },
@@ -46,6 +47,7 @@ return {
       { '<leader>N', icon = '󰎕' },
       { '<leader>q', group = 'quickfix/diagnostics' },
       { '<leader>t', group = 'toggle' },
+      { '<leader>tr', icon = '' },
       { '<leader>,', group = 'settings', icon = '󰒓' },
       { '<leader>,m', group = 'mason', icon = '󱌢' },
       { '<leader>|', icon = '' },
