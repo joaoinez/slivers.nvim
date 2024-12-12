@@ -84,13 +84,13 @@ M.servers = {
       },
     },
     on_attach = function(client)
-      local utils = require 'utils'
-      local maps = utils.get_mappings_template()
+      local maps = require('utils.keymaps').get_mappings_template()
+      local lsp = require('utils.lsp')
 
       maps.n['gD'] = {
         function()
           local params = vim.lsp.util.make_position_params()
-          require('utils').execute {
+          lsp.execute {
             command = 'typescript.goToSourceDefinition',
             arguments = { params.textDocument.uri, params.position },
             open = true,
@@ -100,7 +100,7 @@ M.servers = {
       }
       maps.n['gR'] = {
         function()
-          require('utils').execute {
+          lsp.execute {
             command = 'typescript.findAllFileReferences',
             arguments = { vim.uri_from_bufnr(0) },
             open = true,
@@ -109,23 +109,23 @@ M.servers = {
         desc = 'File References (trouble)',
       }
       maps.n['<leader>co'] = {
-        utils.action['source.organizeImports'],
+        lsp.action['source.organizeImports'],
         desc = 'Organize Imports',
       }
       maps.n['<leader>cm'] = {
-        utils.action['source.addMissingImports.ts'],
+        lsp.action['source.addMissingImports.ts'],
         desc = 'Add missing imports',
       }
       maps.n['<leader>cu'] = {
-        utils.action['source.removeUnused.ts'],
+        lsp.action['source.removeUnused.ts'],
         desc = 'Remove unused imports',
       }
       maps.n['<leader>cF'] = {
-        utils.action['source.fixAll.ts'],
+        lsp.action['source.fixAll.ts'],
         desc = 'Fix all diagnostics',
       }
       maps.n['<leader>cV'] = {
-        function() utils.execute { command = 'typescript.selectTypeScriptVersion' } end,
+        function() lsp.execute { command = 'typescript.selectTypeScriptVersion' } end,
         desc = 'Select TS workspace version',
       }
 
@@ -174,7 +174,7 @@ M.servers = {
         end)
       end
 
-      utils.set_mappings(maps)
+      require('utils.keymaps').set_mappings(maps)
     end,
   },
 }

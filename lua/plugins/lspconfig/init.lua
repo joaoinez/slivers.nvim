@@ -9,13 +9,12 @@ return {
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   config = function()
     local servers = require('config.lang').get_servers()
-    local utils = require 'utils'
-    local autocmd = utils.autocmd
-    local augroup = utils.augroup
+    local autocmd = require('utils.autocmds').autocmd
+    local augroup = require('utils.autocmds').augroup
 
     local vue_plugin = {
       name = '@vue/typescript-plugin',
-      location = utils.get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
+      location = require('utils.mason').get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
       languages = { 'vue' },
       configNamespace = 'typescript',
       enableForWorkspaceTypeScriptVersions = true,

@@ -1,5 +1,4 @@
-local utils = require 'utils'
-local maps = utils.get_mappings_template()
+local maps = require('utils.keymaps').get_mappings_template()
 
 -- Disable arrow keys in normal mode
 maps.n['<left>'] = { '<nop>' }
@@ -14,4 +13,4 @@ maps.x['s'] = { '<nop>' }
 -- Disable `y` default behaviour
 maps.x['y'] = { '<nop>' }
 
-utils.set_mappings(maps)
+require('utils.keymaps').set_mappings(maps)

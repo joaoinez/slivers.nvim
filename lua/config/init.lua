@@ -1,3 +1,5 @@
+-- _G.require('utils') = require 'utils'
+
 -- [[ Options ]]
 require 'config.options'
 

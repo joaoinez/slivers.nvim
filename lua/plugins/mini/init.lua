@@ -33,7 +33,6 @@ return {
     version = false,
     event = 'VeryLazy',
     opts = function()
-      local utils = require 'utils'
       local ai = require 'mini.ai'
 
       return {
@@ -51,20 +50,20 @@ return {
             { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
             '^().*()$',
           },
-          i = utils.ai_indent, -- indent
-          g = utils.ai_buffer, -- buffer
+          i = require('utils.mini').ai_indent, -- indent
+          g = require('utils.mini').ai_buffer, -- buffer
           u = ai.gen_spec.function_call(), -- u for "Usage"
           U = ai.gen_spec.function_call { name_pattern = '[%w_]' }, -- without dot in function name
         },
       }
     end,
     config = function(_, opts)
-      local utils = require 'utils'
+      local utils = require 'utils.init'
 
       require('mini.ai').setup(opts)
 
-      utils.on_load('which-key.nvim', function()
-        vim.schedule(function() utils.ai_whichkey(opts) end)
+      require('utils.lazy').on_load('which-key.nvim', function()
+        vim.schedule(function() require('utils.mini').ai_whichkey(opts) end)
       end)
     end,
   },

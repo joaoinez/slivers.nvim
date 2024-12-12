@@ -54,7 +54,6 @@ return {
     { '<leader>de', function() require('dapui').eval() end, desc = 'Eval', mode = { 'n', 'v' } },
   },
   config = function()
-    local utils = require 'utils'
     local dap = require 'dap'
     local dapui = require 'dapui'
     local mocha = require('catppuccin.palettes').get_palette 'mocha'
@@ -96,7 +95,7 @@ return {
         command = 'node',
         -- 💀 Make sure to update this path to point to your installation
         args = {
-          utils.get_pkg_path('js-debug-adapter', '/js-debug/src/dapDebugServer.js'),
+          require('utils.mason').get_pkg_path('js-debug-adapter', '/js-debug/src/dapDebugServer.js'),
           '${port}',
         },
       },

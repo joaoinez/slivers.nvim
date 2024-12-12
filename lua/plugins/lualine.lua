@@ -16,7 +16,6 @@ return {
     -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require 'lualine_require'
     lualine_require.require = require
-    local is_available = require('utils').is_available
     local mocha = require('catppuccin.palettes').get_palette 'mocha'
 
     local function get_harpoon_indicator(prefix, suffix)
@@ -169,7 +168,7 @@ return {
       extensions = { 'neo-tree', 'lazy' },
     }
 
-    if is_available 'trouble.nvim' then
+    if require('utils.lazy').is_available 'trouble.nvim' then
       local trouble = require 'trouble'
       local symbols = trouble.statusline {
         mode = 'symbols',

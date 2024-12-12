@@ -19,8 +19,7 @@ return {
     },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
-      local utils = require 'utils'
-      local maps = utils.get_mappings_template()
+      local maps = require('utils.keymaps').get_mappings_template()
 
       -- Actions
       -- visual mode
@@ -63,7 +62,7 @@ return {
         desc = 'Previous Git Change (git)',
       }
 
-      utils.set_mappings(maps, { buffer = bufnr })
+      require('utils.keymaps').set_mappings(maps, { buffer = bufnr })
     end,
   },
 }

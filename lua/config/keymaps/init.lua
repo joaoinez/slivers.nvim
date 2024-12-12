@@ -15,14 +15,8 @@
 --   l[nore]map     |  -   | yes | yes |  -  |  -  |  -  |  -   | yes  |
 --   -------------------------------------------------------------------
 
-local utils = require 'utils'
-local maps = utils.get_mappings_template()
-
 -- [[ Keymaps ]]
 require 'config.keymaps.disabled'
 require 'config.keymaps.fixes'
-require 'config.keymaps.moving'
 require 'config.keymaps.niceties'
 require 'config.keymaps.yanking'
-
-utils.set_mappings(maps)

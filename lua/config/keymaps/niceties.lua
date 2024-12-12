@@ -1,5 +1,4 @@
-local utils = require 'utils'
-local maps = utils.get_mappings_template()
+local maps = require('utils.keymaps').get_mappings_template()
 
 --  Use CTRL+<hjkl> to switch between windows
 maps.n['<C-h>'] = { '<C-w><C-h>', desc = 'Move focus to the left window' }
@@ -52,7 +51,7 @@ maps.n['<leader>cW'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename W
 -- Diagnostic keymaps
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }
 maps.n['<leader>ql'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
-maps.n['<leader>tx'] = { function() require('utils').toggle_diagnostics() end, desc = 'Toggle Diagnostics' }
+maps.n['<leader>tx'] = { function() require('utils.actions').toggle_diagnostics() end, desc = 'Toggle Diagnostics' }
 
 -- keywordprg
 maps.n['<leader>K'] = { '<cmd>norm! K<cr>', desc = 'Keywordprg' }
@@ -90,4 +89,4 @@ maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window'
 -- nmap('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [B]ase')
 -- nmap('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', '[G]it [C]onflict Choose [S]tashed')
 
-utils.set_mappings(maps)
+require('utils.keymaps').set_mappings(maps)
