@@ -50,8 +50,8 @@ return {
             { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
             '^().*()$',
           },
-          i = require('utils.mini').ai_indent, -- indent
-          g = require('utils.mini').ai_buffer, -- buffer
+          i = Slivers.mini.ai_indent, -- indent
+          g = Slivers.mini.ai_buffer, -- buffer
           u = ai.gen_spec.function_call(), -- u for "Usage"
           U = ai.gen_spec.function_call { name_pattern = '[%w_]' }, -- without dot in function name
         },
@@ -62,8 +62,8 @@ return {
 
       require('mini.ai').setup(opts)
 
-      require('utils.lazy').on_load('which-key.nvim', function()
-        vim.schedule(function() require('utils.mini').ai_whichkey(opts) end)
+      Slivers.lazy.on_load('which-key.nvim', function()
+        vim.schedule(function() Slivers.mini.ai_whichkey(opts) end)
       end)
     end,
   },

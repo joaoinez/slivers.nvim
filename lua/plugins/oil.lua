@@ -5,7 +5,7 @@ return {
     {
       '<leader>fe',
       '<cmd>Oil<cr>',
-      desc = 'File Explorer (oil)',
+      desc = 'File Explorer',
     },
   },
   opts = {

@@ -4,8 +4,8 @@ local M = {}
 --- @param bufnr integer The bufnr where the lsp mappings will load.
 function M.apply_user_lsp_mappings(client, bufnr)
   local builtin = require 'telescope.builtin'
-  local supports = require('utils.lsp').supports(client)
-  local maps = require('utils.keymaps').get_mappings_template()
+  local supports = Slivers.lsp.supports(client)
+  local maps = Slivers.keymaps.get_mappings_template()
 
   maps.n['gd'] = {
     function() builtin.lsp_definitions() end,
@@ -51,7 +51,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
     vim.lsp.codelens.run,
     desc = 'Code Lens',
   }
-  maps.n['<leader>cA'] = { require('utils.lsp').action.source, desc = 'Available Code Actions' }
+  maps.n['<leader>cA'] = { Slivers.lsp.action.source, desc = 'Available Code Actions' }
 
   if supports 'workspace_didRenameFiles' and supports 'workspace_willRenameFiles' then
     maps.n['<leader>cR'] = {
@@ -67,7 +67,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
     }
   end
 
-  require('utils.keymaps').set_mappings(maps)
+  Slivers.keymaps.set_mappings(maps)
 end
 
 return M
