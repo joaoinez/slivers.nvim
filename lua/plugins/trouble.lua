@@ -5,7 +5,7 @@ return {
   cmd = { 'Trouble' },
   opts = {
     win = {
-      position = 'left',
+      position = 'right',
       size = 0.2,
     },
     modes = {
