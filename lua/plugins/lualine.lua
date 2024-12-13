@@ -161,8 +161,8 @@ return {
           },
         },
         lualine_z = {
-          'progress',
           'location',
+          'progress',
         },
       },
       extensions = { 'neo-tree', 'lazy' },

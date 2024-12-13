@@ -8,6 +8,8 @@ return {
       callback = function()
         if require('trouble').is_open() then require('trouble').close() end
 
+        -- TODO: Close dap ui
+
         require('snacks').bufdelete.other { force = true }
       end,
     })

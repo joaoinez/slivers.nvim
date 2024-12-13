@@ -86,6 +86,9 @@ return {
     },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
+    -- terminal = {
+    --   win = { height = 0.3 },
+    -- },
     words = { enabled = true },
   },
   keys = {

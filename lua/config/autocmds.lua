@@ -46,6 +46,7 @@ autocmd('FileType', {
     'startuptime',
     'tsplayground',
     'query', -- InspectTree
+    'dap-float', -- DAP floating widgets
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

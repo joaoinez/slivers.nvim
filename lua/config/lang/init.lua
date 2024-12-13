@@ -82,4 +82,44 @@ function M.get_linters_by_ft()
   return linters_by_ft
 end
 
+function M.get_debuggers()
+  local debuggers = {}
+
+  for _, lang in ipairs(M.langs) do
+    vim.list_extend(debuggers, lang.debuggers or {})
+  end
+
+  return debuggers
+end
+
+---@param dap table
+function M.setup_dap_adapters(dap)
+  for _, lang in ipairs(M.langs) do
+    local adapters = lang.dap_adapters or {}
+
+    if type(adapters) == 'function' then
+      adapters(dap)
+    else
+      for adapter, config in pairs(adapters) do
+        dap.adapters[adapter] = config
+      end
+    end
+  end
+end
+
+---@param dap table
+function M.setup_dap_configurations(dap)
+  for _, lang in ipairs(M.langs) do
+    local configurations = lang.dap_configurations or {}
+
+    if type(configurations) == 'function' then
+      configurations(dap)
+    else
+      for _, filetype in ipairs(lang.dap_filetypes or {}) do
+        dap.configurations[filetype] = configurations
+      end
+    end
+  end
+end
+
 return M

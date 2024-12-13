@@ -25,7 +25,7 @@ return {
     local ensure_installed = vim.tbl_keys(lang.get_servers() or {})
     vim.list_extend(ensure_installed, lang.get_formatters() or {})
     vim.list_extend(ensure_installed, lang.get_linters() or {})
-    vim.list_extend(ensure_installed, { 'js' })
+    vim.list_extend(ensure_installed, lang.get_debuggers() or {})
 
     require('mason-tool-installer').setup {
       ensure_installed = ensure_installed,
