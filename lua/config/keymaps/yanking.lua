@@ -9,22 +9,22 @@ maps.n['yd'] = { '<cmd>norm yy<cr>p', desc = 'Duplicate line' }
 -- Duplicate line and comment the original
 maps.n['yc'] = { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment original' }
 
--- Remap default yank in visual mode to yy for faster yanks
-maps.x['yy'] = { 'y', desc = 'Yank selection' }
+-- -- Remap default yank in visual mode to yy for faster yanks
+-- maps.x['yy'] = { 'y', desc = 'Yank selection' }
 
--- Dupicate text selection
-maps.x['yd'] = {
-  'y`>p',
-  remap = true,
-  desc = 'Duplicate selection',
-}
-
--- Duplicate selection and comment the original
-maps.x['yc'] = {
-  'ygvgc`>p',
-  remap = true,
-  desc = 'Duplicate selection and comment original',
-}
+-- -- Dupicate text selection
+-- maps.x['yd'] = {
+--   'y`>p',
+--   remap = true,
+--   desc = 'Duplicate selection',
+-- }
+--
+-- -- Duplicate selection and comment the original
+-- maps.x['yc'] = {
+--   'ygvgc`>p',
+--   remap = true,
+--   desc = 'Duplicate selection and comment original',
+-- }
 
 -- Select recently pasted, yanked or changed text
 maps.n['gy'] = { '`[v`]', desc = 'Select recently pasted, yanked or changed text' }

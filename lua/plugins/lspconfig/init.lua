@@ -2,6 +2,7 @@
 
 return {
   'neovim/nvim-lspconfig',
+  enabled = false,
   dependencies = {
     'mason.nvim',
     'williamboman/mason-lspconfig.nvim',

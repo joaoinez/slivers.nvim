@@ -1,5 +1,6 @@
 return {
   'echasnovski/mini.ai',
+  enabled = false,
   version = false,
   event = 'VeryLazy',
   opts = function()
@@ -28,8 +29,6 @@ return {
     }
   end,
   config = function(_, opts)
-    local utils = require 'utils.init'
-
     require('mini.ai').setup(opts)
 
     SliverUtils.lazy.on_load('which-key.nvim', function()

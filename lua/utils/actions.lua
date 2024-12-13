@@ -67,4 +67,105 @@ function M.trigger_event(event, is_urgent)
   end
 end
 
+local find_files = function()
+  local result = vim.fn.systemlist("find . -type f | fzf")
+
+  if #result > 0 then
+    vim.cmd("edit " .. result[1])
+  end
+end
+
+local live_grep = function()
+  local text = vim.fn.input("Search for: ")
+  if text ~= "" then
+    vim.cmd("grep " .. text .. " *")
+    vim.cmd("copen")
+  end
+end
+
+function FindFile()
+  local result = vim.fn.systemlist("fd --type f")
+  if #result > 0 then
+    local choice = vim.fn.inputlist(result)
+    if choice > 0 and choice <= #result then
+      vim.cmd("edit " .. result[choice])
+    end
+  end
+end
+
+function GrepText()
+  local search_text = vim.fn.input("Search for: ")
+  if search_text ~= "" then
+    if 1 == vim.fn.executable 'rg' then
+      local result = vim.fn.systemlist("rg --vimgrep " .. vim.fn.shellescape(search_text))
+    end
+    if #result > 0 then
+      vim.fn.setqflist({}, 'r', { title = 'Search Results', lines = result })
+      vim.cmd("copen")
+    else
+      print("No matches found!")
+    end
+  end
+end
+
+-- if 1 == vim.fn.executable 'rg' then
+--   return { 'rg', '--files', '--color', 'never', '-g', '!.git' }
+-- elseif 1 == vim.fn.executable 'fd' then
+--   return { 'fd', '--type', 'f', '--color', 'never', '-E', '.git' }
+-- elseif 1 == vim.fn.executable 'fdfind' then
+--   return { 'fdfind', '--type', 'f', '--color', 'never', '-E', '.git' }
+-- elseif 1 == vim.fn.executable 'find' and vim.fn.has 'win32' == 0 then
+--   return { 'find', '.', '-type', 'f' }
+-- elseif 1 == vim.fn.executable 'where' then
+--   return { 'where', '/r', '.', '*' }
+
+-- Used to pick something
+---@param cmd? string
+function M.pick(cmd, opts)
+  cmd = cmd or "files"
+  local try = {
+    function() return require("telescope.builtin")[cmd == "files" and "find_files" or cmd](opts) end,
+    function()
+      return nil
+    end
+  }
+  for _, fn in ipairs(try) do
+    if pcall(fn) then
+      return
+    end
+  end
+end
+
+-- Used to view files
+function M.explore()
+  local try = {
+    function() return vim.api.nvim_command('Oil') end,
+    function() return vim.api.nvim_command('Explore') end,
+  }
+  for _, fn in ipairs(try) do
+    if pcall(fn) then
+      return
+    end
+  end
+end
+
+-- TODO:
+-- url
+-- enabled
+-- version
+-- branch
+-- name
+-- dependencies
+-- build
+-- main
+-- priority
+-- lazy
+-- ft
+-- event
+-- cmd
+-- keys
+-- init
+-- opts
+-- config
+
 return M

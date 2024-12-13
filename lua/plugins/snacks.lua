@@ -2,8 +2,42 @@
 
 return {
   'folke/snacks.nvim',
+  enabled = true,
   priority = 1000,
   lazy = false,
+  keys = {
+    { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
+    { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Current File History (lazygit)' },
+    -- {
+    --   '<leader>gl',
+    --   function() Snacks.lazygit.log { cwd = LazyVim.root.git() } end,
+    --   desc = 'Git Log (lazygit)',
+    -- },
+    { '<leader>gf', function() Snacks.lazygit() end, desc = 'Current File History (lazygit)' },
+    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse (open)' },
+    {
+      '<leader>N',
+      desc = 'Neovim News',
+      function()
+        Snacks.win {
+          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
+          width = 0.6,
+          height = 0.6,
+          wo = {
+            spell = false,
+            wrap = false,
+            signcolumn = 'yes',
+            statuscolumn = ' ',
+            conceallevel = 3,
+          },
+        }
+      end,
+    },
+    { '<leader>tt', function() Snacks.terminal() end, desc = 'Terminal' },
+    { '<C-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
+    { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next Reference (snacks)', mode = { 'n', 't' } },
+    { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev Reference (snacks)', mode = { 'n', 't' } },
+  },
   opts = {
     bigfile = {
       enabled = true,
@@ -22,7 +56,7 @@ return {
         keys = {
           { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
           { icon = ' ', key = 't', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':Oil' },
+          { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':lua SliverUtils.actions.explore()' },
           {
             icon = ' ',
             key = 'c',
@@ -90,38 +124,5 @@ return {
     --   win = { height = 0.3 },
     -- },
     words = { enabled = true },
-  },
-  keys = {
-    { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
-    { '<leader>gf', function() Snacks.lazygit.log_file() end, desc = 'Current File History (lazygit)' },
-    -- {
-    --   '<leader>gl',
-    --   function() Snacks.lazygit.log { cwd = LazyVim.root.git() } end,
-    --   desc = 'Git Log (lazygit)',
-    -- },
-    { '<leader>gf', function() Snacks.lazygit() end, desc = 'Current File History (lazygit)' },
-    { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse (open)' },
-    {
-      '<leader>N',
-      desc = 'Neovim News',
-      function()
-        Snacks.win {
-          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
-          width = 0.6,
-          height = 0.6,
-          wo = {
-            spell = false,
-            wrap = false,
-            signcolumn = 'yes',
-            statuscolumn = ' ',
-            conceallevel = 3,
-          },
-        }
-      end,
-    },
-    { '<leader>tt', function() Snacks.terminal() end, desc = 'Terminal' },
-    { '<C-_>', function() Snacks.terminal() end, desc = 'which_key_ignore' },
-    { ']]', function() Snacks.words.jump(vim.v.count1) end, desc = 'Next Reference (snacks)', mode = { 'n', 't' } },
-    { '[[', function() Snacks.words.jump(-vim.v.count1) end, desc = 'Prev Reference (snacks)', mode = { 'n', 't' } },
   },
 }
