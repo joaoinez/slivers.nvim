@@ -54,7 +54,7 @@ return {
       pane_gap = 8,
       preset = {
         keys = {
-          { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick()" },
           { icon = ' ', key = 't', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':lua SliverUtils.actions.explore()' },
           {

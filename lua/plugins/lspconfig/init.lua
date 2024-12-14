@@ -2,14 +2,16 @@
 
 return {
   'neovim/nvim-lspconfig',
-  enabled = false,
+  enabled = true,
   dependencies = {
-    'mason.nvim',
+    { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   config = function()
-    local servers = require('config.lang').get_servers()
+    local lang = require 'config.lang'
+    local servers = lang.get_servers()
     local autocmd = SliverUtils.autocmds.autocmd
     local augroup = SliverUtils.autocmds.augroup
 
@@ -40,8 +42,20 @@ return {
     }
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    if SliverUtils.lazy.is_available 'cmp_nvim_lsp' then
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    end
 
+    local ensure_installed = vim.tbl_keys(lang.get_servers() or {})
+    vim.list_extend(ensure_installed, lang.get_formatters() or {})
+    vim.list_extend(ensure_installed, lang.get_linters() or {})
+    vim.list_extend(ensure_installed, lang.get_debuggers() or {})
+
+    require('mason').setup()
+    require('mason-tool-installer').setup {
+      run_on_start = false,
+      ensure_installed = ensure_installed,
+    }
     require('mason-lspconfig').setup {
       handlers = {
         function(server_name)

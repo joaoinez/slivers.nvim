@@ -1,7 +1,7 @@
 return {
   {
     'folke/lazydev.nvim',
-    enabled = false,
+    enabled = true,
     ft = 'lua',
     cmd = 'LazyDev',
     opts = {
@@ -15,7 +15,7 @@ return {
   },
   {
     'Bilal2453/luvit-meta',
-    enabled = false,
+    enabled = true,
     lazy = true,
   },
 }

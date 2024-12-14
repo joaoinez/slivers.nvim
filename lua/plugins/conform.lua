@@ -1,6 +1,6 @@
 return {
   'stevearc/conform.nvim',
-  enabled = false,
+  enabled = true,
   event = 'User LazyFile',
   cmd = { 'ConformInfo' },
   keys = {

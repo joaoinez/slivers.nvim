@@ -1,7 +1,7 @@
 -- Highlight todo, notes, etc in comments
 return {
   'folke/todo-comments.nvim',
-  enabled = false,
+  enabled = true,
   cmd = { 'TodoTrouble', 'TodoTelescope' },
   event = 'User LazyFile',
   opts = { signs = false },

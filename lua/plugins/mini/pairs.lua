@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.pairs',
-  enabled = false,
+  enabled = true,
   version = false,
   event = 'VeryLazy',
   opts = {

@@ -2,12 +2,12 @@
 
 return {
   'mfussenegger/nvim-dap',
-  enabled = false,
+  enabled = true,
   dependencies = {
     'nvim-neotest/nvim-nio',
     'rcarriga/nvim-dap-ui',
     { 'theHamsta/nvim-dap-virtual-text', opts = {} },
-    'mason.nvim',
+    'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
   },
   cmd = { 'DapInstall', 'DapUninstall' },
@@ -60,7 +60,6 @@ return {
     { '<leader>td', function() require('dapui').toggle {} end, desc = 'Dap UI' },
     { '<leader>de', function() require('dapui').eval() end, desc = 'Eval', mode = { 'n', 'v' } },
   },
-  lazy = false,
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'

@@ -1,7 +1,7 @@
 -- TODO: Remove No information available notification and no lines in buffer as well
 return {
   'folke/noice.nvim',
-  enabled = false,
+  enabled = true,
   dependencies = {
     'MunifTanjim/nui.nvim',
   },

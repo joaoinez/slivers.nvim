@@ -70,10 +70,10 @@ maps.t['<C-j>'] = { '<C-\\><C-n><C-w>j', desc = 'Move focus to the lower window'
 maps.t['<C-k>'] = { '<C-\\><C-n><C-w>k', desc = 'Move focus to the upper window' }
 maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window' }
 
--- -- mason
--- if is_available 'mason.nvim' then
---   maps.n['<leader>pm'] = { '<cmd>Mason<cr>', desc = 'Mason open' }
---   maps.n['<leader>pM'] = { '<cmd>MasonUpdateAll<cr>', desc = 'Mason update' }
+-- mason
+-- if SliverUtils.lazy.is_available 'mason.nvim' then
+  maps.n['<leader>,m'] = { '<cmd>Mason<cr>', desc = 'Mason open' }
+  maps.n['<leader>,M'] = { '<cmd>MasonToolsUpdate<cr>', desc = 'Mason update' }
 -- end
 --
 -- -- treesitter
@@ -89,8 +89,6 @@ maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window'
 -- nmap('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [B]ase')
 -- nmap('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', '[G]it [C]onflict Choose [S]tashed')
 
-maps.n['<leader>ff'] = {function() SliverUtils.actions.pick() end}
-maps.n['<leader>ft'] = {function() SliverUtils.actions.pick('live_grep') end}
 maps.n['<leader>fe'] = {function() SliverUtils.actions.explore() end}
 vim.keymap.set("n", "C-r", ":luafile %<CR>")
 

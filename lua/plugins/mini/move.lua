@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.move',
-  enabled = false,
+  enabled = true,
   version = false,
   event = 'VeryLazy',
   opts = {},

@@ -37,7 +37,7 @@ M.linters_by_ft = {
 }
 
 M.debuggers = {
-  'js',
+  'js-debug-adapter',
 }
 
 ---@param dap table

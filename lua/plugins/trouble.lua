@@ -2,7 +2,7 @@
 
 return {
   'folke/trouble.nvim',
-  enabled = false,
+  enabled = true,
   cmd = { 'Trouble' },
   opts = {
     win = {

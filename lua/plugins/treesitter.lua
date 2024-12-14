@@ -1,6 +1,6 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  enabled = false,
+  enabled = true,
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
   event = { 'User LazyFile', 'VeryLazy' },
