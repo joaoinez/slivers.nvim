@@ -7,7 +7,6 @@ return {
     'nvim-neotest/nvim-nio',
     'rcarriga/nvim-dap-ui',
     { 'theHamsta/nvim-dap-virtual-text', opts = {} },
-    'williamboman/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
   },
   cmd = { 'DapInstall', 'DapUninstall' },

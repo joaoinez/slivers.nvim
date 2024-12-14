@@ -71,10 +71,10 @@ maps.t['<C-k>'] = { '<C-\\><C-n><C-w>k', desc = 'Move focus to the upper window'
 maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window' }
 
 -- mason
--- if SliverUtils.lazy.is_available 'mason.nvim' then
+if SliverUtils.lazy.is_available 'mason.nvim' then
   maps.n['<leader>,m'] = { '<cmd>Mason<cr>', desc = 'Mason open' }
   maps.n['<leader>,M'] = { '<cmd>MasonToolsUpdate<cr>', desc = 'Mason update' }
--- end
+end
 --
 -- -- treesitter
 -- if is_available 'nvim-treesitter' then
@@ -89,7 +89,7 @@ maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window'
 -- nmap('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [B]ase')
 -- nmap('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', '[G]it [C]onflict Choose [S]tashed')
 
-maps.n['<leader>fe'] = {function() SliverUtils.actions.explore() end}
-vim.keymap.set("n", "C-r", ":luafile %<CR>")
+maps.n['<leader>fe'] = { function() SliverUtils.actions.explore() end, desc = 'File Explorer' }
+maps.n['<C-r>'] = { ':luafile %<CR>', desc = 'Source current Lua file' }
 
 SliverUtils.keymaps.set_mappings(maps)
