@@ -51,6 +51,7 @@ maps.n['<leader>cW'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename W
 -- Diagnostic keymaps
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }
 maps.n['<leader>ql'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
+-- TODO: Check snacks toggle functionality
 maps.n['<leader>tx'] = { function() require('utils.actions').toggle_diagnostics() end, desc = 'Diagnostics' }
 
 -- keywordprg
@@ -68,17 +69,17 @@ maps.t['<C-k>'] = { '<C-\\><C-n><C-w>k', desc = 'Move focus to the upper window'
 maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window' }
 
 -- Lazy
-maps.n['<leader>,l'] = { function() require('lazy').check() end, desc = 'Lazy Open' }
+maps.n['<leader>,l'] = { function() require('lazy').check() end, desc = 'Lazy' }
 
 -- mason
 if require('utils.lazy').is_available 'mason.nvim' then
-  maps.n['<leader>,m'] = { '<cmd>Mason<cr>', desc = 'Mason Open' }
+  maps.n['<leader>,m'] = { '<cmd>Mason<cr>', desc = 'Mason' }
   maps.n['<leader>,M'] = { '<cmd>MasonToolsUpdate<cr>', desc = 'Mason Update' }
 end
 
 -- treesitter
 if require('utils.lazy').is_available 'nvim-treesitter' then
-  maps.n['<leader>,t'] = { '<cmd>TSInstallInfo<cr>', desc = 'Treesitter Open' }
+  maps.n['<leader>,t'] = { '<cmd>TSInstallInfo<cr>', desc = 'Treesitter' }
   maps.n['<leader>,T'] = { '<cmd>TSUpdate<cr>', desc = 'Treesitter Update' }
 end
 

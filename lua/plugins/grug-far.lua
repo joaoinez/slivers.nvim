@@ -28,7 +28,7 @@ return {
         }
       end,
       mode = { 'n', 'v' },
-      desc = 'Find and Replace (workspace)',
+      desc = 'Find and Replace (project)',
     },
   },
   opts = { headerMaxWidth = 80 },

@@ -6,7 +6,7 @@ return {
     {
       '<leader>?',
       function() require('which-key').show { global = false } end,
-      desc = 'Local Keymaps (which-key)',
+      desc = 'Local Keymaps',
     },
   },
   opts = {

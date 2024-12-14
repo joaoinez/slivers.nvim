@@ -89,7 +89,7 @@ function M.get_servers()
               open = true,
             }
           end,
-          desc = 'Goto Source Definition (trouble)',
+          desc = 'Goto Source Definition',
         }
         maps.n['gR'] = {
           function()
@@ -99,7 +99,7 @@ function M.get_servers()
               open = true,
             }
           end,
-          desc = 'File References (trouble)',
+          desc = 'File References',
         }
         maps.n['<leader>co'] = {
           lsp.action['source.organizeImports'],

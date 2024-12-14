@@ -4,7 +4,7 @@ local M = {}
 
 M.keys = {
   { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
-  { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History (lazygit)' },
+  { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },
   { '<leader>gB', function() require('snacks').gitbrowse() end, desc = 'Git Browse (github)' },
   {
     '<leader>N',

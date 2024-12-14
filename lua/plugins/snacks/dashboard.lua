@@ -53,7 +53,7 @@ M.config = {
     {
       pane = 2,
       icon = ' ',
-      desc = 'Browse Repo (open)',
+      desc = 'Browse Repo (github)',
       padding = 1,
       key = 'b',
       action = function() require('snacks').gitbrowse() end,

@@ -1,3 +1,7 @@
+_G.Slivers = require 'utils'
+_G.Lang = require 'config.lang'
+_G.Icons = require 'config.icons'
+
 local M = {}
 
 ---@param name "autocmds" | "options" | "keymaps"

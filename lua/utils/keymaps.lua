@@ -1,6 +1,8 @@
 ---@class utils.keymaps
 local M = {}
 
+-- TODO: Replace these functions with LazyVim's implementation
+
 --- Get an empty table of mappings with a key for each map mode.
 --- @return table<string,table> # a table with entries for each map mode.
 function M.get_mappings_template()

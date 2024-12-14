@@ -8,27 +8,27 @@ return {
     {
       '<leader>qX',
       '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-      desc = 'Diagnostics (trouble)',
+      desc = 'Diagnostics',
     },
     {
       '<leader>qx',
       '<cmd>Trouble diagnostics toggle<cr>',
-      desc = 'Workspace Diagnostics (trouble)',
+      desc = 'Workspace Diagnostics',
     },
     {
       '<leader>qq',
       '<cmd>Trouble telescope toggle<cr>',
-      desc = 'Telescope Quicklist (trouble)',
+      desc = 'Telescope Quicklist',
     },
     {
       '<leader>cd',
       '<cmd>Trouble lsp toggle<cr>',
-      desc = 'References/Definitions/... (trouble)',
+      desc = 'References/Definitions/...',
     },
     {
       '<leader>cs',
       '<cmd>Trouble symbols toggle<cr>',
-      desc = 'Symbols (trouble)',
+      desc = 'Symbols',
     },
     {
       '[q',
@@ -40,7 +40,7 @@ return {
           if not ok then vim.notify(err, vim.log.levels.ERROR) end
         end
       end,
-      desc = 'Previous Trouble/Quickfix Item (trouble)',
+      desc = 'Previous Trouble/Quickfix Item',
     },
     {
       ']q',
@@ -52,7 +52,7 @@ return {
           if not ok then vim.notify(err, vim.log.levels.ERROR) end
         end
       end,
-      desc = 'Next Trouble/Quickfix Item (trouble)',
+      desc = 'Next Trouble/Quickfix Item',
     },
   },
   opts = {

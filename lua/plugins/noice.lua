@@ -13,10 +13,10 @@ return {
       mode = 'c',
       desc = 'Redirect Cmdline',
     },
-    { '<leader>ml', function() require('noice').cmd 'last' end, desc = 'Last Message (noice)' },
+    { '<leader>ml', function() require('noice').cmd 'last' end, desc = 'Last Message' },
     { '<leader>mH', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
     { '<leader>md', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
-    { '<leader>mt', function() require('noice').cmd 'pick' end, desc = 'Noice Picker (telescope)' },
+    { '<leader>mt', function() require('noice').cmd 'pick' end, desc = 'Pick Message' },
   },
   opts = {
     lsp = {
