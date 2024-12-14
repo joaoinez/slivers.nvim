@@ -5,6 +5,7 @@ return {
   event = 'VeryLazy',
   opts = function()
     local ai = require 'mini.ai'
+    local mini = require 'utils.mini'
 
     return {
       n_lines = 500,
@@ -21,8 +22,8 @@ return {
           { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
           '^().*()$',
         },
-        i = SliverUtils.mini.ai_indent, -- indent
-        g = SliverUtils.mini.ai_buffer, -- buffer
+        i = mini.ai_indent, -- indent
+        g = mini.ai_buffer, -- buffer
         u = ai.gen_spec.function_call(), -- u for "Usage"
         U = ai.gen_spec.function_call { name_pattern = '[%w_]' }, -- without dot in function name
       },
@@ -31,8 +32,8 @@ return {
   config = function(_, opts)
     require('mini.ai').setup(opts)
 
-    SliverUtils.lazy.on_load('which-key.nvim', function()
-      vim.schedule(function() SliverUtils.mini.ai_whichkey(opts) end)
+    require('utils.lazy').on_load('which-key.nvim', function()
+      vim.schedule(function() require('utils.mini').ai_whichkey(opts) end)
     end)
   end,
 }

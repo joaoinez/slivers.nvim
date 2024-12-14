@@ -1,0 +1,21 @@
+-- TODO:
+-- url
+-- enabled
+-- version
+-- branch
+-- name
+-- dependencies
+-- build
+-- main
+-- priority
+-- lazy
+-- ft
+-- event
+-- cmd
+-- keys
+-- init
+-- spec
+-- opts
+-- config
+
+return {}

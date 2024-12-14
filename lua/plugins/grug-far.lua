@@ -6,9 +6,20 @@ return {
     {
       '<leader>fr',
       function()
-        local grug = require 'grug-far'
+        require('grug-far').with_visual_selection {
+          transient = true,
+          prefills = { paths = vim.fn.expand '%' },
+        }
+      end,
+      mode = { 'n', 'v' },
+      desc = 'Find and Replace',
+    },
+    {
+      '<leader>fR',
+      function()
         local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
-        grug.open {
+
+        require('grug-far').open {
           transient = true,
           prefills = {
             filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
@@ -16,7 +27,7 @@ return {
         }
       end,
       mode = { 'n', 'v' },
-      desc = 'Find and Replace',
+      desc = 'Find and Replace (workspace)',
     },
   },
   opts = { headerMaxWidth = 80 },

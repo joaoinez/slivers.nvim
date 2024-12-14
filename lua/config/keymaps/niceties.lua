@@ -1,4 +1,4 @@
-local maps = SliverUtils.keymaps.get_mappings_template()
+local maps = require('utils.keymaps').get_mappings_template()
 
 --  Use CTRL+<hjkl> to switch between windows
 maps.n['<C-h>'] = { '<C-w><C-h>', desc = 'Move focus to the left window' }
@@ -51,13 +51,10 @@ maps.n['<leader>cW'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename W
 -- Diagnostic keymaps
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }
 maps.n['<leader>ql'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
-maps.n['<leader>tx'] = { function() SliverUtils.actions.toggle_diagnostics() end, desc = 'Toggle Diagnostics' }
+maps.n['<leader>tx'] = { function() require('utils.actions').toggle_diagnostics() end, desc = 'Diagnostics' }
 
 -- keywordprg
 maps.n['<leader>K'] = { '<cmd>norm! K<cr>', desc = 'Keywordprg' }
-
--- Lazy
-maps.n['<leader>,l'] = { function() require('lazy').check() end, desc = 'Lazy open' }
 
 -- Inspect Tree
 maps.n['<leader>cI'] = { '<cmd>InspectTree<cr>', desc = 'Inspect Tree' }
@@ -70,17 +67,22 @@ maps.t['<C-j>'] = { '<C-\\><C-n><C-w>j', desc = 'Move focus to the lower window'
 maps.t['<C-k>'] = { '<C-\\><C-n><C-w>k', desc = 'Move focus to the upper window' }
 maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window' }
 
+-- Lazy
+maps.n['<leader>,l'] = { function() require('lazy').check() end, desc = 'Lazy Open' }
+
 -- mason
-if SliverUtils.lazy.is_available 'mason.nvim' then
-  maps.n['<leader>,m'] = { '<cmd>Mason<cr>', desc = 'Mason open' }
-  maps.n['<leader>,M'] = { '<cmd>MasonToolsUpdate<cr>', desc = 'Mason update' }
+if require('utils.lazy').is_available 'mason.nvim' then
+  maps.n['<leader>,m'] = { '<cmd>Mason<cr>', desc = 'Mason Open' }
+  maps.n['<leader>,M'] = { '<cmd>MasonToolsUpdate<cr>', desc = 'Mason Update' }
 end
---
--- -- treesitter
--- if is_available 'nvim-treesitter' then
---   maps.n['<leader>pT'] = { '<cmd>TSUpdate<cr>', desc = 'Treesitter update' }
---   maps.n['<leader>pt'] = { '<cmd>TSInstallInfo<cr>', desc = 'Treesitter open' }
--- end
+
+-- treesitter
+if require('utils.lazy').is_available 'nvim-treesitter' then
+  maps.n['<leader>,t'] = { '<cmd>TSInstallInfo<cr>', desc = 'Treesitter Open' }
+  maps.n['<leader>,T'] = { '<cmd>TSUpdate<cr>', desc = 'Treesitter Update' }
+end
+
+maps.n['<leader>fe'] = { function() require('utils.actions').explore() end, desc = 'File Explorer' }
 
 -- TODO: See git conflict
 --
@@ -89,7 +91,4 @@ end
 -- nmap('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [B]ase')
 -- nmap('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', '[G]it [C]onflict Choose [S]tashed')
 
-maps.n['<leader>fe'] = { function() SliverUtils.actions.explore() end, desc = 'File Explorer' }
-maps.n['<C-r>'] = { ':luafile %<CR>', desc = 'Source current Lua file' }
-
-SliverUtils.keymaps.set_mappings(maps)
+require('utils.keymaps').set_mappings(maps)

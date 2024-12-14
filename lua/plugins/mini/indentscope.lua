@@ -2,7 +2,7 @@ return {
   'echasnovski/mini.indentscope',
   enabled = true,
   version = false, -- wait till new 0.7.0 release to put it back on semver
-  event = 'User LazyFile',
+  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = function()
     return {
       draw = {

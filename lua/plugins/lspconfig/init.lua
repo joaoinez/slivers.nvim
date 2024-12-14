@@ -11,9 +11,9 @@ return {
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   config = function()
     local lang = require 'config.lang'
-    local servers = lang.get_servers()
-    local autocmd = SliverUtils.autocmds.autocmd
-    local augroup = SliverUtils.autocmds.augroup
+    local servers = lang.get_servers() or {}
+    local autocmd = require('utils.autocmds').autocmd
+    local augroup = require('utils.autocmds').augroup
 
     autocmd('LspAttach', {
       group = augroup 'lsp_attach',
@@ -37,30 +37,32 @@ return {
       virtual_text = {
         spacing = 4,
         source = 'if_many',
-        prefix = '●',
+        prefix = '● ',
       },
     }
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    if SliverUtils.lazy.is_available 'cmp_nvim_lsp' then
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-    end
-
-    local ensure_installed = vim.tbl_keys(lang.get_servers() or {})
+    local ensure_installed = vim.tbl_keys(servers)
     vim.list_extend(ensure_installed, lang.get_formatters() or {})
     vim.list_extend(ensure_installed, lang.get_linters() or {})
     vim.list_extend(ensure_installed, lang.get_debuggers() or {})
 
+    local has_blink, blink = pcall(require, 'blink.cmp')
+
     require('mason').setup()
-    require('mason-tool-installer').setup {
-      run_on_start = false,
-      ensure_installed = ensure_installed,
-    }
+    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
     require('mason-lspconfig').setup {
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+
+          server.capabilities = vim.tbl_deep_extend(
+            'force',
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            has_blink and blink.get_lsp_capabilities() or {},
+            server.capabilities or {}
+          )
+
           require('lspconfig')[server_name].setup(server)
         end,
       },

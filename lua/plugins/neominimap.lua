@@ -4,7 +4,8 @@ return {
   version = 'v3.*.*',
   event = 'VeryLazy',
   keys = {
-    { '<leader>M', '<cmd>Neominimap toggleFocus<cr>', desc = 'Switch focus on minimap' },
+    { '<leader>M', '<cmd>Neominimap toggleFocus<cr>', desc = 'Minimap Focus' },
+    { '<leader>tm', '<cmd>Neominimap toggle<cr>', desc = 'Minimap' },
   },
   init = function()
     vim.g.neominimap = {

@@ -1,7 +1,7 @@
 return {
   'lewis6991/gitsigns.nvim',
   enabled = true,
-  event = 'User LazyFile',
+  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
     signs = {
       add = { text = '▎' },
@@ -20,7 +20,7 @@ return {
     },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
-      local maps = SliverUtils.keymaps.get_mappings_template()
+      local maps = require('utils.keymaps').get_mappings_template()
 
       -- Actions
       -- visual mode
@@ -63,7 +63,7 @@ return {
         desc = 'Previous Git Change (git)',
       }
 
-      SliverUtils.keymaps.set_mappings(maps, { buffer = bufnr })
+      require('utils.keymaps').set_mappings(maps, { buffer = bufnr })
     end,
   },
 }

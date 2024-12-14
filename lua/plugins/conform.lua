@@ -1,14 +1,14 @@
 return {
   'stevearc/conform.nvim',
   enabled = true,
-  event = 'User LazyFile',
+  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   cmd = { 'ConformInfo' },
   keys = {
     {
       '<leader>cf',
       function() require('conform').format { async = true, lsp_format = 'fallback' } end,
       mode = '',
-      desc = 'Format Buffer',
+      desc = 'Format File',
     },
   },
   opts = function()

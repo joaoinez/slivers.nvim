@@ -3,7 +3,7 @@ return {
   enabled = true,
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
-  event = { 'User LazyFile', 'VeryLazy' },
+  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost', 'VeryLazy' },
   cmd = {
     'TSBufDisable',
     'TSBufEnable',
