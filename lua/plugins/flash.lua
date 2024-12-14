@@ -2,7 +2,6 @@ return {
   'folke/flash.nvim',
   enabled = true,
   event = 'VeryLazy',
-  opts = {},
   keys = {
     {
       'ss',
@@ -17,4 +16,5 @@ return {
       desc = 'Flash Treesitter',
     },
   },
+  opts = {},
 }

@@ -2,6 +2,13 @@ return {
   'folke/which-key.nvim',
   enabled = true,
   event = 'VeryLazy',
+  keys = {
+    {
+      '<leader>?',
+      function() require('which-key').show { global = false } end,
+      desc = 'Local Keymaps (which-key)',
+    },
+  },
   opts = {
     spec = {
       { '<leader>K', icon = { icon = '', color = 'grey' } },
@@ -40,13 +47,6 @@ return {
       { '<leader>,M', icon = { icon = '󱌢', color = 'orange' } },
       { '<leader>,t', icon = { icon = '󰔱', color = 'green' } },
       { '<leader>,T', icon = { icon = '󰔱', color = 'green' } },
-    },
-  },
-  keys = {
-    {
-      '<leader>?',
-      function() require('which-key').show { global = false } end,
-      desc = 'Local Keymaps (which-key)',
     },
   },
 }

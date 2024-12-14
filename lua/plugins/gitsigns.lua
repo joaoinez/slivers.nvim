@@ -3,6 +3,7 @@ return {
   enabled = true,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
+    -- TODO: Move icons to config
     signs = {
       add = { text = '▎' },
       change = { text = '▎' },

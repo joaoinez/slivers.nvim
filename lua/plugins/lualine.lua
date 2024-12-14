@@ -17,7 +17,7 @@ return {
     -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require 'lualine_require'
     lualine_require.require = require
-    local mocha = require('catppuccin.palettes').get_palette 'mocha'
+    local catppuccin = require('catppuccin.palettes').get_palette 'mocha'
 
     local function get_harpoon_indicator(prefix, suffix)
       return function(harpoon_entry)
@@ -102,7 +102,7 @@ return {
               get_harpoon_indicator('[', ']'),
             },
             _separator = '  ',
-            color = function() return { fg = mocha.sky } end,
+            color = function() return { fg = catppuccin.sky } end,
           },
         },
         lualine_y = {
@@ -113,7 +113,7 @@ return {
             ---@diagnostic disable-next-line: undefined-field
             cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
             color = function()
-              return { fg = mocha.pink }
+              return { fg = catppuccin.pink }
             end
           },
           -- stylua: ignore
@@ -123,7 +123,7 @@ return {
             ---@diagnostic disable-next-line: undefined-field
             cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
             color = function()
-              return { fg = mocha.lavender }
+              return { fg = catppuccin.lavender }
             end
           },
           -- stylua: ignore
@@ -131,7 +131,7 @@ return {
             function() return "  " .. require("dap").status() end,
             cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
             color = function()
-              return { fg = mocha.yellow }
+              return { fg = catppuccin.yellow }
             end
           },
           -- stylua: ignore
@@ -139,7 +139,7 @@ return {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
             color = function()
-              return { fg = mocha.peach }
+              return { fg = catppuccin.peach }
             end
           },
           {

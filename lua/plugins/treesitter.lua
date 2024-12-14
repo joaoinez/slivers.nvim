@@ -1,8 +1,13 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   enabled = true,
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-context',
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
+  lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost', 'VeryLazy' },
   cmd = {
     'TSBufDisable',
@@ -18,11 +23,6 @@ return {
     'TSUninstall',
     'TSUpdate',
     'TSUpdateSync',
-  },
-  lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter-context',
-    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   opts = {
     ensure_installed = require('config.lang').get_highlighters(),

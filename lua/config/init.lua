@@ -3,7 +3,9 @@ local M = {}
 ---@param name "autocmds" | "options" | "keymaps"
 function M.load(name)
   local function _load(mod)
-    if require('lazy.core.cache').find(mod)[1] then
+    if name == 'options' then
+      require(mod)
+    elseif require('lazy.core.cache').find(mod)[1] then
       require('lazy.core.util').try(function() require(mod) end, { msg = 'Failed loading ' .. mod })
     end
   end
@@ -13,18 +15,18 @@ function M.load(name)
   _load('config.' .. name)
 
   if vim.bo.filetype == 'lazy' then
-    -- HACK: LazyVim may have overwritten options of the Lazy ui, so reset this here
+    -- HACK: LazySlivers may have overwritten options of the Lazy ui, so reset this here
     vim.cmd [[do VimResized]]
   end
   vim.api.nvim_exec_autocmds('User', { pattern = pattern, modeline = false })
 end
 
 function M.init()
-  -- [[ Initialize Lazy ]]
-  require 'config.lazy'
-
   -- [[ Load Options ]]
   M.load 'options'
+
+  -- [[ Initialize Lazy ]]
+  require 'config.lazy'
 
   -- autocmds can be loaded lazily when not opening a file
   local lazy_autocmds = vim.fn.argc(-1) == 0

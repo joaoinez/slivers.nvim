@@ -2,9 +2,8 @@
 return {
   'folke/todo-comments.nvim',
   enabled = true,
-  cmd = { 'TodoTrouble', 'TodoTelescope' },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
-  opts = { signs = false },
+  cmd = { 'TodoTrouble', 'TodoTelescope' },
   keys = {
     {
       ']t',
@@ -19,4 +18,5 @@ return {
     { '<leader>qt', '<cmd>Trouble todo toggle<cr>', desc = 'Todos (trouble)' },
     { '<leader>qT', '<cmd>TodoTelescope<cr>', desc = 'Todos (telescope)' },
   },
+  opts = { signs = false },
 }

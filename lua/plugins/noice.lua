@@ -6,6 +6,18 @@ return {
     'MunifTanjim/nui.nvim',
   },
   event = 'VeryLazy',
+  keys = {
+    {
+      '<S-Enter>',
+      function() require('noice').redirect(vim.fn.getcmdline()) end,
+      mode = 'c',
+      desc = 'Redirect Cmdline',
+    },
+    { '<leader>ml', function() require('noice').cmd 'last' end, desc = 'Last Message (noice)' },
+    { '<leader>mH', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
+    { '<leader>md', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
+    { '<leader>mt', function() require('noice').cmd 'pick' end, desc = 'Noice Picker (telescope)' },
+  },
   opts = {
     lsp = {
       override = {
@@ -21,17 +33,5 @@ return {
       inc_rename = false, -- enables an input dialog for inc-rename.nvim
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
-  },
-  keys = {
-    {
-      '<S-Enter>',
-      function() require('noice').redirect(vim.fn.getcmdline()) end,
-      mode = 'c',
-      desc = 'Redirect Cmdline',
-    },
-    { '<leader>ml', function() require('noice').cmd 'last' end, desc = 'Last Message (noice)' },
-    { '<leader>mH', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
-    { '<leader>md', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
-    { '<leader>mt', function() require('noice').cmd 'pick' end, desc = 'Noice Picker (telescope)' },
   },
 }

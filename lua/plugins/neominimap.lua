@@ -43,6 +43,9 @@ return {
         'terminal',
         'prompt',
       },
+      fold = {
+        enabled = false,
+      },
     }
   end,
 }

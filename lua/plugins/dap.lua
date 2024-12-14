@@ -31,30 +31,21 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
-    local mocha = require('catppuccin.palettes').get_palette 'mocha'
+    local catppuccin = require('catppuccin.palettes').get_palette 'mocha'
     local lang = require 'config.lang'
+    local icons = require('config.icons').dap
 
     require('mason-nvim-dap').setup {
       automatic_installation = true,
       handlers = {},
     }
 
-    dapui.setup {
-      icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-    }
+    dapui.setup { icons = icons.ui }
 
-    vim.api.nvim_set_hl(0, 'DapBreak', { fg = mocha.red })
-    vim.api.nvim_set_hl(0, 'DapStop', { fg = mocha.yellow })
+    vim.api.nvim_set_hl(0, 'DapBreak', { fg = catppuccin.red })
+    vim.api.nvim_set_hl(0, 'DapStop', { fg = catppuccin.yellow })
 
-    local breakpoint_icons = {
-      Breakpoint = '',
-      BreakpointCondition = '',
-      BreakpointRejected = '',
-      LogPoint = '',
-      Stopped = '',
-    }
-
-    for type, icon in pairs(breakpoint_icons) do
+    for type, icon in pairs(icons.breakpoints) do
       local tp = 'Dap' .. type
       local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
 

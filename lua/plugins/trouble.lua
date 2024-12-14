@@ -4,17 +4,6 @@ return {
   'folke/trouble.nvim',
   enabled = true,
   cmd = { 'Trouble' },
-  opts = {
-    win = {
-      position = 'right',
-      size = 0.2,
-    },
-    modes = {
-      telescope = {
-        focus = true,
-      },
-    },
-  },
   keys = {
     {
       '<leader>qX',
@@ -64,6 +53,17 @@ return {
         end
       end,
       desc = 'Next Trouble/Quickfix Item (trouble)',
+    },
+  },
+  opts = {
+    win = {
+      position = 'right',
+      size = 0.2,
+    },
+    modes = {
+      telescope = {
+        focus = true,
+      },
     },
   },
 }

@@ -14,24 +14,25 @@ end
 
 --- Toggle diagnostics
 function M.toggle_diagnostics()
+  local icons = require('config.icons').diagnostics
   local state = not vim.g.diagnostics_enabled
 
   vim.g.diagnostics_enabled = state
 
   if state then
-    local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-    local diagnostic_signs = {}
-
-    for type, icon in pairs(signs) do
-      diagnostic_signs[vim.diagnostic.severity[type]] = icon
-    end
-
     vim.diagnostic.config {
-      signs = { text = diagnostic_signs },
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = icons.error,
+          [vim.diagnostic.severity.WARN] = icons.warn,
+          [vim.diagnostic.severity.HINT] = icons.hint,
+          [vim.diagnostic.severity.INFO] = icons.info,
+        },
+      },
       virtual_text = {
         spacing = 4,
         source = 'if_many',
-        prefix = '●',
+        prefix = icons.virtual,
       },
     }
   else
