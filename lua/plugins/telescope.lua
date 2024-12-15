@@ -52,9 +52,9 @@ return {
 
     local dropdown = {
       theme = 'dropdown',
+      sorting_strategy = 'ascending',
       layout_config = {
-        anchor = 'N',
-        width = 0.66,
+        width = 0.5,
         height = 0.33,
       },
     }
@@ -62,6 +62,13 @@ return {
     telescope.setup {
       defaults = {
         sorting_strategy = 'ascending',
+        layout_config = {
+          anchor = 'N',
+          height = 0.75,
+          width = 0.66,
+          preview_width = 0.6,
+          prompt_position = 'top',
+        },
         prompt_prefix = ' ',
         selection_caret = ' ',
         mappings = {
@@ -82,33 +89,8 @@ return {
       },
       pickers = {
         find_files = {
-          layout_config = {
-            anchor = 'N',
-            height = 0.75,
-            width = 0.66,
-            preview_width = 0.66,
-            prompt_position = 'top',
-          },
           find_command = find_command,
           hidden = true,
-        },
-        live_grep = {
-          layout_config = {
-            anchor = 'N',
-            height = 0.75,
-            width = 0.66,
-            preview_width = 0.66,
-            prompt_position = 'top',
-          },
-        },
-        buffers = {
-          layout_config = {
-            anchor = 'N',
-            height = 0.75,
-            width = 0.66,
-            preview_width = 0.66,
-            prompt_position = 'top',
-          },
         },
         keymaps = {
           theme = 'ivy',
@@ -124,8 +106,6 @@ return {
         lsp_references = dropdown,
         lsp_implementations = dropdown,
         lsp_type_definitions = dropdown,
-        lsp_document_symbols = dropdown,
-        lsp_dynamic_workspace_symbols = dropdown,
       },
     }
 

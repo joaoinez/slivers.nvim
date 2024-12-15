@@ -1,9 +1,11 @@
+-- TODO: Apply these variables
 _G.Slivers = require 'utils'
-_G.Lang = require 'config.lang'
-_G.Icons = require 'config.icons'
+_G.LangSliver = require 'config.lang'
+_G.IconSliver = require 'config.icons'
 
 local M = {}
 
+-- Load config after checking cache
 ---@param name "autocmds" | "options" | "keymaps"
 function M.load(name)
   local function _load(mod)
@@ -30,7 +32,7 @@ function M.init()
   M.load 'options'
 
   -- [[ Initialize Lazy ]]
-  require 'config.lazy'
+  require('config.lazy').init()
 
   -- autocmds can be loaded lazily when not opening a file
   local lazy_autocmds = vim.fn.argc(-1) == 0
@@ -39,6 +41,7 @@ function M.init()
     M.load 'autocmds'
   end
 
+  -- Lazily load autocmds and keymaps
   local group = vim.api.nvim_create_augroup('LazySlivers', { clear = true })
   vim.api.nvim_create_autocmd('User', {
     group = group,

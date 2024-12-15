@@ -85,16 +85,29 @@ function M.dap_configurations(dap)
         {
           type = 'pwa-node',
           request = 'launch',
-          name = 'Launch file',
+          name = 'Launch file in new node process',
           program = '${file}',
           cwd = '${workspaceFolder}',
         },
         {
           type = 'pwa-node',
           request = 'attach',
-          name = 'Attach',
+          name = 'Attach debugger to existing `node --inspect` process',
           processId = require('dap.utils').pick_process,
           cwd = '${workspaceFolder}',
+        },
+        -- TODO: test this
+        {
+          type = 'pwa-chrome',
+          name = 'Launch Chrome to debug client',
+          request = 'launch',
+          url = 'http://localhost:5173',
+          sourceMaps = true,
+          protocol = 'inspector',
+          port = 9222,
+          webRoot = '${workspaceFolder}/src',
+          -- skip files from vite's hmr
+          skipFiles = { '**/node_modules/**/*', '**/@vite/*', '**/src/client/*', '**/src/*' },
         },
       }
     end
