@@ -1,4 +1,4 @@
-local maps = require('utils.keymaps').get_mappings_template()
+local maps = Slivers.keymaps.get_mappings_template()
 
 -- Copy entire file
 maps.n['<leader>y'] = { 'gg0yG', desc = 'Yank File' }
@@ -81,4 +81,4 @@ maps.x['X'] = { '"_X', desc = 'Delete all characters in line' }
 maps.x['p'] = { 'P', desc = "Paste content you've previourly yanked" }
 maps.x['P'] = { 'p', desc = 'Yank what you are going to override, then paste' }
 
-require('utils.keymaps').set_mappings(maps)
+Slivers.keymaps.set_mappings(maps)

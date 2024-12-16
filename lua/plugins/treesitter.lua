@@ -25,7 +25,7 @@ return {
     'TSUpdateSync',
   },
   opts = {
-    ensure_installed = require('config.lang').get_highlighters(),
+    ensure_installed = LangSliver.get_highlighters(),
     auto_install = false,
     highlight = {
       enable = true,

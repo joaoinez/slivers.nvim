@@ -10,11 +10,10 @@ return {
   },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   config = function()
-    local lang = require 'config.lang'
-    local servers = lang.get_servers() or {}
-    local autocmd = require('utils.autocmds').autocmd
-    local augroup = require('utils.autocmds').augroup
-    local icons = require('config.icons').diagnostics
+    local autocmd = Slivers.autocmds.autocmd
+    local augroup = Slivers.autocmds.augroup
+    local servers = LangSliver.get_servers() or {}
+    local icons = IconSliver.diagnostics
 
     autocmd('LspAttach', {
       group = augroup 'lsp_attach',
@@ -43,9 +42,9 @@ return {
     }
 
     local ensure_installed = vim.tbl_keys(servers)
-    vim.list_extend(ensure_installed, lang.get_formatters() or {})
-    vim.list_extend(ensure_installed, lang.get_linters() or {})
-    vim.list_extend(ensure_installed, lang.get_debuggers() or {})
+    vim.list_extend(ensure_installed, LangSliver.get_formatters() or {})
+    vim.list_extend(ensure_installed, LangSliver.get_linters() or {})
+    vim.list_extend(ensure_installed, LangSliver.get_debuggers() or {})
 
     local has_blink, blink = pcall(require, 'blink.cmp')
 

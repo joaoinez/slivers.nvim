@@ -12,12 +12,10 @@ return {
     },
   },
   opts = function()
-    local lang = require 'config.lang'
-
     return {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        local disable_filetypes = lang.get_ft_with_disabled_formatters()
+        local disable_filetypes = LangSliver.get_ft_with_disabled_formatters()
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
@@ -29,7 +27,7 @@ return {
           lsp_format = lsp_format_opt,
         }
       end,
-      formatters_by_ft = lang.get_formatters_by_ft(),
+      formatters_by_ft = LangSliver.get_formatters_by_ft(),
     }
   end,
 }

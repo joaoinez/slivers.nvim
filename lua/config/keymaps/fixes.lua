@@ -1,4 +1,4 @@
-local maps = require('utils.keymaps').get_mappings_template()
+local maps = Slivers.keymaps.get_mappings_template()
 
 -- Better up/down
 maps.n['j'] = { "v:count == 0 ? 'gj' : 'j'", expr = true, desc = 'Move cursor down' }
@@ -70,4 +70,4 @@ maps.n['<C-a>'] = { -- to move to the previous position press ctrl + oo
 maps.n['0'] = { '^', desc = 'Go to the fist character of the line (aliases 0 to ^)' }
 maps.n['^'] = { '0', desc = 'Go to the beginning of the line (aliases ^ to 0)' }
 
-require('utils.keymaps').set_mappings(maps)
+Slivers.keymaps.set_mappings(maps)

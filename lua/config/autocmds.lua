@@ -1,5 +1,7 @@
-local autocmd = require('utils.autocmds').autocmd
-local augroup = require('utils.autocmds').augroup
+---@diagnostic disable: missing-fields
+
+local autocmd = Slivers.autocmds.autocmd
+local augroup = Slivers.autocmds.augroup
 
 -- Check if we need to reload the file when it is changed
 autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
@@ -67,7 +69,7 @@ autocmd('FileType', {
 vim.api.nvim_set_hl(0, 'HighlightURL', { underline = true })
 autocmd({ 'VimEnter', 'FileType', 'BufEnter', 'WinEnter' }, {
   desc = 'URL Highlighting',
-  callback = function() require('utils.misc').set_url_effect() end,
+  callback = function() Slivers.misc.set_url_effect() end,
 })
 
 -- Create parent directories when saving a file.

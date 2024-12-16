@@ -14,7 +14,7 @@ end
 
 --- Toggle diagnostics
 function M.toggle_diagnostics()
-  local icons = require('config.icons').diagnostics
+  local icons = IconSliver.diagnostics
   local state = not vim.g.diagnostics_enabled
 
   vim.g.diagnostics_enabled = state

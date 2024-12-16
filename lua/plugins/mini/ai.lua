@@ -5,7 +5,7 @@ return {
   event = 'VeryLazy',
   opts = function()
     local ai = require 'mini.ai'
-    local mini = require 'utils.mini'
+    local mini = Slivers.mini
 
     return {
       n_lines = 500,
@@ -32,8 +32,8 @@ return {
   config = function(_, opts)
     require('mini.ai').setup(opts)
 
-    require('utils.lazy').on_load('which-key.nvim', function()
-      vim.schedule(function() require('utils.mini').ai_whichkey(opts) end)
+    Slivers.lazy.on_load('which-key.nvim', function()
+      vim.schedule(function() Slivers.mini.ai_whichkey(opts) end)
     end)
   end,
 }

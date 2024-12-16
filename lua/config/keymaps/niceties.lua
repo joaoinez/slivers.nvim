@@ -1,4 +1,4 @@
-local maps = require('utils.keymaps').get_mappings_template()
+local maps = Slivers.keymaps.get_mappings_template()
 
 --  Use CTRL+<hjkl> to switch between windows
 maps.n['<C-h>'] = { '<C-w><C-h>', desc = 'Move focus to the left window' }
@@ -52,7 +52,7 @@ maps.n['<leader>cW'] = { [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], desc = 'Rename W
 maps.n['<leader>qQ'] = { vim.diagnostic.setloclist, desc = 'Diagnostic Quickfix List' }
 maps.n['<leader>ql'] = { vim.diagnostic.open_float, desc = 'Line Diagnostics' }
 -- TODO: Check snacks toggle functionality
-maps.n['<leader>tx'] = { function() require('utils.actions').toggle_diagnostics() end, desc = 'Diagnostics' }
+maps.n['<leader>tx'] = { function() Slivers.actions.toggle_diagnostics() end, desc = 'Diagnostics' }
 
 -- keywordprg
 maps.n['<leader>K'] = { '<cmd>norm! K<cr>', desc = 'Keywordprg' }
@@ -72,18 +72,18 @@ maps.t['<C-l>'] = { '<C-\\><C-n><C-w>l', desc = 'Move focus to the right window'
 maps.n['<leader>,l'] = { function() require('lazy').check() end, desc = 'Lazy' }
 
 -- mason
-if require('utils.lazy').is_available 'mason.nvim' then
+if Slivers.lazy.is_available 'mason.nvim' then
   maps.n['<leader>,m'] = { '<cmd>Mason<cr>', desc = 'Mason' }
   maps.n['<leader>,M'] = { '<cmd>MasonToolsUpdate<cr>', desc = 'Mason Update' }
 end
 
 -- treesitter
-if require('utils.lazy').is_available 'nvim-treesitter' then
+if Slivers.lazy.is_available 'nvim-treesitter' then
   maps.n['<leader>,t'] = { '<cmd>TSInstallInfo<cr>', desc = 'Treesitter' }
   maps.n['<leader>,T'] = { '<cmd>TSUpdate<cr>', desc = 'Treesitter Update' }
 end
 
-maps.n['<leader>fe'] = { function() require('utils.actions').explore() end, desc = 'File Explorer' }
+maps.n['<leader>fe'] = { function() Slivers.actions.explore() end, desc = 'File Explorer' }
 
 -- TODO: See git conflict
 --
@@ -92,4 +92,4 @@ maps.n['<leader>fe'] = { function() require('utils.actions').explore() end, desc
 -- nmap('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', '[G]it [C]onflict Choose [B]ase')
 -- nmap('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', '[G]it [C]onflict Choose [S]tashed')
 
-require('utils.keymaps').set_mappings(maps)
+Slivers.keymaps.set_mappings(maps)

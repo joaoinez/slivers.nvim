@@ -1,4 +1,4 @@
-local maps = require('utils.keymaps').get_mappings_template()
+local maps = Slivers.keymaps.get_mappings_template()
 
 -- Disable arrow keys in normal mode
 maps.n['<left>'] = { '<nop>' }
@@ -10,4 +10,4 @@ maps.n['<right>'] = { '<nop>' }
 maps.n['s'] = { '<nop>' }
 maps.x['s'] = { '<nop>' }
 
-require('utils.keymaps').set_mappings(maps)
+Slivers.keymaps.set_mappings(maps)

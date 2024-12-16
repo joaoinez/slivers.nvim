@@ -19,7 +19,7 @@ return {
     },
     appearance = {
       nerd_font_variant = 'mono',
-      kind_icons = require('config.icons').cmp,
+      kind_icons = IconSliver.cmp,
     },
     completion = {
       accept = {

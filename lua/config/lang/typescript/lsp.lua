@@ -77,8 +77,8 @@ function M.get_servers()
         },
       },
       on_attach = function(client)
-        local maps = require('utils.keymaps').get_mappings_template()
-        local lsp = require 'utils.lsp'
+        local maps = Slivers.keymaps.get_mappings_template()
+        local lsp = Slivers.lsp
 
         maps.n['gD'] = {
           function()
@@ -167,14 +167,14 @@ function M.get_servers()
           end)
         end
 
-        require('utils.keymaps').set_mappings(maps)
+        Slivers.keymaps.set_mappings(maps)
       end,
     },
   }
 
   local vue_plugin = {
     name = '@vue/typescript-plugin',
-    location = require('utils.mason').get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
+    location = Slivers.mason.get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
     languages = { 'vue' },
     configNamespace = 'typescript',
     enableForWorkspaceTypeScriptVersions = true,
