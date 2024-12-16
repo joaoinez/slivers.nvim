@@ -102,7 +102,6 @@ return {
 
       -- Toggles
       { '<leader>t', group = 'toggle' },
-      { '<leader>tB', icon = { icon = '󰊢', color = 'orange' } },
       { '<leader>tD', icon = { icon = '󰊢', color = 'red' } },
       { '<leader>tm', icon = { icon = '', color = 'purple' } },
       { '<leader>tt', icon = { icon = '', color = 'red' } },

@@ -165,7 +165,7 @@ return {
           'progress',
         },
       },
-      extensions = { 'neo-tree', 'lazy' },
+      extensions = { 'lazy' },
     }
 
     if Slivers.lazy.is_available 'trouble.nvim' then
@@ -181,7 +181,7 @@ return {
 
       table.insert(opts.sections.lualine_c, {
         symbols and symbols.get,
-        cond = function() return vim.b.trouble_lualine ~= false and symbols.has() end,
+        cond = function() return symbols.has() end,
       })
     end
 
