@@ -2,7 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   enabled = true,
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-context',
+    { 'nvim-treesitter/nvim-treesitter-context', opts = { zindex = 1 } },
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   build = ':TSUpdate',

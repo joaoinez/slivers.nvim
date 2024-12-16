@@ -59,7 +59,6 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch' },
-
         lualine_c = {
           {
             'diagnostics',
@@ -71,19 +70,19 @@ return {
             },
           },
           {
-            'filetype',
-            icon_only = true,
-            padding = { left = 1, right = 0 },
-            separator = '',
-          },
-          {
             'filename',
             symbols = {
               modified = '',
               readonly = '',
             },
             path = 4,
-            padding = { left = 0, right = 1 },
+            separator = '',
+          },
+          {
+            'filetype',
+            colored = true,
+            icon_only = true,
+            padding = { left = 0, right = 0 },
           },
         },
         lualine_x = {

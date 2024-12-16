@@ -15,6 +15,7 @@ return {
         minimap_width = 25,
         max_minimap_height = nil,
         window_border = 'none',
+        z_index = 2,
       },
       exclude_filetypes = {
         'help',

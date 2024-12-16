@@ -50,6 +50,16 @@ return {
       end
     end
 
+    local default = {
+      layout_config = {
+        anchor = 'N',
+        height = 0.75,
+        width = 0.66,
+        preview_width = 0.6,
+        prompt_position = 'top',
+      },
+    }
+
     local dropdown = {
       theme = 'dropdown',
       sorting_strategy = 'ascending',
@@ -62,13 +72,6 @@ return {
     telescope.setup {
       defaults = {
         sorting_strategy = 'ascending',
-        layout_config = {
-          anchor = 'N',
-          height = 0.75,
-          width = 0.66,
-          preview_width = 0.6,
-          prompt_position = 'top',
-        },
         prompt_prefix = ' ',
         selection_caret = ' ',
         mappings = {
@@ -91,7 +94,10 @@ return {
         find_files = {
           find_command = find_command,
           hidden = true,
+          layout_config = default.layout_config,
         },
+        live_grep = default,
+        buffers = default,
         keymaps = {
           theme = 'ivy',
         },

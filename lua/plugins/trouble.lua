@@ -57,7 +57,7 @@ return {
   },
   opts = {
     win = {
-      position = 'right',
+      position = 'left',
       size = 0.2,
     },
     modes = {
