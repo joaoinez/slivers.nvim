@@ -11,12 +11,12 @@ return {
   },
   cmd = { 'DapInstall', 'DapUninstall' },
   keys = {
+    { '<leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Toggle Breakpoint' },
     {
       '<leader>dB',
       function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end,
       desc = 'Breakpoint Condition',
     },
-    { '<leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Toggle Breakpoint' },
     { '<leader>dc', function() require('dap').continue() end, desc = 'Continue' },
     { '<leader>de', function() require('dapui').eval() end, desc = 'Eval', mode = { 'n', 'v' } },
     { '<leader>di', function() require('dap').step_into() end, desc = 'Step Into' },
@@ -24,9 +24,9 @@ return {
     { '<leader>dl', function() require('dap').run_last() end, desc = 'Run Last' },
     { '<leader>do', function() require('dap').step_out() end, desc = 'Step Out' },
     { '<leader>dO', function() require('dap').step_over() end, desc = 'Step Over' },
-    { '<leader>dr', function() require('dap').continue() end, desc = 'Run' },
     { '<leader>dp', function() require('dap').pause() end, desc = 'Pause' },
-    { '<leader>dt', function() require('dap').terminate() end, desc = 'Terminate' },
+    { '<leader>dr', function() require('dap').continue() end, desc = 'Start' },
+    { '<leader>dt', function() require('dap').terminate() end, desc = 'Stop' },
     { '<leader>td', function() require('dapui').toggle {} end, desc = 'Debugger' },
   },
   config = function()
