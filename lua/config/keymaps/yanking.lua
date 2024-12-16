@@ -1,42 +1,41 @@
-local maps = Slivers.keymaps.get_mappings_template()
+local map = Slivers.keymaps.safe_keymap_set
 
 -- Copy entire file
-maps.n['<leader>y'] = { 'gg0yG', desc = 'Yank File' }
+map('n', '<leader>y', 'gg0yG', { desc = 'Yank File' })
 
 -- Duplicate line
-maps.n['yd'] = { '<cmd>norm yy<cr>p', desc = 'Duplicate line' }
+map('n', 'yd', '<cmd>norm yy<cr>p', { desc = 'Duplicate line' })
 
 -- Duplicate line and comment the original
-maps.n['yc'] = { '<cmd>norm yygcc<cr>p', desc = 'Duplicate line and comment original' }
+map('n', 'yc', '<cmd>norm yygcc<cr>p', { desc = 'Duplicate line and comment original' })
 
+-- TODO: Check these keymaps
+--
 -- -- Remap default yank in visual mode to yy for faster yanks
--- maps.x['yy'] = { 'y', desc = 'Yank selection' }
+-- map('x', 'yy', 'y', { desc = 'Yank selection' })
 
 -- -- Dupicate text selection
--- maps.x['yd'] = {
---   'y`>p',
+-- map('x', 'yd', 'y`>p', {
 --   remap = true,
 --   desc = 'Duplicate selection',
--- }
+-- })
 --
 -- -- Duplicate selection and comment the original
--- maps.x['yc'] = {
---   'ygvgc`>p',
---   remap = true,
---   desc = 'Duplicate selection and comment original',
--- }
+-- map('x', 'yc', { 'ygvgc`>p', remap = true, desc = 'Duplicate selection and comment original' })
 
--- Select recently pasted, yanked or changed text
-maps.n['gy'] = { '`[v`]', desc = 'Select recently pasted, yanked or changed text' }
+-- -- Select recently pasted, yanked or changed text
+-- map('n', 'gy', '`[v`]', { desc = 'Select recently pasted, yanked or changed text' })
 
 -- Make 'c' key not copy to clipboard when changing a character.
-maps.n['c'] = { '"_c', desc = 'Change without yanking' }
-maps.n['C'] = { '"_C', desc = 'Change without yanking' }
-maps.x['c'] = { '"_c', desc = 'Change without yanking' }
-maps.x['C'] = { '"_C', desc = 'Change without yanking' }
+map('n', 'c', '"_c', { desc = 'Change without yanking' })
+map('n', 'C', '"_C', { desc = 'Change without yanking' })
+map('x', 'c', '"_c', { desc = 'Change without yanking' })
+map('x', 'C', '"_C', { desc = 'Change without yanking' })
 
 -- Make 'x' key not copy to clipboard when deleting a character.
-maps.n['x'] = {
+map(
+  'n',
+  'x',
   -- Also let's allow 'x' key to delete blank lines in normal mode.
   function()
     if vim.fn.col '.' == 1 then
@@ -51,12 +50,14 @@ maps.n['x'] = {
       vim.api.nvim_feedkeys('"_x', 'n', false)
     end
   end,
-  desc = 'Delete character without yanking it',
-}
-maps.x['x'] = { '"_x', desc = 'Delete all characters in line' }
+  { desc = 'Delete character without yanking it' }
+)
+map('x', 'x', '"_x', { desc = 'Delete all characters in line' })
 
 -- Same for shifted X
-maps.n['X'] = {
+map(
+  'n',
+  'X',
   -- Also let's allow 'x' key to delete blank lines in normal mode.
   function()
     if vim.fn.col '.' == 1 then
@@ -71,14 +72,12 @@ maps.n['X'] = {
       vim.api.nvim_feedkeys('"_X', 'n', false)
     end
   end,
-  desc = 'Delete before character without yanking it',
-}
+  { desc = 'Delete before character without yanking it' }
+)
 
 -- Delete all characters in line
-maps.x['X'] = { '"_X', desc = 'Delete all characters in line' }
+map('x', 'X', '"_X', { desc = 'Delete all characters in line' })
 
 -- Override nvim default behavior so it doesn't auto-yank when pasting on visual mode.
-maps.x['p'] = { 'P', desc = "Paste content you've previourly yanked" }
-maps.x['P'] = { 'p', desc = 'Yank what you are going to override, then paste' }
-
-Slivers.keymaps.set_mappings(maps)
+map('x', 'p', 'P', { desc = "Paste content you've previourly yanked" })
+map('x', 'P', 'p', { desc = 'Yank what you are going to override, then paste' })

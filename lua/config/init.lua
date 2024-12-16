@@ -1,4 +1,3 @@
--- TODO: Apply these variables
 _G.Slivers = require 'utils'
 _G.LangSliver = require 'config.lang'
 _G.IconSliver = require 'config.icons'

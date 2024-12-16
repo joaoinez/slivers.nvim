@@ -77,21 +77,20 @@ function M.get_servers()
         },
       },
       on_attach = function(client)
-        local maps = Slivers.keymaps.get_mappings_template()
+        local map = Slivers.keymaps.safe_keymap_set
         local lsp = Slivers.lsp
 
-        maps.n['gD'] = {
-          function()
-            local params = vim.lsp.util.make_position_params()
-            lsp.execute {
-              command = 'typescript.goToSourceDefinition',
-              arguments = { params.textDocument.uri, params.position },
-              open = true,
-            }
-          end,
-          desc = 'Goto Source Definition',
-        }
-        maps.n['gR'] = {
+        map('n', 'gD', function()
+          local params = vim.lsp.util.make_position_params()
+          lsp.execute {
+            command = 'typescript.goToSourceDefinition',
+            arguments = { params.textDocument.uri, params.position },
+            open = true,
+          }
+        end, { desc = 'Goto Source Definition' })
+        map(
+          'n',
+          'gR',
           function()
             lsp.execute {
               command = 'typescript.findAllFileReferences',
@@ -99,28 +98,18 @@ function M.get_servers()
               open = true,
             }
           end,
-          desc = 'File References',
-        }
-        maps.n['<leader>co'] = {
-          lsp.action['source.organizeImports'],
-          desc = 'Organize Imports',
-        }
-        maps.n['<leader>cm'] = {
-          lsp.action['source.addMissingImports.ts'],
-          desc = 'Add missing imports',
-        }
-        maps.n['<leader>cu'] = {
-          lsp.action['source.removeUnused.ts'],
-          desc = 'Remove unused imports',
-        }
-        maps.n['<leader>cF'] = {
-          lsp.action['source.fixAll.ts'],
-          desc = 'Fix all diagnostics',
-        }
-        maps.n['<leader>cV'] = {
+          { desc = 'File References' }
+        )
+        map('n', '<leader>co', lsp.action['source.organizeImports'], { desc = 'Organize Imports' })
+        map('n', '<leader>cm', lsp.action['source.addMissingImports.ts'], { desc = 'Add missing imports' })
+        map('n', '<leader>cu', lsp.action['source.removeUnused.ts'], { desc = 'Remove unused imports' })
+        map('n', '<leader>cF', lsp.action['source.fixAll.ts'], { desc = 'Fix all diagnostics' })
+        map(
+          'n',
+          '<leader>cV',
           function() lsp.execute { command = 'typescript.selectTypeScriptVersion' } end,
-          desc = 'Select TS workspace version',
-        }
+          { desc = 'Select TS workspace version' }
+        )
 
         client.commands['_typescript.moveToFileRefactoring'] = function(command, _)
           ---@type string, string, lsp.Range
@@ -166,8 +155,6 @@ function M.get_servers()
             end)
           end)
         end
-
-        Slivers.keymaps.set_mappings(maps)
       end,
     },
   }
