@@ -86,7 +86,7 @@ return {
 
       -- Git
       { '<leader>g', group = 'git', icon = { icon = '󰊢', color = 'orange' }, mode = { 'n', 'v' } },
-      { '<leader>gB', icon = { icon = '󰊤', color = '#000000' } },
+      { '<leader>gB', icon = { icon = '󰊤', color = 'grey' } },
       { '<leader>gg', icon = { icon = '', color = 'blue' } },
 
       -- Messages
