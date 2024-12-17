@@ -12,7 +12,7 @@ M.config = {
         desc = 'Find Text',
         action = ":lua require('snacks').dashboard.pick('live_grep')",
       },
-      { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':Oil' },
+      { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':lua Slivers.actions.explore()' },
       {
         icon = ' ',
         key = 'c',
