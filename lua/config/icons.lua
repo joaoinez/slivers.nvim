@@ -44,10 +44,12 @@ M.cmp = {
   Package = '',
   String = '',
 
-  Codeium = '󰘦',
+  Codeium = '',
   Copilot = '',
-  Supermaven = '',
-  TabNine = '󰏚',
+  Supermaven = '',
+  TabNine = '',
+  minuet = '',
+  codecompanion = '',
 }
 
 M.dap = {

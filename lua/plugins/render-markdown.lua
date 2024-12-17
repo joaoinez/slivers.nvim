@@ -1,11 +1,12 @@
 return {
   'MeanderingProgrammer/render-markdown.nvim',
   enabled = true,
-  ft = { 'markdown', 'norg', 'rmd', 'org' },
+  ft = { 'markdown', 'norg', 'rmd', 'org', 'Avante', 'codecompanion' },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
+    file_types = { 'markdown', 'norg', 'rmd', 'org', 'Avante', 'codecompanion' },
     code = {
       sign = false,
       width = 'block',

@@ -1,6 +1,6 @@
 return {
   'saghen/blink.cmp',
-  dependencies = 'rafamadriz/friendly-snippets',
+  dependencies = { 'rafamadriz/friendly-snippets' },
   version = 'v0.*',
   event = 'InsertEnter',
   opts = {
@@ -45,8 +45,13 @@ return {
         -- dont show LuaLS require statements when lazydev has items
         lsp = { fallback_for = { 'lazydev' } },
         lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+        codecompanion = {
+          name = 'CodeCompanion',
+          module = 'codecompanion.providers.completion.blink',
+          enabled = true,
+        },
       },
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'codecompanion' },
       cmdline = {},
     },
   },

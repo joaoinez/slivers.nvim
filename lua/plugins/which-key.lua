@@ -10,13 +10,14 @@ return {
     },
   },
   opts = {
+    preset = 'helix',
     spec = {
       -- [[ Actions ]]
-      -- Harpoon
-      { '<leader>a', icon = { icon = '󱡀', color = 'azure' } },
-
       -- Breakpoint
       { '<leader>b', icon = { icon = '', color = 'red' } },
+
+      -- Harpoon
+      { '<leader>h', icon = { icon = '󱡀', color = 'azure' } },
 
       -- Keywordprg
       { '<leader>K', icon = { icon = '', color = 'grey' } },
@@ -76,7 +77,7 @@ return {
       { '<leader>dt', icon = { icon = '', color = 'red' } },
 
       -- Find
-      { '<leader>f', group = 'find' },
+      { '<leader>f', group = 'find', mode = { 'n', 'v' } },
       { '<leader>ff', icon = { icon = '', color = 'green' } },
       { '<leader>fe', icon = { icon = '󰙅', color = 'purple' } },
       { '<leader>fh', icon = { icon = '󱡀', color = 'azure' } },
@@ -105,6 +106,9 @@ return {
       { '<leader>tD', icon = { icon = '󰊢', color = 'red' } },
       { '<leader>tm', icon = { icon = '', color = 'purple' } },
       { '<leader>tt', icon = { icon = '', color = 'red' } },
+
+      -- AI
+      { '<leader>a', group = 'ai', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
 
       -- Settings
       { '<leader>,', group = 'settings', icon = { icon = '󰒓', color = 'grey' } },

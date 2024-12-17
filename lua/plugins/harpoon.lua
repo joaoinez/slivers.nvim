@@ -5,7 +5,7 @@ return {
   event = 'VeryLazy',
   keys = {
     {
-      '<leader>a',
+      '<leader>h',
       function() require('harpoon'):list():add() end,
       desc = 'Harpoon File',
     },
