@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   'nvim-lualine/lualine.nvim',
   enabled = true,
@@ -148,7 +149,16 @@ return {
           'progress',
         },
       },
-      extensions = { 'lazy' },
+      extensions = {
+        'lazy',
+        'man',
+        'mason',
+        'nvim-dap-ui',
+        'oil',
+        'overseer',
+        'toggleterm',
+        'trouble',
+      },
     }
 
     if Slivers.lazy.is_available 'trouble.nvim' then

@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   'Isrothy/neominimap.nvim',
   enabled = true,

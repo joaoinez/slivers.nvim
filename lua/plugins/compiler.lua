@@ -1,6 +1,7 @@
 -- INFO: To Build and run a godot scene, use the command godot /my/scene.tscn on the terminal.
 -- This works really well: It's fast and simple.
 
+---@type LazySpec
 return {
   {
     'Zeioth/compiler.nvim',

@@ -1,5 +1,6 @@
 ---@diagnostic disable: missing-parameter, missing-fields
 
+---@type LazySpec
 return {
   'folke/trouble.nvim',
   enabled = true,

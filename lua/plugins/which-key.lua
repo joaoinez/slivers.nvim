@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   'folke/which-key.nvim',
   enabled = true,
@@ -88,6 +89,7 @@ return {
       { '<leader>fe', icon = { icon = '󰙅', color = 'purple' } },
       { '<leader>fh', icon = { icon = '󱡀', color = 'azure' } },
       { '<leader>fH', icon = { icon = '󰋖', color = 'grey' } },
+      { '<leader>fM', icon = { icon = '', color = 'grey' } },
       { '<leader>ft', icon = { icon = '', color = 'blue' } },
       { '<leader>f?', icon = { icon = '', color = 'grey' } },
 
@@ -103,7 +105,7 @@ return {
       -- Quickfix/Diagnostics
       { '<leader>q', group = 'quickfix/diagnostics' },
       { '<leader>ql', icon = { icon = '󰙅', color = 'red' } },
-      { '<leader>qQ', icon = { icon = '󰙅', color = 'red' } },
+      -- { '<leader>qQ', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qx', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qX', icon = { icon = '󰙅', color = 'red' } },
 

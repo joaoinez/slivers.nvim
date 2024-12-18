@@ -1,5 +1,6 @@
 ---@diagnostic disable: missing-fields
 
+---@type LazySpec
 return {
   'mfussenegger/nvim-dap',
   enabled = true,

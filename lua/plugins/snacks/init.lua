@@ -1,5 +1,6 @@
 ---@diagnostic disable: missing-fields
 
+---@type LazySpec
 return {
   'folke/snacks.nvim',
   enabled = true,

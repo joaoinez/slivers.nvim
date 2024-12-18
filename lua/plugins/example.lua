@@ -1,5 +1,6 @@
 -- [[ Example Plugin ]]
 
+---@type LazySpec
 return true and {}
   or {
     'example/plugin.nvim',

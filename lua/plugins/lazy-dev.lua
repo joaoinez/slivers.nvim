@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   {
     'folke/lazydev.nvim',
@@ -10,9 +11,7 @@ return {
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-        { path = 'utils', words = { 'Slivers' } },
-        { path = 'configs.lang', words = { 'LangSliver' } },
-        { path = 'configs.icons', words = { 'IconSliver' } },
+        { path = 'lazy.nvim', words = { 'LazyVim', 'LazySpec', 'Slivers', 'LangSliver', 'IconSliver' } },
       },
     },
   },

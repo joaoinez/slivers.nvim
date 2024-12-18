@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   'ibhagwan/fzf-lua',
   enabled = true,
@@ -22,15 +23,17 @@ return {
     { '<leader>fj', '<cmd>FzfLua jumps<cr>', desc = 'Jumplist' },
     { '<leader>f?', '<cmd>FzfLua keymaps<cr>', desc = 'Keymaps' },
     { '<leader>fM', '<cmd>FzfLua man_pages<cr>', desc = 'Man Pages' },
-    { '<leader>f.', '<cmd>FzfLua resume<cr>', desc = 'Resume' },
+    { '<leader>f.', '<cmd>FzfLua resume<cr>', desc = 'Resume Search' },
     { '<leader>fw', '<cmd>FzfLua grep_cword<cr>', desc = 'Find Word (project)' },
     { '<leader>fw', '<cmd>FzfLua grep_visual<cr>', mode = 'v', desc = 'Find Selection (project)' },
     { '<leader>,c', '<cmd>FzfLua colorschemes<cr>', desc = 'Colorscheme' },
   },
+  ---@diagnostic disable-next-line: unused-local
   opts = function(_, opts)
     local config = require 'fzf-lua.config'
     local actions = require 'fzf-lua.actions'
 
+    -- Previewer navigation
     config.defaults.keymap.fzf['ctrl-u'] = 'half-page-up'
     config.defaults.keymap.fzf['ctrl-d'] = 'half-page-down'
     config.defaults.keymap.fzf['ctrl-x'] = 'jump'
@@ -47,9 +50,7 @@ return {
     -- Image previewer
     local img_previewer ---@type string[]?
     for _, v in ipairs {
-      { cmd = 'ueberzug', args = {} },
       { cmd = 'chafa', args = { '{file}', '--format=symbols' } },
-      { cmd = 'viu', args = { '-b' } },
     } do
       if vim.fn.executable(v.cmd) == 1 then
         img_previewer = vim.list_extend({ v.cmd }, v.args)
@@ -64,7 +65,6 @@ return {
         ['--no-scrollbar'] = true,
       },
       defaults = {
-        -- formatter = "path.filename_first",
         formatter = 'path.dirname_first',
       },
       previewers = {
@@ -76,7 +76,6 @@ return {
             ['gif'] = img_previewer,
             ['webp'] = img_previewer,
           },
-          ueberzug_scaler = 'fit_contain',
         },
       },
       -- Custom LazyVim option to configure vim.ui.select
