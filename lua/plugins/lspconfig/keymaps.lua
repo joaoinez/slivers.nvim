@@ -1,16 +1,37 @@
+---@diagnostic disable: unused-local
+
 local M = {}
 
 --- @param client vim.lsp.Client|nil The client where the lsp mappings will load.
 --- @param bufnr integer The bufnr where the lsp mappings will load.
 function M.apply_user_lsp_mappings(client, bufnr)
-  local builtin = require 'telescope.builtin'
   local supports = Slivers.lsp.supports(client)
   local map = Slivers.keymaps.safe_keymap_set
 
-  map('n', 'gd', function() builtin.lsp_definitions() end, { desc = 'Goto Definition (telescope)' })
-  map('n', 'gr', function() builtin.lsp_references() end, { desc = 'Goto References (telescope)' })
-  map('n', 'gI', function() builtin.lsp_implementations() end, { desc = 'Goto Implementation (telescope)' })
-  map('n', 'gy', function() builtin.lsp_type_definitions() end, { desc = 'Goto Type Definition (telescope)' })
+  map(
+    'n',
+    'gd',
+    '<cmd>FzfLua lsp_definitions jump_to_single_result=true ignore_current_line=true<cr>',
+    { desc = 'Goto Definition (fzf)' }
+  )
+  map(
+    'n',
+    'gr',
+    '<cmd>FzfLua lsp_references jump_to_single_result=true ignore_current_line=true<cr>',
+    { desc = 'Goto References (fzf)', nowait = true }
+  )
+  map(
+    'n',
+    'gI',
+    '<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>',
+    { desc = 'Goto Implementation (fzf)' }
+  )
+  map(
+    'n',
+    'gt',
+    '<cmd>FzfLua lsp_typedefs jump_to_single_result=true ignore_current_line=true<cr>',
+    { desc = 'Goto Type Definition (fzf)' }
+  )
   map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
   map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Rename Variable' })
   map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code Action' })

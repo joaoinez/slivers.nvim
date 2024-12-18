@@ -14,6 +14,12 @@ M.config = {
       },
       { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':lua Slivers.actions.explore()' },
       {
+        icon = ' ',
+        key = 'T',
+        desc = 'Todos',
+        action = ":lua require('todo-comments.fzf').todo({ keywords = { 'TODO', 'FIX', 'FIXME' } })",
+      },
+      {
         icon = ' ',
         key = 'c',
         desc = 'Config',

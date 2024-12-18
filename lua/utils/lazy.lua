@@ -1,6 +1,9 @@
 ---@class utils.lazy
 local M = {}
 
+---@param name string
+function M.get_plugin(name) return require('lazy.core.config').spec.plugins[name] end
+
 --- Check if a plugin is defined in lazy. Useful with lazy loading
 --- when a plugin is not necessarily loaded yet.
 --- @param plugin string The plugin to search for.
@@ -31,6 +34,22 @@ function M.on_load(name, fn)
       end,
     })
   end
+end
+
+---@param fn fun()
+function M.on_very_lazy(fn)
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'VeryLazy',
+    callback = function() fn() end,
+  })
+end
+
+---@param name string
+function M.opts(name)
+  local plugin = M.get_plugin(name)
+  if not plugin then return {} end
+  local Plugin = require 'lazy.core.plugin'
+  return Plugin.values(plugin, 'opts', false)
 end
 
 return M

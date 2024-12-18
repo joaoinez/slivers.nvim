@@ -13,12 +13,12 @@ return {
     {
       '<leader>qx',
       '<cmd>Trouble diagnostics toggle<cr>',
-      desc = 'Workspace Diagnostics',
+      desc = 'Diagnostics (workspace)',
     },
     {
       '<leader>qq',
-      '<cmd>Trouble telescope toggle<cr>',
-      desc = 'Telescope Quicklist',
+      '<cmd>Trouble fzf toggle<cr>',
+      desc = 'Quickfix List',
     },
     {
       '<leader>cd',
@@ -59,11 +59,6 @@ return {
     win = {
       position = 'left',
       size = 0.2,
-    },
-    modes = {
-      telescope = {
-        focus = true,
-      },
     },
   },
 }

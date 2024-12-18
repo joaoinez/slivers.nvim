@@ -6,7 +6,7 @@ return {
   dependencies = {
     { 'williamboman/mason.nvim', build = ':MasonUpdate', config = true },
     'williamboman/mason-lspconfig.nvim',
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    { 'WhoIsSethDaniel/mason-tool-installer.nvim', build = ':MasonToolsUpdate' },
   },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   config = function()

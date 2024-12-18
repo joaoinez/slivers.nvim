@@ -73,4 +73,43 @@ M.diagnostics = {
   virtual = '● ',
 }
 
+M.git = {
+  signs = {
+    add = { text = '▎' },
+    change = { text = '▎' },
+    delete = { text = '' },
+    topdelete = { text = '' },
+    changedelete = { text = '▎' },
+    untracked = { text = '▎' },
+  },
+  staged = {
+    add = { text = '▎' },
+    change = { text = '▎' },
+    delete = { text = '' },
+    topdelete = { text = '' },
+    changedelete = { text = '▎' },
+  },
+}
+
+M.lualine = {
+  section_separators = { left = '', right = '' },
+  component_separators = { left = '', right = '' },
+  file = {
+    modified = '',
+    readonly = '',
+  },
+  diff = {
+    added = ' ',
+    modified = ' ',
+    removed = ' ',
+  },
+  lsp = {
+    lua_ls = '󰢱',
+    eslint = '󰱺',
+    tailwindcss = '󱏿',
+    volar = '󰡄',
+    vtsls = '󰛦',
+  },
+}
+
 return M

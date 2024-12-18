@@ -27,6 +27,8 @@ return {
         enabled = false,
       },
     },
+    input = { enabled = true },
+    notifier = { enabled = true },
     quickfile = { enabled = true },
     scratch = {
       enabled = true,

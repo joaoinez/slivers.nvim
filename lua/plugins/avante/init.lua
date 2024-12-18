@@ -7,7 +7,7 @@ return {
   keys = require('plugins.avante.keymaps').keys,
   opts = {
     behaviour = {
-      auto_suggestions = true,
+      auto_suggestions = false,
     },
     mappings = require('plugins.avante.keymaps').mappings,
     provider = 'ollama',

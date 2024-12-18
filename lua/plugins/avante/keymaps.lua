@@ -50,8 +50,7 @@ M.mappings = {
 }
 
 function M.keys(_, keys)
-  local opts =
-    require('lazy.core.plugin').values(require('lazy.core.config').spec.plugins['avante.nvim'], 'opts', false)
+  local opts = Slivers.lazy.opts 'avante.nvim'
 
   local mappings = {
     {

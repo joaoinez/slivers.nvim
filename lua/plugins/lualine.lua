@@ -5,19 +5,24 @@ return {
     'letieu/harpoon-lualine',
   },
   event = 'VeryLazy',
-  init = function()
-    vim.g.lualine_laststatus = vim.o.laststatus
-    if vim.fn.argc(-1) > 0 then
-      vim.o.statusline = ' '
-    else
-      vim.o.laststatus = 0
-    end
-  end,
   opts = function()
     -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require 'lualine_require'
     lualine_require.require = require
     local catppuccin = require('catppuccin.palettes').get_palette 'mocha'
+
+    local clients_lsp = function()
+      local bufnr = vim.api.nvim_get_current_buf()
+
+      local clients = Slivers.lsp.get_clients { bufnr = bufnr }
+      if next(clients) == nil then return '' end
+
+      local c = {}
+      for _, client in pairs(clients) do
+        table.insert(c, IconSliver.lualine.lsp[client.name] or client.name)
+      end
+      return table.concat(c, ' ')
+    end
 
     local function get_harpoon_indicator(prefix, suffix)
       return function(harpoon_entry)
@@ -45,8 +50,8 @@ return {
       options = {
         theme = 'auto',
         globalstatus = vim.o.laststatus == 3,
-        section_separators = { left = '', right = '' },
-        component_separators = { left = '', right = '' },
+        section_separators = IconSliver.lualine.section_separators,
+        component_separators = IconSliver.lualine.component_separators,
         disabled_filetypes = {
           statusline = {
             'dashboard',
@@ -63,18 +68,15 @@ return {
           {
             'diagnostics',
             symbols = {
-              error = ' ',
-              warn = ' ',
-              info = ' ',
-              hint = ' ',
+              error = IconSliver.diagnostics.error .. ' ',
+              warn = IconSliver.diagnostics.warn .. ' ',
+              info = IconSliver.diagnostics.info .. ' ',
+              hint = IconSliver.diagnostics.hint .. ' ',
             },
           },
           {
             'filename',
-            symbols = {
-              modified = '',
-              readonly = '',
-            },
+            symbols = IconSliver.lualine.file,
             path = 4,
             separator = '',
           },
@@ -105,49 +107,21 @@ return {
           },
         },
         lualine_y = {
-          -- stylua: ignore
           {
             ---@diagnostic disable-next-line: undefined-field
-            function() return require("noice").api.status.command.get() end,
+            function() return require('noice').api.status.mode.get() end,
             ---@diagnostic disable-next-line: undefined-field
-            cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            color = function()
-              return { fg = catppuccin.pink }
-            end
+            cond = function() return package.loaded['noice'] and require('noice').api.status.mode.has() end,
+            color = function() return { fg = catppuccin.lavender } end,
           },
-          -- stylua: ignore
           {
-            ---@diagnostic disable-next-line: undefined-field
-            function() return require("noice").api.status.mode.get() end,
-            ---@diagnostic disable-next-line: undefined-field
-            cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-            color = function()
-              return { fg = catppuccin.lavender }
-            end
-          },
-          -- stylua: ignore
-          {
-            function() return "  " .. require("dap").status() end,
-            cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-            color = function()
-              return { fg = catppuccin.yellow }
-            end
-          },
-          -- stylua: ignore
-          {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = function()
-              return { fg = catppuccin.peach }
-            end
+            function() return '  ' .. require('dap').status() end,
+            cond = function() return package.loaded['dap'] and require('dap').status() ~= '' end,
+            color = function() return { fg = catppuccin.yellow } end,
           },
           {
             'diff',
-            symbols = {
-              added = ' ',
-              modified = ' ',
-              removed = ' ',
-            },
+            symbols = IconSliver.lualine.diff,
             source = function()
               local gitsigns = vim.b.gitsigns_status_dict
               if gitsigns then
@@ -158,6 +132,15 @@ return {
                 }
               end
             end,
+          },
+          {
+            clients_lsp,
+            color = function() return { fg = catppuccin.pink } end,
+          },
+          {
+            require('lazy.status').updates,
+            cond = require('lazy.status').has_updates,
+            color = function() return { fg = catppuccin.peach } end,
           },
         },
         lualine_z = {
@@ -186,5 +169,13 @@ return {
     end
 
     return opts
+  end,
+  init = function()
+    vim.g.lualine_laststatus = vim.o.laststatus
+    if vim.fn.argc(-1) > 0 then
+      vim.o.statusline = ' '
+    else
+      vim.o.laststatus = 0
+    end
   end,
 }

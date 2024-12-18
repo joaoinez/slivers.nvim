@@ -20,18 +20,22 @@ return {
     {
       '<M-u>',
       function() require('harpoon'):list():select(1) end,
+      desc = 'Harpoon Select 1',
     },
     {
       '<M-i>',
       function() require('harpoon'):list():select(2) end,
+      desc = 'Harpoon Select 2',
     },
     {
       '<M-o>',
       function() require('harpoon'):list():select(3) end,
+      desc = 'Harpoon Select 3',
     },
     {
       '<M-p>',
       function() require('harpoon'):list():select(4) end,
+      desc = 'Harpoon Select 4',
     },
   },
   opts = {

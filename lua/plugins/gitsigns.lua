@@ -3,22 +3,9 @@ return {
   enabled = true,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
-    -- TODO: Move icons to config
-    signs = {
-      add = { text = '▎' },
-      change = { text = '▎' },
-      delete = { text = '' },
-      topdelete = { text = '' },
-      changedelete = { text = '▎' },
-      untracked = { text = '▎' },
-    },
-    signs_staged = {
-      add = { text = '▎' },
-      change = { text = '▎' },
-      delete = { text = '' },
-      topdelete = { text = '' },
-      changedelete = { text = '▎' },
-    },
+    signs = IconSliver.git.signs,
+    signs_staged = IconSliver.git.staged,
+    ---@diagnostic disable-next-line: unused-local
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
       local map = Slivers.keymaps.safe_keymap_set

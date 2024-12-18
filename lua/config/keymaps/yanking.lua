@@ -9,22 +9,11 @@ map('n', 'yd', '<cmd>norm yy<cr>p', { desc = 'Duplicate line' })
 -- Duplicate line and comment the original
 map('n', 'yc', '<cmd>norm yygcc<cr>p', { desc = 'Duplicate line and comment original' })
 
--- TODO: Check these keymaps
---
--- -- Remap default yank in visual mode to yy for faster yanks
--- map('x', 'yy', 'y', { desc = 'Yank selection' })
-
--- -- Dupicate text selection
--- map('x', 'yd', 'y`>p', {
---   remap = true,
---   desc = 'Duplicate selection',
--- })
---
--- -- Duplicate selection and comment the original
--- map('x', 'yc', { 'ygvgc`>p', remap = true, desc = 'Duplicate selection and comment original' })
+-- Duplicate text selection
+map('x', '<M-J>', 'y`>p', { desc = 'Duplicate selection' })
 
 -- -- Select recently pasted, yanked or changed text
--- map('n', 'gy', '`[v`]', { desc = 'Select recently pasted, yanked or changed text' })
+map('n', 'gy', '`[v`]', { desc = 'Select recently pasted, yanked or changed text' })
 
 -- Make 'c' key not copy to clipboard when changing a character.
 map('n', 'c', '"_c', { desc = 'Change without yanking' })

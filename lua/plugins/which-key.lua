@@ -28,6 +28,9 @@ return {
       -- Neovim news
       { '<leader>N', icon = { icon = '󰎕', color = 'grey' } },
 
+      -- Command Palette
+      { '<leader>p', icon = { icon = '', color = 'cyan' } },
+
       -- Compiler
       { '<leader>r', icon = { icon = '', color = 'green' } },
       { '<leader>R', icon = { icon = '', color = 'green' } },
@@ -40,6 +43,9 @@ return {
 
       -- Comment code
       { '<leader>/', icon = { icon = '󰦨', color = 'grey' } },
+
+      -- Commands
+      { '<leader>:', icon = { icon = '', color = 'green' } },
 
       -- Keymaps
       { '<leader>?', icon = { icon = '', color = 'grey' } },

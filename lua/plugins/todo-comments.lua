@@ -3,7 +3,7 @@ return {
   'folke/todo-comments.nvim',
   enabled = true,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
-  cmd = { 'TodoTrouble', 'TodoTelescope' },
+  cmd = { 'TodoTrouble' },
   keys = {
     {
       ']t',
@@ -16,7 +16,7 @@ return {
       desc = 'Previous Todo Comment (todo-comments)',
     },
     { '<leader>qt', '<cmd>Trouble todo toggle<cr>', desc = 'Todos (trouble)' },
-    { '<leader>qT', '<cmd>TodoTelescope<cr>', desc = 'Todos (telescope)' },
+    { '<leader>qT', function() require('todo-comments.fzf').todo() end, desc = 'Todos (fzf)' },
   },
   opts = { signs = false },
 }

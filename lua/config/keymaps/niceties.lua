@@ -46,7 +46,7 @@ map('x', 'A', function() return vim.fn.mode() == 'V' and '$<C-v>A' or 'A' end, {
 map('n', '<leader>cW', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = 'Rename Word' })
 
 -- Diagnostic keymap
-map('n', '<leader>qQ', vim.diagnostic.setloclist, { desc = 'Diagnostic Quickfix List' })
+-- map('n', '<leader>qQ', vim.diagnostic.setloclist, { desc = 'Diagnostic Quickfix List' })
 map('n', '<leader>ql', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
 -- keywordprg
