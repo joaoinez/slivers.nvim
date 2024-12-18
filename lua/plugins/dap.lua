@@ -26,7 +26,7 @@ return {
     { '<leader>dO', function() require('dap').step_over() end, desc = 'Step Over' },
     { '<leader>dp', function() require('dap').pause() end, desc = 'Pause' },
     { '<leader>dr', function() require('dap').continue() end, desc = 'Start' },
-    { '<leader>dt', function() require('dap').terminate() end, desc = 'Stop' },
+    { '<leader>dt', function() require('dap').terminate() end, desc = 'Terminate' },
     { '<leader>td', function() require('dapui').toggle {} end, desc = 'Debugger' },
   },
   config = function()
