@@ -79,10 +79,3 @@ if Slivers.lazy.is_available 'nvim-treesitter' then
 end
 
 map('n', '<leader>fe', function() Slivers.actions.explore() end, { desc = 'File Explorer' })
-
--- TODO: See git conflict
---
--- map('<leader>fc', '/<<<<CR>', { desc = 'Find [C]onflicts' })
--- map('<leader>gcu', 'dd/|||<CR>0v/>>><CR>$x', { desc = 'Git [C]onflict Choose [U]pstream' })
--- map('<leader>gcb', '0v/|||<CR>$x/====<CR>0v/>>><CR>$x', { desc = 'Git [C]onflict Choose [B]ase' })
--- map('<leader>gcs', '0v/====<CR>$x/>>><CR>dd', { desc = 'Git [C]onflict Choose [S]tashed' })

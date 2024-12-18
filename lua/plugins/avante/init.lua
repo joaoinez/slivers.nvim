@@ -21,10 +21,10 @@ return {
         prev = '[x',
       },
       suggestion = {
-        accept = '<M-l>',
+        accept = '<M-y>',
         next = '<M-]>',
         prev = '<M-[>',
-        dismiss = '<C-]>',
+        dismiss = '<M-e>',
       },
       jump = {
         next = ']]',

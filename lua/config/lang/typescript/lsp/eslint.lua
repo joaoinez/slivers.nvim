@@ -1,5 +1,3 @@
--- TODO: Test that eslint is actually working
-
 local M = {}
 
 M.config = {

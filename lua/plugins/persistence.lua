@@ -9,7 +9,10 @@ return {
       callback = function()
         if require('trouble').is_open() then require('trouble').close() end
 
-        -- TODO: Close dap ui
+        -- TODO:
+        -- Close dap ui
+        -- Close compiler
+        -- Close avante
 
         require('snacks').bufdelete.other { force = true }
       end,
