@@ -48,8 +48,6 @@ map('n', '<leader>cW', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = 'Rename W
 -- Diagnostic keymap
 map('n', '<leader>qQ', vim.diagnostic.setloclist, { desc = 'Diagnostic Quickfix List' })
 map('n', '<leader>ql', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
--- TODO: Check snacks toggle functionality
-map('n', '<leader>tx', function() Slivers.actions.toggle_diagnostics() end, { desc = 'Diagnostics' })
 
 -- keywordprg
 map('n', '<leader>K', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })

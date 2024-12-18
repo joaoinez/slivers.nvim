@@ -45,13 +45,9 @@ return {
         -- dont show LuaLS require statements when lazydev has items
         lsp = { fallback_for = { 'lazydev' } },
         lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
-        codecompanion = {
-          name = 'CodeCompanion',
-          module = 'codecompanion.providers.completion.blink',
-          enabled = true,
-        },
+        markdown = { name = 'RenderMarkdown', module = 'render-markdown.integ.blink' },
       },
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'codecompanion' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'markdown' },
       cmdline = {},
     },
   },

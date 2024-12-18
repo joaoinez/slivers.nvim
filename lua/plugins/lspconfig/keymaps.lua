@@ -21,15 +21,6 @@ function M.apply_user_lsp_mappings(client, bufnr)
   if supports 'workspace_didRenameFiles' and supports 'workspace_willRenameFiles' then
     map('n', '<leader>cR', function() require('snacks').rename.rename_file() end, { desc = 'Rename File' })
   end
-
-  if supports 'textDocument_documentHighlight' then
-    map(
-      'n',
-      '<leader>th',
-      function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }) end,
-      { desc = 'Inlay Hints (lsp)' }
-    )
-  end
 end
 
 return M

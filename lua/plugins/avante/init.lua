@@ -1,26 +1,14 @@
 return {
   'yetone/avante.nvim',
-  enabled = false,
+  enabled = true,
   version = false,
-  dependencies = {
-    {
-      'HakonHarnes/img-clip.nvim',
-      event = 'VeryLazy',
-      opts = {
-        default = {
-          embed_image_as_base64 = false,
-          prompt_for_file_name = false,
-          drag_and_drop = {
-            insert_mode = true,
-          },
-        },
-      },
-    },
-  },
   build = 'make',
   event = 'VeryLazy',
   keys = require('plugins.avante.keymaps').keys,
   opts = {
+    behaviour = {
+      auto_suggestions = true,
+    },
     mappings = {
       ---@class AvanteConflictMappings
       diff = {
@@ -46,11 +34,11 @@ return {
         normal = '<CR>',
         insert = '<C-s>',
       },
-      -- NOTE: The following will be safely set by avante.nvim
       ask = '<leader>aa',
       edit = '<leader>ae',
       refresh = '<leader>ar',
       focus = '<leader>af',
+      clear = '<leader>az',
       toggle = {
         default = '<leader>ta',
         debug = '<leader>ad',
@@ -67,23 +55,17 @@ return {
         add_file = '@',
       },
       files = {
-        add_current = '<leader>aF', -- Add current buffer to selected files
+        add_current = '<leader>aF',
       },
     },
-    provider = 'qwen2.5-coder:latest',
-    auto_suggestions_provider = 'qwen2.5-coder:1.5b',
+    provider = 'ollama',
+    auto_suggestions_provider = 'ollama',
     vendors = {
-      ['qwen2.5-coder:latest'] = {
+      ollama = {
         __inherited_from = 'openai',
         api_key_name = '',
         endpoint = 'http://127.0.0.1:11434/v1',
         model = 'qwen2.5-coder:latest',
-      },
-      ['qwen2.5-coder:1.5b'] = {
-        __inherited_from = 'openai',
-        api_key_name = '',
-        endpoint = 'http://127.0.0.1:11434/v1',
-        model = 'qwen2.5-coder:1.5b',
       },
     },
   },

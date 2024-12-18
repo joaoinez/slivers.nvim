@@ -48,8 +48,6 @@ M.cmp = {
   Copilot = '',
   Supermaven = '',
   TabNine = '',
-  minuet = '',
-  codecompanion = '',
 }
 
 M.dap = {

@@ -1,4 +1,3 @@
--- TODO: Remove No information available notification and no lines in buffer as well
 return {
   'folke/noice.nvim',
   enabled = true,
@@ -43,6 +42,8 @@ return {
             { find = '; before #%d+' },
             { find = '%d fewer lines' },
             { find = '%d more lines' },
+            { find = '%d lines <ed %d time' },
+            { find = '%d lines >ed %d time' },
             { find = 'written' },
             { find = 'yanked' },
             { find = 'No lines in buffer' },

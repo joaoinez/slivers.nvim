@@ -12,36 +12,6 @@ function M.notify(msg, type, opts)
   vim.schedule(function() vim.notify(msg, type, vim.tbl_deep_extend('force', { title = 'Neovim' }, opts or {})) end)
 end
 
---- Toggle diagnostics
-function M.toggle_diagnostics()
-  local icons = IconSliver.diagnostics
-  local state = not vim.g.diagnostics_enabled
-
-  vim.g.diagnostics_enabled = state
-
-  if state then
-    vim.diagnostic.config {
-      signs = {
-        text = {
-          [vim.diagnostic.severity.ERROR] = icons.error,
-          [vim.diagnostic.severity.WARN] = icons.warn,
-          [vim.diagnostic.severity.HINT] = icons.hint,
-          [vim.diagnostic.severity.INFO] = icons.info,
-        },
-      },
-      virtual_text = {
-        spacing = 4,
-        source = 'if_many',
-        prefix = icons.virtual,
-      },
-    }
-  else
-    vim.diagnostic.config { underline = false, virtual_text = false, signs = false, update_in_insert = false }
-  end
-
-  M.notify(string.format('Diagnostics turned %s', bool2str(vim.g.diagnostics_enabled)))
-end
-
 -- Used to view files
 function M.explore()
   local try = {
