@@ -14,7 +14,6 @@ return {
     },
     heading = {
       sign = false,
-      -- icons = {},
     },
   },
   config = function(_, opts)

@@ -27,7 +27,6 @@ return {
         enabled = false,
       },
     },
-    input = { enabled = false },
     quickfile = { enabled = true },
     scratch = {
       enabled = true,
@@ -38,9 +37,13 @@ return {
         return 'markdown'
       end,
     },
-    scroll = { enabled = false },
     scope = { enabled = true },
-    statuscolumn = { enabled = false },
+    statuscolumn = {
+      enabled = true,
+      folds = {
+        open = true,
+      },
+    },
     words = { enabled = true },
   },
   init = function()
