@@ -1,5 +1,54 @@
 local M = {}
 
+M.mappings = {
+  diff = {
+    ours = 'co',
+    theirs = 'ct',
+    all_theirs = 'ca',
+    both = 'cb',
+    cursor = 'cc',
+    next = ']x',
+    prev = '[x',
+  },
+  suggestion = {
+    accept = '<M-y>',
+    next = '<M-]>',
+    prev = '<M-[>',
+    dismiss = '<M-e>',
+  },
+  jump = {
+    next = ']]',
+    prev = '[[',
+  },
+  submit = {
+    normal = '<CR>',
+    insert = '<C-s>',
+  },
+  ask = '<leader>aa',
+  edit = '<leader>ae',
+  refresh = '<leader>ar',
+  focus = '<leader>af',
+  clear = '<leader>az',
+  toggle = {
+    default = '<leader>ta',
+    debug = '<leader>ad',
+    hint = '<leader>ah',
+    suggestion = '<leader>as',
+    repomap = '<leader>aR',
+  },
+  sidebar = {
+    apply_all = 'A',
+    apply_cursor = 'a',
+    switch_windows = '<Tab>',
+    reverse_switch_windows = '<S-Tab>',
+    remove_file = 'd',
+    add_file = '@',
+  },
+  files = {
+    add_current = '<leader>aF',
+  },
+}
+
 function M.keys(_, keys)
   local opts =
     require('lazy.core.plugin').values(require('lazy.core.config').spec.plugins['avante.nvim'], 'opts', false)
@@ -57,6 +106,84 @@ function M.keys(_, keys)
       opts.mappings.toggle.default,
       function() require('avante.api').toggle() end,
       desc = 'Toggle AI',
+    },
+    {
+      '<leader>al',
+      function() require('avante.api').ask { question = require('plugins.avante.templates').code_readability_analysis } end,
+      desc = 'Code Readability Analysis (ask)',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>ao',
+      function() require('avante.api').ask { question = require('plugins.avante.templates').optimize_code } end,
+      desc = 'Optimize Code (ask)',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>ax',
+      function() require('avante.api').ask { question = require('plugins.avante.templates').explain_code } end,
+      desc = 'Explain Code (ask)',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>ac',
+      function() require('avante.api').ask { question = require('plugins.avante.templates').complete_code } end,
+      desc = 'Complete Code (ask)',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>ad',
+      function() require('avante.api').ask { question = require('plugins.avante.templates').add_docstring } end,
+      desc = 'Docstring (ask)',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>ab',
+      function() require('avante.api').ask { question = require('plugins.avante.templates').fix_bugs } end,
+      desc = 'Fix Bugs (ask)',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>au',
+      function() require('avante.api').ask { question = require('plugins.avante.templates').add_tests } end,
+      desc = 'Add Tests (ask)',
+      mode = { 'n', 'v' },
+    },
+    {
+      '<leader>aO',
+      function()
+        require('plugins.avante.templates').prefill_edit_window(require('plugins.avante.templates').optimize_code)
+      end,
+      desc = 'Optimize Code (edit)',
+      mode = 'v',
+    },
+    {
+      '<leader>aC',
+      function()
+        require('plugins.avante.templates').prefill_edit_window(require('plugins.avante.templates').complete_code)
+      end,
+      desc = 'Complete Code (edit)',
+      mode = 'v',
+    },
+    {
+      '<leader>aD',
+      function()
+        require('plugins.avante.templates').prefill_edit_window(require('plugins.avante.templates').add_docstring)
+      end,
+      desc = 'Docstring (edit)',
+      mode = 'v',
+    },
+    {
+      '<leader>aB',
+      function() require('plugins.avante.templates').prefill_edit_window(require('plugins.avante.templates').fix_bugs) end,
+      desc = 'Fix Bugs (edit)',
+      mode = 'v',
+    },
+    {
+      '<leader>aU',
+      function() require('plugins.avante.templates').prefill_edit_window(require('plugins.avante.templates').add_tests) end,
+      desc = 'Add Tests (edit)',
+      mode = 'v',
     },
   }
 

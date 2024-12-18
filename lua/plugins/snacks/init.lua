@@ -40,6 +40,8 @@ return {
     scope = { enabled = true },
     statuscolumn = {
       enabled = true,
+      left = { 'sign', 'git' }, -- priority of signs on the left (high to low)
+      right = { 'fold', 'mark' }, -- priority of signs on the right (high to low)
       folds = {
         open = true,
       },

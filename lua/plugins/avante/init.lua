@@ -9,55 +9,7 @@ return {
     behaviour = {
       auto_suggestions = true,
     },
-    mappings = {
-      ---@class AvanteConflictMappings
-      diff = {
-        ours = 'co',
-        theirs = 'ct',
-        all_theirs = 'ca',
-        both = 'cb',
-        cursor = 'cc',
-        next = ']x',
-        prev = '[x',
-      },
-      suggestion = {
-        accept = '<M-y>',
-        next = '<M-]>',
-        prev = '<M-[>',
-        dismiss = '<M-e>',
-      },
-      jump = {
-        next = ']]',
-        prev = '[[',
-      },
-      submit = {
-        normal = '<CR>',
-        insert = '<C-s>',
-      },
-      ask = '<leader>aa',
-      edit = '<leader>ae',
-      refresh = '<leader>ar',
-      focus = '<leader>af',
-      clear = '<leader>az',
-      toggle = {
-        default = '<leader>ta',
-        debug = '<leader>ad',
-        hint = '<leader>ah',
-        suggestion = '<leader>as',
-        repomap = '<leader>aR',
-      },
-      sidebar = {
-        apply_all = 'A',
-        apply_cursor = 'a',
-        switch_windows = '<Tab>',
-        reverse_switch_windows = '<S-Tab>',
-        remove_file = 'd',
-        add_file = '@',
-      },
-      files = {
-        add_current = '<leader>aF',
-      },
-    },
+    mappings = require('plugins.avante.keymaps').mappings,
     provider = 'ollama',
     auto_suggestions_provider = 'ollama',
     vendors = {
