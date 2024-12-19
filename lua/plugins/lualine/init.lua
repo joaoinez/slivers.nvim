@@ -45,7 +45,6 @@ return {
             separator = '',
             padding = { left = 1, right = 0 },
           },
-          -- TODO: see lazyvim's custom function for this
           {
             'filename',
             symbols = IconSliver.lualine.file,
