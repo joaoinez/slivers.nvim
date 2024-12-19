@@ -53,17 +53,10 @@ return {
         globalstatus = vim.o.laststatus == 3,
         section_separators = IconSliver.lualine.section_separators,
         component_separators = IconSliver.lualine.component_separators,
-        disabled_filetypes = {
-          statusline = {
-            'dashboard',
-            'alpha',
-            'ministarter',
-            'snacks_dashboard',
-          },
-        },
+        disabled_filetypes = { statusline = { 'snacks_dashboard' } },
       },
       sections = {
-        lualine_a = { 'mode' },
+        lualine_a = { { 'mode', fmt = function(str) return str:sub(1, 1) end } },
         lualine_b = { 'branch' },
         lualine_c = {
           {
@@ -103,6 +96,7 @@ return {
               get_harpoon_indicator('[', ']'),
               get_harpoon_indicator('[', ']'),
             },
+            icon = '',
             _separator = '  ',
             color = function() return { fg = catppuccin.sky } end,
           },

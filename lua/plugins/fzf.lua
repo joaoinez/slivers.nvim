@@ -121,7 +121,6 @@ return {
       files = {
         cwd_prompt = false,
         actions = {
-          ['alt-i'] = { actions.toggle_ignore },
           ['alt-h'] = { actions.toggle_hidden },
         },
       },

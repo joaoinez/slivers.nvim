@@ -22,8 +22,6 @@ return {
         'help',
         'bigfile',
         'Trouble',
-        'alpha',
-        'dashboard',
         'fzf',
         'help',
         'lazy',

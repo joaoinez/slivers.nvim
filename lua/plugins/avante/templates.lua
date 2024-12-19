@@ -15,20 +15,20 @@ end
 
 -- NOTE: most templates are inspired from ChatGPT.nvim -> chatgpt-actions.json
 M.code_readability_analysis = [[
-  You must identify any readability issues in the code snippet.
-  Some readability issues to consider:
-  - Unclear naming
-  - Unclear purpose
-  - Redundant or obvious comments
-  - Lack of comments
-  - Long or complex one liners
-  - Too much nesting
-  - Long variable names
-  - Inconsistent naming and code style.
-  - Code repetition
-  You may identify additional problems. The user submits a small section of code from a larger file.
-  Only list lines with readability issues, in the format <line_num>|<issue and proposed solution>
-  If there's no issues with code respond with only: <OK>
+You must identify any readability issues in the code snippet.
+Some readability issues to consider:
+- Unclear naming
+- Unclear purpose
+- Redundant or obvious comments
+- Lack of comments
+- Long or complex one liners
+- Too much nesting
+- Long variable names
+- Inconsistent naming and code style.
+- Code repetition
+You may identify additional problems. The user submits a small section of code from a larger file.
+Only list lines with readability issues, in the format <line_num>|<issue and proposed solution>
+If there's no issues with code respond with only: <OK>
 ]]
 M.optimize_code = 'Optimize the following code'
 M.explain_code = 'Explain the following code'
