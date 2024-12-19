@@ -16,7 +16,7 @@
 --   -------------------------------------------------------------------
 
 -- [[ Keymaps ]]
-require 'config.keymaps.disabled'
-require 'config.keymaps.fixes'
-require 'config.keymaps.niceties'
-require 'config.keymaps.yanking'
+require 'slivers.keymaps.disabled'
+require 'slivers.keymaps.fixes'
+require 'slivers.keymaps.niceties'
+require 'slivers.keymaps.yanking'

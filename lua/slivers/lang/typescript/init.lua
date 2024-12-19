@@ -10,7 +10,7 @@ M.highlighters = {
   'vue',
 }
 
-M.servers = require('config.lang.typescript.lsp').get_servers()
+M.servers = require('slivers.lang.typescript.lsp').get_servers()
 
 M.formatters = {
   'prettierd',

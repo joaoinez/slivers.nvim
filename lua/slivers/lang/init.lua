@@ -1,9 +1,9 @@
 local M = {}
 
 M.langs = {
-  require 'config.lang.core',
-  require 'config.lang.lua',
-  require 'config.lang.typescript',
+  require 'slivers.lang.core',
+  require 'slivers.lang.lua',
+  require 'slivers.lang.typescript',
 }
 
 function M.get_highlighters()

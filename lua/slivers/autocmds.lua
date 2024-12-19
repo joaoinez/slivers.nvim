@@ -2,6 +2,7 @@
 
 local autocmd = Slivers.autocmds.autocmd
 local augroup = Slivers.autocmds.augroup
+local cmd = vim.api.nvim_create_user_command
 
 -- Check if we need to reload the file when it is changed
 autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
@@ -83,3 +84,10 @@ autocmd('BufWritePre', {
     end
   end,
 })
+
+-- Update Everything
+cmd('UpdateEverything', function()
+  vim.cmd ':Lazy update'
+  vim.cmd ':TSUpdate'
+  vim.cmd ':MasonToolsUpdate'
+end, { desc = 'Update lazy, treesitter and mason' })
