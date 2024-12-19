@@ -42,7 +42,7 @@
     - [ollama](https://ollama.com/download/linux)
     - [qwen2.5-coder](https://ollama.com/library/qwen2.5-coder) (currently)
 
-> **NOTE**
+> [!NOTE]
 > If running into errors run `:checkhealth slivers`
 
 ## Credits
