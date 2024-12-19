@@ -2,6 +2,12 @@
 return {
   'yetone/avante.nvim',
   enabled = true,
+  dependencies = {
+    {
+      'stevearc/dressing.nvim',
+      opts = { input = { enabled = false }, select = { enabled = false } },
+    },
+  },
   version = false,
   build = 'make',
   event = 'VeryLazy',
