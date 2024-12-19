@@ -12,7 +12,7 @@ map('n', '<leader>s', '<cmd>w<cr>', { desc = 'Save File' })
 -- Save and quit Neovim
 map('n', '<leader>x', '<cmd>wqa<cr>', { desc = 'Save and Quit Neovim' })
 
--- use ESC to clear hlsearch, while preserving its original functionality.
+-- Use ESC to clear hlsearch, while preserving its original functionality.
 map('n', '<ESC>', function()
   if vim.fn.hlexists 'Search' then
     vim.cmd 'nohlsearch'
@@ -22,7 +22,7 @@ map('n', '<ESC>', function()
 end)
 
 -- Toggle comments
-map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' })
+map({ 'n', 'x' }, '<leader>/', 'gcc', { desc = 'Toggle comment line', remap = true })
 
 -- Improved tabulation
 map('x', '<S-Tab>', '<gv', { desc = 'unindent line' })
@@ -49,7 +49,7 @@ map('n', '<leader>cW', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = 'Rename W
 -- map('n', '<leader>qQ', vim.diagnostic.setloclist, { desc = 'Diagnostic Quickfix List' })
 map('n', '<leader>ql', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
--- keywordprg
+-- Keywordprg
 map('n', '<leader>K', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
 
 -- Inspect Tree
@@ -63,19 +63,23 @@ map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the lower window'
 map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the upper window' })
 map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the right window' })
 
+-- File explorer (oil or fallback on default)
+map('n', '<leader>fe', function() Slivers.actions.explore() end, { desc = 'File Explorer' })
+
 -- Lazy
 map('n', '<leader>,l', function() require('lazy').check() end, { desc = 'Lazy' })
 
--- mason
+-- Mason
 if Slivers.lazy.is_available 'mason.nvim' then
   map('n', '<leader>,m', '<cmd>Mason<cr>', { desc = 'Mason' })
   map('n', '<leader>,M', '<cmd>MasonToolsUpdate<cr>', { desc = 'Mason Update' })
 end
 
--- treesitter
+-- Treesitter
 if Slivers.lazy.is_available 'nvim-treesitter' then
   map('n', '<leader>,t', '<cmd>TSInstallInfo<cr>', { desc = 'Treesitter' })
   map('n', '<leader>,T', '<cmd>TSUpdate<cr>', { desc = 'Treesitter Update' })
 end
 
-map('n', '<leader>fe', function() Slivers.actions.explore() end, { desc = 'File Explorer' })
+-- Update lazy, mason and treesitter
+map('n', '<leader>,U', '<cmd>UpdateEverything<cr>', { desc = 'Update Everything' })

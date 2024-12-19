@@ -103,7 +103,7 @@ return {
       { '<leader>mh', icon = { icon = '󰍡', color = 'purple' } },
 
       -- Quickfix/Diagnostics
-      { '<leader>q', group = 'quickfix/diagnostics' },
+      { '<leader>q', group = 'qf/diagnostics/todos' },
       { '<leader>ql', icon = { icon = '󰙅', color = 'red' } },
       -- { '<leader>qQ', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qx', icon = { icon = '󰙅', color = 'red' } },

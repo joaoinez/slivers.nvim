@@ -3,7 +3,6 @@ return {
   'folke/persistence.nvim',
   enabled = true,
   event = 'BufReadPre',
-  opts = {},
   init = function()
     vim.api.nvim_create_autocmd('User', {
       pattern = 'PersistenceSavePre',
@@ -16,4 +15,5 @@ return {
       end,
     })
   end,
+  opts = {},
 }
