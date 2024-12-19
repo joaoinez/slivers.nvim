@@ -22,7 +22,7 @@ map('n', '<ESC>', function()
 end)
 
 -- Toggle comments
-map({ 'n', 'x' }, '<leader>/', 'gcc', { desc = 'Toggle comment line', remap = true })
+map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' })
 
 -- Improved tabulation
 map('x', '<S-Tab>', '<gv', { desc = 'unindent line' })
