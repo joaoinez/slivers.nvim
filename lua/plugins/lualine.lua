@@ -69,16 +69,17 @@ return {
             },
           },
           {
-            'filename',
-            symbols = IconSliver.lualine.file,
-            path = 4,
-            separator = '',
-          },
-          {
             'filetype',
             colored = true,
             icon_only = true,
-            padding = { left = 0, right = 0 },
+            separator = '',
+            padding = { left = 1, right = 0 },
+          },
+          {
+            'filename',
+            symbols = IconSliver.lualine.file,
+            path = 4,
+            padding = { left = 0, right = 1 },
           },
         },
         lualine_x = {
