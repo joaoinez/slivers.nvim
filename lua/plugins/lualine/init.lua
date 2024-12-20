@@ -26,7 +26,16 @@ return {
         disabled_filetypes = { statusline = { 'snacks_dashboard' } },
       },
       sections = {
-        lualine_a = { { 'mode', fmt = function(str) return str:sub(1, 3) end } },
+        lualine_a = {
+          {
+            'mode',
+            fmt = function(str) return str:sub(1, 3) end,
+            separator = {
+              left = IconSliver.lualine.section_separators.right,
+              right = IconSliver.lualine.section_separators.left,
+            },
+          },
+        },
         lualine_b = { 'branch' },
         lualine_c = {
           {
@@ -68,7 +77,7 @@ return {
               get_harpoon_indicator('[', ']'),
             },
             icon = '',
-            _separator = '  ',
+            _separator = ' ' .. IconSliver.lualine.component_separators.left .. ' ',
             color = function() return { fg = catppuccin.sky } end,
           },
         },
@@ -111,7 +120,7 @@ return {
         },
         lualine_z = {
           'location',
-          'progress',
+          { 'progress', separator = { left = '', right = IconSliver.lualine.section_separators.left } },
         },
       },
       extensions = {
