@@ -56,8 +56,9 @@ map('n', '<leader>K', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
 map('n', '<leader>cI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 
 -- Terminal Mappings
+map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 map('t', '<C-/>', '<cmd>close<cr>', { desc = 'Hide Terminal' })
-map('t', '<c-_>', '<cmd>close<cr>', { desc = 'which_key_ignore' })
+map('t', '<C-_>', '<cmd>close<cr>', { desc = 'which_key_ignore' })
 map('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move focus to the left window' })
 map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the lower window' })
 map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the upper window' })
@@ -65,6 +66,9 @@ map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the right window'
 
 -- File explorer (oil or fallback on default)
 map('n', '<leader>fe', function() Slivers.actions.explore() end, { desc = 'File Explorer' })
+
+-- Switch between the last opened buffer
+map('n', '<leader><Tab>', '<cmd>b#<cr>', { desc = 'Switch to last opened buffer' })
 
 -- Lazy
 map('n', '<leader>,l', function() require('lazy').check() end, { desc = 'Lazy' })

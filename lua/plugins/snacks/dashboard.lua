@@ -19,6 +19,7 @@ M.config = {
         desc = 'Todos',
         action = ":lua require('todo-comments.fzf').todo({ keywords = { 'TODO', 'FIX', 'FIXME' } })",
       },
+      -- TODO: Implement this on space-f
       {
         icon = ' ',
         key = 'c',

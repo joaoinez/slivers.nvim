@@ -92,8 +92,11 @@ M.git = {
 }
 
 M.lualine = {
-  section_separators = { left = '', right = '' },
-  component_separators = { left = '┃', right = '┃' },
+  -- section_separators = { left = '', right = '' },
+  section_separators = { left = '', right = '' },
+  -- component_separators = { left = '┃', right = '┃' },
+  component_separators = { left = '', right = '' },
+  harpoon_separator = '|',
   file = {
     modified = '',
     readonly = '',

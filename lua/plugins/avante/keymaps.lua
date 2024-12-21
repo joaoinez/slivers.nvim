@@ -21,7 +21,7 @@ M.mappings = {
     prev = '[[',
   },
   submit = {
-    normal = '<CR>',
+    normal = '<cr>',
     insert = '<C-s>',
   },
   ask = '<leader>aa',

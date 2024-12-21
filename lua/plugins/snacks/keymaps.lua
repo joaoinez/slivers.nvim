@@ -25,9 +25,19 @@ M.keys = {
       }
     end,
   },
-  { '<leader>tt', function() require('snacks').terminal() end, desc = 'Terminal (cwd)' },
-  { '<leader>tz', function() require('snacks').zen() end, desc = 'Zen Mode' },
+  {
+    '<leader>tt',
+    function()
+      -- TODO: See where this functionality could be implemented
+      local current_dir = vim.fn.expand '%:p:h'
+      if current_dir == '' or vim.fn.isdirectory(current_dir) == 0 then current_dir = vim.fn.getcwd() end
+      require('snacks').terminal(nil, { cwd = current_dir })
+    end,
+    desc = 'Terminal (cwd)',
+  },
+  { '<C-/>', function() require('snacks').terminal() end, desc = 'Terminal (cwd)' },
   { '<C-_>', function() require('snacks').terminal() end, desc = 'which_key_ignore' },
+  { '<leader>tz', function() require('snacks').zen() end, desc = 'Zen Mode' },
   { '<leader>.', function() Snacks.scratch() end, desc = 'Scratch Buffer' },
   { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
   {

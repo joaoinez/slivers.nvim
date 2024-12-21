@@ -44,12 +44,15 @@ return {
     },
     sources = {
       providers = {
-        -- dont show LuaLS require statements when lazydev has items
-        lsp = { fallback_for = { 'lazydev' } },
-        lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+        lazydev = {
+          name = 'LazyDev',
+          module = 'lazydev.integrations.blink',
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
         markdown = { name = 'RenderMarkdown', module = 'render-markdown.integ.blink' },
       },
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'markdown' },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'markdown' },
       cmdline = {},
     },
   },

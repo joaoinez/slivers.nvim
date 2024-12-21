@@ -14,6 +14,7 @@ return {
       desc = 'Redirect Cmdline',
     },
     { '<leader>ml', function() require('noice').cmd 'last' end, desc = 'Last Message' },
+    { '<leader>mh', function() require('noice').cmd 'pick' end, desc = 'Message History (fzf)' },
     { '<leader>mH', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
     { '<leader>md', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
     { '<leader>mp', function() require('noice').cmd 'pick' end, desc = 'Pick Message' },

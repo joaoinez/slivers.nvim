@@ -29,7 +29,7 @@ return {
         lualine_a = {
           {
             'mode',
-            fmt = function(str) return str:sub(1, 3) end,
+            fmt = function(str) return str:sub(1, 1) end,
             separator = {
               left = IconSliver.lualine.section_separators.right,
               right = IconSliver.lualine.section_separators.left,
@@ -77,7 +77,7 @@ return {
               get_harpoon_indicator('[', ']'),
             },
             icon = '',
-            _separator = ' ' .. IconSliver.lualine.component_separators.left .. ' ',
+            _separator = ' ' .. IconSliver.lualine.harpoon_separator .. ' ',
             color = function() return { fg = catppuccin.sky } end,
           },
         },

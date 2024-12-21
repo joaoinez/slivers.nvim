@@ -1,7 +1,8 @@
 -- [[ Globals ]]
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
-vim.g.diagnostics_enabled = true
+-- TODO: Implement this
+vim.g.minimal_status = true
 
 -- [[ Options ]]
 vim.opt.breakindent = true -- Wrap indent to match line start.
@@ -32,6 +33,9 @@ vim.opt.foldmethod = 'expr' -- Set fold method to expression.
 vim.opt.foldtext = '' -- Remove fold text.
 vim.opt.foldlevel = 99 -- Set fold level to highest value.
 vim.opt.foldlevelstart = 99 -- Start with all code unfolded.
+vim.opt.guicursor = 'n-c-sm:block,\z
+i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,\z
+v-r-cr-o:hor20' -- Cursor styling
 vim.opt.ignorecase = true -- Case insensitive searching.
 vim.opt.inccommand = 'split' -- Show incremental substitute in a preview window.
 vim.opt.infercase = true -- Infer cases in keyword completion.
@@ -49,7 +53,7 @@ vim.opt.preserveindent = true -- Preserve indent structure as much as possible.
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup.
 vim.opt.relativenumber = true -- Show relative numberline.
 vim.opt.ruler = false -- Disable the default ruler.
-vim.opt.scrolloff = 8 -- Number of lines to leave before/after the cursor when scrolling. Setting a high value keeps the cursor centered.
+vim.opt.scrolloff = 10 -- Number of lines to leave before/after the cursor when scrolling. Setting a high value keeps the cursor centered.
 vim.opt.shiftround = true -- Round indent.
 vim.opt.shiftwidth = 2 -- Number of space inserted for indentation.
 vim.opt.shortmess:append { W = true, I = true, c = true, C = true } -- Disable various messages.
