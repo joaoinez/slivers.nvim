@@ -22,9 +22,13 @@
 _G.Slivers = require 'slivers.utils'
 _G.LangSliver = require 'slivers.lang'
 _G.IconSliver = require 'slivers.icons'
+_G.ColorSliver = require 'slivers.colorschemes'
 
 -- [[ Load Options ]]
 Slivers.load 'options'
+
+-- [[ Set Language ]]
+vim.cmd 'language en_US'
 
 -- [[ Initialize Lazy ]]
 require 'slivers.lazy'
@@ -52,6 +56,6 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 -- [[ Apply Colorscheme ]]
-vim.cmd.colorscheme 'catppuccin'
+require('slivers.colorschemes').init()
 
 -- vim: ts=2 sts=2 sw=2 et

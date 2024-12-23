@@ -1,6 +1,7 @@
 ---@class Slivers
 ---@field actions utils.actions
 ---@field autocmds utils.autocmds
+---@field colorscheme utils.colorscheme
 ---@field keymaps utils.keymaps
 ---@field lazy utils.lazy
 ---@field lsp utils.lsp
@@ -10,6 +11,7 @@
 local M = {
   actions = require 'slivers.utils.actions',
   autocmds = require 'slivers.utils.autocmds',
+  colorscheme = require 'slivers.utils.colorscheme',
   keymaps = require 'slivers.utils.keymaps',
   lazy = require 'slivers.utils.lazy',
   lsp = require 'slivers.utils.lsp',

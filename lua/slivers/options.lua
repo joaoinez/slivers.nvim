@@ -1,6 +1,8 @@
 -- [[ Globals ]]
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
+vim.g.colorscheme = 'catppuccin' -- Set editor colorscheme.
+vim.g.transparent_bg = true
 -- TODO: Implement this
 vim.g.minimal_status = true
 

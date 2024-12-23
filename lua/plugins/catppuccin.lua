@@ -6,7 +6,7 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    transparent_background = true,
+    transparent_background = vim.g.transparent_bg,
     integrations = {
       aerial = true,
       alpha = true,

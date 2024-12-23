@@ -85,5 +85,31 @@ if Slivers.lazy.is_available 'nvim-treesitter' then
   map('n', '<leader>,T', '<cmd>TSUpdate<cr>', { desc = 'Treesitter Update' })
 end
 
+-- Toggle transparent background
+map('n', '<leader>,B', function()
+  local filepath = os.getenv 'HOME' .. '/.config/nvim/lua/slivers/options.lua'
+
+  vim.g.transparent_bg = not vim.g.transparent_bg
+
+  vim.fn.system(
+    string.format(
+      [[sed -i "s/vim\.g\.transparent_bg = %s/vim\.g\.transparent_bg = %s/" %s]],
+      not vim.g.transparent_bg,
+      vim.g.transparent_bg,
+      filepath
+    )
+  )
+
+  Slivers.actions.notify(
+    string.format(
+      'Background transparency turned %s.\nRestart Neovim to apply.',
+      vim.g.transparent_bg and 'on' or 'off'
+    )
+  )
+end, { desc = 'Toggle Background Transparency' })
+
 -- Update lazy, mason and treesitter
 map('n', '<leader>,U', '<cmd>UpdateEverything<cr>', { desc = 'Update Everything' })
+
+-- Clear all marks
+map('n', '<leader>,C', '<cmd>delm! | delm A-Z0-9<cr>jk', { desc = 'Clear All Marks' })

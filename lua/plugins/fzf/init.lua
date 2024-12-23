@@ -3,31 +3,7 @@ return {
   'ibhagwan/fzf-lua',
   enabled = true,
   cmd = 'FzfLua',
-  keys = {
-    { '<c-j>', '<c-j>', ft = 'fzf', mode = 't', nowait = true },
-    { '<c-k>', '<c-k>', ft = 'fzf', mode = 't', nowait = true },
-    { '<leader>p', '<cmd>FzfLua<cr>', desc = 'Command Palette' },
-    {
-      '<leader><leader>',
-      '<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>',
-      desc = 'Open Buffers',
-    },
-    { '<leader>:', '<cmd>FzfLua commands<cr>', desc = 'Commands' },
-    { '<leader>ff', '<cmd>FzfLua files<cr>', desc = 'Find Files' },
-    { '<leader>fg', '<cmd>FzfLua git_status<cr>', desc = 'Git Status' },
-    { '<leader>fA', '<cmd>FzfLua autocmds<cr>', desc = 'Auto Commands' },
-    { '<leader>f/', '<cmd>FzfLua grep_curbuf<cr>', desc = 'Search' },
-    { '<leader>fc', '<cmd>FzfLua command_history<cr>', desc = 'Command History' },
-    { '<leader>ft', '<cmd>FzfLua live_grep<cr>', desc = 'Find Text (project)' },
-    { '<leader>fH', '<cmd>FzfLua help_tags<cr>', desc = 'Help Pages' },
-    { '<leader>fj', '<cmd>FzfLua jumps<cr>', desc = 'Jumplist' },
-    { '<leader>f?', '<cmd>FzfLua keymaps<cr>', desc = 'Keymaps' },
-    { '<leader>fM', '<cmd>FzfLua man_pages<cr>', desc = 'Man Pages' },
-    { '<leader>f.', '<cmd>FzfLua resume<cr>', desc = 'Resume Search' },
-    { '<leader>fw', '<cmd>FzfLua grep_cword<cr>', desc = 'Find Word (project)' },
-    { '<leader>fw', '<cmd>FzfLua grep_visual<cr>', mode = 'v', desc = 'Find Selection (project)' },
-    { '<leader>,c', '<cmd>FzfLua colorschemes<cr>', desc = 'Colorscheme' },
-  },
+  keys = require('plugins.fzf.keymaps').keys,
   ---@diagnostic disable-next-line: unused-local
   opts = function(_, opts)
     local config = require 'fzf-lua.config'

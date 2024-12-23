@@ -33,7 +33,6 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
-    local catppuccin = require('catppuccin.palettes').get_palette 'mocha'
 
     require('mason-nvim-dap').setup {
       automatic_installation = true,
@@ -42,8 +41,8 @@ return {
 
     dapui.setup { icons = IconSliver.dap.ui }
 
-    vim.api.nvim_set_hl(0, 'DapBreak', { fg = catppuccin.red })
-    vim.api.nvim_set_hl(0, 'DapStop', { fg = catppuccin.yellow })
+    vim.api.nvim_set_hl(0, 'DapBreak', { link = 'SliversBreak' })
+    vim.api.nvim_set_hl(0, 'DapStop', { link = 'SliversStop' })
 
     for type, icon in pairs(IconSliver.dap.breakpoints) do
       local tp = 'Dap' .. type

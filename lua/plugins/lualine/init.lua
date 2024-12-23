@@ -10,9 +10,10 @@ return {
     -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require 'lualine_require'
     lualine_require.require = require
-    local catppuccin = require('catppuccin.palettes').get_palette 'mocha'
-    local get_harpoon_indicator = require('plugins.lualine.util').get_harpoon_indicator
-    local clients_lsp = require('plugins.lualine.util').clients_lsp
+    local utils = require 'plugins.lualine.utils'
+    local get_color = utils.get_color
+    local get_harpoon_indicator = utils.get_harpoon_indicator
+    local clients_lsp = utils.clients_lsp
 
     -- Set global lualine
     vim.o.laststatus = vim.g.lualine_laststatus
@@ -78,7 +79,7 @@ return {
             },
             icon = '',
             _separator = ' ' .. IconSliver.lualine.harpoon_separator .. ' ',
-            color = function() return { fg = catppuccin.sky } end,
+            color = get_color 'Harpoon',
           },
         },
         lualine_y = {
@@ -87,12 +88,12 @@ return {
             function() return require('noice').api.status.mode.get() end,
             ---@diagnostic disable-next-line: undefined-field
             cond = function() return package.loaded['noice'] and require('noice').api.status.mode.has() end,
-            color = function() return { fg = catppuccin.lavender } end,
+            color = get_color 'Macro',
           },
           {
             function() return '  ' .. require('dap').status() end,
             cond = function() return package.loaded['dap'] and require('dap').status() ~= '' end,
-            color = function() return { fg = catppuccin.yellow } end,
+            color = get_color 'Stop',
           },
           {
             'diff',
@@ -110,12 +111,12 @@ return {
           },
           {
             clients_lsp,
-            color = function() return { fg = catppuccin.pink } end,
+            color = get_color 'Lsp',
           },
           {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
-            color = function() return { fg = catppuccin.peach } end,
+            color = get_color 'Lazy',
           },
         },
         lualine_z = {
