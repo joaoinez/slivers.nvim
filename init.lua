@@ -22,7 +22,7 @@
 _G.Slivers = require 'slivers.utils'
 _G.LangSliver = require 'slivers.lang'
 _G.IconSliver = require 'slivers.icons'
-_G.ColorSliver = require 'slivers.colorschemes'
+_G.ColorSliver = require 'slivers.colorscheme'
 
 -- [[ Load Options ]]
 Slivers.load 'options'
@@ -56,6 +56,6 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 -- [[ Apply Colorscheme ]]
-require('slivers.colorschemes').init()
+require('slivers.colorscheme').apply()
 
 -- vim: ts=2 sts=2 sw=2 et

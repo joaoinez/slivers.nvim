@@ -113,3 +113,8 @@ map('n', '<leader>,U', '<cmd>UpdateEverything<cr>', { desc = 'Update Everything'
 
 -- Clear all marks
 map('n', '<leader>,C', '<cmd>delm! | delm A-Z0-9<cr>jk', { desc = 'Clear All Marks' })
+
+-- Add undo break-points
+map('i', ',', ',<c-g>u')
+map('i', '.', '.<c-g>u')
+map('i', ';', ';<c-g>u')
