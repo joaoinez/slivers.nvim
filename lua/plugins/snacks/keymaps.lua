@@ -1,8 +1,6 @@
 ---@diagnostic disable: missing-fields
 
-local M = {}
-
-M.keys = {
+local M = {
   { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },
   { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Git Log (cwd)' },

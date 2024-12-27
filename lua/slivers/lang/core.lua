@@ -8,8 +8,6 @@ M.highlighters = {
   'jsdoc',
   'json',
   'jsonc',
-  'markdown',
-  'markdown_inline',
   'printf',
   'python',
   'query',

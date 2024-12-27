@@ -28,10 +28,14 @@ function M.get_config(colorschemes_configs, colorscheme_name)
   return colorscheme_config
 end
 
----@param colorscheme_hl_groups table
+---@param colorscheme_hl_groups table|nil
 function M.set_hl_groups(colorscheme_hl_groups)
   for hl_group, hl_config in
-    pairs(type(colorscheme_hl_groups) == 'function' and colorscheme_hl_groups() or colorscheme_hl_groups)
+    pairs(
+      type(colorscheme_hl_groups) == 'function' and colorscheme_hl_groups()
+        or colorscheme_hl_groups
+        or ColorSliver.colorschemes._fallback.hl_groups()
+    )
   do
     vim.api.nvim_set_hl(0, 'Slivers' .. hl_group, hl_config)
   end

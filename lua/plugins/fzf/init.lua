@@ -3,7 +3,7 @@ return {
   'ibhagwan/fzf-lua',
   enabled = true,
   cmd = 'FzfLua',
-  keys = require('plugins.fzf.keymaps').keys,
+  keys = require 'plugins.fzf.keymaps',
   ---@diagnostic disable-next-line: unused-local
   opts = function(_, opts)
     local config = require 'fzf-lua.config'

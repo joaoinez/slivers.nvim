@@ -1,6 +1,4 @@
-local M = {}
-
-M.keys = {
+local M = {
   { '<c-j>', '<c-j>', ft = 'fzf', mode = 't', nowait = true },
   { '<c-k>', '<c-k>', ft = 'fzf', mode = 't', nowait = true },
   { '<leader>p', '<cmd>FzfLua<cr>', desc = 'Command Palette' },
@@ -41,7 +39,9 @@ M.keys = {
               .. string.format('/.config/nvim/lua/plugins/colorschemes/%s.lua', old_colorscheme_config_name)
 
             vim.fn.system(string.format([[sed -i "s/lazy = false,/lazy = true,/" %s]], old_colorscheme_path))
-            vim.fn.system(string.format([[sed -i "s/priority = 1000,/-- priority = 1000,/" %s]], old_colorscheme_path))
+            vim.fn.system(
+              string.format([[sed -i "s/^[^p]*priority = 1000,/  -- priority = 1000,/" %s]], old_colorscheme_path)
+            )
           end
 
           -- Enable new colorscheme
@@ -50,13 +50,15 @@ M.keys = {
               .. string.format('/.config/nvim/lua/plugins/colorschemes/%s.lua', colorscheme_config.name)
 
             vim.fn.system(string.format([[sed -i "s/lazy = true,/lazy = false,/" %s]], colorscheme_path))
-            vim.fn.system(string.format([[sed -i "s/-- priority = 1000,/priority = 1000,/" %s]], colorscheme_path))
+            vim.fn.system(string.format([[sed -i "s/^[^p]*priority = 1000,/  priority = 1000,/" %s]], colorscheme_path))
           end
 
           -- Apply new colorscheme
           vim.g.colorscheme = colorscheme
           vim.cmd.colorscheme(colorscheme)
-          vim.schedule(function() Slivers.colorscheme.set_hl_groups(colorscheme_config.hl_groups) end)
+          -- FIXME: This isn't working here for some reason
+          Slivers.colorscheme.set_hl_groups(colorscheme_config.hl_groups)
+          -- vim.schedule(function() Slivers.colorscheme.set_hl_groups(colorscheme_config.hl_groups) end)
           vim.fn.system(
             string.format(
               [[sed -i "s/vim\.g\.colorscheme = '[^']*'/vim\.g\.colorscheme = '%s'/" %s]],

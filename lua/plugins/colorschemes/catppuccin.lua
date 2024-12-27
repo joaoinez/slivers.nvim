@@ -53,5 +53,6 @@ return {
         }
       end,
     },
+    init = function() ColorSliver.apply() end,
   },
 }

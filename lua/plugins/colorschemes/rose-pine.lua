@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   'rose-pine/neovim',
   enabled = true,
@@ -9,4 +10,5 @@ return {
       transparency = vim.g.transparent_bg,
     },
   },
+  init = function() ColorSliver.apply() end,
 }

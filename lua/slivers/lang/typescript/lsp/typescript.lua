@@ -1,6 +1,4 @@
-local M = {}
-
-M.config = {
+local M = {
   filetypes = {
     'javascript',
     'javascriptreact',

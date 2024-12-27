@@ -4,7 +4,7 @@ vim.g.maplocalleader = ' ' -- Set default local leader key.
 vim.g.colorscheme = 'catppuccin' -- Set editor colorscheme.
 vim.g.transparent_bg = true
 -- TODO: Implement this
-vim.g.minimal_status = true
+vim.g.status_style = 1
 
 -- [[ Options ]]
 vim.opt.breakindent = true -- Wrap indent to match line start.

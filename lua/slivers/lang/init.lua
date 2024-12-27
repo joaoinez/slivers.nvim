@@ -3,6 +3,7 @@ local M = {}
 M.langs = {
   require 'slivers.lang.core',
   require 'slivers.lang.lua',
+  require 'slivers.lang.markdown',
   require 'slivers.lang.typescript',
 }
 

@@ -1,6 +1,4 @@
-local M = {}
-
-M.config = {
+local M = {
   enabled = true,
   pane_gap = 8,
   preset = {

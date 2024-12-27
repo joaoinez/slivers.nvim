@@ -6,7 +6,7 @@ return {
   enabled = true,
   priority = 1000,
   lazy = false,
-  keys = require('plugins.snacks.keymaps').keys,
+  keys = require 'plugins.snacks.keymaps',
   opts = {
     bigfile = {
       enabled = true,
@@ -18,7 +18,7 @@ return {
         vim.schedule(function() vim.bo[ctx.buf].syntax = ctx.ft end)
       end,
     },
-    dashboard = require('plugins.snacks.dashboard').config,
+    dashboard = require 'plugins.snacks.dashboard',
     indent = {
       enabled = true,
       indent = {
