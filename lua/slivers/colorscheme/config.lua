@@ -34,26 +34,16 @@ local M = {
       }
     end,
   },
-  tokyonight = {
-    name = 'tokyonight',
+  gruvbox = {
+    name = 'gruvbox',
+  },
+  kanagawa = {
+    name = 'kanagawa',
     variants = {
-      'tokyonight-night',
-      'tokyonight-storm',
-      'tokyonight-day',
-      'tokyonight-moon',
+      'kanagawa-wave',
+      'kanagawa-dragon',
+      'kanagawa-lotus',
     },
-    hl_groups = function()
-      local palette = require('tokyonight.colors').setup()
-
-      return {
-        Harpoon = { fg = palette.cyan },
-        Macro = { fg = palette.purple },
-        Lsp = { fg = palette.magenta },
-        Lazy = { fg = palette.orange },
-        Break = { fg = palette.red },
-        Stop = { fg = palette.yellow },
-      }
-    end,
   },
   ['rose-pine'] = {
     name = 'rose-pine',
@@ -75,8 +65,26 @@ local M = {
       }
     end,
   },
-  gruvbox = {
-    name = 'gruvbox',
+  tokyonight = {
+    name = 'tokyonight',
+    variants = {
+      'tokyonight-night',
+      'tokyonight-storm',
+      'tokyonight-day',
+      'tokyonight-moon',
+    },
+    hl_groups = function()
+      local palette = require('tokyonight.colors').setup()
+
+      return {
+        Harpoon = { fg = palette.cyan },
+        Macro = { fg = palette.purple },
+        Lsp = { fg = palette.magenta },
+        Lazy = { fg = palette.orange },
+        Break = { fg = palette.red },
+        Stop = { fg = palette.yellow },
+      }
+    end,
   },
 }
 
