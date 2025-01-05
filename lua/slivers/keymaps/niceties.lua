@@ -6,6 +6,12 @@ map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 
+-- resize window using <ctrl> alt hjkl
+map('n', '<C-M-k>', '<cmd>resize +2<cr>', { desc = 'increase window height' })
+map('n', '<C-M-j>', '<cmd>resize -2<cr>', { desc = 'decrease window height' })
+map('n', '<C-M-l>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
+map('n', '<C-M-h>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
+
 -- Save file
 map('n', '<leader>s', '<cmd>w<cr>', { desc = 'Save File' })
 
@@ -50,7 +56,7 @@ map('n', '<leader>cW', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = 'Rename W
 map('n', '<leader>ql', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
 -- Keywordprg
-map('n', '<leader>K', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
+map('n', '<leader>kk', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
 
 -- Inspect Tree
 map('n', '<leader>cI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
@@ -68,7 +74,7 @@ map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the right window'
 map('n', '<leader>fe', function() Slivers.actions.explore() end, { desc = 'File Explorer' })
 
 -- Switch between the last opened buffer
-map('n', '<leader><Tab>', '<cmd>b#<cr>', { desc = 'Switch to last opened buffer' })
+map('n', '<leader><Tab>', '<cmd>b#<cr>', { desc = 'Last Opened Buffer' })
 
 -- Lazy
 map('n', '<leader>,l', function() require('lazy').check() end, { desc = 'Lazy' })
@@ -85,36 +91,18 @@ if Slivers.lazy.is_available 'nvim-treesitter' then
   map('n', '<leader>,T', '<cmd>TSUpdate<cr>', { desc = 'Treesitter Update' })
 end
 
--- Toggle transparent background
-map('n', '<leader>,B', function()
-  local filepath = os.getenv 'HOME' .. '/.config/nvim/lua/slivers/options.lua'
-
-  vim.g.transparent_bg = not vim.g.transparent_bg
-
-  vim.fn.system(
-    string.format(
-      [[sed -i "s/vim\.g\.transparent_bg = %s/vim\.g\.transparent_bg = %s/" %s]],
-      not vim.g.transparent_bg,
-      vim.g.transparent_bg,
-      filepath
-    )
-  )
-
-  Slivers.actions.notify(
-    string.format(
-      'Background transparency turned %s.\nRestart Neovim to apply.',
-      vim.g.transparent_bg and 'on' or 'off'
-    )
-  )
-end, { desc = 'Toggle Background Transparency' })
-
 -- Update lazy, mason and treesitter
 map('n', '<leader>,U', '<cmd>UpdateEverything<cr>', { desc = 'Update Everything' })
 
 -- Clear all marks
 map('n', '<leader>,C', '<cmd>delm! | delm A-Z0-9<cr>jk', { desc = 'Clear All Marks' })
 
--- Add undo break-points
-map('i', ',', ',<c-g>u')
-map('i', '.', '.<c-g>u')
-map('i', ';', ';<c-g>u')
+-- Commenting
+map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
+map('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
+
+-- Close current buffer
+map('n', '<leader>kq', '<cmd>q!<cr>', { desc = 'Close Window' })
+
+-- Close all buffers
+map('n', '<leader>kQ', '<cmd>qa!<cr>', { desc = 'Quit Neovim (without saving)' })

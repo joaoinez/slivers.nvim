@@ -63,7 +63,7 @@ return {
         -- Create some toggle mappings
         require('snacks').toggle.option('spell', { name = 'Spelling' }):map '<leader>ts'
         require('snacks').toggle.option('wrap', { name = 'Wrap' }):map '<leader>tw'
-        require('snacks').toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>tL'
+        require('snacks').toggle.option('relativenumber', { name = 'Relative Line Numbers' }):map '<leader>tL'
         require('snacks').toggle.diagnostics():map '<leader>tx'
         require('snacks').toggle.treesitter():map '<leader>tT'
         require('snacks').toggle.inlay_hints():map '<leader>th'

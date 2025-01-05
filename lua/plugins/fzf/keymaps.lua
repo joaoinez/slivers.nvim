@@ -1,7 +1,7 @@
 local M = {
   { '<c-j>', '<c-j>', ft = 'fzf', mode = 't', nowait = true },
   { '<c-k>', '<c-k>', ft = 'fzf', mode = 't', nowait = true },
-  { '<leader>p', '<cmd>FzfLua<cr>', desc = 'Command Palette' },
+  { '<leader>kp', '<cmd>FzfLua<cr>', desc = 'Command Palette' },
   {
     '<leader><leader>',
     '<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>',
@@ -70,6 +70,11 @@ local M = {
       }
     end,
     desc = 'Switch Colorscheme',
+  },
+  {
+    '<leader>,o',
+    '<cmd>FzfLua files cwd=~/.config/nvim/<cr>',
+    desc = 'Options',
   },
 }
 

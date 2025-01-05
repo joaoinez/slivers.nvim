@@ -92,10 +92,12 @@ M.git = {
 }
 
 M.lualine = {
-  -- section_separators = { left = '', right = '' },
-  section_separators = { left = '', right = '' },
-  -- component_separators = { left = '┃', right = '┃' },
-  component_separators = { left = '', right = '' },
+  section_separators = function()
+    return vim.g.lualine_borders and { left = '', right = '' } or { left = '', right = '' }
+  end,
+  component_separators = function()
+    return vim.g.lualine_borders and { left = '┃', right = '┃' } or { left = '', right = '' }
+  end,
   harpoon_separator = '|',
   file = {
     modified = '',

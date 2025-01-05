@@ -10,10 +10,12 @@ return {
     -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require 'lualine_require'
     lualine_require.require = require
+
     local utils = require 'plugins.lualine.utils'
     local get_color = utils.get_color
     local get_harpoon_indicator = utils.get_harpoon_indicator
-    local clients_lsp = utils.clients_lsp
+
+    local lsp_clients = require 'plugins.lualine.components.lsp-clients'
 
     -- Set global lualine
     vim.o.laststatus = vim.g.lualine_laststatus
@@ -22,18 +24,18 @@ return {
       options = {
         theme = 'auto',
         globalstatus = vim.o.laststatus == 3,
-        section_separators = IconSliver.lualine.section_separators,
-        component_separators = IconSliver.lualine.component_separators,
+        section_separators = IconSliver.lualine.section_separators(),
+        component_separators = IconSliver.lualine.component_separators(),
         disabled_filetypes = { statusline = { 'snacks_dashboard' } },
       },
       sections = {
         lualine_a = {
           {
             'mode',
-            fmt = function(str) return str:sub(1, 1) end,
+            fmt = function(str) return vim.g.mode_len > 0 and str:sub(1, vim.g.mode_len) or str end,
             separator = {
-              left = IconSliver.lualine.section_separators.right,
-              right = IconSliver.lualine.section_separators.left,
+              left = IconSliver.lualine.section_separators().right,
+              right = IconSliver.lualine.section_separators().left,
             },
           },
         },
@@ -110,7 +112,7 @@ return {
             end,
           },
           {
-            clients_lsp,
+            lsp_clients,
             color = get_color 'Lsp',
           },
           {
@@ -121,7 +123,7 @@ return {
         },
         lualine_z = {
           'location',
-          { 'progress', separator = { left = '', right = IconSliver.lualine.section_separators.left } },
+          { 'progress', separator = { left = '', right = IconSliver.lualine.section_separators().left } },
         },
       },
       extensions = {

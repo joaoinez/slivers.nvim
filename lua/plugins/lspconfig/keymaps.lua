@@ -8,6 +8,13 @@ function M.apply_user_lsp_mappings(client, bufnr)
   local supports = Slivers.lsp.supports(client)
   local map = Slivers.keymaps.safe_keymap_set
 
+  -- TODO: Check for fzf-lua and add fallbacks
+  --
+  -- { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
+  -- { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
+  -- { "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
+  -- { "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
+  -- { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
   map(
     'n',
     'gd',
@@ -33,6 +40,8 @@ function M.apply_user_lsp_mappings(client, bufnr)
     { desc = 'Goto Type Definition (fzf)' }
   )
   map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
+  map('n', 'gK', function() return vim.lsp.buf.signature_help() end, { desc = 'Signature Help' })
+  map('i', '<C-k>', function() return vim.lsp.buf.signature_help() end, { desc = 'Signature Help' })
   map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Rename Variable' })
   map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code Action' })
   map('x', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code Action' })

@@ -14,23 +14,14 @@ return {
     preset = 'helix',
     spec = {
       -- [[ Actions ]]
+      -- AI
+      { '<leader>a', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
+
       -- Breakpoint
       { '<leader>b', icon = { icon = '', color = 'red' } },
 
       -- Harpoon
       { '<leader>h', icon = { icon = '󱡀', color = 'azure' } },
-
-      -- Keywordprg
-      { '<leader>K', icon = { icon = '', color = 'grey' } },
-
-      -- Minimap
-      { '<leader>M', icon = { icon = '', color = 'purple' } },
-
-      -- Neovim news
-      { '<leader>N', icon = { icon = '󰎕', color = 'grey' } },
-
-      -- Command Palette
-      { '<leader>p', icon = { icon = '', color = 'cyan' } },
 
       -- Compiler
       { '<leader>r', icon = { icon = '', color = 'green' } },
@@ -98,12 +89,18 @@ return {
       { '<leader>gB', icon = { icon = '󰊤', color = 'grey' } },
       { '<leader>gg', icon = { icon = '', color = 'blue' } },
 
+      -- Misc
+      { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
+      { '<leader>kk', icon = { icon = '', color = 'grey' } },
+      { '<leader>km', icon = { icon = '', color = 'purple' } },
+      { '<leader>kp', icon = { icon = '', color = 'cyan' } },
+
       -- Messages
       { '<leader>m', group = 'messages', icon = { icon = '󰍡', color = 'purple' } },
       { '<leader>mh', icon = { icon = '󰍡', color = 'purple' } },
 
       -- Quickfix/Diagnostics
-      { '<leader>q', group = 'qf/diagnostics/todos' },
+      { '<leader>q', group = 'quicklist' },
       { '<leader>ql', icon = { icon = '󰙅', color = 'red' } },
       -- { '<leader>qQ', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qx', icon = { icon = '󰙅', color = 'red' } },
@@ -111,17 +108,16 @@ return {
 
       -- Toggles
       { '<leader>t', group = 'toggle' },
+      { '<leader>ta', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
       { '<leader>tD', icon = { icon = '󰊢', color = 'red' } },
       { '<leader>tm', icon = { icon = '', color = 'purple' } },
       { '<leader>tt', icon = { icon = '', color = 'red' } },
-
-      -- AI
-      { '<leader>a', group = 'ai', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
 
       -- Settings
       { '<leader>,', group = 'settings', icon = { icon = '󰒓', color = 'grey' } },
       { '<leader>,m', icon = { icon = '󱌢', color = 'orange' } },
       { '<leader>,M', icon = { icon = '󱌢', color = 'orange' } },
+      { '<leader>,N', icon = { icon = '󰎕', color = 'grey' } },
       { '<leader>,t', icon = { icon = '󰔱', color = 'green' } },
       { '<leader>,T', icon = { icon = '󰔱', color = 'green' } },
     },

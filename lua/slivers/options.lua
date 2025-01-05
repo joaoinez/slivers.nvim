@@ -2,9 +2,9 @@
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
 vim.g.colorscheme = 'catppuccin' -- Set editor colorscheme.
-vim.g.transparent_bg = true
--- TODO: Implement this
-vim.g.status_style = 1
+vim.g.transparent_bg = true -- Set transparent background.
+vim.g.lualine_borders = true -- Set lualine rounded borders.
+vim.g.mode_len = 3 -- Set mode text length; 0 is Neovim's default.
 
 -- [[ Options ]]
 vim.opt.breakindent = true -- Wrap indent to match line start.

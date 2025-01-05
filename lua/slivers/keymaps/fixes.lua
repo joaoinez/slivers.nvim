@@ -59,3 +59,8 @@ map('n', '<C-a>', function() vim.cmd 'normal! gg0vG$' end, { desc = 'Visually se
 -- Swaps `^` and `0` around
 map('n', '0', '^', { desc = 'Go to the fist character of the line (aliases 0 to ^)' })
 map('n', '^', '0', { desc = 'Go to the beginning of the line (aliases ^ to 0)' })
+
+-- Add undo break-points
+map('i', ',', ',<c-g>u')
+map('i', '.', '.<c-g>u')
+map('i', ';', ';<c-g>u')
