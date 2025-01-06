@@ -14,9 +14,6 @@ return {
     preset = 'helix',
     spec = {
       -- [[ Actions ]]
-      -- AI
-      { '<leader>a', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
-
       -- Breakpoint
       { '<leader>b', icon = { icon = '', color = 'red' } },
 
@@ -110,16 +107,23 @@ return {
       { '<leader>t', group = 'toggle' },
       { '<leader>ta', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
       { '<leader>tD', icon = { icon = '󰊢', color = 'red' } },
-      { '<leader>tm', icon = { icon = '', color = 'purple' } },
       { '<leader>tt', icon = { icon = '', color = 'red' } },
+
+      -- AI
+      { '<leader>a', group = 'ai', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
 
       -- Settings
       { '<leader>,', group = 'settings', icon = { icon = '󰒓', color = 'grey' } },
       { '<leader>,m', icon = { icon = '󱌢', color = 'orange' } },
       { '<leader>,M', icon = { icon = '󱌢', color = 'orange' } },
-      { '<leader>,N', icon = { icon = '󰎕', color = 'grey' } },
+      { '<leader>,n', icon = { icon = '󰎕', color = 'grey' } },
       { '<leader>,t', icon = { icon = '󰔱', color = 'green' } },
       { '<leader>,T', icon = { icon = '󰔱', color = 'green' } },
+
+      -- [[ Proxies ]]
+      { '<leader>p', group = 'proxy', icon = { icon = '', color = 'white' } },
+      { '<leader>pg', proxy = 'g', group = 'g' },
+      { '<leader>pz', proxy = 'z', group = 'z' },
     },
   },
 }

@@ -60,7 +60,7 @@ vim.opt.shiftround = true -- Round indent.
 vim.opt.shiftwidth = 2 -- Number of space inserted for indentation.
 vim.opt.shortmess:append { W = true, I = true, c = true, C = true } -- Disable various messages.
 vim.opt.showmode = false -- Disable showing modes in command line.
-vim.opt.sidescrolloff = 25 -- Same as vim.opt.scrolloff but for side scrolling.
+vim.opt.sidescrolloff = 8 -- Same as vim.opt.scrolloff but for side scrolling.
 vim.opt.signcolumn = 'yes' -- Always show the sign column.
 vim.opt.smartcase = true -- Case sensitivie searching.
 vim.opt.smartindent = false -- Smarter autoindentation.
@@ -73,7 +73,7 @@ vim.opt.timeoutlen = 300 -- Shorten key timeout length a little bit for which-ke
 vim.opt.undofile = true -- Enable persistent undo between session and reboots.
 vim.opt.updatetime = 250 -- Length of time to wait before triggering the plugin.
 vim.opt.virtualedit = 'block' -- Allow going past end of line in visual block mode.
-vim.opt.wrap = false -- Disable line wraping.
+vim.opt.wrap = true -- Enable line wraping.
 vim.opt.wildmode = 'longest:full,full' -- Command line completion mode.
 
 vim.schedule(function() -- Schedule the setting after `UiEnter`.

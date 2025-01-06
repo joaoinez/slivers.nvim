@@ -56,6 +56,7 @@ local M = {
           -- Apply new colorscheme
           vim.g.colorscheme = colorscheme
           vim.cmd.colorscheme(colorscheme)
+          -- TODO: Trigger Colorscheme event
           -- FIXME: This isn't working here for some reason
           Slivers.colorscheme.set_hl_groups(colorscheme_config.hl_groups)
           -- vim.schedule(function() Slivers.colorscheme.set_hl_groups(colorscheme_config.hl_groups) end)
