@@ -20,9 +20,20 @@ return {
     -- Set global lualine
     vim.o.laststatus = vim.g.lualine_laststatus
 
+    -- Transparent Lualine
+    local auto_theme = require 'lualine.themes.auto'
+    if vim.g.transparent_bg then
+      if auto_theme.inactive.c then auto_theme.inactive.c.bg = 'none' end
+      if auto_theme.visual.c then auto_theme.visual.c.bg = 'none' end
+      if auto_theme.replace.c then auto_theme.replace.c.bg = 'none' end
+      if auto_theme.normal.c then auto_theme.normal.c.bg = 'none' end
+      if auto_theme.insert.c then auto_theme.insert.c.bg = 'none' end
+      if auto_theme.command.c then auto_theme.command.c.bg = 'none' end
+    end
+
     local opts = {
       options = {
-        theme = 'auto',
+        theme = auto_theme,
         globalstatus = vim.o.laststatus == 3,
         section_separators = IconSliver.lualine.section_separators(),
         component_separators = IconSliver.lualine.component_separators(),
@@ -71,10 +82,8 @@ return {
               get_harpoon_indicator(),
               get_harpoon_indicator(),
               get_harpoon_indicator(),
-              get_harpoon_indicator(),
             },
             active_indicators = {
-              get_harpoon_indicator('[', ']'),
               get_harpoon_indicator('[', ']'),
               get_harpoon_indicator('[', ']'),
               get_harpoon_indicator('[', ']'),
@@ -138,7 +147,7 @@ return {
       },
     }
 
-    if Slivers.lazy.is_available 'trouble.nvim' then
+    if vim.g.trouble_lualine and Slivers.lazy.is_available 'trouble.nvim' then
       local trouble = require 'trouble'
       local symbols = trouble.statusline {
         mode = 'symbols',

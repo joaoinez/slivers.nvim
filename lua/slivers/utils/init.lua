@@ -6,7 +6,6 @@
 ---@field lazy utils.lazy
 ---@field lsp utils.lsp
 ---@field mason utils.mason
----@field mini utils.mini
 ---@field misc utils.misc
 local M = {
   actions = require 'slivers.utils.actions',
@@ -16,7 +15,6 @@ local M = {
   lazy = require 'slivers.utils.lazy',
   lsp = require 'slivers.utils.lsp',
   mason = require 'slivers.utils.mason',
-  mini = require 'slivers.utils.mini',
   misc = require 'slivers.utils.misc',
 }
 

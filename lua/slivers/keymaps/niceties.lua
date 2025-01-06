@@ -1,5 +1,7 @@
 local map = Slivers.keymaps.safe_keymap_set
 
+-- TODO: Make these docstrings with keybindings consistent
+--
 --  Use CTRL+<hjkl> to switch between windows
 map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
@@ -105,4 +107,8 @@ map('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Commen
 map('n', '<leader>kq', '<cmd>q!<cr>', { desc = 'Close Window' })
 
 -- Close all buffers
-map('n', '<leader>kQ', '<cmd>qa!<cr>', { desc = 'Quit Neovim (without saving)' })
+map('n', '<leader>ka', '<cmd>qa!<cr>', { desc = 'Close All Windows' })
+
+-- Open options.lua file
+-- TODO: Make this open in a float
+map('n', '<leader>,o', '<cmd>e ~/.config/nvim/lua/slivers/options.lua<cr>', { desc = 'Options' })

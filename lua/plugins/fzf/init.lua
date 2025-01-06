@@ -39,6 +39,7 @@ return {
       fzf_colors = true,
       fzf_opts = {
         ['--no-scrollbar'] = true,
+        ['--cycle'] = true,
       },
       defaults = {
         formatter = 'path.dirname_first',
@@ -115,6 +116,40 @@ return {
         code_actions = {
           previewer = vim.fn.executable 'delta' == 1 and 'codeaction_native' or nil,
         },
+      },
+      colorschemes = {
+        ignore_patterns = {
+          '^blue$',
+          '^darkblue$',
+          -- '^default$',
+          '^delek$',
+          '^desert$',
+          '^elflord$',
+          '^evening$',
+          '^habamax$',
+          '^industry$',
+          '^koehler$',
+          '^lunaperche$',
+          '^morning$',
+          '^murphy$',
+          '^pablo$',
+          '^peachpuff$',
+          '^quiet$',
+          '^retrobox$',
+          '^ron$',
+          '^shine$',
+          '^slate$',
+          '^sorbet$',
+          '^torte$',
+          -- '^vim$',
+          '^wildcharm$',
+          '^zaibatsu$',
+          '^zellner$',
+        },
+        -- uncomment to execute a callback on preview|close
+        -- e.g. a call to reset statusline highlights
+        -- cb_preview        = function() ... end,
+        -- cb_exit           = function() ... end,
       },
     }
   end,

@@ -89,7 +89,6 @@ return {
       -- Misc
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
       { '<leader>kk', icon = { icon = '', color = 'grey' } },
-      { '<leader>km', icon = { icon = '', color = 'purple' } },
       { '<leader>kp', icon = { icon = '', color = 'cyan' } },
 
       -- Messages
@@ -105,7 +104,6 @@ return {
 
       -- Toggles
       { '<leader>t', group = 'toggle' },
-      { '<leader>ta', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
       { '<leader>tD', icon = { icon = '󰊢', color = 'red' } },
       { '<leader>tt', icon = { icon = '', color = 'red' } },
 
@@ -121,9 +119,12 @@ return {
       { '<leader>,T', icon = { icon = '󰔱', color = 'green' } },
 
       -- [[ Proxies ]]
-      { '<leader>p', group = 'proxy', icon = { icon = '', color = 'white' } },
-      { '<leader>pg', proxy = 'g', group = 'g' },
-      { '<leader>pz', proxy = 'z', group = 'z' },
+      { '<leader>ky', group = 'proxy', icon = { icon = '', color = 'white' } },
+      { '<leader>kyg', proxy = 'g', group = 'goto/comments/case/splitjoin/conflicts' },
+      { '<leader>kyp', proxy = '[', group = 'previous ...' },
+      { '<leader>kyn', proxy = ']', group = 'next ...' },
+      { '<leader>kys', proxy = 's', group = 'surround' },
+      { '<leader>kyz', proxy = 'z', group = 'folds/center screen' },
     },
   },
 }

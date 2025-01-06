@@ -41,4 +41,13 @@ function M.set_hl_groups(colorscheme_hl_groups)
   end
 end
 
+---@param colorscheme_globals table|nil
+function M.set_globals(colorscheme_globals)
+  for global, value in
+    pairs(type(colorscheme_globals) == 'function' and colorscheme_globals() or colorscheme_globals or {})
+  do
+    vim.g[global] = value
+  end
+end
+
 return M

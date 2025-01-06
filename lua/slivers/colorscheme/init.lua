@@ -1,6 +1,17 @@
 local M = {}
 
-M.colorschemes = require 'slivers.colorscheme.config'
+M.colorschemes = {
+  _fallback = {
+    hl_groups = function() return require 'slivers.colorscheme._fallback' end,
+  },
+  catppuccin = require 'slivers.colorscheme.catppuccin',
+  default = require 'slivers.colorscheme.default',
+  gruvbox = require 'slivers.colorscheme.gruvbox',
+  kanagawa = require 'slivers.colorscheme.kanagawa',
+  onedark = require 'slivers.colorscheme.onedark',
+  ['rose-pine'] = require 'slivers.colorscheme.rose-pine',
+  tokyonight = require 'slivers.colorscheme.tokyonight',
+}
 
 function M.apply()
   -- [[ Apply Colorscheme ]]
@@ -10,6 +21,11 @@ function M.apply()
 
   -- [[ Set Highlight Groups ]]
   Slivers.colorscheme.set_hl_groups(colorscheme.hl_groups)
+
+  -- [[ Apply Globals ]]
+  Slivers.colorscheme.set_globals(colorscheme.globals)
 end
 
-return M
+return setmetatable(M, {
+  __call = function(self) return self.apply() end,
+})

@@ -22,7 +22,7 @@ return {
           { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
           '^().*()$',
         },
-        g = Slivers.mini.ai_buffer, -- buffer
+        g = require('plugins.mini.utils').ai_buffer, -- buffer
         u = ai.gen_spec.function_call(), -- u for "Usage"
         U = ai.gen_spec.function_call { name_pattern = '[%w_]' }, -- without dot in function name
       },
@@ -32,7 +32,7 @@ return {
     require('mini.ai').setup(opts)
 
     Slivers.lazy.on_load('which-key.nvim', function()
-      vim.schedule(function() Slivers.mini.ai_whichkey(opts) end)
+      vim.schedule(function() require('plugins.mini.utils').ai_whichkey(opts) end)
     end)
   end,
 }

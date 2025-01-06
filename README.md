@@ -59,8 +59,9 @@ Hopefully one day I can contribute to this incredible tool.
 
 ### Todos
 
-- Adding Markdown and JSON linting and autoformatting
+- Adding JSON linting and autoformatting
 - Adding [Neotest](https://github.com/nvim-neotest/neotest) to handle testing
 - Writing more comments throught the code
 - Making some functionality more modular by better checking for any other plugins its using
 - Adding Hyprland lang support
+- Random colorscheme on start

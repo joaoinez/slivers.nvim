@@ -7,5 +7,4 @@ return {
   opts = {
     transparent_mode = vim.g.transparent_bg,
   },
-  init = function() ColorSliver.apply() end,
 }

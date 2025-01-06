@@ -91,3 +91,26 @@ cmd('UpdateEverything', function()
   vim.cmd ':TSUpdate'
   vim.cmd ':MasonToolsUpdate'
 end, { desc = 'Update lazy, treesitter and mason' })
+
+-- -- Lua function to dump colorschemes to the clipboard
+-- vim.api.nvim_create_user_command('DumpColorschemesToClipboard', function()
+--   -- Get a list of all colorschemes
+--   local schemes = vim.fn.split(vim.fn.globpath(vim.o.runtimepath, 'colors/*.vim'), '\n')
+--   schemes = vim.fn.map(schemes, function(_, val) return vim.fn.fnamemodify(val, ':t:r') end)
+--   local clipboard_contents = table.concat(schemes, '\n')
+--
+--   -- Use system clipboard utility (adjust for your system)
+--   if vim.fn.has 'mac' == 1 then
+--     vim.fn.system('echo "' .. clipboard_contents .. '" | pbcopy') -- macOS
+--   elseif vim.fn.has 'unix' == 1 then
+--     if vim.fn.executable 'xclip' == 1 then
+--       vim.fn.system('echo "' .. clipboard_contents .. '" | xclip -selection clipboard') -- Linux
+--     elseif vim.fn.executable 'wl-copy' == 1 then
+--       vim.fn.system('echo "' .. clipboard_contents .. '" | wl-copy') -- Wayland
+--     else
+--       print 'No suitable clipboard utility found (xclip/wl-copy).'
+--     end
+--   end
+--
+--   print 'Colorschemes copied to clipboard.'
+-- end, { desc = 'Dump all available colorschemes to the clipboard' })

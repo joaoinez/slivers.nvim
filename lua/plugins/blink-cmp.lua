@@ -2,41 +2,33 @@
 return {
   'saghen/blink.cmp',
   enabled = true,
-  dependencies = { 'rafamadriz/friendly-snippets' },
-  version = 'v0.*',
+  dependencies = {
+    {
+      'saghen/blink.compat',
+      version = '*',
+      lazy = true,
+      opts = {},
+    },
+    'rafamadriz/friendly-snippets',
+  },
+  version = '*',
   event = 'InsertEnter',
   opts = {
     keymap = {
       preset = 'enter',
-      ['<Tab>'] = {
-        function(cmp)
-          if cmp.snippet_active() then
-            return cmp.snippet_forward()
-          else
-            return cmp.select_next()
-          end
-        end,
-        'fallback',
-      },
-      ['<S-Tab>'] = {
-        function(cmp)
-          if cmp.snippet_active() then
-            return cmp.snippet_backward()
-          else
-            return cmp.select_prev()
-          end
-        end,
-        'fallback',
-      },
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      ['<C-p>'] = { 'snippet_backward', 'fallback' },
+      ['<C-n>'] = { 'snippet_forward', 'fallback' },
     },
     appearance = {
       use_nvim_cmp_as_default = false,
       nerd_font_variant = 'mono',
       kind_icons = IconSliver.cmp,
     },
-    signature = {
-      enabled = true,
-    },
+    -- signature = {
+    --   enabled = true,
+    -- },
     completion = {
       menu = {
         draw = {
@@ -70,8 +62,36 @@ return {
           name = 'RenderMarkdown',
           module = 'render-markdown.integ.blink',
         },
+        avante_commands = {
+          name = 'avante_commands',
+          module = 'blink.compat.source',
+          score_offset = 90, -- show at a higher priority than lsp
+          opts = {},
+        },
+        avante_files = {
+          name = 'avante_commands',
+          module = 'blink.compat.source',
+          score_offset = 100, -- show at a higher priority than lsp
+          opts = {},
+        },
+        avante_mentions = {
+          name = 'avante_mentions',
+          module = 'blink.compat.source',
+          score_offset = 1000, -- show at a higher priority than lsp
+          opts = {},
+        },
       },
-      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'markdown' },
+      default = {
+        'lazydev',
+        'lsp',
+        'path',
+        'snippets',
+        'buffer',
+        'markdown',
+        'avante_commands',
+        'avante_mentions',
+        'avante_files',
+      },
       cmdline = {},
     },
   },

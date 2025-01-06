@@ -55,4 +55,9 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
+-- [[ Apply Colorscheme ]]
+ColorSliver()
+
+-- vim.print(vim.fn.stdpath 'config' .. '/lua/slivers/options.lua')
+
 -- vim: ts=2 sts=2 sw=2 et

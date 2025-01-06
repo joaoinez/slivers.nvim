@@ -9,6 +9,15 @@ local M = {
   },
   { '<leader>:', '<cmd>FzfLua commands<cr>', desc = 'Commands' },
   { '<leader>ff', '<cmd>FzfLua files<cr>', desc = 'Find Files' },
+  {
+    '<leader>fd',
+    function()
+      local current_dir = vim.fn.expand '%:p:h'
+      if current_dir == '' or vim.fn.isdirectory(current_dir) == 0 then current_dir = vim.fn.getcwd() end
+      require('fzf-lua').files { cwd = current_dir }
+    end,
+    desc = 'Find Files (cwd)',
+  },
   { '<leader>fg', '<cmd>FzfLua git_status<cr>', desc = 'Git Status' },
   { '<leader>fA', '<cmd>FzfLua autocmds<cr>', desc = 'Auto Commands' },
   { '<leader>f/', '<cmd>FzfLua grep_curbuf<cr>', desc = 'Search' },
@@ -54,12 +63,6 @@ local M = {
           end
 
           -- Apply new colorscheme
-          vim.g.colorscheme = colorscheme
-          vim.cmd.colorscheme(colorscheme)
-          -- TODO: Trigger Colorscheme event
-          -- FIXME: This isn't working here for some reason
-          Slivers.colorscheme.set_hl_groups(colorscheme_config.hl_groups)
-          -- vim.schedule(function() Slivers.colorscheme.set_hl_groups(colorscheme_config.hl_groups) end)
           vim.fn.system(
             string.format(
               [[sed -i "s/vim\.g\.colorscheme = '[^']*'/vim\.g\.colorscheme = '%s'/" %s]],
@@ -67,15 +70,18 @@ local M = {
               options_path
             )
           )
+          vim.g.colorscheme = colorscheme
+          ColorSliver()
+
+          -- Info notification
+          Slivers.actions.notify(
+            'Some colors might have not been applied.\nRestart Neovim to fully apply the colorscheme.',
+            2
+          )
         end,
       }
     end,
     desc = 'Switch Colorscheme',
-  },
-  {
-    '<leader>,o',
-    '<cmd>FzfLua files cwd=~/.config/nvim/<cr>',
-    desc = 'Options',
   },
 }
 
