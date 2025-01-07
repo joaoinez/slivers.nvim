@@ -1,16 +1,31 @@
 -- [[ Globals ]]
-vim.g.transparent_bg = true -- Set transparent background.
-vim.g.random_colorscheme = false -- Randomize colorscheme on startup.
-vim.g.lualine_borders = true -- Set lualine rounded borders.
-vim.g.mode_len = 3 -- Set mode text length; 0 is Neovim's default.
-vim.g.trouble_lualine = true -- Show the current document symbols location from Trouble in lualine.
-
--- Leader
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
 
--- WARN: Don't change this value manually. Use <leader>,c instead
-vim.g.colorscheme = 'gruvbox' -- Set editor colorscheme.
+local path = vim.fn.stdpath 'config' .. '/.slivers.json'
+if Slivers.misc.file_exists(path) then
+  local config = vim.fn.json_decode(Slivers.misc.read_file(path))
+
+  for global, value in pairs(config) do
+    vim.g[global] = value
+  end
+else
+  local default_config = {
+    colorscheme = 'default', -- Set editor colorscheme.
+    lualine_borders = true, -- Set lualine rounded borders.
+    mode_len = 3, -- Set mode text length; 0 is Neovim's default.
+    random_colorscheme = false, -- Set randomize colorscheme on startup.
+    random_colorschemes = { 'default', 'vim' }, -- Set list of random colorschemes.
+    transparent_bg = true, -- Set transparent background.
+    trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
+  }
+
+  Slivers.misc.write_file(path, vim.fn.json_encode(default_config))
+
+  for global, value in pairs(default_config) do
+    vim.g[global] = value
+  end
+end
 
 -- [[ Options ]]
 vim.opt.breakindent = true -- Wrap indent to match line start.

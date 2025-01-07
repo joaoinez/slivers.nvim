@@ -17,9 +17,15 @@ return {
   },
   opts = {
     provider = 'ollama',
-    auto_suggestions_provider = 'ollama',
+    auto_suggestions_provider = 'qwen',
     vendors = {
       ollama = {
+        __inherited_from = 'openai',
+        api_key_name = '',
+        endpoint = 'http://127.0.0.1:11434/v1',
+        model = 'llama3.1:8b',
+      },
+      qwen = {
         __inherited_from = 'openai',
         api_key_name = '',
         endpoint = 'http://127.0.0.1:11434/v1',

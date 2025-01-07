@@ -6,4 +6,4 @@ nvim
 spell/
 
 *.bak
-.slivers.toml
+.slivers.json

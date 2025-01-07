@@ -35,18 +35,17 @@ local M = {
     function()
       require('fzf-lua').colorschemes {
         complete = function(selected)
-          local options_path = vim.fn.stdpath 'config' .. '/lua/slivers/options.lua'
+          local path = vim.fn.stdpath 'config' .. '/.slivers.json'
           local colorscheme = selected[1]
 
           -- Apply new colorscheme
-          vim.fn.system(
-            string.format(
-              [[sed -i "s/vim\.g\.colorscheme = '[^']*'/vim\.g\.colorscheme = '%s'/" %s]],
-              colorscheme,
-              options_path
-            )
-          )
+          local config = vim.fn.json_decode(Slivers.misc.read_file(path))
+          config.colorscheme = colorscheme
+
+          Slivers.misc.write_file(path, vim.fn.json_encode(config))
+
           vim.g.colorscheme = colorscheme
+
           ColorSliver()
 
           -- Info notification

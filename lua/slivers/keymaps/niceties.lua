@@ -111,4 +111,4 @@ map('n', '<leader>ka', '<cmd>qa!<cr>', { desc = 'Close All Windows' })
 
 -- Open options.lua file
 -- TODO: Make this open in a float
-map('n', '<leader>,o', '<cmd>e ~/.config/nvim/lua/slivers/options.lua<cr>', { desc = 'Options' })
+map('n', '<leader>,o', '<cmd>e ' .. vim.fn.stdpath 'config' .. '/.slivers.json' .. '<cr>', { desc = 'Options' })

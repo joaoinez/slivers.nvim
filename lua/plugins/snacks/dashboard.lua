@@ -59,7 +59,7 @@ local M = {
       icon = ' ',
       desc = 'Browse Repo (github)',
       padding = 1,
-      key = 'b',
+      key = 'B',
       action = function() require('snacks').gitbrowse() end,
     },
     {

@@ -27,6 +27,11 @@ _G.ColorSliver = require 'slivers.colorscheme'
 -- [[ Load Options ]]
 Slivers.load 'options'
 
+if vim.g.random_colorscheme then
+  -- [[ Randomize Colorscheme ]]
+  Slivers.colorscheme.randomize(vim.g.random_colorschemes)
+end
+
 -- [[ Set Language ]]
 vim.cmd 'language en_US'
 
@@ -54,9 +59,6 @@ vim.api.nvim_create_autocmd('User', {
     Slivers.load 'keymaps'
   end,
 })
-
--- [[ Randomize Colorscheme ]]
-if vim.g.random_colorscheme then Slivers.colorscheme.randomize(ColorSliver.random_colorschemes) end
 
 -- [[ Apply Colorscheme ]]
 ColorSliver()

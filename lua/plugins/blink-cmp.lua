@@ -25,9 +25,6 @@ return {
       nerd_font_variant = 'mono',
       kind_icons = IconSliver.cmp,
     },
-    -- signature = {
-    --   enabled = true,
-    -- },
     completion = {
       menu = {
         draw = {

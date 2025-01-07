@@ -22,4 +22,20 @@ function M.delete_url_effect()
   end
 end
 
+function M.file_exists(file) return vim.uv.fs_stat(file) ~= nil end
+
+function M.read_file(file)
+  local fd = assert(io.open(file, 'r'))
+  ---@type string
+  local data = fd:read '*a'
+  fd:close()
+  return data
+end
+
+function M.write_file(file, contents)
+  local fd = assert(io.open(file, 'w+'))
+  fd:write(contents)
+  fd:close()
+end
+
 return M
