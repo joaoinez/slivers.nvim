@@ -1,6 +1,6 @@
 <div align="center">
   <h1>slivers.nvim</h1>
-  <h3>🌸 ~ A modular Neovim config  ~ 🌸</h3>
+  <h3>🌸 ~ My Neovim config  ~ 🌸</h3>
 </div>
 
 ----------
@@ -50,6 +50,7 @@
 Originally started as a [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) configuration and slowly started changing plugins, options and structure.
 I'm unimaginably thankful for [NormalNvim](https://github.com/NormalNvim/NormalNvim)'s excellent codebase and helpful comments.
 Equal thanks go to [LazyVim](https://github.com/LazyVim/LazyVim)'s website and codebase, both of which are great for discovery.
+Also credit to [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) for their color lib and diagnostics tinting.
 
 Special thanks to ThePrimeagen and TJ DeVries for making my move to Neovim feasible.
 
@@ -59,9 +60,9 @@ Hopefully one day I can contribute to this incredible tool.
 
 ### Todos
 
+- Scratch buffer with code runner
 - Adding JSON linting and autoformatting
 - Adding [Neotest](https://github.com/nvim-neotest/neotest) to handle testing
 - Writing more comments throught the code
 - Making some functionality more modular by better checking for any other plugins its using
 - Adding Hyprland lang support
-- Random colorscheme on start

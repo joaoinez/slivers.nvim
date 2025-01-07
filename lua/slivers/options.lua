@@ -1,15 +1,16 @@
 -- [[ Globals ]]
 vim.g.transparent_bg = true -- Set transparent background.
+vim.g.random_colorscheme = false -- Randomize colorscheme on startup.
 vim.g.lualine_borders = true -- Set lualine rounded borders.
 vim.g.mode_len = 3 -- Set mode text length; 0 is Neovim's default.
-vim.g.trouble_lualine = true -- Show the current document symbols location from Trouble in lualine
+vim.g.trouble_lualine = true -- Show the current document symbols location from Trouble in lualine.
 
 -- Leader
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
 
 -- WARN: Don't change this value manually. Use <leader>,c instead
-vim.g.colorscheme = 'kanagawa' -- Set editor colorscheme.
+vim.g.colorscheme = 'gruvbox' -- Set editor colorscheme.
 
 -- [[ Options ]]
 vim.opt.breakindent = true -- Wrap indent to match line start.

@@ -35,32 +35,8 @@ local M = {
     function()
       require('fzf-lua').colorschemes {
         complete = function(selected)
-          local options_path = os.getenv 'HOME' .. '/.config/nvim/lua/slivers/options.lua'
+          local options_path = vim.fn.stdpath 'config' .. '/lua/slivers/options.lua'
           local colorscheme = selected[1]
-          local old_colorscheme = vim.g.colorscheme
-          local old_colorscheme_config_name =
-            Slivers.colorscheme.get_config(ColorSliver.colorschemes, old_colorscheme).name
-          local colorscheme_config = Slivers.colorscheme.get_config(ColorSliver.colorschemes, colorscheme)
-
-          -- Disable old colorscheme
-          if old_colorscheme_config_name and old_colorscheme ~= colorscheme_config.name then
-            local old_colorscheme_path = os.getenv 'HOME'
-              .. string.format('/.config/nvim/lua/plugins/colorschemes/%s.lua', old_colorscheme_config_name)
-
-            vim.fn.system(string.format([[sed -i "s/lazy = false,/lazy = true,/" %s]], old_colorscheme_path))
-            vim.fn.system(
-              string.format([[sed -i "s/^[^p]*priority = 1000,/  -- priority = 1000,/" %s]], old_colorscheme_path)
-            )
-          end
-
-          -- Enable new colorscheme
-          if colorscheme_config.name and colorscheme_config.name ~= old_colorscheme_config_name then
-            local colorscheme_path = os.getenv 'HOME'
-              .. string.format('/.config/nvim/lua/plugins/colorschemes/%s.lua', colorscheme_config.name)
-
-            vim.fn.system(string.format([[sed -i "s/lazy = true,/lazy = false,/" %s]], colorscheme_path))
-            vim.fn.system(string.format([[sed -i "s/^[^p]*priority = 1000,/  priority = 1000,/" %s]], colorscheme_path))
-          end
 
           -- Apply new colorscheme
           vim.fn.system(

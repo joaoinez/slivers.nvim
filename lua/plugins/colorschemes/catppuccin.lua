@@ -3,8 +3,8 @@ return {
   'catppuccin/nvim',
   enabled = true,
   name = 'catppuccin',
-  -- priority = 1000,
-  lazy = true,
+  priority = 1000,
+  lazy = Slivers.colorscheme.get_config(ColorSliver.colorschemes, vim.g.colorscheme).name ~= 'catppuccin',
   opts = {
     transparent_background = vim.g.transparent_bg,
     integrations = {

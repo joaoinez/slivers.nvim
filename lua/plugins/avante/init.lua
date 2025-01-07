@@ -8,6 +8,13 @@ return {
   },
   build = 'make',
   event = 'VeryLazy',
+  keys = {
+    {
+      '<leader>az',
+      '<cmd>AvanteClear<cr>',
+      desc = 'Clear Chat',
+    },
+  },
   opts = {
     provider = 'ollama',
     auto_suggestions_provider = 'ollama',

@@ -55,9 +55,10 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
+-- [[ Randomize Colorscheme ]]
+if vim.g.random_colorscheme then Slivers.colorscheme.randomize(ColorSliver.random_colorschemes) end
+
 -- [[ Apply Colorscheme ]]
 ColorSliver()
-
--- vim.print(vim.fn.stdpath 'config' .. '/lua/slivers/options.lua')
 
 -- vim: ts=2 sts=2 sw=2 et

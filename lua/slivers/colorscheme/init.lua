@@ -13,6 +13,15 @@ M.colorschemes = {
   tokyonight = require 'slivers.colorscheme.tokyonight',
 }
 
+M.random_colorschemes = {
+  'catppuccin',
+  'default',
+  'kanagawa',
+  'onedark',
+  'tokyonight',
+  'rose-pine',
+}
+
 function M.apply()
   -- [[ Apply Colorscheme ]]
   vim.cmd.colorscheme(vim.g.colorscheme)

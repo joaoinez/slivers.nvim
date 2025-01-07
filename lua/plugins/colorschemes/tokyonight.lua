@@ -2,8 +2,8 @@
 return {
   'folke/tokyonight.nvim',
   enabled = true,
-  -- priority = 1000,
-  lazy = true,
+  priority = 1000,
+  lazy = Slivers.colorscheme.get_config(ColorSliver.colorschemes, vim.g.colorscheme).name ~= 'tokyonight',
   opts = {
     transparent = vim.g.transparent_bg,
     on_highlights = function(highlights, colors)
