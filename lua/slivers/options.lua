@@ -4,7 +4,7 @@ vim.g.maplocalleader = ' ' -- Set default local leader key.
 
 local path = vim.fn.stdpath 'config' .. '/.slivers.json'
 if Slivers.misc.file_exists(path) then
-  local config = vim.fn.json_decode(Slivers.misc.read_file(path))
+  local config = vim.json.decode(Slivers.misc.read_file(path))
 
   for global, value in pairs(config) do
     vim.g[global] = value
@@ -20,7 +20,7 @@ else
     trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
   }
 
-  Slivers.misc.write_file(path, vim.fn.json_encode(default_config))
+  Slivers.misc.write_file(path, vim.json.encode(default_config))
 
   for global, value in pairs(default_config) do
     vim.g[global] = value

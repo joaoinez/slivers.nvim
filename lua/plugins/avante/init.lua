@@ -18,6 +18,9 @@ return {
   opts = {
     provider = 'ollama',
     auto_suggestions_provider = 'qwen',
+    -- behaviour = {
+    --   auto_suggestions = false, -- INFO: Experimental stage
+    -- },
     vendors = {
       ollama = {
         __inherited_from = 'openai',

@@ -4,6 +4,8 @@ local autocmd = Slivers.autocmds.autocmd
 local augroup = Slivers.autocmds.augroup
 local cmd = vim.api.nvim_create_user_command
 
+-- [[ Auto Commands ]]
+
 -- Check if we need to reload the file when it is changed
 autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
   group = augroup 'checktime',
@@ -84,6 +86,26 @@ autocmd('BufWritePre', {
     end
   end,
 })
+
+-- Terminal Options
+autocmd('TermOpen', {
+  group = augroup 'term_open',
+  callback = function()
+    vim.o.number = false
+    vim.o.relativenumber = false
+
+    vim.cmd 'norm a'
+  end,
+})
+
+autocmd('BufEnter', {
+  group = augroup 'term_focus',
+  callback = function()
+    if vim.bo.buftype == 'terminal' then vim.cmd 'norm i' end
+  end,
+})
+
+-- [[ User Commands ]]
 
 -- Update Everything
 cmd('UpdateEverything', function()

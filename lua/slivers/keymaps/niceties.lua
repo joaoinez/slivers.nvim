@@ -14,6 +14,13 @@ map('n', '<C-M-j>', '<cmd>resize -2<cr>', { desc = 'decrease window height' })
 map('n', '<C-M-l>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
 map('n', '<C-M-h>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
 
+-- Move Lines
+map('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
+map('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
+map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
+map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
+map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
+map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
 -- Save file
 map('n', '<leader>s', '<cmd>w<cr>', { desc = 'Save File' })
 
@@ -112,3 +119,36 @@ map('n', '<leader>ka', '<cmd>qa!<cr>', { desc = 'Close All Windows' })
 -- Open options.lua file
 -- TODO: Make this open in a float
 map('n', '<leader>,o', '<cmd>e ' .. vim.fn.stdpath 'config' .. '/.slivers.json' .. '<cr>', { desc = 'Options' })
+
+-- Source file
+map('n', '<leader>,%', '<cmd>source %<cr>', { desc = 'Source File' })
+
+-- Toggle floating terminal
+map('n', '<leader>kf', '<cmd>Floaterminal<cr>', { desc = 'Floaterminal' })
+
+-- REPL node
+map('n', '<leader>krn', function()
+  vim.cmd.new()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 15)
+
+  vim.fn.chansend(vim.bo.channel, { 'clear\r\n' })
+  vim.fn.chansend(vim.bo.channel, { 'node\r\n' })
+end, { desc = 'Node' })
+
+-- Toggle floating ollama
+-- map('n', '<leader>ao', '<cmd>Floaterminal ollama<cr>', { desc = 'Ollama Chat' })
+
+-- TODO: Replace ollama with actual aider
+--
+-- Toggle aider
+map('n', '<leader>aA', function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd 'L'
+  vim.api.nvim_win_set_width(0, math.floor(vim.o.columns * 0.3))
+
+  vim.fn.chansend(vim.bo.channel, { 'clear\r\n' })
+  vim.fn.chansend(vim.bo.channel, { 'ollama run deepseek-coder-v2:16b\r\n' })
+end, { desc = 'Aider' })

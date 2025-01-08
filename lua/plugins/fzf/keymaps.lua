@@ -39,10 +39,10 @@ local M = {
           local colorscheme = selected[1]
 
           -- Apply new colorscheme
-          local config = vim.fn.json_decode(Slivers.misc.read_file(path))
+          local config = vim.json.decode(Slivers.misc.read_file(path))
           config.colorscheme = colorscheme
 
-          Slivers.misc.write_file(path, vim.fn.json_encode(config))
+          Slivers.misc.write_file(path, vim.json.encode(config))
 
           vim.g.colorscheme = colorscheme
 

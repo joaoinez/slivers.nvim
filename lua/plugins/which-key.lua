@@ -88,6 +88,7 @@ return {
 
       -- Misc
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
+      { '<leader>kr', group = 'repl', icon = { icon = '', color = 'orange' } },
       { '<leader>kk', icon = { icon = '', color = 'grey' } },
       { '<leader>kp', icon = { icon = '', color = 'cyan' } },
 
