@@ -116,39 +116,31 @@ map('n', '<leader>kq', '<cmd>q!<cr>', { desc = 'Close Window' })
 -- Close all buffers
 map('n', '<leader>ka', '<cmd>qa!<cr>', { desc = 'Close All Windows' })
 
--- Open options.lua file
--- TODO: Make this open in a float
-map('n', '<leader>,o', '<cmd>e ' .. vim.fn.stdpath 'config' .. '/.slivers.json' .. '<cr>', { desc = 'Options' })
+-- Open slivers.json file
+map('n', '<leader>,o', function()
+  local window = Slivers.misc.create_floating_window {
+    -- TODO: Simplify this. The math.floor stuff should be inside create_floating_window
+    width = math.floor(vim.o.columns * 0.33),
+    height = math.floor(vim.o.lines * 0.33),
+    win = { title = 'Options' },
+  }
+
+  vim.api.nvim_set_current_buf(window.buf)
+  vim.cmd('e ' .. vim.fn.stdpath 'config' .. '/.slivers.json')
+  vim.api.nvim_buf_set_keymap(window.buf, 'n', 'q', '<cmd>x<cr>', { noremap = true, silent = true })
+end, { desc = 'Options' })
 
 -- Source file
 map('n', '<leader>,%', '<cmd>source %<cr>', { desc = 'Source File' })
 
--- Toggle floating terminal
-map('n', '<leader>kf', '<cmd>Floaterminal<cr>', { desc = 'Floaterminal' })
-
 -- REPL node
-map('n', '<leader>krn', function()
-  vim.cmd.new()
-  vim.cmd.term()
-  vim.cmd.wincmd 'J'
-  vim.api.nvim_win_set_height(0, 15)
+map('n', '<leader>krn', function() Slivers.misc.open_term_with_cmd 'node' end, { desc = 'Node' })
 
-  vim.fn.chansend(vim.bo.channel, { 'clear\r\n' })
-  vim.fn.chansend(vim.bo.channel, { 'node\r\n' })
-end, { desc = 'Node' })
+-- REPL lua
+map('n', '<leader>krl', function() Slivers.misc.open_term_with_cmd 'lua' end, { desc = 'Lua' })
 
--- Toggle floating ollama
--- map('n', '<leader>ao', '<cmd>Floaterminal ollama<cr>', { desc = 'Ollama Chat' })
+-- REPL python
+map('n', '<leader>krp', function() Slivers.misc.open_term_with_cmd 'python3' end, { desc = 'Python' })
 
--- TODO: Replace ollama with actual aider
---
 -- Toggle aider
-map('n', '<leader>aA', function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd 'L'
-  vim.api.nvim_win_set_width(0, math.floor(vim.o.columns * 0.3))
-
-  vim.fn.chansend(vim.bo.channel, { 'clear\r\n' })
-  vim.fn.chansend(vim.bo.channel, { 'ollama run deepseek-coder-v2:16b\r\n' })
-end, { desc = 'Aider' })
+map('n', '<leader>aA', function() Slivers.misc.open_term_with_cmd 'aider' end, { desc = 'Aider' })

@@ -18,6 +18,14 @@ local M = {
       Stop = { fg = palette.yellow },
     }
   end,
+  globals = function()
+    local lualine_borders = vim.g.lualine_borders
+    if vim.g.transparent_bg then lualine_borders = false end
+
+    return {
+      lualine_borders = lualine_borders,
+    }
+  end,
 }
 
 return M

@@ -1,3 +1,4 @@
+return {}
 -- local Menu = require 'nui.menu'
 -- local event = require('nui.utils.autocmd').event
 --

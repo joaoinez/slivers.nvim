@@ -54,6 +54,7 @@ return {
         filter = {
           any = {
             { find = 'No information available' },
+            { find = 'W325: Ignoring swapfile from Nvim process %d' },
           },
         },
         view = 'mini',

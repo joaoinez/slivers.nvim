@@ -28,6 +28,7 @@ local M = {
   { '<leader>f?', '<cmd>FzfLua keymaps<cr>', desc = 'Keymaps' },
   { '<leader>fM', '<cmd>FzfLua man_pages<cr>', desc = 'Man Pages' },
   { '<leader>f.', '<cmd>FzfLua resume<cr>', desc = 'Resume Search' },
+  { '<leader>f,', function() require('fzf-lua').files { cwd = vim.fn.stdpath 'config' } end, desc = 'Neovim Config' },
   { '<leader>fw', '<cmd>FzfLua grep_cword<cr>', desc = 'Find Word (project)' },
   { '<leader>fw', '<cmd>FzfLua grep_visual<cr>', mode = 'v', desc = 'Find Selection (project)' },
   {

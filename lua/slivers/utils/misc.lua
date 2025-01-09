@@ -38,4 +38,54 @@ function M.write_file(file, contents)
   fd:close()
 end
 
+function M.open_term_with_cmd(cmd)
+  vim.cmd.new()
+
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_win_set_buf(0, buf)
+
+  vim.cmd.term(cmd)
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 15)
+
+  vim.api.nvim_create_autocmd('TermClose', {
+    once = true,
+    buffer = buf,
+    callback = function()
+      vim.api.nvim_buf_delete(buf, { force = true })
+      vim.cmd.checktime()
+    end,
+  })
+
+  vim.bo[buf].buflisted = false
+end
+
+function M.create_floating_window(opts)
+  opts = vim.tbl_deep_extend('force', {
+    width = math.floor(vim.o.columns * 0.9),
+    height = math.floor(vim.o.lines * 0.9),
+    win = {
+      relative = 'editor',
+      style = 'minimal',
+      border = 'rounded',
+      title = 'Floaterminal',
+    },
+  }, opts or {})
+
+  local width = opts.width
+  local height = opts.height
+  local col = math.floor((vim.o.columns - width) / 2)
+  local row = math.floor((vim.o.lines - height) / 2)
+  local buf = vim.api.nvim_create_buf(false, true)
+  local win_config = vim.tbl_deep_extend('force', opts.win, {
+    width = width,
+    height = height,
+    col = col,
+    row = row,
+  })
+  local win = vim.api.nvim_open_win(buf, true, win_config)
+
+  return { buf = buf, win = win }
+end
+
 return M
