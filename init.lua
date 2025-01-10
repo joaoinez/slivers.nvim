@@ -33,7 +33,7 @@ if vim.g.random_colorscheme then
 end
 
 -- [[ Set Language ]]
-vim.cmd 'language en_US'
+-- vim.cmd 'language en_US'
 
 -- [[ Initialize Lazy ]]
 require 'slivers.lazy'

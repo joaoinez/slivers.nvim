@@ -11,9 +11,10 @@ local M = {
         action = ":lua require('snacks').dashboard.pick('live_grep')",
       },
       { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':lua Slivers.actions.explore()' },
+      { icon = '', key = 'r', desc = 'README', action = ':e README.md' },
       {
         icon = ' ',
-        key = 'T',
+        key = 't',
         desc = 'Todos',
         action = ":lua require('todo-comments.fzf').todo({ keywords = { 'TODO', 'FIX', 'FIXME' } })",
       },
@@ -25,7 +26,6 @@ local M = {
       },
       { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
       { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
-      { icon = '󱌢 ', key = 'm', desc = 'Mason', action = ':Mason' },
       { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
     },
     header = [[

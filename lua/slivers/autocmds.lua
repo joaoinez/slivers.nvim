@@ -87,17 +87,6 @@ autocmd('BufWritePre', {
   end,
 })
 
--- Terminal Options
-autocmd('TermOpen', {
-  group = augroup 'term_open',
-  callback = function()
-    vim.o.number = false
-    vim.o.relativenumber = false
-
-    vim.cmd 'norm a'
-  end,
-})
-
 autocmd('BufEnter', {
   group = augroup 'term_focus',
   callback = function()

@@ -7,3 +7,4 @@ spell/
 
 *.bak
 .slivers.json
+lua/plugins/_dev.lua

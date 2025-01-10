@@ -39,16 +39,30 @@ function M.write_file(file, contents)
 end
 
 function M.open_term_with_cmd(cmd)
-  vim.cmd.new()
+  local autocmd = Slivers.autocmds.autocmd
+  local augroup = Slivers.autocmds.augroup
+
+  autocmd('TermOpen', {
+    group = augroup 'term_cmd',
+    once = true,
+    callback = function()
+      vim.o.number = false
+      vim.o.relativenumber = false
+
+      vim.cmd 'norm i'
+    end,
+  })
 
   local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_win_set_buf(0, buf)
 
+  vim.cmd.new()
+  vim.api.nvim_win_set_buf(0, buf)
   vim.cmd.term(cmd)
-  vim.cmd.wincmd 'J'
+  vim.cmd.wincmd 'K'
   vim.api.nvim_win_set_height(0, 15)
 
   vim.api.nvim_create_autocmd('TermClose', {
+    group = augroup 'term_cmd',
     once = true,
     buffer = buf,
     callback = function()

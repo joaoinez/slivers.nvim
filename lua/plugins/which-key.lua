@@ -90,6 +90,8 @@ return {
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
       { '<leader>kr', group = 'repl', icon = { icon = '', color = 'orange' } },
       { '<leader>kk', icon = { icon = '', color = 'grey' } },
+      { '<leader>ks', icon = { icon = '󰢱', color = 'blue' } },
+      { '<leader>kt', icon = { icon = '', color = 'blue' } },
       { '<leader>kp', icon = { icon = '', color = 'cyan' } },
 
       -- Messages
@@ -125,6 +127,7 @@ return {
       { '<leader>kyp', proxy = '[', group = 'previous ...' },
       { '<leader>kyn', proxy = ']', group = 'next ...' },
       { '<leader>kys', proxy = 's', group = 'surround' },
+      { '<leader>kyw', proxy = '<C-w>', group = 'wincmds' },
       { '<leader>kyz', proxy = 'z', group = 'folds/center screen' },
     },
   },

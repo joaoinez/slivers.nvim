@@ -131,8 +131,23 @@ map('n', '<leader>,o', function()
 end, { desc = 'Options' })
 
 -- Source file
-map('n', '<leader>,%', '<cmd>source %<cr>', { desc = 'Source File' })
+map('n', '<leader>kS', '<cmd>source %<cr>', { desc = 'Source File' })
 
+-- Test file with Plenary
+map('n', '<leader>kt', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plenary)' })
+
+-- TODO: Make a group for windows stuff
+-- Also add the max out width and height cmds
+-- As well as the equal splits one (ctrl-w =)
+--
+-- Close floating windows
+map('n', '<leader>wf', '<cmd>fc<cr>', { desc = 'Close Floating' })
+
+-- Swap splits
+map('n', '<leader>ks', '<C-w>r', { desc = 'Swap Splits' })
+
+-- TODO: Think about having a global state so these can be toggled
+--
 -- REPL node
 map('n', '<leader>krn', function() Slivers.misc.open_term_with_cmd 'node' end, { desc = 'Node' })
 
