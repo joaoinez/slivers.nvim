@@ -26,6 +26,11 @@ return {
       kind_icons = IconSliver.cmp,
     },
     completion = {
+      accept = {
+        auto_brackets = {
+          enabled = false,
+        },
+      },
       menu = {
         draw = {
           treesitter = { 'lsp' },
