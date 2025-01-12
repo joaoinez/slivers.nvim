@@ -19,9 +19,11 @@ return true and {}
     event = 'VeryLazy',
     cmd = { 'PluginCommand' },
     keys = {
-      '<leader>e',
-      function() end,
-      desc = 'Description',
+      {
+        '<leader>e',
+        function() end,
+        desc = 'Description',
+      },
     },
     spec = {},
     opts = {},

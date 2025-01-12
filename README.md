@@ -58,11 +58,8 @@ Hopefully one day I can contribute to this incredible tool.
 
 ## Roadmap
 
-### Todos
-
-- Scratch buffer with code runner
-- Adding JSON linting and autoformatting
-- Adding [Neotest](https://github.com/nvim-neotest/neotest) to handle testing
-- Writing more comments throught the code
-- Making some functionality more modular by better checking for any other plugins its using
-- Adding Hyprland lang support
+- [ ] Adding JSON linting and autoformatting
+- [ ] Adding [Neotest](https://github.com/nvim-neotest/neotest) to handle testing
+- [ ] Writing more comments throught the code
+- [ ] Making some functionality more modular by better checking for any other plugins its using
+- [ ] Adding Hyprland lang support

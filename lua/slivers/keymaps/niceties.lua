@@ -84,10 +84,10 @@ map('n', '<leader>,C', '<cmd>delm! | delm A-Z0-9<cr>jk', { desc = 'Clear All Mar
 -- Open slivers.json file
 map('n', '<leader>,o', function()
   -- TODO: Simplify this. The math.floor stuff should be inside create_floating_window
-  local width = math.floor(vim.o.columns * 0.33)
+  local width = math.floor(vim.o.columns * 0.25)
   local window = Slivers.misc.create_floating_window {
     width = width,
-    height = math.floor(vim.o.lines * 0.33),
+    height = math.floor(vim.o.lines * 0.25),
     win = {
       title = 'Options',
       row = 0,
