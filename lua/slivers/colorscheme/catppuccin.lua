@@ -8,7 +8,7 @@ local M = {
   },
   hl_groups = function()
     local palette = require('catppuccin.palettes').get_palette(
-      vim.g.colorscheme == 'catppuccin' and 'mocha' or vim.g.colorscheme:gsub('catppuccin%-', '')
+      vim.g.colors_name == 'catppuccin' and 'mocha' or vim.g.colors_name:gsub('catppuccin%-', '')
     )
 
     return {

@@ -91,12 +91,12 @@ function M.create_floating_window(opts)
   local col = math.floor((vim.o.columns - width) / 2)
   local row = math.floor((vim.o.lines - height) / 2)
   local buf = vim.api.nvim_create_buf(false, true)
-  local win_config = vim.tbl_deep_extend('force', opts.win, {
+  local win_config = vim.tbl_deep_extend('force', {
     width = width,
     height = height,
     col = col,
     row = row,
-  })
+  }, opts.win)
   local win = vim.api.nvim_open_win(buf, true, win_config)
 
   return { buf = buf, win = win }

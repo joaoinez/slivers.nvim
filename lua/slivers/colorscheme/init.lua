@@ -14,10 +14,7 @@ M.colorschemes = {
 }
 
 function M.apply()
-  local colorscheme = Slivers.colorscheme.get_config(M.colorschemes, vim.g.colorscheme)
-
-  -- [[ Apply Colorscheme ]]
-  vim.cmd.colorscheme(vim.g.colorscheme)
+  local colorscheme = Slivers.colorscheme.get_config(M.colorschemes, vim.g.colors_name)
 
   -- [[ Set Highlight Groups ]]
   Slivers.colorscheme.set_hl_groups(colorscheme.hl_groups)

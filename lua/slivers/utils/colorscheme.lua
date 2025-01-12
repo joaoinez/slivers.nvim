@@ -50,14 +50,4 @@ function M.set_globals(colorscheme_globals)
   end
 end
 
----@param random_colorschemes table
-function M.randomize(random_colorschemes)
-  math.randomseed(os.time())
-
-  -- HACK: See https://stackoverflow.com/questions/52745798/lua-random-number-generator-always-produces-the-same-number
-  local random_colorscheme = random_colorschemes[math.random() and math.random(#random_colorschemes)]
-
-  vim.g.colorscheme = random_colorscheme
-end
-
 return M

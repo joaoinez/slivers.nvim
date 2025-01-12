@@ -1,19 +1,5 @@
 local map = Slivers.keymaps.safe_keymap_set
 
--- TODO: Make these docstrings with keybindings consistent
---
---  Use CTRL+<hjkl> to switch between windows
-map('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-map('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-
--- resize window using <ctrl> alt hjkl
-map('n', '<C-M-k>', '<cmd>resize +2<cr>', { desc = 'increase window height' })
-map('n', '<C-M-j>', '<cmd>resize -2<cr>', { desc = 'decrease window height' })
-map('n', '<C-M-l>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
-map('n', '<C-M-h>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
-
 -- Move Lines
 map('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
 map('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
@@ -21,6 +7,7 @@ map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
 map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
 map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
 map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+
 -- Save file
 map('n', '<leader>s', '<cmd>w<cr>', { desc = 'Save File' })
 
@@ -39,15 +26,15 @@ end)
 -- Toggle comments
 map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' })
 
+-- Add comments above and below current line
+map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
+map('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
+
 -- Improved tabulation
 map('x', '<S-Tab>', '<gv', { desc = 'unindent line' })
 map('x', '<Tab>', '>gv', { desc = 'indent line' })
 map('x', '<', '<gv', { desc = 'unindent line' })
 map('x', '>', '>gv', { desc = 'indent line' })
-
--- Splits
-map('n', '<leader>|', '<cmd>vsplit<cr>', { desc = 'Vertical Split' })
-map('n', '<leader>\\', '<cmd>split<cr>', { desc = 'Horizontal Split' })
 
 -- Enable `<C-backspace>` to delete
 map('i', '<C-BS>', '<C-W>', { desc = 'Enable `<C-backspace>` to delete.' })
@@ -70,20 +57,8 @@ map('n', '<leader>kk', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
 -- Inspect Tree
 map('n', '<leader>cI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 
--- Terminal Mappings
-map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-map('t', '<C-/>', '<cmd>close<cr>', { desc = 'Hide Terminal' })
-map('t', '<C-_>', '<cmd>close<cr>', { desc = 'which_key_ignore' })
-map('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move focus to the left window' })
-map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the lower window' })
-map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the upper window' })
-map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the right window' })
-
 -- File explorer (oil or fallback on default)
 map('n', '<leader>fe', function() Slivers.actions.explore() end, { desc = 'File Explorer' })
-
--- Switch between the last opened buffer
-map('n', '<leader><Tab>', '<cmd>b#<cr>', { desc = 'Last Opened Buffer' })
 
 -- Lazy
 map('n', '<leader>,l', function() require('lazy').check() end, { desc = 'Lazy' })
@@ -106,23 +81,18 @@ map('n', '<leader>,U', '<cmd>UpdateEverything<cr>', { desc = 'Update Everything'
 -- Clear all marks
 map('n', '<leader>,C', '<cmd>delm! | delm A-Z0-9<cr>jk', { desc = 'Clear All Marks' })
 
--- Commenting
-map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
-map('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
-
--- Close current buffer
-map('n', '<leader>kq', '<cmd>q!<cr>', { desc = 'Close Window' })
-
--- Close all buffers
-map('n', '<leader>ka', '<cmd>qa!<cr>', { desc = 'Close All Windows' })
-
 -- Open slivers.json file
 map('n', '<leader>,o', function()
+  -- TODO: Simplify this. The math.floor stuff should be inside create_floating_window
+  local width = math.floor(vim.o.columns * 0.33)
   local window = Slivers.misc.create_floating_window {
-    -- TODO: Simplify this. The math.floor stuff should be inside create_floating_window
-    width = math.floor(vim.o.columns * 0.33),
+    width = width,
     height = math.floor(vim.o.lines * 0.33),
-    win = { title = 'Options' },
+    win = {
+      title = 'Options',
+      row = 0,
+      col = math.floor(vim.o.columns * 0.99) - width,
+    },
   }
 
   vim.api.nvim_set_current_buf(window.buf)
@@ -131,31 +101,7 @@ map('n', '<leader>,o', function()
 end, { desc = 'Options' })
 
 -- Source file
-map('n', '<leader>kS', '<cmd>source %<cr>', { desc = 'Source File' })
+map('n', '<leader>ks', '<cmd>source %<cr>', { desc = 'Source File' })
 
 -- Test file with Plenary
 map('n', '<leader>kt', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plenary)' })
-
--- TODO: Make a group for windows stuff
--- Also add the max out width and height cmds
--- As well as the equal splits one (ctrl-w =)
---
--- Close floating windows
-map('n', '<leader>wf', '<cmd>fc<cr>', { desc = 'Close Floating' })
-
--- Swap splits
-map('n', '<leader>ks', '<C-w>r', { desc = 'Swap Splits' })
-
--- TODO: Think about having a global state so these can be toggled
---
--- REPL node
-map('n', '<leader>krn', function() Slivers.misc.open_term_with_cmd 'node' end, { desc = 'Node' })
-
--- REPL lua
-map('n', '<leader>krl', function() Slivers.misc.open_term_with_cmd 'lua' end, { desc = 'Lua' })
-
--- REPL python
-map('n', '<leader>krp', function() Slivers.misc.open_term_with_cmd 'python3' end, { desc = 'Python' })
-
--- Toggle aider
-map('n', '<leader>aA', function() Slivers.misc.open_term_with_cmd 'aider' end, { desc = 'Aider' })

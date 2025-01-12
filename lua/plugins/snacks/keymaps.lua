@@ -27,7 +27,6 @@ local M = {
   {
     '<leader>tt',
     function()
-      -- TODO: See where this functionality could be implemented
       local current_dir = vim.fn.expand '%:p:h'
       if current_dir == '' or vim.fn.isdirectory(current_dir) == 0 then current_dir = vim.fn.getcwd() end
       require('snacks').terminal(nil, { cwd = current_dir })
@@ -58,13 +57,13 @@ local M = {
     ']]',
     function() require('snacks').words.jump(vim.v.count1) end,
     desc = 'Next Reference (snacks)',
-    mode = { 'n', 't' },
+    mode = { 'n' },
   },
   {
     '[[',
     function() require('snacks').words.jump(-vim.v.count1) end,
     desc = 'Prev Reference (snacks)',
-    mode = { 'n', 't' },
+    mode = { 'n' },
   },
 }
 

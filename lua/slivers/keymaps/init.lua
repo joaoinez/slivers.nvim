@@ -19,4 +19,6 @@
 require 'slivers.keymaps.disabled'
 require 'slivers.keymaps.fixes'
 require 'slivers.keymaps.niceties'
+require 'slivers.keymaps.terminal'
+require 'slivers.keymaps.windows'
 require 'slivers.keymaps.yanking'

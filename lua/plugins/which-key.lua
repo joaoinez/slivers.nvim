@@ -129,6 +129,9 @@ return {
       { '<leader>kys', proxy = 's', group = 'surround' },
       { '<leader>kyw', proxy = '<C-w>', group = 'wincmds' },
       { '<leader>kyz', proxy = 'z', group = 'folds/center screen' },
+
+      -- [[ Windows ]]
+      { '<leader>w', group = 'windows' },
     },
   },
 }

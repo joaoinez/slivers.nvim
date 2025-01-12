@@ -2,6 +2,7 @@
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
 
+-- Source globals from config file
 local path = vim.fn.stdpath 'config' .. '/.slivers.json'
 if Slivers.misc.file_exists(path) then
   local config = vim.json.decode(Slivers.misc.read_file(path))
@@ -11,12 +12,10 @@ if Slivers.misc.file_exists(path) then
   end
 else
   local default_config = {
-    colorscheme = 'default', -- Set editor colorscheme.
-    lualine_borders = true, -- Set lualine rounded borders.
-    mode_len = 3, -- Set mode text length; 0 is Neovim's default.
-    random_colorscheme = false, -- Set randomize colorscheme on startup.
-    random_colorschemes = { 'default', 'vim' }, -- Set list of random colorschemes.
     transparent_bg = true, -- Set transparent background.
+    mode_len = 3, -- Set mode text length; 0 is Neovim's default.
+    dark_mode = true, -- Set background dark mode.
+    lualine_borders = true, -- Set lualine rounded borders.
     trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
   }
 
@@ -28,6 +27,7 @@ else
 end
 
 -- [[ Options ]]
+vim.opt.background = vim.g.dark_mode and 'dark' or 'light' -- Set background to either dark or light.
 vim.opt.breakindent = true -- Wrap indent to match line start.
 vim.opt.cmdheight = 0 -- Hide command line unless needed.
 vim.opt.colorcolumn = '80' -- Show character limit vertical bar.
