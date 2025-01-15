@@ -12,6 +12,7 @@ return true and {}
       'other/plugin.nvim',
     },
     build = ':Some command',
+    cond = function() end,
     main = 'text',
     priority = 1000,
     lazy = true,

@@ -22,9 +22,6 @@ M.formatters_by_ft = {
   typescript = { 'prettierd' },
   typescriptreact = { 'prettierd' },
   vue = { 'prettierd' },
-  -- TODO: Move this to lang/json.lua
-  json = { 'prettierd' },
-  jsonc = { 'prettierd' },
 }
 
 M.debuggers = {

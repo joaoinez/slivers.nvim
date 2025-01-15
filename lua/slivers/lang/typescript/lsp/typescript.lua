@@ -77,6 +77,7 @@ local M = {
       { desc = 'File References' }
     )
     map('n', '<leader>co', lsp.action['source.organizeImports'], { desc = 'Organize Imports' })
+    map('n', '<leader>cS', lsp.action['source.sortImports'], { desc = 'Sort Imports' })
     map('n', '<leader>cm', lsp.action['source.addMissingImports.ts'], { desc = 'Add missing imports' })
     map('n', '<leader>cu', lsp.action['source.removeUnused.ts'], { desc = 'Remove unused imports' })
     map('n', '<leader>cF', lsp.action['source.fixAll.ts'], { desc = 'Fix all diagnostics' })

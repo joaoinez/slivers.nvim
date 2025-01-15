@@ -27,6 +27,14 @@ local M = {
   {
     '<leader>tt',
     function()
+      local git_root = Snacks.git.get_root()
+      require('snacks').terminal(nil, { cwd = git_root })
+    end,
+    desc = 'Terminal',
+  },
+  {
+    '<leader>tC',
+    function()
       local current_dir = vim.fn.expand '%:p:h'
       if current_dir == '' or vim.fn.isdirectory(current_dir) == 0 then current_dir = vim.fn.getcwd() end
       require('snacks').terminal(nil, { cwd = current_dir })
@@ -36,18 +44,16 @@ local M = {
   {
     '<C-/>',
     function()
-      local current_dir = vim.fn.expand '%:p:h'
-      if current_dir == '' or vim.fn.isdirectory(current_dir) == 0 then current_dir = vim.fn.getcwd() end
-      require('snacks').terminal(nil, { cwd = current_dir })
+      local git_root = Snacks.git.get_root()
+      require('snacks').terminal(nil, { cwd = git_root })
     end,
-    desc = 'Terminal (cwd)',
+    desc = 'Terminal',
   },
   {
     '<C-_>',
     function()
-      local current_dir = vim.fn.expand '%:p:h'
-      if current_dir == '' or vim.fn.isdirectory(current_dir) == 0 then current_dir = vim.fn.getcwd() end
-      require('snacks').terminal(nil, { cwd = current_dir })
+      local git_root = Snacks.git.get_root()
+      require('snacks').terminal(nil, { cwd = git_root })
     end,
     desc = 'which_key_ignore',
   },

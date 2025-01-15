@@ -3,7 +3,7 @@ return {
   'MagicDuck/grug-far.nvim',
   enabled = true,
   event = 'VeryLazy',
-  cmd = 'GrugFar',
+  cmd = { 'GrugFar' },
   keys = {
     {
       '<leader>fr',

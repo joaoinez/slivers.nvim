@@ -1,6 +1,5 @@
 return {
   'nvim-telescope/telescope.nvim',
-  cmd = 'Telescope',
   enabled = true,
   version = false,
   dependencies = {
@@ -10,6 +9,7 @@ return {
       cond = function() return vim.fn.executable 'make' == 1 end,
     },
   },
+  cmd = { 'Telescope' },
   opts = function()
     local actions = require 'telescope.actions'
 

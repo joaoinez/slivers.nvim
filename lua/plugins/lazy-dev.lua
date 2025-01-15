@@ -4,7 +4,7 @@ return {
     'folke/lazydev.nvim',
     enabled = true,
     ft = 'lua',
-    cmd = 'LazyDev',
+    cmd = { 'LazyDev' },
     opts = {
       -- disable when a .luarc.json file is found
       enabled = function(root_dir) return not vim.uv.fs_stat(root_dir .. '/.luarc.json') end,

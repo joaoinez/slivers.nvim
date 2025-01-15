@@ -14,7 +14,6 @@ return {
         vim.cmd [[NoMatchParen]]
         require('snacks').util.wo(0, { foldmethod = 'manual', statuscolumn = '', conceallevel = 0 })
         vim.b.minianimate_disable = true
-        vim.b.minimap_disable = true
         vim.schedule(function() vim.bo[ctx.buf].syntax = ctx.ft end)
       end,
     },
@@ -34,9 +33,9 @@ return {
     scratch = {
       enabled = true,
       ft = function()
-        if vim.bo.buftype == '' and vim.bo.filetype ~= '' then
-          return vim.bo.filetype == 'lua' and vim.bo.filetype or 'markdown'
-        end
+        -- if vim.bo.buftype == '' and vim.bo.filetype ~= '' then
+        --   return vim.bo.filetype == 'lua' and vim.bo.filetype or 'markdown'
+        -- end
         return 'markdown'
       end,
     },

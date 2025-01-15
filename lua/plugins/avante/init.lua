@@ -1,5 +1,7 @@
+---@type LazySpec
 return {
   'yetone/avante.nvim',
+  enabled = false,
   dependencies = {
     {
       'stevearc/dressing.nvim',

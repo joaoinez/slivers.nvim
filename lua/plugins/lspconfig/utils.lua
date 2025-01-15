@@ -75,7 +75,7 @@ function M.lsp_rename()
   })
 
   -- close on <esc> in normal mode
-  input:map('i', '<esc>', function() input.input_props.on_close() end, { noremap = true })
+  input:map('n', '<esc>', function() input.input_props.on_close() end, { noremap = true })
 
   local event = require('nui.utils.autocmd').event
 
