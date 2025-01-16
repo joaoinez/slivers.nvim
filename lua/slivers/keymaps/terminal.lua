@@ -12,8 +12,6 @@ map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the lower window'
 map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the upper window' })
 map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the right window' })
 
--- TODO: Think about having a global state so these can be toggled
---
 -- REPL node
 map('n', '<leader>krn', function() Slivers.misc.open_term_with_cmd 'node' end, { desc = 'Node' })
 
