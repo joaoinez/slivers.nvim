@@ -3,11 +3,18 @@ return {
   'stevearc/oil.nvim',
   enabled = true,
   cmd = { 'Oil' },
+  keys = {
+    {
+      '<leader>fE',
+      '<cmd>Oil<cr>',
+      desc = 'File Explorer (oil)',
+    },
+  },
   opts = function()
     local detail = false
 
     return {
-      default_file_explorer = true,
+      default_file_explorer = false,
       view_options = {
         show_hidden = true,
       },

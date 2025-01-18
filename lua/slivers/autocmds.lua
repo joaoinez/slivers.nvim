@@ -41,6 +41,7 @@ autocmd('FileType', {
     'grug-far',
     'help',
     'lspinfo',
+    'man',
     'neotest-output',
     'neotest-output-panel',
     'neotest-summary',
@@ -52,6 +53,9 @@ autocmd('FileType', {
     'tsplayground',
     'query', -- InspectTree
     'dap-float', -- DAP floating widgets
+    'neotest-output-panel',
+    'neotest-summary',
+    'lazy',
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -91,6 +95,42 @@ autocmd('BufEnter', {
   group = augroup 'term_focus',
   callback = function()
     if vim.bo.buftype == 'terminal' then vim.cmd 'norm i' end
+  end,
+})
+
+-- Show cursorline only on active windows
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
+  callback = function()
+    if vim.w.auto_cursorline then
+      vim.wo.cursorline = true
+      vim.w.auto_cursorline = false
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
+  callback = function()
+    if vim.wo.cursorline then
+      vim.w.auto_cursorline = true
+      vim.wo.cursorline = false
+    end
+  end,
+})
+
+autocmd('FileType', {
+  desc = 'Automatically Split help Buffers to the top',
+  pattern = 'help',
+  command = 'wincmd K',
+})
+
+autocmd({ 'UIEnter', 'ColorScheme' }, {
+  desc = 'Corrects terminal background color according to colorscheme, see: https://www.reddit.com/r/neovim/comments/1ehidxy/you_can_remove_padding_around_neovim_instance/',
+  callback = function()
+    if vim.api.nvim_get_hl(0, { name = 'Normal' }).bg then
+      io.write(string.format('\027]11;#%06x\027\\', vim.api.nvim_get_hl(0, { name = 'Normal' }).bg))
+    end
+    autocmd('UILeave', {
+      callback = function() io.write '\027]111\027\\' end,
+    })
   end,
 })
 

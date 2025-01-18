@@ -57,9 +57,6 @@ map('n', '<leader>kk', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
 -- Inspect Tree
 map('n', '<leader>cI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 
--- File explorer (oil or fallback on default)
-map('n', '<leader>fe', function() Slivers.actions.explore() end, { desc = 'File Explorer' })
-
 -- Lazy
 map('n', '<leader>,l', function() require('lazy').check() end, { desc = 'Lazy' })
 

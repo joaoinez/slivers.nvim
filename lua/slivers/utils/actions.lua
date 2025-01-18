@@ -38,15 +38,4 @@ function M.trigger_event(event, is_urgent)
   end
 end
 
--- Used to view files
-function M.explore()
-  local try = {
-    function() return vim.api.nvim_command 'Oil' end,
-    function() return vim.api.nvim_command 'Explore' end,
-  }
-  for _, fn in ipairs(try) do
-    if pcall(fn) then return end
-  end
-end
-
 return M

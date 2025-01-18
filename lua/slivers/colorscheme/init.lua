@@ -4,13 +4,19 @@ M.colorschemes = {
   _fallback = {
     hl_groups = function() return require 'slivers.colorscheme._fallback' end,
   },
+  ashen = require 'slivers.colorscheme.ashen',
+  ayu = require 'slivers.colorscheme.ayu',
   catppuccin = require 'slivers.colorscheme.catppuccin',
+  cyberdream = require 'slivers.colorscheme.cyberdream',
   default = require 'slivers.colorscheme.default',
   gruvbox = require 'slivers.colorscheme.gruvbox',
   kanagawa = require 'slivers.colorscheme.kanagawa',
   onedark = require 'slivers.colorscheme.onedark',
+  oxocarbon = require 'slivers.colorscheme.oxocarbon',
+  poimandres = require 'slivers.colorscheme.poimandres',
   ['rose-pine'] = require 'slivers.colorscheme.rose-pine',
   tokyonight = require 'slivers.colorscheme.tokyonight',
+  vague = require 'slivers.colorscheme.vague',
 }
 
 function M.apply()

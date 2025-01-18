@@ -27,9 +27,6 @@ _G.ColorSliver = require 'slivers.colorscheme'
 -- [[ Load Options ]]
 Slivers.load 'options'
 
--- [[ Set Language ]]
--- vim.cmd 'language en_US'
-
 -- [[ Initialize Lazy ]]
 require 'slivers.lazy'
 

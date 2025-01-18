@@ -4,7 +4,7 @@
 return {
   'folke/snacks.nvim',
   enabled = true,
-  priority = 1000,
+  priority = 1002,
   lazy = false,
   keys = require 'plugins.snacks.keymaps',
   opts = {
@@ -66,6 +66,19 @@ return {
         require('snacks').toggle.diagnostics():map '<leader>tx'
         require('snacks').toggle.treesitter():map '<leader>tT'
         require('snacks').toggle.inlay_hints():map '<leader>th'
+        require('snacks')
+          .toggle({
+            name = 'Dark Mode',
+            get = function() return vim.o.background == 'dark' end,
+            set = function(state)
+              if state then
+                vim.o.background = 'dark'
+              else
+                vim.o.background = 'light'
+              end
+            end,
+          })
+          :map '<leader>tb'
       end,
     })
   end,

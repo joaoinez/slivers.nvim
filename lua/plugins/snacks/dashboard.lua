@@ -10,11 +10,11 @@ local M = {
         desc = 'Find Text',
         action = ":lua require('snacks').dashboard.pick('live_grep')",
       },
-      { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':lua Slivers.actions.explore()' },
+      { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':Oil' },
       { icon = '', key = 'r', desc = 'README', action = ':e README.md' },
       {
         icon = ' ',
-        key = 't',
+        key = 'T',
         desc = 'Todos',
         action = ":lua require('todo-comments.fzf').todo({ keywords = { 'TODO', 'FIX', 'FIXME' } })",
       },

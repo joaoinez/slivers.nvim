@@ -31,6 +31,7 @@ function M.lsp_rename()
       print(string.format("Changed %s file%s. To save them run ':wa'", total_files, total_files > 1 and 's' or ''))
     end)
   end
+
   local Input = require 'nui.input'
 
   local popup_options = {
