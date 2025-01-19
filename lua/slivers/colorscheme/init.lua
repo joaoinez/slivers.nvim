@@ -12,7 +12,6 @@ M.colorschemes = {
   gruvbox = require 'slivers.colorscheme.gruvbox',
   kanagawa = require 'slivers.colorscheme.kanagawa',
   onedark = require 'slivers.colorscheme.onedark',
-  oxocarbon = require 'slivers.colorscheme.oxocarbon',
   poimandres = require 'slivers.colorscheme.poimandres',
   ['rose-pine'] = require 'slivers.colorscheme.rose-pine',
   tokyonight = require 'slivers.colorscheme.tokyonight',

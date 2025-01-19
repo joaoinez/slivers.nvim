@@ -7,7 +7,6 @@ return {
   require 'plugins.colorschemes.kanagawa',
   require 'plugins.colorschemes.nordic',
   require 'plugins.colorschemes.onedark',
-  require 'plugins.colorschemes.oxocarbon',
   require 'plugins.colorschemes.poimandres',
   require 'plugins.colorschemes.rose-pine',
   require 'plugins.colorschemes.tokyonight',

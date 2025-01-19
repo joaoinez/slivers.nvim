@@ -62,4 +62,13 @@ return {
       size = 0.2,
     },
   },
+  init = function()
+    Slivers.autocmds.autocmd('FileType', {
+      group = Slivers.autocmds.augroup 'resize_splits_on_trouble',
+      pattern = 'trouble',
+      callback = function()
+        vim.schedule(function() vim.cmd 'wincmd =' end)
+      end,
+    })
+  end,
 }

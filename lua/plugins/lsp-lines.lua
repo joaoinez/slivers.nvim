@@ -2,6 +2,7 @@
 return {
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   enabled = true,
+  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost', 'VeryLazy' },
   opts = {},
   init = function()
     -- Disable lsp_lines in lazy window
