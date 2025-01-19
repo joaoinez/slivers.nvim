@@ -22,14 +22,7 @@ function M.delete_url_effect()
   end
 end
 
-function M.file_exists(file)
-  if vim.fn.has 'nvim-0.10' == 1 then
-    return vim.uv.fs_stat(file) ~= nil
-  else
-    local stat = vim.loop.fs_stat(file)
-    return stat and stat.type == 'file' or false
-  end
-end
+function M.file_exists(file) return vim.uv.fs_stat(file) ~= nil end
 
 function M.read_file(file)
   local fd = assert(io.open(file, 'r'))

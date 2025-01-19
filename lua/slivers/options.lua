@@ -85,9 +85,7 @@ vim.opt.sidescrolloff = 8 -- Same as vim.opt.scrolloff but for side scrolling.
 vim.opt.signcolumn = 'yes' -- Always show the sign column.
 vim.opt.smartcase = true -- Case sensitivie searching.
 vim.opt.smartindent = false -- Smarter autoindentation.
-if vim.fn.has 'nvim-0.10' == 1 then
-  vim.opt.smoothscroll = true -- Enable smooth scrolling.
-end
+vim.opt.smoothscroll = true -- Enable smooth scrolling.
 vim.opt.splitbelow = true -- Splits new windows below the current one.
 vim.opt.splitright = true -- Splits new windows at the right of the current one.
 vim.opt.tabstop = 2 -- Number of space in a tab.
