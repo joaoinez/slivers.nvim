@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'MagicDuck/grug-far.nvim',
-  enabled = true,
+  enabled = vim.fn.has 'nvim-0.10' == 1,
   event = 'VeryLazy',
   cmd = { 'GrugFar' },
   keys = {
