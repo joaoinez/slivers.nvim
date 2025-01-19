@@ -11,6 +11,7 @@ M.colorschemes = {
   default = require 'slivers.colorscheme.default',
   gruvbox = require 'slivers.colorscheme.gruvbox',
   kanagawa = require 'slivers.colorscheme.kanagawa',
+  nordic = require 'slivers.colorscheme.nordic',
   onedark = require 'slivers.colorscheme.onedark',
   poimandres = require 'slivers.colorscheme.poimandres',
   ['rose-pine'] = require 'slivers.colorscheme.rose-pine',

@@ -52,6 +52,7 @@ return {
             ['jpeg'] = img_previewer,
             ['gif'] = img_previewer,
             ['webp'] = img_previewer,
+            ['svg'] = img_previewer,
           },
         },
       },

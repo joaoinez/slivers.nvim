@@ -22,6 +22,7 @@ M.formatters_by_ft = {
   typescript = { 'prettierd' },
   typescriptreact = { 'prettierd' },
   vue = { 'prettierd' },
+  css = { 'prettierd' },
 }
 
 M.debuggers = {
