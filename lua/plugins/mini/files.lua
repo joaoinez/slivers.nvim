@@ -43,6 +43,7 @@ return {
           function() require('mini.files').go_in { close_on_file = true } end,
           { buffer = buf_id }
         )
+        vim.keymap.set('n', '-', function() require('mini.files').go_out() end, { buffer = buf_id })
       end,
     })
 
