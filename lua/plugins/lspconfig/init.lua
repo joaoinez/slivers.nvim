@@ -35,12 +35,12 @@ return {
           [vim.diagnostic.severity.INFO] = icons.info,
         },
       },
-      virtual_text = false,
-      -- virtual_text = {
-      --   spacing = 4,
-      --   source = 'if_many',
-      --   prefix = icons.virtual,
-      -- },
+      -- virtual_text = false,
+      virtual_text = {
+        spacing = 4,
+        source = 'if_many',
+        prefix = icons.virtual,
+      },
     }
 
     local ensure_installed = vim.tbl_keys(servers)

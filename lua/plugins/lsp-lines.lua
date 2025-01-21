@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  enabled = true,
+  enabled = false,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost', 'VeryLazy' },
   keys = {
     {
