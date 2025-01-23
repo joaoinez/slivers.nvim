@@ -2,6 +2,7 @@
 return {
   'joaoinez/present.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   event = 'VeryLazy',
   cmd = { 'PresentStart' },
   keys = {

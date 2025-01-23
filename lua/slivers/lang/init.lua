@@ -6,6 +6,7 @@ M.langs = {
   require 'slivers.lang.typescript',
   require 'slivers.lang.markdown',
   require 'slivers.lang.json',
+  require 'slivers.lang.yaml',
 }
 
 function M.get_highlighters()

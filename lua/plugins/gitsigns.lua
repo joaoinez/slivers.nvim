@@ -2,6 +2,7 @@
 return {
   'lewis6991/gitsigns.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
     signs = IconSliver.git.signs,

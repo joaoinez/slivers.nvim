@@ -13,7 +13,6 @@ M.highlighters = {
   'vim',
   'vimdoc',
   'xml',
-  'yaml',
 }
 
 M.ft_with_disabled_formatters = {

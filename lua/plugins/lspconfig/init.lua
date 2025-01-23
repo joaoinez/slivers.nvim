@@ -4,6 +4,7 @@
 return {
   'neovim/nvim-lspconfig',
   enabled = true,
+  cond = not vim.g.vscode,
   dependencies = {
     { 'williamboman/mason.nvim', build = ':MasonUpdate', config = true },
     'williamboman/mason-lspconfig.nvim',

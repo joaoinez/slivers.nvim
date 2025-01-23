@@ -2,6 +2,7 @@
 return {
   'saghen/blink.cmp',
   enabled = true,
+  cond = not vim.g.vscode,
   dependencies = {
     {
       'saghen/blink.compat',

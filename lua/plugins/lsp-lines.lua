@@ -2,6 +2,7 @@
 return {
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   enabled = false,
+  cond = not vim.g.vscode,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost', 'VeryLazy' },
   keys = {
     {

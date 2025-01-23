@@ -2,6 +2,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   enabled = true,
+  cond = not vim.g.vscode,
   dependencies = {
     { 'nvim-treesitter/nvim-treesitter-context', opts = { zindex = 1 } },
     'nvim-treesitter/nvim-treesitter-textobjects',

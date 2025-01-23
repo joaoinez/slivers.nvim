@@ -3,6 +3,7 @@ return {
   {
     'folke/lazydev.nvim',
     enabled = true,
+    cond = not vim.g.vscode,
     ft = 'lua',
     cmd = { 'LazyDev' },
     opts = {
@@ -18,6 +19,7 @@ return {
   {
     'Bilal2453/luvit-meta',
     enabled = true,
+    cond = not vim.g.vscode,
     lazy = true,
   },
 }

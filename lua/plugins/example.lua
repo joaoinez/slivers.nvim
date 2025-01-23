@@ -5,6 +5,7 @@ return true and {}
   or {
     'example/plugin.nvim',
     enabled = true,
+    cond = function() end,
     version = '1.x',
     branch = 'main',
     name = 'example',
@@ -12,7 +13,6 @@ return true and {}
       'other/plugin.nvim',
     },
     build = ':Some command',
-    cond = function() end,
     main = 'text',
     priority = 1000,
     lazy = true,

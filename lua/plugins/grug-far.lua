@@ -2,6 +2,7 @@
 return {
   'MagicDuck/grug-far.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   event = 'VeryLazy',
   cmd = { 'GrugFar' },
   keys = {

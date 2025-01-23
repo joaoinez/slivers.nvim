@@ -4,6 +4,7 @@
 return {
   'mfussenegger/nvim-dap',
   enabled = true,
+  cond = not vim.g.vscode,
   dependencies = {
     'nvim-neotest/nvim-nio',
     'rcarriga/nvim-dap-ui',

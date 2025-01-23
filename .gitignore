@@ -9,3 +9,4 @@ spell/
 .slivers.json
 lua/plugins/_dev.lua
 lazy-lock.json
+.aider*

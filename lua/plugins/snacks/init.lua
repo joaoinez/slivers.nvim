@@ -4,6 +4,7 @@
 return {
   'folke/snacks.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   priority = 1002,
   lazy = false,
   keys = require 'plugins.snacks.keymaps',

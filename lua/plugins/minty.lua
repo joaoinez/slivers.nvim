@@ -2,6 +2,7 @@
 return {
   'nvzone/minty',
   enabled = true,
+  cond = not vim.g.vscode,
   cmd = { 'Shades', 'Huefy' },
   keys = {
     {

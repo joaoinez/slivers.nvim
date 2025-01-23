@@ -2,6 +2,7 @@
 return {
   'yetone/avante.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   dependencies = {
     {
       'stevearc/dressing.nvim',

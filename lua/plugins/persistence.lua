@@ -2,6 +2,7 @@
 return {
   'folke/persistence.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   event = 'BufReadPre',
   init = function()
     vim.api.nvim_create_autocmd('User', {

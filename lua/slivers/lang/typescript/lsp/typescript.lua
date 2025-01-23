@@ -87,10 +87,6 @@ local M = {
       function() lsp.execute { command = 'typescript.selectTypeScriptVersion' } end,
       { desc = 'Select TS workspace version' }
     )
-    map('n', '<leader>s', function()
-      lsp.action['source.sortImports']()
-      vim.cmd 'w'
-    end, { desc = 'Save File (lsp)' })
 
     client.commands['_typescript.moveToFileRefactoring'] = function(command, _)
       ---@type string, string, lsp.Range

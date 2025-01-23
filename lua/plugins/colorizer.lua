@@ -2,6 +2,7 @@
 return {
   'NvChad/nvim-colorizer.lua',
   enabled = true,
+  cond = not vim.g.vscode,
   event = 'BufReadPre',
   opts = {
     filetypes = {

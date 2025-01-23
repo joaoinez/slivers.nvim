@@ -4,6 +4,7 @@
 return {
   'folke/trouble.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   cmd = { 'Trouble' },
   keys = {
     {

@@ -2,6 +2,7 @@
 return {
   'ibhagwan/fzf-lua',
   enabled = true,
+  cond = not vim.g.vscode,
   cmd = { 'FzfLua' },
   keys = require 'plugins.fzf.keymaps',
   ---@diagnostic disable-next-line: unused-local

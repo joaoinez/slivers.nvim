@@ -2,6 +2,7 @@
 return {
   'MeanderingProgrammer/render-markdown.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   ft = { 'markdown', 'norg', 'rmd', 'org', 'Avante' },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   ---@module 'render-markdown'

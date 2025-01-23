@@ -5,6 +5,8 @@
 return {
   {
     'Zeioth/compiler.nvim',
+    enabled = true,
+    cond = not vim.g.vscode,
     dependencies = { 'stevearc/overseer.nvim' },
     cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
     keys = {

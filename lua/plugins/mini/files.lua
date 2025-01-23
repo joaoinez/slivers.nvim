@@ -2,6 +2,7 @@
 return {
   'echasnovski/mini.files',
   enabled = true,
+  cond = not vim.g.vscode,
   version = false,
   keys = {
     {

@@ -2,6 +2,7 @@
 return {
   'folke/todo-comments.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   cmd = { 'TodoTrouble' },
   keys = {

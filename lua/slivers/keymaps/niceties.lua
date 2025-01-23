@@ -24,7 +24,7 @@ map('n', '<ESC>', function()
 end)
 
 -- Toggle comments
-map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' })
+if not vim.g.vscode then map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' }) end
 
 -- Add comments above and below current line
 map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })

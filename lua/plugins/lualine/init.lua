@@ -2,6 +2,7 @@
 return {
   'nvim-lualine/lualine.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   dependencies = {
     'letieu/harpoon-lualine',
   },

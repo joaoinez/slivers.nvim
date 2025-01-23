@@ -1,6 +1,7 @@
 return {
   'echasnovski/mini.pick',
   enabled = true,
+  cond = not vim.g.vscode,
   version = false,
   event = 'VeryLazy',
   opts = function()
