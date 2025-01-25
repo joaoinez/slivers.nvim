@@ -26,14 +26,24 @@ map(
   'n',
   '<leader>ff',
   function() require('vscode').action 'workbench.action.quickOpen' end,
-  { desc = 'Open File Explorer' }
+  { desc = 'Open File Picker' }
 )
+
+map(
+  'n',
+  '<leader><Tab>',
+  function() vscode.action 'workbench.action.quickOpenPreviousRecentlyUsedEditor' end,
+  { desc = 'Last Opened File' }
+)
+
+map('n', '<leader>x', function()
+  vscode.action 'workbench.action.files.saveAll'
+  vscode.action 'workbench.action.quit'
+end, { desc = 'Save and Quit VSCode' })
+
 map(
   'n',
   '<leader>|',
-  function() vim.cmd('lua vscode.api.commands.executeCommand({ commandId = "workbench.action.splitEditorVertically" })') end,
+  function() vscode.action 'workbench.action.splitEditorVertically' end,
   { desc = 'Split Editor Vertically' }
 )
-
--- Buffer list
-map('n', '<leader>bb', function() require('vscode').action 'workbench.action.showOpenFiles' end, { desc = 'Show Buffer List' })
