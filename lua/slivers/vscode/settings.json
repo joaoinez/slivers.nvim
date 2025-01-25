@@ -1,0 +1,44 @@
+{
+  "editor.fontFamily": "Hack Nerd Font Mono, Menlo, Maple Mono, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 12,
+  "editor.tabSize": 2,
+  "editor.lineNumbers": "relative",
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.cursorSurroundingLines": 10,
+  "editor.minimap.enabled": false,
+  "editor.linkedEditing": true,
+  "editor.rulers": [80],
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "diffEditor.codeLens": true,
+  "telemetry.telemetryLevel": "off",
+  "chat.commandCenter.enabled": false
+}
