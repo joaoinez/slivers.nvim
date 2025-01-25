@@ -52,4 +52,7 @@ vim.api.nvim_create_autocmd('User', {
   end,
 })
 
+-- [[ Load VSCode Stuff ]]
+if vim.g.vscode then Slivers.load 'vscode' end
+
 -- vim: ts=2 sts=2 sw=2 et

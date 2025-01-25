@@ -2,6 +2,7 @@
 return {
   'echasnovski/mini.pairs',
   enabled = true,
+  cond = not vim.g.vscode,
   version = false,
   event = 'VeryLazy',
   opts = {

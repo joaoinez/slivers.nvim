@@ -19,7 +19,7 @@ local M = {
 }
 
 -- Load config after checking cache
----@param name "autocmds" | "options" | "keymaps"
+---@param name "autocmds" | "options" | "keymaps" | "vscode"
 function M.load(name)
   local function _load(mod)
     if name == 'options' then

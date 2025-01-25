@@ -1,18 +1,23 @@
 local map = Slivers.keymaps.safe_keymap_set
 
--- Move Lines
-map('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
-map('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
-map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
-map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
-map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
-map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+if not vim.g.vscode then
+  -- Move Lines
+  map('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
+  map('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
+  map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
+  map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
+  map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
+  map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+
+  -- Toggle comments
+  map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' })
+
+  -- Save and quit Neovim
+  map('n', '<leader>x', '<cmd>wqa<cr>', { desc = 'Save and Quit Neovim' })
+end
 
 -- Save file
 map('n', '<leader>s', '<cmd>w<cr>', { desc = 'Save File' })
-
--- Save and quit Neovim
-map('n', '<leader>x', '<cmd>wqa<cr>', { desc = 'Save and Quit Neovim' })
 
 -- Use ESC to clear hlsearch, while preserving its original functionality.
 map('n', '<ESC>', function()
@@ -22,9 +27,6 @@ map('n', '<ESC>', function()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<ESC>', true, true, true), 'n', true)
   end
 end)
-
--- Toggle comments
-if not vim.g.vscode then map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' }) end
 
 -- Add comments above and below current line
 map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
