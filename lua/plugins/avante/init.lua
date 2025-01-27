@@ -20,7 +20,7 @@ return {
   },
   opts = function()
     return {
-      provider = vim.g.ai_coder_mode and 'qwen_coder' or 'deepseek_r1',
+      provider = 'qwen_coder',
       auto_suggestions_provider = 'qwen_mini',
       behaviour = {
         auto_suggestions = false,
