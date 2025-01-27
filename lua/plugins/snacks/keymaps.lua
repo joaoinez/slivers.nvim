@@ -13,7 +13,7 @@ local M = {
   },
   { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },
-  { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Git Log (cwd)' },
+  { '<leader>gl', function() require('snacks').lazygit.log() end, desc = 'Git Log (cwd)' },
   { '<leader>gB', function() require('snacks').gitbrowse() end, desc = 'Git Browse (github)' },
   {
     '<leader>,n',
@@ -36,7 +36,7 @@ local M = {
   {
     '<leader>tt',
     function()
-      local git_root = Snacks.git.get_root()
+      local git_root = require('snacks').git.get_root()
       require('snacks').terminal(nil, { cwd = git_root })
     end,
     desc = 'Terminal',
@@ -53,7 +53,7 @@ local M = {
   {
     '<C-/>',
     function()
-      local git_root = Snacks.git.get_root()
+      local git_root = require('snacks').git.get_root()
       require('snacks').terminal(nil, { cwd = git_root })
     end,
     desc = 'Terminal',
@@ -61,13 +61,13 @@ local M = {
   {
     '<C-_>',
     function()
-      local git_root = Snacks.git.get_root()
+      local git_root = require('snacks').git.get_root()
       require('snacks').terminal(nil, { cwd = git_root })
     end,
     desc = 'which_key_ignore',
   },
   { '<leader>tz', function() require('snacks').zen() end, desc = 'Zen Mode' },
-  { '<leader>.', function() Snacks.scratch() end, desc = 'Scratch Buffer' },
+  { '<leader>.', function() require('snacks').scratch() end, desc = 'Scratch Buffer' },
   {
     ']]',
     function() require('snacks').words.jump(vim.v.count1) end,
