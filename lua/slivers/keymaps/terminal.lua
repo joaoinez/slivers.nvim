@@ -22,7 +22,7 @@ map('n', '<leader>krl', function() Slivers.misc.open_term_with_cmd 'lua' end, { 
 map('n', '<leader>krp', function() Slivers.misc.open_term_with_cmd 'python3' end, { desc = 'Python' })
 
 -- Toggle aider
-map('n', '<leader>aA', function()
+map('n', '<leader>ai', function()
   local autocmd = Slivers.autocmds.autocmd
   local augroup = Slivers.autocmds.augroup
 

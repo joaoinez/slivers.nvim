@@ -5,7 +5,9 @@ local M = {
   {
     '<leader>ag',
     function()
-      require('snacks').terminal "aider --commit; echo -e '\\nPress 'q' to quit.'; while true; do read -n1 -s key; [[ $key == 'q' ]] && { echo; exit 0; }; done"
+      local command =
+        'aider --commit; printf \'\\nPress q to quit.\'; old_stty=$(stty -g); stty raw -echo; key=$(dd bs=1 count=1 2>/dev/null); stty "$old_stty"; [ "$key" = \'q\' ] && exit 0'
+      require('snacks').terminal(command)
     end,
     desc = 'Git Commit',
   },
@@ -70,13 +72,11 @@ local M = {
     ']]',
     function() require('snacks').words.jump(vim.v.count1) end,
     desc = 'Next Reference (snacks)',
-    mode = { 'n' },
   },
   {
     '[[',
     function() require('snacks').words.jump(-vim.v.count1) end,
-    desc = 'Prev Reference (snacks)',
-    mode = { 'n' },
+    desc = 'Previous Reference (snacks)',
   },
 }
 
