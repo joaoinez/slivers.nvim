@@ -5,8 +5,12 @@ local M = {
   {
     '<leader>gc',
     function()
-      local command =
-        'git add . && aider --commit; printf \'\\nPress q to quit or p to push.\'; old_stty=$(stty -g); stty raw -echo; key=$(dd bs=1 count=1 2>/dev/null); stty "$old_stty"; if [ "$key" = \'q\' ]; then exit 0; elif [ "$key" = \'p\' ]; then git push; fi'
+      local command = [[
+        git add . && aider --commit;
+        printf "\nPress q to quit or p to push.";
+        old_stty=$(stty -g); stty raw -echo; key=$(dd bs=1 count=1 2>/dev/null); stty "$old_stty";
+        if [ "$key" = 'q' ]; then exit 0; elif [ "$key" = 'p' ]; then git push; fi
+      ]]
       require('snacks').terminal(command)
     end,
     desc = 'Git Commit (ai)',
