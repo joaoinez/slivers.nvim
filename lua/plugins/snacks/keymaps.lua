@@ -5,13 +5,8 @@ local M = {
   {
     '<leader>gc',
     function()
-      local command = [[
-        git add . && aider --commit;
-        printf "\nPress q to quit or p to push.";
-        old_stty=$(stty -g); stty raw -echo; key=$(dd bs=1 count=1 2>/dev/null); stty "$old_stty";
-        if [ "$key" = 'p' ]; then printf "\n" && git push; printf "\nPress q to quit."; newkey=$(dd bs=1 count=1 2>/dev/null); fi;
-        if [ "$key" = 'q' ] || [ "$newkey" = 'q' ]; then exit 0; fi
-      ]]
+      local command =
+        "git add . && aider --commit; while true; do read -n 1 -s -p $'Press \\'q\\' to quit or \\'p\\' to push: ' key; echo; case $key in q) echo \"Quitting without pushing.\"; exit 0;; p) git push; while true; do read -n 1 -s -p $'Push completed. Press \\'q\\' to quit: ' key; echo; [[ \"$key\" == \"q\" ]] && exit 0; done;; *) echo \"Invalid option. Please try again.\";; esac; done"
       require('snacks').terminal(command)
     end,
     desc = 'Git Commit (ai)',
