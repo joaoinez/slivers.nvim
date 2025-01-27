@@ -6,10 +6,10 @@ return {
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
     provider = 'openai_fim_compatible',
-    n_completions = 1,
-    context_window = 512,
+    n_completions = 2,
+    context_window = 1024,
     throttle = 0,
-    debounce = 500,
+    debounce = 350,
     provider_options = {
       openai_fim_compatible = {
         model = 'qwen2.5-coder:1.5b-base',
@@ -17,10 +17,8 @@ return {
         name = 'Ollama',
         api_key = 'OLLAMA_API_KEY',
         optional = {
-          optional = {
-            max_tokens = 256,
-            top_p = 0.9,
-          },
+          max_tokens = 256,
+          top_p = 0.9,
         },
       },
     },
@@ -32,10 +30,11 @@ return {
     },
     virtualtext = {
       auto_trigger_ft = { '*' },
-      auto_trigger_ignore_ft = { 'AvanteInput' },
+      auto_trigger_ignore_ft = { 'AvanteInput', 'minifiles', 'oil' },
       keymap = {
-        accept = '<A-l>',
-        next = '<A-a>',
+        accept = '<A-a>',
+        accept_line = '<A-l>',
+        next = '<A-n>',
         dismiss = '<M-e>',
       },
     },

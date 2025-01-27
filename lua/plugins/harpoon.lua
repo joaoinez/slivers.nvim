@@ -20,17 +20,17 @@ return {
       desc = 'Harpoon Quick Menu',
     },
     {
-      '<M-u>',
+      '<A-u>',
       function() require('harpoon'):list():select(1) end,
       desc = 'Harpoon Select 1',
     },
     {
-      '<M-i>',
+      '<A-i>',
       function() require('harpoon'):list():select(2) end,
       desc = 'Harpoon Select 2',
     },
     {
-      '<M-o>',
+      '<A-o>',
       function() require('harpoon'):list():select(3) end,
       desc = 'Harpoon Select 3',
     },

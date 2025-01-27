@@ -10,7 +10,7 @@ map('n', 'yd', '<cmd>norm yy<cr>p', { desc = 'Duplicate line' })
 map('n', 'yc', '<cmd>norm yygcc<cr>p', { desc = 'Duplicate line and comment original' })
 
 -- Duplicate text selection
-map('x', '<M-J>', 'y`>p', { desc = 'Duplicate selection' })
+map('x', '<A-J>', 'y`>p', { desc = 'Duplicate selection' })
 
 -- -- Select recently pasted, yanked or changed text
 map('n', 'gy', '`[v`]', { desc = 'Select recently pasted, yanked or changed text' })

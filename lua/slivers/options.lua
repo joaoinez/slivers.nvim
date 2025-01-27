@@ -1,7 +1,6 @@
 -- [[ Globals ]]
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
--- vim.g.root_spec = { 'cwd' }
 
 if not vim.g.vscode then
   -- Source globals from config file
@@ -19,6 +18,7 @@ if not vim.g.vscode then
       dark_mode = true, -- Set background dark mode.
       lualine_borders = true, -- Set lualine rounded borders.
       trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
+      ai_coder_mode = true, -- Whether to use a coder or reasoning model.
       ai_architect_mode = false, -- Whether to use a reasoning model before coder model.
     }
 
