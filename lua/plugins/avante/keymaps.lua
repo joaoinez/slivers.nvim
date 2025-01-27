@@ -1,0 +1,97 @@
+local M = {}
+
+M.load_keymaps = function()
+  local templates = require 'plugins.avante.templates'
+  local prefill_edit_window = templates.prefill_edit_window
+
+  Slivers.lazy.on_load('which-key.nvim', function()
+    vim.schedule(function()
+      require('which-key').add({
+        {
+          '<leader>aa',
+          desc = 'Ask AI',
+        },
+        {
+          '<leader>aa',
+          desc = 'Ask',
+          mode = 'v',
+        },
+        {
+          '<leader>ae',
+          desc = 'Edit',
+          mode = 'v',
+        },
+        {
+          '<leader>ac',
+          desc = 'Add File to Chat',
+        },
+        {
+          '<leader>ad',
+          desc = 'Toggle Debugging',
+        },
+        {
+          '<leader>af',
+          desc = 'Focus Window',
+        },
+        {
+          '<leader>ah',
+          desc = 'Toggle Hint',
+        },
+        {
+          '<leader>ar',
+          desc = 'Refresh',
+        },
+        {
+          '<leader>aR',
+          desc = 'Repo Map',
+        },
+        {
+          '<leader>as',
+          desc = 'Toggle Suggestion',
+        },
+        {
+          '<leader>ta',
+          desc = 'Toggle AI',
+        },
+        {
+          mode = { 'n', 'v' },
+          {
+            '<leader>ak',
+            function() require('avante.api').ask { question = templates.avante_keywords } end,
+            desc = 'Keywords',
+          },
+          {
+            '<leader>al',
+            function() require('avante.api').ask { question = templates.avante_code_readability_analysis } end,
+            desc = 'Code Readability Analysis',
+          },
+          {
+            '<leader>ax',
+            function() require('avante.api').ask { question = templates.avante_explain_code } end,
+            desc = 'Explain Code',
+          },
+        },
+        {
+          mode = { 'v' },
+          {
+            '<leader>aC',
+            function() prefill_edit_window(templates.avante_complete_code) end,
+            desc = 'Complete Code',
+          },
+          {
+            '<leader>aD',
+            function() prefill_edit_window(templates.avante_add_docstring) end,
+            desc = 'Docstring',
+          },
+          {
+            '<leader>aT',
+            function() prefill_edit_window(templates.avante_add_tests) end,
+            desc = 'Add Tests',
+          },
+        },
+      }, { notify = false })
+    end)
+  end)
+end
+
+return M

@@ -3,13 +3,13 @@
 local M = {
   { '<leader>ao', function() require('snacks').terminal 'oterm' end, desc = 'Ollama' },
   {
-    '<leader>ag',
+    '<leader>gc',
     function()
       local command =
         'git add . && aider --commit; printf \'\\nPress q to quit.\'; old_stty=$(stty -g); stty raw -echo; key=$(dd bs=1 count=1 2>/dev/null); stty "$old_stty"; [ "$key" = \'q\' ] && exit 0'
       require('snacks').terminal(command)
     end,
-    desc = 'Git Commit',
+    desc = 'Git Commit (ai)',
   },
   { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },

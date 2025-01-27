@@ -21,7 +21,7 @@ return {
   },
   opts = function()
     return {
-      provider = vim.g.ai_coder_mode and 'qwen_coder' or 'deepseek-coder',
+      provider = vim.g.ai_coder_mode and 'qwen_coder' or 'deepseek_r1',
       auto_suggestions_provider = 'qwen_mini',
       behaviour = {
         auto_suggestions = false,
@@ -67,60 +67,6 @@ return {
   end,
   config = function(_, opts)
     require('avante').setup(opts)
-
-    Slivers.lazy.on_load('which-key.nvim', function()
-      vim.schedule(
-        function()
-          require('which-key').add({
-            {
-              '<leader>aa',
-              desc = 'Ask AI',
-            },
-            {
-              '<leader>aa',
-              desc = 'Ask',
-              mode = 'v',
-            },
-            {
-              '<leader>ae',
-              desc = 'Edit',
-              mode = 'v',
-            },
-            {
-              '<leader>ac',
-              desc = 'Add File to Chat',
-            },
-            {
-              '<leader>ad',
-              desc = 'Toggle Debugging',
-            },
-            {
-              '<leader>af',
-              desc = 'Focus Window',
-            },
-            {
-              '<leader>ah',
-              desc = 'Toggle Hint',
-            },
-            {
-              '<leader>ar',
-              desc = 'Refresh',
-            },
-            {
-              '<leader>aR',
-              desc = 'Repo Map',
-            },
-            {
-              '<leader>as',
-              desc = 'Toggle Suggestion',
-            },
-            {
-              '<leader>ta',
-              desc = 'Toggle AI',
-            },
-          }, { notify = false })
-        end
-      )
-    end)
+    require('plugins.avante.keymaps').load_keymaps()
   end,
 }
