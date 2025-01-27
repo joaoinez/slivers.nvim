@@ -3,7 +3,7 @@
 local M = {
   { '<leader>ao', function() require('snacks').terminal 'oterm' end, desc = 'Ollama' },
   {
-    '<leader>gc',
+    '<leader>ag',
     function()
       local command = [[
 bash -c '
@@ -26,7 +26,7 @@ done
 ']]
       require('snacks').terminal(command)
     end,
-    desc = 'Git Commit (ai)',
+    desc = 'Git Commit',
   },
   { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },

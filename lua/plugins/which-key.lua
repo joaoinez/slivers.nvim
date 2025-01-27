@@ -87,6 +87,9 @@ return {
       { '<leader>gB', icon = { icon = '󰊤', color = 'grey' } },
       { '<leader>gg', icon = { icon = '', color = 'blue' } },
 
+      -- Open
+      { '<leader>o', group = 'open', icon = { icon = '󰌹', color = 'azure' } },
+
       -- Misc
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
       { '<leader>kc', group = 'colorpicker' },
@@ -113,7 +116,7 @@ return {
       { '<leader>tt', icon = { icon = '', color = 'red' } },
 
       -- AI
-      { '<leader>a', group = 'ai', icon = { icon = '', color = 'cyan' }, mode = { 'n', 'v' } },
+      { '<leader>a', group = 'ai', mode = { 'n', 'v' } },
 
       -- Settings
       { '<leader>,', group = 'settings', icon = { icon = '󰒓', color = 'grey' } },

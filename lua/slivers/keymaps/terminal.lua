@@ -56,4 +56,4 @@ map('n', '<leader>ai', function()
   })
 
   vim.bo[buf].buflisted = false
-end, { desc = 'Aider' })
+end, { desc = 'Aider Dev' })

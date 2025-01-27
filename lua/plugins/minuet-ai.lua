@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'milanglacier/minuet-ai.nvim',
-  enabled = true,
+  enabled = false,
   cond = not vim.g.vscode,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
