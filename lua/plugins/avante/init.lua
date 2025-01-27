@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 ---@type LazySpec
 return {
   'yetone/avante.nvim',
