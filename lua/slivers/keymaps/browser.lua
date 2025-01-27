@@ -32,3 +32,11 @@ map(
 
 -- Excalidraw
 map('n', '<leader>oe', function() Slivers.misc.open_url 'https://excalidraw.com/' end, { desc = 'Excalidraw' })
+
+-- Aider Leaderboards
+map(
+  'n',
+  '<leader>oa',
+  function() Slivers.misc.open_url 'https://aider.chat/2024/12/21/polyglot.html' end,
+  { desc = 'Aider Leaderboards' }
+)
