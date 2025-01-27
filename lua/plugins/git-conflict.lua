@@ -4,8 +4,14 @@ return {
   enabled = true,
   cond = not vim.g.vscode,
   version = '*',
-  -- TODO: Test this
   event = { 'BufReadPre', 'BufNewFile' },
-  -- event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
-  opts = {},
+  opts = {
+    disable_diagnostics = true,
+  },
+  init = function()
+    Slivers.autocmds.autocmd('User', {
+      pattern = 'GitConflictDetected',
+      callback = function() vim.notify('Conflict detected in ' .. vim.fn.expand '<afile>') end,
+    })
+  end,
 }

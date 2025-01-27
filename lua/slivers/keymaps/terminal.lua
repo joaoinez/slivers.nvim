@@ -41,7 +41,7 @@ map('n', '<leader>aA', function()
 
   vim.cmd.vnew()
   vim.api.nvim_win_set_buf(0, buf)
-  vim.cmd.term 'aider'
+  vim.cmd.term 'aider --watch-files'
   vim.cmd.wincmd 'L'
   vim.api.nvim_win_set_width(0, math.floor(vim.o.columns * 0.30))
 

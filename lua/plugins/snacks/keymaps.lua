@@ -2,6 +2,7 @@
 
 local M = {
   { '<leader>ao', function() require('snacks').terminal 'oterm' end, desc = 'Ollama' },
+  { '<leader>ag', function() require('snacks').terminal 'aider --commit' end, desc = 'Git Commit' },
   { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },
   { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Git Log (cwd)' },
