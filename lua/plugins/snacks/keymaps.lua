@@ -5,8 +5,25 @@ local M = {
   {
     '<leader>gc',
     function()
-      local command =
-        "git add . && aider --commit; while true; do read -n 1 -s -p $'Press \\'q\\' to quit or \\'p\\' to push: ' key; echo; case $key in q) echo \"Quitting without pushing.\"; exit 0;; p) git push; while true; do read -n 1 -s -p $'Push completed. Press \\'q\\' to quit: ' key; echo; [[ \"$key\" == \"q\" ]] && exit 0; done;; *) echo \"Invalid option. Please try again.\";; esac; done"
+      local command = [[
+bash -c '
+git add . && aider --commit || exit 1
+while true; do
+  read -n 1 -s -p "Press \"q\" to quit or \"p\" to push: " key
+  printf "\n"
+  case "$key" in
+    q) echo "Quitting without pushing"; exit 0;;
+    p) git push
+       while true; do
+         read -n 1 -s -p "Push completed. Press \"q\" to quit: " key
+         printf "\n"
+         [ "$key" = "q" ] && exit 0
+       done
+       ;;
+    *) echo "Invalid option";;
+  esac
+done
+']]
       require('snacks').terminal(command)
     end,
     desc = 'Git Commit (ai)',
