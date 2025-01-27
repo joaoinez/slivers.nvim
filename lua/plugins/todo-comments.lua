@@ -16,8 +16,12 @@ return {
       function() require('todo-comments').jump_prev() end,
       desc = 'Previous Todo Comment (todo-comments)',
     },
-    { '<leader>qt', '<cmd>Trouble todo toggle<cr>', desc = 'Todos (trouble)' },
-    { '<leader>qT', function() require('todo-comments.fzf').todo() end, desc = 'Todos (fzf)' },
+    {
+      '<leader>qt',
+      function() require('todo-comments.fzf').todo { keywords = { 'TODO', 'FIX', 'FIXME' } } end,
+      desc = 'Todos (fzf)',
+    },
+    { '<leader>qT', '<cmd>Trouble todo toggle<cr>', desc = 'Todos (trouble)' },
   },
   opts = { signs = false },
 }
