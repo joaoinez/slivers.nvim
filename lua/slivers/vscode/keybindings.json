@@ -80,5 +80,19 @@
   {
     "command": "workbench.action.navigateRight",
     "key": "ctrl+l"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "quickInput.next",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "quickInput.previous",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
+  },
+  {
+    "key": "alt+l",
+    "command": "editor.action.inlineSuggest.commit"
   }
 ]

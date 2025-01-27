@@ -7,9 +7,9 @@ return {
   opts = {
     provider = 'openai_fim_compatible',
     n_completions = 1,
-    after_cursor_filter_length = 20,
+    context_window = 512,
     throttle = 0,
-    debounce = 300,
+    debounce = 500,
     provider_options = {
       openai_fim_compatible = {
         model = 'qwen2.5-coder:1.5b-base',
@@ -17,9 +17,10 @@ return {
         name = 'Ollama',
         api_key = 'OLLAMA_API_KEY',
         optional = {
-          stop = nil,
-          max_tokens = nil,
-          top_p = 0.9,
+          optional = {
+            max_tokens = 256,
+            top_p = 0.9,
+          },
         },
       },
     },
