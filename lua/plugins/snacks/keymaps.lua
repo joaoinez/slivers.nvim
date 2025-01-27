@@ -2,7 +2,13 @@
 
 local M = {
   { '<leader>ao', function() require('snacks').terminal 'oterm' end, desc = 'Ollama' },
-  { '<leader>ag', function() require('snacks').terminal 'aider --commit && sleep infinity' end, desc = 'Git Commit' },
+  {
+    '<leader>ag',
+    function()
+      require('snacks').terminal "aider --commit; echo -e '\\nPress 'q' to quit.'; while true; do read -n1 -s key; [[ $key == 'q' ]] && { echo; exit 0; }; done"
+    end,
+    desc = 'Git Commit',
+  },
   { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },
   { '<leader>gl', function() Snacks.lazygit.log() end, desc = 'Git Log (cwd)' },
