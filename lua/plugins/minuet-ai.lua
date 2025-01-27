@@ -34,7 +34,7 @@ return {
       auto_trigger_ft = { '*' },
       auto_trigger_ignore_ft = { 'AvanteInput' },
       keymap = {
-        accept = '<Tab>',
+        accept = '<A-l>',
         next = '<A-a>',
         dismiss = '<M-e>',
       },

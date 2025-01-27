@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 ---@type LazySpec
 return {
   'yetone/avante.nvim',
@@ -29,13 +30,13 @@ return {
         __inherited_from = 'openai',
         api_key_name = '',
         endpoint = 'http://127.0.0.1:11434/v1',
-        model = 'qwen2.5-coder:14b',
+        model = 'qwen2.5-coder:14b-ctx',
       },
       deepseek_r1 = {
         __inherited_from = 'openai',
         api_key_name = '',
         endpoint = 'http://127.0.0.1:11434/v1',
-        model = 'deepseek-r1:7b',
+        model = 'deepseek-r1:7b-ctx',
       },
       qwen_mini = {
         __inherited_from = 'openai',
@@ -45,7 +46,7 @@ return {
       },
     },
     dual_boost = {
-      enabled = vim.fn.has 'macunix' ~= 1,
+      enabled = vim.g.ai_architect_mode,
       first_provider = 'deepseek_r1',
       second_provider = 'qwen_coder',
       prompt = 'Based on the two reference outputs below, generate a response that incorporates elements from both but reflects your own judgment and unique perspective. Reference Output 1: [{{provider1_output}}], Reference Output 2: [{{provider2_output}}]',

@@ -6,7 +6,7 @@ return {
   cmd = { 'Oil' },
   keys = {
     {
-      '<leader>fE',
+      '<leader>fe',
       '<cmd>Oil<cr>',
       desc = 'File Explorer (oil)',
     },

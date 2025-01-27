@@ -24,6 +24,12 @@ map(
   function() require('vscode').action 'workbench.action.toggleSidebarVisibility' end,
   { desc = 'Open File Explorer' }
 )
+map(
+  'n',
+  '<leader>fm',
+  function() require('vscode').action 'workbench.action.toggleSidebarVisibility' end,
+  { desc = 'Open File Explorer' }
+)
 
 map(
   'n',

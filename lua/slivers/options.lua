@@ -19,6 +19,7 @@ if not vim.g.vscode then
       dark_mode = true, -- Set background dark mode.
       lualine_borders = true, -- Set lualine rounded borders.
       trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
+      ai_architect_mode = false, -- Whether to use a reasoning model before coder model.
     }
 
     Slivers.misc.write_file(path, vim.json.encode(default_config))
