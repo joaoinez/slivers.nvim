@@ -1,6 +1,7 @@
 -- [[ Globals ]]
 vim.g.mapleader = ' ' -- Set leader key.
 vim.g.maplocalleader = ' ' -- Set default local leader key.
+-- vim.g.root_spec = { 'cwd' }
 
 if not vim.g.vscode then
   -- Source globals from config file
@@ -92,12 +93,13 @@ v-r-cr-o:hor20' -- Cursor styling
   vim.opt.tabstop = 2 -- Number of space in a tab.
   vim.opt.termguicolors = true -- Enable 24-bit RGB color in the TUI.
   vim.opt.timeoutlen = 300 -- Shorten key timeout length a little bit for which-key.
-  vim.opt.undofile = true -- Enable persistent undo between session and reboots.
   vim.opt.updatetime = 250 -- Length of time to wait before triggering the plugin.
   vim.opt.virtualedit = 'block' -- Allow going past end of line in visual block mode.
   vim.opt.wrap = true -- Enable line wraping.
   vim.opt.wildmode = 'longest:full,full' -- Command line completion mode.
 end
+
+vim.opt.undofile = true -- Enable persistent undo between session and reboots.
 
 vim.schedule(function() -- Schedule the setting after `UiEnter`.
   vim.opt.clipboard = 'unnamedplus' -- Sync with system clipboard.

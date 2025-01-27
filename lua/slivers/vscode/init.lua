@@ -27,10 +27,12 @@ map(
 
 map(
   'n',
-  '<leader><Tab>',
+  '<leader><leader>',
   function() vscode.action 'workbench.action.quickOpenPreviousRecentlyUsedEditor' end,
-  { desc = 'Last Opened File' }
+  { desc = 'Opened Files' }
 )
+
+map('n', '<leader><Tab>', function() vscode.action 'workbench.action.nextEditorInGroup' end, { desc = 'Opened Files' })
 
 map('n', '<leader>x', function()
   vscode.action 'workbench.action.files.saveAll'
