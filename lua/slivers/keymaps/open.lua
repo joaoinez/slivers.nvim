@@ -1,5 +1,7 @@
 local map = Slivers.keymaps.safe_keymap_set
 
+-- [[ Code Edtors ]]
+
 -- Open file in vscode
 map('n', '<leader>ofc', function() Slivers.misc.open_file_in_editor 'vscode' end, { desc = 'Code' })
 
@@ -8,6 +10,19 @@ map('n', '<leader>oft', function() Slivers.misc.open_file_in_editor 'trae' end, 
 
 -- Open file in zed
 map('n', '<leader>ofz', function() Slivers.misc.open_file_in_editor 'zed' end, { desc = 'Zed' })
+
+-- [[ Documentation ]]
+
+-- Conventional Commits
+map(
+  'n',
+  '<leader>odg',
+  function() Slivers.misc.open_url 'https://www.conventionalcommits.org' end,
+  { desc = 'Conventional Commits' }
+)
+
+-- Expo
+map('n', '<leader>ode', function() Slivers.misc.open_url 'https://docs.expo.dev' end, { desc = 'Expo' })
 
 -- LuaCATS annotations
 map(
@@ -20,6 +35,8 @@ map(
 -- https://joaoinez.me
 map('n', '<leader>oj', function() Slivers.misc.open_url 'https://joaoinez.me' end, { desc = 'joaoinez.me' })
 
+-- [[ Web Links ]]
+
 -- Deepseek R1
 map(
   'n',
@@ -29,7 +46,7 @@ map(
 )
 
 -- LazyVim
-map('n', '<leader>ol', function() Slivers.misc.open_url 'https://www.lazyvim.org/' end, { desc = 'LazyVim' })
+map('n', '<leader>ol', function() Slivers.misc.open_url 'https://www.lazyvim.org' end, { desc = 'LazyVim' })
 
 -- Nerdfonts Cheatsheet
 map(
@@ -48,7 +65,7 @@ map(
 )
 
 -- Excalidraw
-map('n', '<leader>oe', function() Slivers.misc.open_url 'https://excalidraw.com/' end, { desc = 'Excalidraw' })
+map('n', '<leader>oe', function() Slivers.misc.open_url 'https://excalidraw.com' end, { desc = 'Excalidraw' })
 
 -- Aider Leaderboards
 map(
