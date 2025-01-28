@@ -41,7 +41,7 @@
 - Local AI:
   - [ollama](https://ollama.com/download/linux)
   - [qwen2.5-coder](https://ollama.com/library/qwen2.5-coder)
-    - `ollama create qwen2.5-coder:14b-ctx -f ./qwen2.5-coder:14b-ctx.Modelfile`
+    - `ollama create qwen2.5-coder:7b-ctx -f ./qwen2.5-coder:7b-ctx.Modelfile`
   - [deepseek-r1](https://ollama.com/library/deepseek-r1)
     - `ollama create deepseek-r1:7b-ctx -f ./deepseek-r1:7b-ctx.Modelfile`
 
