@@ -121,4 +121,34 @@ function M.open_url(url)
   vim.fn.jobstart(cmd, { detach = true })
 end
 
+--- Opens current file in another code editor
+---
+---@param editor slivers.Editor
+function M.open_file_in_editor(editor)
+  ---@enum (key) slivers.Editor
+  local editor_commands = {
+    vscode = 'code -g %s:%d:%d',
+    trae = 'trae -g %s:%d:%d',
+    zed = 'zed %s:%d:%d',
+  }
+
+  local cmd_format = editor_commands[editor]
+  if not cmd_format then
+    vim.notify("Editor '" .. editor .. "' not configured", vim.log.levels.ERROR)
+    return
+  end
+
+  local file = vim.api.nvim_buf_get_name(0)
+  local line = vim.fn.line '.'
+  local col = vim.fn.col '.'
+
+  local command = string.format(cmd_format, vim.fn.shellescape(file), line, col)
+
+  if vim.fn.has 'win32' == 1 then
+    vim.fn.system('start cmd /c "' .. command .. '"')
+  else
+    vim.fn.system(command .. ' &')
+  end
+end
+
 return M

@@ -1,5 +1,22 @@
 local map = Slivers.keymaps.safe_keymap_set
 
+-- Open file in vscode
+map('n', '<leader>ofc', function() Slivers.misc.open_file_in_editor 'vscode' end, { desc = 'Code' })
+
+-- Open file in trae
+map('n', '<leader>oft', function() Slivers.misc.open_file_in_editor 'trae' end, { desc = 'Trae' })
+
+-- Open file in zed
+map('n', '<leader>ofz', function() Slivers.misc.open_file_in_editor 'zed' end, { desc = 'Zed' })
+
+-- LuaCATS annotations
+map(
+  'n',
+  '<leader>odl',
+  function() Slivers.misc.open_url 'https://luals.github.io/wiki/annotations' end,
+  { desc = 'Lua Types' }
+)
+
 -- https://joaoinez.me
 map('n', '<leader>oj', function() Slivers.misc.open_url 'https://joaoinez.me' end, { desc = 'joaoinez.me' })
 

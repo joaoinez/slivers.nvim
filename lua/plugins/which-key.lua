@@ -89,6 +89,10 @@ return {
 
       -- Open
       { '<leader>o', group = 'open', icon = { icon = '󰌹', color = 'azure' } },
+      { '<leader>of', group = 'file', icon = { icon = '', color = 'cyan' } },
+      { '<leader>ofc', icon = { icon = '', color = 'cyan' } },
+      { '<leader>ofz', icon = { icon = '', color = 'cyan' } },
+      { '<leader>od', group = 'docs', icon = { icon = '', color = 'grey' } },
 
       -- Misc
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
