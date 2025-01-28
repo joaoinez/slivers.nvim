@@ -12,13 +12,13 @@ return {
       local gitsigns = require 'gitsigns'
       local map = Slivers.keymaps.safe_keymap_set
 
-      -- Actions
-      -- visual mode
+      -- [[ Actions ]]
+      -- Visual Mode
       map(
         'v',
-        '<leader>gs',
+        '<leader>ga',
         function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-        { desc = 'Stage Hunk' }
+        { desc = 'Add Hunk' }
       )
       map(
         'v',
@@ -26,18 +26,18 @@ return {
         function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
         { desc = 'Reset Hunk' }
       )
-      -- normal mode
+      -- Normal Mode
       map('n', '<leader>ga', gitsigns.stage_hunk, { desc = 'Add Hunk' })
       map('n', '<leader>gA', gitsigns.stage_buffer, { desc = 'Add File' })
       map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset Hunk' })
       map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset File' })
-      map('n', '<leader>gp', gitsigns.preview_hunk_inline, { desc = 'Prevew Hunk' })
+      map('n', '<leader>gd', gitsigns.preview_hunk, { desc = 'Diff Preview' })
       map('n', '<leader>gb', gitsigns.blame_line, { desc = 'Blame Line' })
-      map('n', '<leader>gd', function() gitsigns.diffthis '@' end, { desc = 'Diff against last commit' })
-      map('n', '<leader>gD', gitsigns.diffthis, { desc = 'Diff against index' })
-      -- Toggles
+
+      -- [[ Toggles ]]
       map('n', '<leader>tB', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (git)' })
-      -- Navigation
+
+      -- [[ Navigation ]]
       map('n', ']c', function()
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }

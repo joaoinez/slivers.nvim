@@ -79,7 +79,7 @@ return {
               end
             end,
           })
-          :map '<leader>tb'
+          :map '<leader>tm'
       end,
     })
   end,

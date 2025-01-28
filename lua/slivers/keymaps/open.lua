@@ -32,10 +32,10 @@ map(
   { desc = 'Lua Types' }
 )
 
+-- [[ Web Links ]]
+
 -- https://joaoinez.me
 map('n', '<leader>oj', function() Slivers.misc.open_url 'https://joaoinez.me' end, { desc = 'joaoinez.me' })
-
--- [[ Web Links ]]
 
 -- Deepseek R1
 map(
@@ -74,3 +74,6 @@ map(
   function() Slivers.misc.open_url 'https://aider.chat/2024/12/21/polyglot.html' end,
   { desc = 'Aider Leaderboards' }
 )
+
+-- Wakatime
+map('n', '<leader>ow', function() Slivers.misc.open_url 'https://wakatime.com/dashboard' end, { desc = 'Wakatime' })

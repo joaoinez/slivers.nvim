@@ -28,9 +28,7 @@ done
     end,
     desc = 'Commit (aider)',
   },
-  { '<leader>gl', function() require('snacks').lazygit() end, desc = 'Lazygit' },
-  { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },
-  { '<leader>gL', function() require('snacks').lazygit.log() end, desc = 'Log (lazygit)' },
+  { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gB', function() require('snacks').gitbrowse() end, desc = 'Browse Repo (github)' },
   {
     '<leader>,n',
