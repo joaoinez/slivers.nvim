@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
-  enabled = true,
+  enabled = not not vim.g.dev,
   cond = not vim.g.vscode,
   version = false,
   dependencies = {

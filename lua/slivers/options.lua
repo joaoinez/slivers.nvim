@@ -19,6 +19,7 @@ if not vim.g.vscode then
       lualine_borders = true, -- Set lualine rounded borders.
       trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
       ai_architect_mode = false, -- Whether to use a reasoning model before coder model.
+      dev = false, -- Enable or disabled dev related plugins.
     }
 
     Slivers.misc.write_file(path, vim.json.encode(default_config))

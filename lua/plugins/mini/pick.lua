@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.pick',
-  enabled = true,
+  enabled = not not vim.g.dev,
   cond = not vim.g.vscode,
   version = false,
   event = 'VeryLazy',
