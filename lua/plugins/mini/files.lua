@@ -30,6 +30,11 @@ return {
     options = {
       use_as_default_explorer = false,
     },
+    windows = {
+      preview = true,
+      width_focus = 30,
+      width_preview = math.min(math.floor(vim.o.columns * 0.33), 80),
+    },
   },
   config = function(_, opts)
     require('mini.files').setup(opts)

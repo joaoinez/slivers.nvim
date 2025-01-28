@@ -1,4 +1,6 @@
 -- [[ VSCode Setup ]]
+-- defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool true
+
 local vscode = require 'vscode'
 local map = Slivers.keymaps.safe_keymap_set
 

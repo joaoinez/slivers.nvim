@@ -7,7 +7,7 @@ local M = {
     function()
       local command = [[
 bash -c '
-git add . && aider --commit || exit 1
+aider --commit || exit 1
 while true; do
   read -n 1 -s -p "Press \"q\" to quit or \"p\" to push: " key
   printf "\n"
