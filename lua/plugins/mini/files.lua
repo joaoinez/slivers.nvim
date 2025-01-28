@@ -6,14 +6,29 @@ return {
   version = false,
   keys = {
     {
-      '<leader>fm',
+      '<leader>fe',
       function() require('mini.files').open(vim.api.nvim_buf_get_name(0), true) end,
       desc = 'File Explorer (mini)',
     },
   },
   opts = {
     mappings = {
+      close = 'q',
+      go_in = '',
+      go_in_plus = '<cr>',
+      go_out = '',
+      go_out_plus = '-',
+      mark_goto = "'",
+      mark_set = 'm',
+      reset = '<BS>',
+      reveal_cwd = '@',
+      show_help = 'g?',
       synchronize = 's',
+      trim_left = '<',
+      trim_right = '>',
+    },
+    options = {
+      use_as_default_explorer = false,
     },
   },
   config = function(_, opts)
@@ -38,13 +53,7 @@ return {
         local buf_id = args.data.buf_id
 
         vim.keymap.set('n', 'g.', toggle_dotfiles, { buffer = buf_id })
-        vim.keymap.set(
-          'n',
-          '<cr>',
-          function() require('mini.files').go_in { close_on_file = true } end,
-          { buffer = buf_id }
-        )
-        vim.keymap.set('n', '-', function() require('mini.files').go_out() end, { buffer = buf_id })
+        vim.keymap.set('n', '<esc>', function() require('mini.files').close() end, { buffer = buf_id })
       end,
     })
 

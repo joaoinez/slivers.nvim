@@ -6,7 +6,7 @@ return {
   cmd = { 'Oil' },
   keys = {
     {
-      '<leader>fe',
+      '<leader>fo',
       '<cmd>Oil<cr>',
       desc = 'File Explorer (oil)',
     },
@@ -15,7 +15,7 @@ return {
     local detail = false
 
     return {
-      default_file_explorer = false,
+      default_file_explorer = true,
       view_options = {
         show_hidden = true,
       },
