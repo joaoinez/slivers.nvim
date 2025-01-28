@@ -65,6 +65,11 @@ return {
         ['<c-c><c-s>'] = 'Submit',
         ['<c-c><c-c>'] = 'Abort',
       },
+      status = {
+        ['a'] = 'Stage',
+        ['A'] = 'StageUnstaged',
+        ['<c-a>'] = 'StageAll',
+      },
     },
   },
 }
