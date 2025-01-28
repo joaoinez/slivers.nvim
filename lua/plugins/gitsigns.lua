@@ -27,20 +27,18 @@ return {
         { desc = 'Reset Hunk' }
       )
       -- normal mode
-      map('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'Stage Hunk' })
+      map('n', '<leader>ga', gitsigns.stage_hunk, { desc = 'Add Hunk' })
+      map('n', '<leader>gA', gitsigns.stage_buffer, { desc = 'Add File' })
       map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset Hunk' })
-      map('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'Stage File' })
-      map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'Undo Stage Hunk' })
       map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset File' })
-      map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'Preview Hunk' })
+      map('n', '<leader>gp', gitsigns.preview_hunk_inline, { desc = 'Prevew Hunk' })
       map('n', '<leader>gb', gitsigns.blame_line, { desc = 'Blame Line' })
-      map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Diff against index' })
-      map('n', '<leader>gD', function() gitsigns.diffthis '@' end, { desc = 'Diff against last commit' })
+      map('n', '<leader>gd', function() gitsigns.diffthis '@' end, { desc = 'Diff against last commit' })
+      map('n', '<leader>gD', gitsigns.diffthis, { desc = 'Diff against index' })
       -- Toggles
       map('n', '<leader>tB', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (git)' })
-      map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = 'Deleted Hunks (git)' })
       -- Navigation
-      map('n', '[c', function()
+      map('n', ']c', function()
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else

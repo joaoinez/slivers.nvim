@@ -3,7 +3,7 @@
 local M = {
   { '<leader>ao', function() require('snacks').terminal 'oterm' end, desc = 'Ollama' },
   {
-    '<leader>ag',
+    '<leader>gC',
     function()
       local command = [[
 bash -c '
@@ -26,12 +26,12 @@ done
 ']]
       require('snacks').terminal(command)
     end,
-    desc = 'Git Commit',
+    desc = 'Commit (aider)',
   },
-  { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
+  { '<leader>gl', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gf', function() require('snacks').lazygit.log_file() end, desc = 'Current File History' },
-  { '<leader>gl', function() require('snacks').lazygit.log() end, desc = 'Git Log (cwd)' },
-  { '<leader>gB', function() require('snacks').gitbrowse() end, desc = 'Git Browse (github)' },
+  { '<leader>gL', function() require('snacks').lazygit.log() end, desc = 'Log (lazygit)' },
+  { '<leader>gB', function() require('snacks').gitbrowse() end, desc = 'Browse Repo (github)' },
   {
     '<leader>,n',
     desc = 'Neovim News',
