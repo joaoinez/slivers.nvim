@@ -35,6 +35,16 @@ return {
       end
     end
 
+    config.defaults.git.icons = {
+      ['M'] = { icon = '', color = 'yellow' },
+      ['D'] = { icon = '', color = 'red' },
+      ['A'] = { icon = '', color = 'green' },
+      ['R'] = { icon = '', color = 'yellow' },
+      ['C'] = { icon = '', color = 'yellow' },
+      ['T'] = { icon = '', color = 'magenta' },
+      ['?'] = { icon = '', color = 'magenta' },
+    }
+
     return {
       'default-title',
       fzf_colors = true,
@@ -113,7 +123,7 @@ return {
       buffers = {
         actions = {
           ['ctrl-x'] = false,
-          ['alt-w'] = { actions.buf_del },
+          ['alt-w'] = { fn = actions.buf_del, reload = true },
         },
       },
       git = {
@@ -122,9 +132,9 @@ return {
             ['left'] = false,
             ['right'] = false,
             ['ctrl-x'] = false,
-            ['alt-s'] = { actions.git_stage, actions.resume },
-            ['alt-u'] = { actions.git_unstage, actions.resume },
-            ['alt-r'] = { actions.git_reset, actions.resume },
+            ['alt-u'] = { fn = actions.git_unstage, reload = true },
+            ['alt-s'] = { fn = actions.git_stage, reload = true },
+            ['alt-r'] = { fn = actions.git_reset, reload = true },
           },
         },
       },

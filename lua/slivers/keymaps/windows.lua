@@ -9,25 +9,11 @@ if not vim.g.vscode then
   map('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
   map('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 
-  -- resize window using <ctrl> alt hjkl
+  -- Resize window using <ctrl> alt hjkl
   map('n', '<C-M-k>', '<cmd>resize +2<cr>', { desc = 'increase window height' })
   map('n', '<C-M-j>', '<cmd>resize -2<cr>', { desc = 'decrease window height' })
   map('n', '<C-M-l>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
   map('n', '<C-M-h>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
-
-  -- Splits
-  map(
-    'n',
-    '<leader>|',
-    '<cmd>vsplit | FzfLua buffers sort_mru=true sort_lastused=true jump_to_single_result=true<cr>',
-    { desc = 'Vertical Split' }
-  )
-  map(
-    'n',
-    '<leader>\\',
-    '<cmd>split | FzfLua buffers sort_mru=true sort_lastused=true jump_to_single_result=true<cr>',
-    { desc = 'Horizontal Split' }
-  )
 
   -- Switch between the last opened buffer
   map('n', '<leader><Tab>', '<cmd>b#<cr>', { desc = 'Last Opened Buffer' })
@@ -36,26 +22,34 @@ if not vim.g.vscode then
   map('n', '<leader>wq', '<cmd>q!<cr>', { desc = 'Close' })
 
   -- Close all windows
-  map('n', '<leader>wa', '<cmd>qa!<cr>', { desc = 'Close All' })
+  map('n', '<leader>wa', '<cmd>qa!<cr>', { desc = 'Quit Neovim (without saving)' })
 
   -- Close floating windows
   map('n', '<leader>wf', '<cmd>fc<cr>', { desc = 'Close Floating' })
 
-  -- Swap splits
+  -- Splits
+  map(
+    'n',
+    '<leader>|',
+    '<cmd>vsplit | FzfLua buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>',
+    { desc = 'Vertical Split' }
+  )
+  map(
+    'n',
+    '<leader>\\',
+    '<cmd>split | FzfLua buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>',
+    { desc = 'Horizontal Split' }
+  )
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })
-
-  -- Max out split width
   map('n', '<leader>w\\', '<C-w>|', { desc = 'Max Out Split Width' })
-
-  -- Max out split height
   map('n', '<leader>w|', '<C-w>_', { desc = 'Max Out Split Height' })
-
-  -- Equal out splits
   map('n', '<leader>we', '<C-w>=', { desc = 'Equal Out Splits' })
+  map('n', '<leader>wo', '<C-w>o', { desc = 'Close Other Splits' })
 
   -- Tabs
   map('n', '<leader>wt', '<cmd>tabnew | FzfLua files<cr>', { desc = 'New Tab' })
   map('n', '<leader>ww', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
   map('n', '<leader>wn', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
   map('n', '<leader>wp', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
+  map('n', '<leader>wT', '<C-w>T', { desc = 'Send to Tab' })
 end

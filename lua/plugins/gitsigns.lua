@@ -7,6 +7,7 @@ return {
   opts = {
     signs = IconSliver.git.signs,
     signs_staged = IconSliver.git.staged,
+    current_line_blame = true,
     ---@diagnostic disable-next-line: unused-local
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
@@ -32,7 +33,6 @@ return {
       map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset Hunk' })
       map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset File' })
       map('n', '<leader>gd', gitsigns.preview_hunk, { desc = 'Diff Preview' })
-      map('n', '<leader>gb', gitsigns.blame_line, { desc = 'Blame Line' })
 
       -- [[ Toggles ]]
       map('n', '<leader>tB', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (git)' })

@@ -9,6 +9,9 @@ return {
       pattern = 'PersistenceSavePre',
       callback = function()
         for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+          -- NOTE: Use this to know the filetype
+          --
+          -- :lua vim.fn.system('echo "' .. vim.bo.filetype .. '" | pbcopy')
           local deletable_ft = {
             [''] = true,
             oil = true,
@@ -30,7 +33,6 @@ return {
             noice = true,
           }
 
-          -- lua vim.fn.system('echo "' .. vim.bo.filetype .. '" | pbcopy')
           if deletable_ft[vim.bo[bufnr].filetype] then vim.api.nvim_buf_delete(bufnr, { force = true }) end
         end
       end,
