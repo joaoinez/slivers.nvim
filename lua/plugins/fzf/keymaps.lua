@@ -18,7 +18,7 @@ local M = {
     end,
     desc = 'Find Files (cwd)',
   },
-  { '<leader>gb', '<cmd>FzfLua git_status<cr>', desc = 'Git Files' },
+  { '<leader>gb', '<cmd>FzfLua git_branches<cr>', desc = 'Git Branches' },
   { '<leader>fg', '<cmd>FzfLua git_status<cr>', desc = 'Git Files' },
   { '<leader>gs', '<cmd>FzfLua git_status<cr>', desc = 'Status' },
   { '<leader>fA', '<cmd>FzfLua autocmds<cr>', desc = 'Auto Commands' },
