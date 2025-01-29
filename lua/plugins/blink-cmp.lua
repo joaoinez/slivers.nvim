@@ -16,6 +16,7 @@ return {
   opts = {
     keymap = {
       preset = 'enter',
+      ['<CR>'] = { 'select_and_accept', 'fallback' },
       ['<Tab>'] = { 'select_next', 'fallback' },
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
       ['<C-p>'] = { 'snippet_backward', 'fallback' },
@@ -45,15 +46,12 @@ return {
         auto_show = true,
         auto_show_delay_ms = 200,
       },
-      ghost_text = {
-        enabled = true,
+      list = {
+        selection = {
+          preselect = false,
+          auto_insert = true,
+        },
       },
-      -- list = {
-      --   selection = 'manual',
-      -- },
-      -- trigger = {
-      --   show_on_insert_on_trigger_character = false,
-      -- },
     },
     sources = {
       providers = {
