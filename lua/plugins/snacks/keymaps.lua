@@ -28,7 +28,7 @@ done
     end,
     desc = 'Commit (aider)',
   },
-  { '<leader>gg', function() require('snacks').lazygit() end, desc = 'Lazygit' },
+  { '<leader>gG', function() require('snacks').lazygit() end, desc = 'Lazygit' },
   { '<leader>gB', function() require('snacks').gitbrowse() end, desc = 'Browse Repo (github)' },
   {
     '<leader>,n',

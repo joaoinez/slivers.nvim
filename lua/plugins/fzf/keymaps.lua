@@ -20,6 +20,7 @@ local M = {
   },
   { '<leader>gb', '<cmd>FzfLua git_status<cr>', desc = 'Git Files' },
   { '<leader>fg', '<cmd>FzfLua git_status<cr>', desc = 'Git Files' },
+  { '<leader>gs', '<cmd>FzfLua git_status<cr>', desc = 'Status' },
   { '<leader>fA', '<cmd>FzfLua autocmds<cr>', desc = 'Auto Commands' },
   { '<leader>f/', '<cmd>FzfLua grep_curbuf<cr>', desc = 'Search' },
   { '<leader>fc', '<cmd>FzfLua command_history<cr>', desc = 'Command History' },

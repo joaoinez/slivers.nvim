@@ -31,7 +31,6 @@ return {
       map('n', '<leader>ga', gitsigns.stage_hunk, { desc = 'Add Hunk' })
       map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset Hunk' })
       map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset File' })
-      map('n', '<leader>gd', gitsigns.preview_hunk, { desc = 'Diff Preview' })
 
       -- [[ Toggles ]]
       map('n', '<leader>tB', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (git)' })

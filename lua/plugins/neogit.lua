@@ -6,9 +6,9 @@ return {
   event = 'VeryLazy',
   keys = {
     {
-      '<leader>gs',
+      '<leader>gg',
       '<cmd>Neogit<cr>',
-      desc = 'Status',
+      desc = 'Neogit',
     },
     {
       '<leader>gc',
@@ -26,17 +26,17 @@ return {
       desc = 'Push',
     },
     {
-      '<leader>gS',
+      '<leader>gZ',
       '<cmd>Neogit stash<cr>',
       desc = 'Stash',
     },
     {
-      '<leader>gl',
+      '<leader>gL',
       '<cmd>Neogit log<cr>',
       desc = 'Log (project)',
     },
     {
-      '<leader>gf',
+      '<leader>gl',
       '<cmd>NeogitLogCurrent<cr>',
       desc = 'Log (file)',
     },

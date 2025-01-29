@@ -5,6 +5,7 @@ map('n', '<leader>y', 'gg0yG', { desc = 'Yank File' })
 
 -- Duplicate line
 map('n', 'yd', '<cmd>norm yy<cr>p', { desc = 'Duplicate line' })
+map('n', '<A-J>', '<cmd>norm yy<cr>p', { desc = 'Duplicate line' })
 
 -- Duplicate line and comment the original
 map('n', 'yc', '<cmd>norm yygcc<cr>p', { desc = 'Duplicate line and comment original' })
