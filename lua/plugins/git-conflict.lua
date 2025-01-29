@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'akinsho/git-conflict.nvim',
-  enabled = false,
+  enabled = true,
   cond = not vim.g.vscode,
   version = '*',
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
