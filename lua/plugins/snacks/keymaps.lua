@@ -9,11 +9,11 @@ local M = {
 bash -c '
 aider --commit || exit 1
 while true; do
-  read -n 1 -s -p "Press \"q\" to quit or \"p\" to push: " key
+  read -n 1 -s -p "Press \"q\" to quit or \"P\" to push: " key
   printf "\n"
   case "$key" in
     q) echo "Quitting without pushing"; exit 0;;
-    p) git push
+    P) git push
        while true; do
          read -n 1 -s -p "Push completed. Press \"q\" to quit: " key
          printf "\n"
