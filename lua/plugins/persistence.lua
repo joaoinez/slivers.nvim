@@ -31,6 +31,7 @@ return {
             lazy = true,
             NeogitStatus = true,
             noice = true,
+            DiffviewFiles = true,
           }
 
           if deletable_ft[vim.bo[bufnr].filetype] then vim.api.nvim_buf_delete(bufnr, { force = true }) end
