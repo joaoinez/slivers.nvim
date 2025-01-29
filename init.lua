@@ -24,6 +24,8 @@ _G.LangSliver = require 'slivers.lang'
 _G.IconSliver = require 'slivers.icons'
 _G.ColorSliver = require 'slivers.colorscheme'
 
+-- some change
+
 -- [[ Load Options ]]
 Slivers.load 'options'
 
