@@ -19,10 +19,10 @@ local M = {
 }
 
 -- Load config after checking cache
----@param name "autocmds" | "options" | "keymaps" | "vscode"
+---@param name "options" | "tabline" | "lazy" | "autocmds" | "keymaps" | "vscode"
 function M.load(name)
   local function _load(mod)
-    if name == 'options' then
+    if name == 'options' or 'tabline' or 'lazy' then
       require(mod)
     elseif require('lazy.core.cache').find(mod)[1] then
       require('lazy.core.util').try(function() require(mod) end, { msg = 'Failed loading ' .. mod })

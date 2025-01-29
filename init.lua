@@ -27,8 +27,11 @@ _G.ColorSliver = require 'slivers.colorscheme'
 -- [[ Load Options ]]
 Slivers.load 'options'
 
+-- [[ Load Tabline ]]
+Slivers.load 'tabline'
+
 -- [[ Initialize Lazy ]]
-require 'slivers.lazy'
+Slivers.load 'lazy'
 
 -- autocmds can be loaded lazily when not opening a file
 local lazy_autocmds = vim.fn.argc(-1) == 0
