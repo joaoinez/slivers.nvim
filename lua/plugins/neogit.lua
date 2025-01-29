@@ -46,6 +46,11 @@ return {
   },
   opts = {
     graph_style = 'kitty',
+    signs = {
+      hunk = { '', '' },
+      item = { '', '' },
+      section = { '', '' },
+    },
     mappings = {
       commit_editor = {
         ['<cr>'] = 'Submit',
@@ -64,11 +69,6 @@ return {
       rebase_editor_I = {
         ['<c-c><c-s>'] = 'Submit',
         ['<c-c><c-c>'] = 'Abort',
-      },
-      status = {
-        ['a'] = 'Stage',
-        ['A'] = 'StageUnstaged',
-        ['<c-a>'] = 'StageAll',
       },
     },
   },

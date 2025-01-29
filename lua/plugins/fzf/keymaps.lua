@@ -4,7 +4,7 @@ local M = {
   { '<leader>kp', '<cmd>FzfLua<cr>', desc = 'Command Palette' },
   {
     '<leader><leader>',
-    '<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>',
+    '<cmd>FzfLua buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>',
     desc = 'Open Buffers',
   },
   { '<leader>:', '<cmd>FzfLua commands<cr>', desc = 'Commands' },

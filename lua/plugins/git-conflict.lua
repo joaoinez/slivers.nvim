@@ -4,7 +4,6 @@ return {
   enabled = false,
   cond = not vim.g.vscode,
   version = '*',
-  -- event = { 'BufReadPre', 'BufNewFile' },
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
     disable_diagnostics = true,

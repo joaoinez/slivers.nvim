@@ -14,7 +14,7 @@ autocmd('TextYankPost', {
 
 if not vim.g.vscode then
   -- Check if we need to reload the file when it is changed
-  autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+  autocmd({ 'FocusGained', 'TermClose', 'TermLeave', 'TabEnter' }, {
     group = augroup 'checktime',
     callback = function()
       if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end

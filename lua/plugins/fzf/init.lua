@@ -100,14 +100,32 @@ return {
       files = {
         cwd_prompt = false,
         actions = {
-          ['alt-i'] = { actions.toggle_ignore },
+          ['alt-g'] = { actions.toggle_ignore },
           ['alt-h'] = { actions.toggle_hidden },
         },
       },
       grep = {
         actions = {
-          ['alt-i'] = { actions.toggle_ignore },
+          ['alt-g'] = { actions.toggle_ignore },
           ['alt-h'] = { actions.toggle_hidden },
+        },
+      },
+      buffers = {
+        actions = {
+          ['ctrl-x'] = false,
+          ['alt-w'] = { actions.buf_del },
+        },
+      },
+      git = {
+        status = {
+          actions = {
+            ['left'] = false,
+            ['right'] = false,
+            ['ctrl-x'] = false,
+            ['alt-s'] = { actions.git_stage, actions.resume },
+            ['alt-u'] = { actions.git_unstage, actions.resume },
+            ['alt-r'] = { actions.git_reset, actions.resume },
+          },
         },
       },
       lsp = {

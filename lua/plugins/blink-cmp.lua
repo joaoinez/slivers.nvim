@@ -45,6 +45,9 @@ return {
         auto_show = true,
         auto_show_delay_ms = 200,
       },
+      ghost_text = {
+        enabled = true,
+      },
       -- list = {
       --   selection = 'manual',
       -- },

@@ -16,8 +16,18 @@ if not vim.g.vscode then
   map('n', '<C-M-h>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
 
   -- Splits
-  map('n', '<leader>|', '<cmd>vsplit<cr>', { desc = 'Vertical Split' })
-  map('n', '<leader>\\', '<cmd>split<cr>', { desc = 'Horizontal Split' })
+  map(
+    'n',
+    '<leader>|',
+    '<cmd>vsplit | FzfLua buffers sort_mru=true sort_lastused=true jump_to_single_result=true<cr>',
+    { desc = 'Vertical Split' }
+  )
+  map(
+    'n',
+    '<leader>\\',
+    '<cmd>split | FzfLua buffers sort_mru=true sort_lastused=true jump_to_single_result=true<cr>',
+    { desc = 'Horizontal Split' }
+  )
 
   -- Switch between the last opened buffer
   map('n', '<leader><Tab>', '<cmd>b#<cr>', { desc = 'Last Opened Buffer' })
@@ -35,11 +45,17 @@ if not vim.g.vscode then
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })
 
   -- Max out split width
-  map('n', '<leader>ww', '<C-w>|', { desc = 'Max Out Split Width' })
+  map('n', '<leader>w\\', '<C-w>|', { desc = 'Max Out Split Width' })
 
   -- Max out split height
-  map('n', '<leader>wh', '<C-w>_', { desc = 'Max Out Split Height' })
+  map('n', '<leader>w|', '<C-w>_', { desc = 'Max Out Split Height' })
 
   -- Equal out splits
   map('n', '<leader>we', '<C-w>=', { desc = 'Equal Out Splits' })
+
+  -- Tabs
+  map('n', '<leader>wt', '<cmd>tabnew | FzfLua files<cr>', { desc = 'New Tab' })
+  map('n', '<leader>ww', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
+  map('n', '<leader>wn', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
+  map('n', '<leader>wp', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
 end
