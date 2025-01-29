@@ -69,4 +69,13 @@ return {
       },
     },
   },
+  init = function()
+    Slivers.autocmds.autocmd('User', {
+      group = Slivers.autocmds.augroup 'neogit_refresh',
+      pattern = { 'NeogitPullComplete' },
+      callback = function()
+        if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end
+      end,
+    })
+  end,
 }
