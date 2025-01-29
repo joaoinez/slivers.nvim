@@ -3,9 +3,6 @@ return {
   'NeogitOrg/neogit',
   enabled = true,
   cond = not vim.g.vscode,
-  dependencies = {
-    'sindrets/diffview.nvim',
-  },
   event = 'VeryLazy',
   keys = {
     {

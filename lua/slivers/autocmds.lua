@@ -146,60 +146,24 @@ if not vim.g.vscode then
     vim.cmd ':MasonToolsUpdate'
   end, { desc = 'Update lazy, treesitter and mason' })
 
-  -- -- Lua function to dump colorschemes to the clipboard
+  -- Lua function to dump colorschemes to the clipboard
   -- vim.api.nvim_create_user_command('DumpColorschemesToClipboard', function()
-  --   -- Get a list of all colorschemes
   --   local schemes = vim.fn.split(vim.fn.globpath(vim.o.runtimepath, 'colors/*.vim'), '\n')
   --   schemes = vim.fn.map(schemes, function(_, val) return vim.fn.fnamemodify(val, ':t:r') end)
   --   local clipboard_contents = table.concat(schemes, '\n')
   --
-  --   -- Use system clipboard utility (adjust for your system)
   --   if vim.fn.has 'mac' == 1 then
-  --     vim.fn.system('echo "' .. clipboard_contents .. '" | pbcopy') -- macOS
+  --     vim.fn.system('echo "' .. clipboard_contents .. '" | pbcopy')
   --   elseif vim.fn.has 'unix' == 1 then
   --     if vim.fn.executable 'xclip' == 1 then
-  --       vim.fn.system('echo "' .. clipboard_contents .. '" | xclip -selection clipboard') -- Linux
+  --       vim.fn.system('echo "' .. clipboard_contents .. '" | xclip -selection clipboard')
   --     elseif vim.fn.executable 'wl-copy' == 1 then
-  --       vim.fn.system('echo "' .. clipboard_contents .. '" | wl-copy') -- Wayland
+  --       vim.fn.system('echo "' .. clipboard_contents .. '" | wl-copy')
   --     else
   --       print 'No suitable clipboard utility found (xclip/wl-copy).'
   --     end
   --   end
   --
   --   print 'Colorschemes copied to clipboard.'
-  -- end, { desc = 'Dump all available colorschemes to the clipboard' })
-
-  -- -- Lua function to dump filetypes with lsp to the clipboard
-  -- vim.api.nvim_create_user_command('DumpFiletypesWithLSPToClipboard', function()
-  --   local lspconfig = require 'lspconfig'
-  --   local servers = lspconfig.util.available_servers()
-  --   local filetypes = {}
-  --
-  --   for _, server_name in ipairs(servers) do
-  --     local server = lspconfig[server_name]
-  --     if server then
-  --       local ft = server.document_config.default_config.filetypes or {}
-  --       for _, f in ipairs(ft) do
-  --         table.insert(filetypes, f)
-  --       end
-  --     end
-  --   end
-  --
-  --   local clipboard_contents = table.concat(vim.fn.sort(vim.fn.uniq(filetypes)), '\n')
-  --
-  --   -- Use system clipboard utility (adjust for your system)
-  --   if vim.fn.has 'mac' == 1 then
-  --     vim.fn.system('echo "' .. clipboard_contents .. '" | pbcopy') -- macOS
-  --   elseif vim.fn.has 'unix' == 1 then
-  --     if vim.fn.executable 'xclip' == 1 then
-  --       vim.fn.system('echo "' .. clipboard_contents .. '" | xclip -selection clipboard') -- Linux
-  --     elseif vim.fn.executable 'wl-copy' == 1 then
-  --       vim.fn.system('echo "' .. clipboard_contents .. '" | wl-copy') -- Wayland
-  --     else
-  --       print 'No suitable clipboard utility found (xclip/wl-copy).'
-  --     end
-  --   end
-  --
-  --   print 'Filetypes with LSP copied to clipboard.'
   -- end, { desc = 'Dump all available colorschemes to the clipboard' })
 end

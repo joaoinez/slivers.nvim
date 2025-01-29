@@ -31,13 +31,13 @@ if not vim.g.vscode then
   map(
     'n',
     '<leader>|',
-    '<cmd>vsplit | FzfLua buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>',
+    '<cmd>vsplit | FzfLua buffers sort_mru=true sort_lastused=true<cr>',
     { desc = 'Vertical Split' }
   )
   map(
     'n',
     '<leader>\\',
-    '<cmd>split | FzfLua buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>',
+    '<cmd>split | FzfLua buffers sort_mru=true sort_lastused=true<cr>',
     { desc = 'Horizontal Split' }
   )
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })

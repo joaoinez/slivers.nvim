@@ -1,81 +1,72 @@
 ---@type LazySpec
 return {
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  enabled = true,
+  enabled = false,
   cond = not vim.g.vscode,
-  ft = {
-    'aspnetcorerazor',
-    'astro',
-    'astro',
-    'astro-markdown',
-    'blade',
-    'clojure',
-    'css',
-    'django-html',
-    'edge',
-    'eelixir',
-    'ejs',
-    'elixir',
-    'erb',
-    'eruby',
-    'gohtml',
-    'gohtmltmpl',
-    'haml',
-    'handlebars',
-    'hbs',
-    'heex',
-    'html',
-    'html-eex',
-    'htmlangular',
-    'htmldjango',
-    'jade',
-    'javascript',
-    'javascript',
-    'javascript',
-    'javascript.jsx',
-    'javascript.jsx',
-    'javascriptreact',
-    'javascriptreact',
-    'javascriptreact',
-    'json',
-    'jsonc',
-    'leaf',
-    'less',
-    'liquid',
-    'lua',
-    'markdown',
-    'mdx',
-    'mustache',
-    'njk',
-    'nunjucks',
-    'php',
-    'postcss',
-    'razor',
-    'reason',
-    'rescript',
-    'sass',
-    'scss',
-    'slim',
-    'stylus',
-    'sugarss',
-    'svelte',
-    'svelte',
-    'templ',
-    'twig',
-    'typescript',
-    'typescript',
-    'typescript',
-    'typescript.tsx',
-    'typescript.tsx',
-    'typescriptreact',
-    'typescriptreact',
-    'typescriptreact',
-    'vue',
-    'vue',
-    'vue',
-    'yaml',
-    'yaml.docker-compose',
-    'yaml.gitlab',
-  },
+  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {},
+  -- init = function()
+  --   Slivers.lazy.on_load('lspconfig', function()
+  --     local lspconfig = require 'lspconfig'
+  --     local servers = lspconfig.util.available_servers()
+  --     local filetypes = {}
+  --
+  --     for _, server_name in ipairs(servers) do
+  --       local server = lspconfig[server_name]
+  --       if server then
+  --         local ft = server.document_config.default_config.filetypes or {}
+  --         for _, f in ipairs(ft) do
+  --           filetypes[f] = true
+  --         end
+  --       end
+  --     end
+  --
+  --     Slivers.autocmds.autocmd('BufEnter', {
+  --       group = Slivers.autocmds.augroup 'lsp_lines',
+  --       callback = function(event)
+  --         local icons = IconSliver.diagnostics
+  --
+  --         if filetypes[vim.bo[event.buf].filetype] then
+  --           vim.schedule(
+  --             function()
+  --               vim.diagnostic.config {
+  --                 signs = {
+  --                   text = {
+  --                     [vim.diagnostic.severity.ERROR] = icons.error,
+  --                     [vim.diagnostic.severity.WARN] = icons.warn,
+  --                     [vim.diagnostic.severity.HINT] = icons.hint,
+  --                     [vim.diagnostic.severity.INFO] = icons.info,
+  --                   },
+  --                 },
+  --                 virtual_lines = true,
+  --                 virtual_text = false,
+  --               }
+  --             end
+  --           )
+  --         else
+  --           vim.schedule(
+  --             function()
+  --               vim.diagnostic.config {
+  --                 signs = {
+  --                   text = {
+  --                     [vim.diagnostic.severity.ERROR] = icons.error,
+  --                     [vim.diagnostic.severity.WARN] = icons.warn,
+  --                     [vim.diagnostic.severity.HINT] = icons.hint,
+  --                     [vim.diagnostic.severity.INFO] = icons.info,
+  --                   },
+  --                 },
+  --                 virtual_lines = false,
+  --                 virtual_text = {
+  --                   spacing = 4,
+  --                   source = 'if_many',
+  --                   prefix = icons.virtual,
+  --                 },
+  --               }
+  --             end
+  --           )
+  --         end
+  --       end,
+  --     })
+  --   end)
+  -- end,
 }

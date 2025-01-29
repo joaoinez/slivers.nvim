@@ -32,7 +32,6 @@ return {
     },
     windows = {
       preview = true,
-      width_focus = 30,
       width_preview = math.min(math.floor(vim.o.columns * 0.33), 80),
     },
   },
