@@ -20,7 +20,7 @@ return {
   },
   opts = function()
     return {
-      provider = 'qwen_coder',
+      provider = 'claude',
       auto_suggestions_provider = 'qwen_mini',
       behaviour = {
         auto_suggestions = false,
@@ -32,7 +32,7 @@ return {
           endpoint = 'http://127.0.0.1:11434/v1',
           model = 'qwen2.5-coder:7b-ctx',
         },
-        deepseek_r1 = {
+        qwen_r1 = {
           __inherited_from = 'openai',
           api_key_name = '',
           endpoint = 'http://127.0.0.1:11434/v1',
@@ -47,7 +47,7 @@ return {
       },
       dual_boost = {
         enabled = vim.g.ai_architect_mode,
-        first_provider = 'deepseek_r1',
+        first_provider = 'qwen_r1',
         second_provider = 'qwen_coder',
         prompt = 'Based on the two reference outputs below, generate a response that incorporates elements from both but reflects your own judgment and unique perspective. Reference Output 1: [{{provider1_output}}], Reference Output 2: [{{provider2_output}}]',
         timeout = 300000, -- Timeout in milliseconds
