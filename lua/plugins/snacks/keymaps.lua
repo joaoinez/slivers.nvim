@@ -1,6 +1,7 @@
 ---@diagnostic disable: missing-fields
 
 local M = {
+  { '<leader>fy', function() require('snacks').terminal 'yazi' end, desc = 'Yazi' },
   { '<leader>ao', function() require('snacks').terminal 'oterm' end, desc = 'Ollama' },
   {
     '<leader>gC',
