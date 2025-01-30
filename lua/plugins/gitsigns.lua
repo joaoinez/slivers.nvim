@@ -19,18 +19,18 @@ return {
         'v',
         '<leader>ga',
         function() gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-        { desc = 'Add Hunk' }
+        { desc = 'Stage/Unstage (hunk)' }
       )
       map(
         'v',
         '<leader>gr',
         function() gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-        { desc = 'Reset Hunk' }
+        { desc = 'Reset (hunk)' }
       )
       -- Normal Mode
-      map('n', '<leader>ga', gitsigns.stage_hunk, { desc = 'Add Hunk' })
-      map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset Hunk' })
-      map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset File' })
+      map('n', '<leader>ga', gitsigns.stage_hunk, { desc = 'Stage/Unstage (hunk)' })
+      map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset (hunk)' })
+      map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset (file)' })
 
       -- [[ Toggles ]]
       map('n', '<leader>tB', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (git)' })

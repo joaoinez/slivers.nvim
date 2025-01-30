@@ -8,7 +8,12 @@ return {
     {
       '<leader>gA',
       '<cmd>Git add %<cr>',
-      desc = 'Add file',
+      desc = 'Stage (file)',
+    },
+    {
+      '<leader>gU',
+      '<cmd>Git restore --staged %<cr>',
+      desc = 'Unstage (file)',
     },
   },
 }
