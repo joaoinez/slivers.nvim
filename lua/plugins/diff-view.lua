@@ -28,6 +28,11 @@ return {
       '<cmd>DiffviewFileHistory<cr>',
       desc = 'History (project)',
     },
+    {
+      '<leader>gm',
+      '<cmd>DiffviewOpen main..HEAD<cr>',
+      desc = 'Diffview (main)',
+    },
   },
   opts = function()
     local actions = require 'diffview.actions'
