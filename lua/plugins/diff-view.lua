@@ -33,6 +33,11 @@ return {
       '<cmd>DiffviewOpen main..HEAD<cr>',
       desc = 'Diffview (main)',
     },
+    {
+      '<leader>g-',
+      '<cmd>DiffviewOpen HEAD~1..HEAD<cr>',
+      desc = 'Diffview (prev commit)',
+    },
   },
   opts = function()
     local actions = require 'diffview.actions'
