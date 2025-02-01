@@ -1,7 +1,6 @@
 local M = {}
 
 M.highlighters = {
-  'bash',
   'c',
   'diff',
   'html',

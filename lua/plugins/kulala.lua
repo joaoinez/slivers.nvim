@@ -3,5 +3,14 @@ return {
   'mistweaverco/kulala.nvim',
   enabled = true,
   event = 'VeryLazy',
-  opts = {},
+  opts = {
+    icons = {
+      inlay = {
+        loading = '⏳',
+        done = '✅',
+        error = '❌',
+      },
+      lualine = '🐼',
+    },
+  },
 }
