@@ -51,7 +51,7 @@ M.load_keymaps = function()
         },
         {
           '<leader>ta',
-          desc = 'Toggle AI',
+          desc = 'AI Sidebar',
         },
         {
           mode = { 'n', 'v' },
