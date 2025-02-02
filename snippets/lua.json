@@ -1,0 +1,102 @@
+{
+  "Neovim Plugin Complete": {
+    "prefix": "nvpc",
+    "body": [
+      "---@type LazySpec",
+      "return {",
+      " '${1:example/plugin.nvim}',",
+      " enabled = true,",
+      " cond = not vim.g.vscode,",
+      " version = '${2:1.0}',",
+      " branch = '${3:main}',",
+      " name = '${4:example}',",
+      " dependencies = {",
+      "   '${5:dep_url}',",
+      " },",
+      " build = ':${6:BuildCommand}',",
+      " main = '${7:text}',",
+      " priority = ${8:1000},",
+      " lazy = ${9:true},",
+      " ft = '${10:lua}',",
+      " event = '${11:VeryLazy}',",
+      " cmd = { '${12:ExampleCommand}' },",
+      " keys = {",
+      "   {",
+      "     '<leader>${13:ex}',",
+      "     '<cmd>${14:ExampleCommand}<cr>',",
+      "     desc = '${15:Description}',",
+      "   }",
+      " },",
+      " spec = {${16}},",
+      " opts = {${17}},",
+      " config = function() ${18} end,",
+      " init = function() ${19} end,",
+      "}"
+    ]
+  },
+  "Neovim Plugin Simple": {
+    "prefix": "nvps",
+    "body": [
+      "---@type LazySpec",
+      "return {",
+      " '${1:example/plugin.nvim}',",
+      " enabled = true,",
+      " cond = not vim.g.vscode,",
+      " event = '${2:VeryLazy}',",
+      " keys = {",
+      "   {",
+      "     '<leader>${3:ex}',",
+      "     '<cmd>${4:ExampleCommand}<cr>',",
+      "     desc = '${5:Description}',",
+      "   }",
+      " },",
+      " opts = {${6}},",
+      "}"
+    ]
+  },
+  "Neovim Colorscheme": {
+    "prefix": "nvc",
+    "body": [
+      "---@type LazySpec",
+      "return {",
+      " '${1:example/colorscheme.nvim}',",
+      " enabled = true,",
+      " priority = 1000,",
+      " lazy = Slivers.colorscheme.get_config(ColorSliver.colorschemes, vim.g.colors_name).name ~= '${2:example}',",
+      " opts = {",
+      "   transparent = vim.g.transparent_bg,${0}",
+      " }",
+      "}"
+    ]
+  },
+  "Neovim Lang": {
+    "prefix": "nvl",
+    "body": [
+      "local M = {}",
+      "",
+      "M.highlighters = {${0}}",
+      "",
+      "M.servers = {}",
+      "",
+      "M.formatters = {}",
+      "",
+      "M.formatters_by_ft = {}",
+      "",
+      "M.linters = {}",
+      "",
+      "M.linters_by_ft = {}",
+      "",
+      "M.debuggers = {}",
+      "",
+      "---@param dap table",
+      "function M.dap_adapters(dap) end",
+      "",
+      "M.dap_filetypes = {}",
+      "",
+      "---@param dap table",
+      "function M.dap_configurations(dap) end",
+      "",
+      "return M"
+    ]
+  }
+}

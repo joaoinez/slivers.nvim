@@ -1,0 +1,11 @@
+{
+  "name": "snippets-sliver",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "lua",
+        "path": "./lua.json"
+      }
+    ]
+  }
+}

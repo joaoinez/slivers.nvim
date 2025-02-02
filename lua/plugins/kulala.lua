@@ -2,6 +2,7 @@
 return {
   'mistweaverco/kulala.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   event = 'VeryLazy',
   opts = {
     icons = {
