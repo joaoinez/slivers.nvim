@@ -36,13 +36,25 @@ return {
           [vim.diagnostic.severity.INFO] = icons.info,
         },
       },
-      virtual_lines = false,
+      virtual_lines = { only_current_line = true },
       virtual_text = {
         spacing = 4,
         source = 'if_many',
         prefix = icons.virtual,
+        format = function(diagnostic)
+          local current_line = vim.api.nvim_win_get_cursor(0)[1] - 1
+          return (diagnostic.lnum ~= current_line) and diagnostic.message or ''
+        end,
       },
     }
+
+    Slivers.autocmds.autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+      group = Slivers.autocmds.augroup 'diagnostic_refresh',
+      callback = function()
+        vim.diagnostic.hide()
+        vim.diagnostic.show()
+      end,
+    })
 
     local ensure_installed = vim.tbl_keys(servers)
     vim.list_extend(ensure_installed, LangSliver.get_formatters() or {})

@@ -1,72 +1,8 @@
 ---@type LazySpec
 return {
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  enabled = false,
+  enabled = true,
   cond = not vim.g.vscode,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {},
-  -- init = function()
-  --   Slivers.lazy.on_load('lspconfig', function()
-  --     local lspconfig = require 'lspconfig'
-  --     local servers = lspconfig.util.available_servers()
-  --     local filetypes = {}
-  --
-  --     for _, server_name in ipairs(servers) do
-  --       local server = lspconfig[server_name]
-  --       if server then
-  --         local ft = server.document_config.default_config.filetypes or {}
-  --         for _, f in ipairs(ft) do
-  --           filetypes[f] = true
-  --         end
-  --       end
-  --     end
-  --
-  --     Slivers.autocmds.autocmd('BufEnter', {
-  --       group = Slivers.autocmds.augroup 'lsp_lines',
-  --       callback = function(event)
-  --         local icons = IconSliver.diagnostics
-  --
-  --         if filetypes[vim.bo[event.buf].filetype] then
-  --           vim.schedule(
-  --             function()
-  --               vim.diagnostic.config {
-  --                 signs = {
-  --                   text = {
-  --                     [vim.diagnostic.severity.ERROR] = icons.error,
-  --                     [vim.diagnostic.severity.WARN] = icons.warn,
-  --                     [vim.diagnostic.severity.HINT] = icons.hint,
-  --                     [vim.diagnostic.severity.INFO] = icons.info,
-  --                   },
-  --                 },
-  --                 virtual_lines = true,
-  --                 virtual_text = false,
-  --               }
-  --             end
-  --           )
-  --         else
-  --           vim.schedule(
-  --             function()
-  --               vim.diagnostic.config {
-  --                 signs = {
-  --                   text = {
-  --                     [vim.diagnostic.severity.ERROR] = icons.error,
-  --                     [vim.diagnostic.severity.WARN] = icons.warn,
-  --                     [vim.diagnostic.severity.HINT] = icons.hint,
-  --                     [vim.diagnostic.severity.INFO] = icons.info,
-  --                   },
-  --                 },
-  --                 virtual_lines = false,
-  --                 virtual_text = {
-  --                   spacing = 4,
-  --                   source = 'if_many',
-  --                   prefix = icons.virtual,
-  --                 },
-  --               }
-  --             end
-  --           )
-  --         end
-  --       end,
-  --     })
-  --   end)
-  -- end,
 }
