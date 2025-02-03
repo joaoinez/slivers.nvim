@@ -40,7 +40,10 @@ return {
       virtual_text = {
         spacing = 4,
         source = false,
-        prefix = icons.virtual,
+        prefix = function(diagnostic)
+          local current_line = vim.api.nvim_win_get_cursor(0)[1] - 1
+          return (diagnostic.lnum ~= current_line) and icons.virtual or icons.down
+        end,
         format = function(diagnostic)
           local current_line = vim.api.nvim_win_get_cursor(0)[1] - 1
           return (diagnostic.lnum ~= current_line) and diagnostic.message or ''

@@ -71,6 +71,7 @@ M.diagnostics = {
   info = '',
   hint = '',
   virtual = '●',
+  down = '󱞣',
 }
 
 M.git = {
