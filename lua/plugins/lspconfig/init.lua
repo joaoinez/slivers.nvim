@@ -39,7 +39,7 @@ return {
       virtual_lines = { only_current_line = true },
       virtual_text = {
         spacing = 4,
-        source = 'if_many',
+        source = false,
         prefix = icons.virtual,
         format = function(diagnostic)
           local current_line = vim.api.nvim_win_get_cursor(0)[1] - 1

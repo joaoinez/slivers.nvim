@@ -135,6 +135,7 @@ return {
             ['alt-u'] = { fn = actions.git_unstage, reload = true },
             ['alt-s'] = { fn = actions.git_stage, reload = true },
             ['alt-r'] = { fn = actions.git_reset, reload = true },
+            ['alt-c'] = { fn = function() return vim.cmd 'Neogit commit' end, desc = 'commit' },
           },
         },
       },

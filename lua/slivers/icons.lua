@@ -70,7 +70,7 @@ M.diagnostics = {
   warn = '',
   info = '',
   hint = '',
-  virtual = '● ',
+  virtual = '●',
 }
 
 M.git = {

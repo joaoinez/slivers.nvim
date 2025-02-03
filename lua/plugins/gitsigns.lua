@@ -7,7 +7,6 @@ return {
   opts = {
     signs = IconSliver.git.signs,
     signs_staged = IconSliver.git.staged,
-    current_line_blame = true,
     ---@diagnostic disable-next-line: unused-local
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
