@@ -32,6 +32,10 @@ return {
             end
           end,
         },
+        ['s'] = {
+          desc = 'Save state',
+          callback = function() vim.cmd 'w' end,
+        },
       },
     }
   end,

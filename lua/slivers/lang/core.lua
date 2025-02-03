@@ -4,6 +4,7 @@ M.highlighters = {
   'c',
   'diff',
   'html',
+  'http',
   'printf',
   'python',
   'query',

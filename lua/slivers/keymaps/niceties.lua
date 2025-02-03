@@ -103,4 +103,4 @@ end, { desc = 'Options' })
 map('n', '<leader>ks', '<cmd>source %<cr>', { desc = 'Source File' })
 
 -- Test file with Plenary
-map('n', '<leader>kt', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plenary)' })
+map('n', '<leader>kT', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plenary)' })

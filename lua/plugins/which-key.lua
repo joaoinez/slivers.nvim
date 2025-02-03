@@ -100,7 +100,7 @@ return {
       { '<leader>kr', group = 'repl', icon = { icon = '', color = 'orange' } },
       { '<leader>kk', icon = { icon = '', color = 'grey' } },
       { '<leader>ks', icon = { icon = '󰢱', color = 'blue' } },
-      { '<leader>kt', icon = { icon = '', color = 'blue' } },
+      { '<leader>kT', icon = { icon = '', color = 'blue' } },
       { '<leader>kp', icon = { icon = '', color = 'cyan' } },
 
       -- Messages

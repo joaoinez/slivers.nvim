@@ -5,6 +5,7 @@ return {
   cond = not vim.g.vscode,
   event = 'VeryLazy',
   opts = {
+    default_view = 'verbose',
     icons = {
       inlay = {
         loading = '⏳',

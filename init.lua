@@ -19,6 +19,14 @@
 =====================================================================
 --]]
 
+-- [[ Add File Extensions ]]
+vim.filetype.add {
+  extension = {
+    ['http'] = 'http',
+  },
+}
+
+-- [[ Set Globals ]]
 _G.Slivers = require 'slivers.utils'
 _G.LangSliver = require 'slivers.lang'
 _G.IconSliver = require 'slivers.icons'
