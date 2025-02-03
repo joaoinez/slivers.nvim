@@ -115,6 +115,7 @@ M.lualine = {
     tailwindcss = '󱏿',
     volar = '󰡄',
     vtsls = '󰛦',
+    gopls = '󰟓',
   },
 }
 
