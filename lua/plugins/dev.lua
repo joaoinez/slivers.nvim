@@ -1,7 +1,7 @@
 return {
   ---@type LazySpec
   {
-    dir = '~/Documents/Projects/arco-iris.nvim',
+    dir = vim.fn.has 'macunix' == 1 and '~/Projects/arco-iris.nvim' or '~/Documents/Projects/arco-iris.nvim',
     enabled = vim.g.dev,
     cond = not vim.g.vscode,
     priority = 1001,
