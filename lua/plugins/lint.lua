@@ -2,7 +2,7 @@
 return {
   'mfussenegger/nvim-lint',
   enabled = true,
-  cond = not vim.g.vscode,
+  cond = not (vim.g.vscode or vim.g.server),
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local lint = require 'lint'

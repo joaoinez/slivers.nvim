@@ -2,7 +2,7 @@
 return {
   'stevearc/conform.nvim',
   enabled = true,
-  cond = not vim.g.vscode,
+  cond = not (vim.g.vscode or vim.g.server),
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   cmd = { 'ConformInfo' },
   keys = {
