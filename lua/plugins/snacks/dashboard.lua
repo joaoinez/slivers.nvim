@@ -77,7 +77,7 @@ local M = {
       icon = ' ',
       title = 'Git Status',
       section = 'terminal',
-      enabled = function() return not vim.g.server or require('snacks').git.get_root() ~= nil end,
+      enabled = function() return not vim.g.server and require('snacks').git.get_root() ~= nil end,
       cmd = 'hub --no-pager diff --stat -B -M -C',
       key = 'g',
       action = function() require('snacks').lazygit() end,
