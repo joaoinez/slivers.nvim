@@ -25,6 +25,8 @@ while true; do
   esac
 done
 ']]
+
+      vim.cmd 'w'
       require('snacks').terminal(command)
     end,
     desc = 'Commit (aider)',
