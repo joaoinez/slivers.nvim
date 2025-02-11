@@ -3,16 +3,16 @@ local M = {
   pane_gap = 8,
   preset = {
     keys = {
-      { icon = ' ', key = 'f', desc = 'Find File', action = ":lua require('snacks').dashboard.pick()" },
+      { icon = ' ', key = 'f', desc = 'Find File', action = ':FzfLua files' },
       {
         icon = ' ',
         key = 't',
         desc = 'Find Text',
-        action = ":lua require('snacks').dashboard.pick('live_grep')",
+        action = ':FzfLua live_grep',
       },
       { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':Oil' },
       { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
-      { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+      { icon = ' ', key = 'r', desc = 'Recent Files', action = ':FzfLua oldfiles' },
       { icon = '', key = 'R', desc = 'README', action = ':e README.md' },
       {
         icon = ' ',
@@ -24,7 +24,7 @@ local M = {
         icon = ' ',
         key = 'c',
         desc = 'Config',
-        action = ":lua require('snacks').dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+        action = ":lua require('fzf-lua').files { cwd = vim.fn.stdpath 'config' }",
       },
       { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
       { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
@@ -93,14 +93,14 @@ local M = {
       key = 'K',
       action = ':ene | Typr',
     },
-    -- {
-    --   pane = 2,
-    --   icon = '󰌌 ',
-    --   desc = 'Typr Stats',
-    --   padding = 1,
-    --   key = 'K',
-    --   action = ':ene | TyprStats',
-    -- },
+    {
+      pane = 2,
+      icon = '󰌌 ',
+      desc = 'Typr Stats',
+      padding = 1,
+      key = 'S',
+      action = ':ene | TyprStats',
+    },
     { pane = 2, section = 'startup' },
   },
 }

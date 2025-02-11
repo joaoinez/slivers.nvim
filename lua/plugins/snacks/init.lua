@@ -51,6 +51,7 @@ return {
     },
     words = { enabled = true },
     picker = { enabled = vim.g.dev },
+    image = { enabled = true },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
