@@ -3,7 +3,7 @@ local M = {
   pane_gap = 8,
   preset = {
     keys = {
-      { icon = ' ', key = 'f', desc = 'Find File', action = ':lua Snacks.picker.files()' },
+      { icon = ' ', key = 'f', desc = 'Find File', action = ':lua Snacks.picker.files { hidden = true }' },
       { icon = ' ', key = 't', desc = 'Find Text', action = ':lua Snacks.picker.grep()' },
       { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':Oil' },
       { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
