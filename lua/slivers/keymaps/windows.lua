@@ -28,8 +28,18 @@ if not vim.g.vscode then
   map('n', '<leader>wf', '<cmd>fc<cr>', { desc = 'Close Floating' })
 
   -- Splits
-  map('n', '<leader>|', '<cmd>vsplit | lua Snacks.picker.buffers()<cr>', { desc = 'Vertical Split' })
-  map('n', '<leader>\\', '<cmd>split | lua Snacks.picker.buffers()<cr>', { desc = 'Horizontal Split' })
+  map(
+    'n',
+    '<leader>|',
+    '<cmd>vsplit | lua Snacks.picker.buffers { hidden = true, current = false }<cr>',
+    { desc = 'Vertical Split' }
+  )
+  map(
+    'n',
+    '<leader>\\',
+    '<cmd>split | lua Snacks.picker.buffers { hidden = true, current = false }<cr>',
+    { desc = 'Horizontal Split' }
+  )
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })
   map('n', '<leader>w\\', '<C-w>|', { desc = 'Max Out Split Width' })
   map('n', '<leader>w|', '<C-w>_', { desc = 'Max Out Split Height' })
@@ -40,7 +50,7 @@ if not vim.g.vscode then
   map(
     'n',
     '<leader>wt',
-    '<cmd>tabnew | lua Snacks.picker.smart { multi = { "buffers", "recent", "files" } }<cr>',
+    '<cmd>tabnew | lua Snacks.picker.smart { multi = { "buffers", "files" } }<cr>',
     { desc = 'New Tab' }
   )
   map('n', '<leader>ww', '<cmd>tabclose<cr>', { desc = 'Close Tab' })

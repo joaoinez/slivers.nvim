@@ -3,7 +3,11 @@
 local M = {
   -- [[ Finder ]]
   { '<leader>kp', function() Snacks.picker() end, desc = 'Command Palette' },
-  { '<leader><space>', function() Snacks.picker.buffers() end, desc = 'Open Buffers' },
+  {
+    '<leader><space>',
+    function() Snacks.picker.buffers { hidden = true, current = false } end,
+    desc = 'Open Buffers',
+  },
   {
     '<leader>ff',
     function() Snacks.picker.smart { multi = { 'buffers', 'files' }, hidden = true } end,
