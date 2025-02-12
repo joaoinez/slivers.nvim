@@ -5,5 +5,7 @@ return {
   cond = not vim.g.vscode,
   event = 'VeryLazy',
   cmd = { 'Typr', 'TyprStats' },
-  opts = {},
+  opts = {
+    winblend = 0,
+  },
 }

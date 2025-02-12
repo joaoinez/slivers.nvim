@@ -12,7 +12,8 @@ return {
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-        { path = 'lazy.nvim', words = { 'LazyVim', 'LazySpec', 'Slivers', 'LangSliver', 'IconSliver' } },
+        { path = 'lazy.nvim', words = { 'LazyVim', 'LazySpec' } },
+        { path = 'snacks.nvim', words = { 'Snacks', 'snacks' } },
       },
     },
   },

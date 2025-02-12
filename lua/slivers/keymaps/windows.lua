@@ -28,18 +28,8 @@ if not vim.g.vscode then
   map('n', '<leader>wf', '<cmd>fc<cr>', { desc = 'Close Floating' })
 
   -- Splits
-  map(
-    'n',
-    '<leader>|',
-    '<cmd>vsplit | FzfLua buffers sort_mru=true sort_lastused=true<cr>',
-    { desc = 'Vertical Split' }
-  )
-  map(
-    'n',
-    '<leader>\\',
-    '<cmd>split | FzfLua buffers sort_mru=true sort_lastused=true<cr>',
-    { desc = 'Horizontal Split' }
-  )
+  map('n', '<leader>|', '<cmd>vsplit | lua Snacks.picker.buffers()<cr>', { desc = 'Vertical Split' })
+  map('n', '<leader>\\', '<cmd>split | lua Snacks.picker.buffers()<cr>', { desc = 'Horizontal Split' })
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })
   map('n', '<leader>w\\', '<C-w>|', { desc = 'Max Out Split Width' })
   map('n', '<leader>w|', '<C-w>_', { desc = 'Max Out Split Height' })
@@ -47,7 +37,12 @@ if not vim.g.vscode then
   map('n', '<leader>wo', '<C-w>o', { desc = 'Close Other Splits' })
 
   -- Tabs
-  map('n', '<leader>wt', '<cmd>tabnew | FzfLua files<cr>', { desc = 'New Tab' })
+  map(
+    'n',
+    '<leader>wt',
+    '<cmd>tabnew | lua Snacks.picker.smart { multi = { "buffers", "recent", "files" } }<cr>',
+    { desc = 'New Tab' }
+  )
   map('n', '<leader>ww', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
   map('n', '<leader>wn', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
   map('n', '<leader>wp', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })

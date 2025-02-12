@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'ibhagwan/fzf-lua',
-  enabled = true,
+  enabled = vim.g.dev,
   cond = not vim.g.vscode,
   cmd = { 'FzfLua' },
   keys = require 'plugins.fzf.keymaps',

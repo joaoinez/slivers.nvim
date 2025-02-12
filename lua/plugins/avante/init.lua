@@ -3,12 +3,6 @@ return {
   'yetone/avante.nvim',
   enabled = true,
   cond = not vim.g.vscode,
-  dependencies = {
-    {
-      'stevearc/dressing.nvim',
-      opts = { input = { enabled = false }, select = { enabled = false } },
-    },
-  },
   build = 'make',
   event = 'VeryLazy',
   keys = {

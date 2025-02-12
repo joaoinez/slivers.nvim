@@ -20,7 +20,7 @@ return {
   },
   config = function(_, opts)
     require('render-markdown').setup(opts)
-    require('snacks')
+    Snacks
       .toggle({
         name = 'Render Markdown',
         get = function() return require('render-markdown.state').enabled end,

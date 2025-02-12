@@ -18,8 +18,9 @@ return {
     },
     {
       '<leader>qt',
-      function() require('todo-comments.fzf').todo { keywords = { 'TODO', 'FIX', 'FIXME' } } end,
-      desc = 'Todos (fzf)',
+      ---@diagnostic disable-next-line: undefined-field
+      function() Snacks.picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME' } } end,
+      desc = 'Todos (snacks)',
     },
     { '<leader>qT', '<cmd>Trouble todo toggle<cr>', desc = 'Todos (trouble)' },
   },

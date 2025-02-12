@@ -8,37 +8,17 @@ function M.apply_user_lsp_mappings(client, bufnr)
   local supports = Slivers.lsp.supports(client)
   local map = Slivers.keymaps.safe_keymap_set
 
-  -- TODO: Check for fzf-lua and add fallbacks
+  -- TODO: Check for picker and add fallbacks
   --
-  -- { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
+  -- { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
   -- { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
   -- { "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
   -- { "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
   -- { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-  map(
-    'n',
-    'gd',
-    '<cmd>FzfLua lsp_definitions jump_to_single_result=true ignore_current_line=true<cr>',
-    { desc = 'Goto Definition (fzf)' }
-  )
-  map(
-    'n',
-    'gr',
-    '<cmd>FzfLua lsp_references jump_to_single_result=true ignore_current_line=true<cr>',
-    { desc = 'Goto References (fzf)', nowait = true }
-  )
-  map(
-    'n',
-    'gI',
-    '<cmd>FzfLua lsp_implementations jump_to_single_result=true ignore_current_line=true<cr>',
-    { desc = 'Goto Implementation (fzf)' }
-  )
-  map(
-    'n',
-    'gt',
-    '<cmd>FzfLua lsp_typedefs jump_to_single_result=true ignore_current_line=true<cr>',
-    { desc = 'Goto Type Definition (fzf)' }
-  )
+  map('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition (snacks)' })
+  map('n', 'gr', function() Snacks.picker.lsp_references() end, { desc = 'Goto References (snacks)', nowait = true })
+  map('n', 'gI', function() Snacks.picker.lsp_implementations() end, { desc = 'Goto Implementation (snacks)' })
+  map('n', 'gt', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Goto Type Definition (snacks)' })
   map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
   map('n', 'gK', function() return vim.lsp.buf.signature_help() end, { desc = 'Signature Help' })
   map('i', '<C-k>', function() return vim.lsp.buf.signature_help() end, { desc = 'Signature Help' })
@@ -49,7 +29,7 @@ function M.apply_user_lsp_mappings(client, bufnr)
   map('n', '<leader>cA', Slivers.lsp.action.source, { desc = 'Available Code Actions' })
 
   if supports 'workspace_didRenameFiles' and supports 'workspace_willRenameFiles' then
-    map('n', '<leader>cR', function() require('snacks').rename.rename_file() end, { desc = 'Rename File' })
+    map('n', '<leader>cR', function() Snacks.rename.rename_file() end, { desc = 'Rename File' })
   end
 end
 

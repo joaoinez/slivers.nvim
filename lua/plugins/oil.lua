@@ -3,6 +3,7 @@ return {
   'stevearc/oil.nvim',
   enabled = true,
   cond = not vim.g.vscode,
+  lazy = false,
   cmd = { 'Oil' },
   keys = {
     {
