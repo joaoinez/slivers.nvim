@@ -1,8 +1,14 @@
 ---@diagnostic disable: missing-fields
 
 local M = {
-  { '<leader>fy', function() require('snacks').terminal 'yazi' end, desc = 'Yazi' },
-  { '<leader>ao', function() require('snacks').terminal 'oterm' end, desc = 'Ollama' },
+  { '<leader>fy', function() require('snacks').terminal('yazi', { win = { border = 'rounded' } }) end, desc = 'Yazi' },
+  {
+    '<leader>g/',
+    function()
+      require('snacks').terminal('git hook run pre-commit', { auto_close = false, win = { border = 'rounded' } })
+    end,
+    desc = 'Run `pre-commit` hook',
+  },
   {
     '<leader>gC',
     function()
@@ -27,7 +33,7 @@ done
 ']]
 
       vim.cmd 'w'
-      require('snacks').terminal(command)
+      require('snacks').terminal(command, { win = { border = 'rounded' } })
     end,
     desc = 'Commit (aider)',
   },
