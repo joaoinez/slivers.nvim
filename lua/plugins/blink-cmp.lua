@@ -16,9 +16,9 @@ return {
   opts = {
     keymap = {
       preset = 'enter',
-      ['<CR>'] = { 'select_and_accept', 'fallback' },
-      ['<Tab>'] = { 'select_next', 'fallback' },
-      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      ['<CR>'] = { 'accept', 'fallback' },
+      ['<C-j>'] = { 'select_next', 'fallback' },
+      ['<C-k>'] = { 'select_prev', 'fallback' },
       ['<C-p>'] = { 'snippet_backward', 'fallback' },
       ['<C-n>'] = { 'snippet_forward', 'fallback' },
     },
@@ -48,8 +48,8 @@ return {
       },
       list = {
         selection = {
-          preselect = false,
-          auto_insert = true,
+          preselect = true,
+          auto_insert = false,
         },
       },
     },

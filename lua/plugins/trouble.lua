@@ -19,7 +19,7 @@ return {
     },
     {
       '<leader>qq',
-      '<cmd>Trouble fzf toggle<cr>',
+      '<cmd>Trouble snacks toggle<cr>',
       desc = 'Quickfix List',
     },
     {
