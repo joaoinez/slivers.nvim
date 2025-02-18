@@ -27,19 +27,6 @@ function M.apply_user_lsp_autocmds(client, bufnr)
       end,
     })
   end
-
-  autocmd({ 'BufReadPost', 'BufNewFile' }, {
-    pattern = {
-      '*.js',
-      '*.jsx',
-      '*.ts',
-      '*.tsx',
-      '*.vue',
-    },
-    callback = function(args)
-      vim.schedule(function() vim.api.nvim_set_current_buf(args.buf) end)
-    end,
-  })
 end
 
 return M

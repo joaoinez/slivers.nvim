@@ -24,7 +24,44 @@ vim.api.nvim_buf_set_keymap(
 vim.api.nvim_buf_set_keymap(
   0,
   'n',
-  '<leader>kR',
+  '<leader>p',
   "<cmd>lua require('kulala').from_curl()<cr>",
   { noremap = true, silent = true, desc = 'Paste Request (curl)' }
 )
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  'n',
+  '<leader>y',
+  "<cmd>lua require('kulala').copy()<cr>",
+  { noremap = true, silent = true, desc = 'Copy Request (curl)' }
+)
+
+vim.api.nvim_buf_set_keymap(
+  0,
+  'n',
+  '<leader>i',
+  "<cmd>lua require('kulala').inspect()<cr>",
+  { noremap = true, silent = true, desc = 'Inspect Request' }
+)
+
+Slivers.lazy.on_load('which-key.nvim', function()
+  vim.schedule(
+    function()
+      require('which-key').add {
+        {
+          '<leader>p',
+          icon = { icon = '󰆒' },
+        },
+        {
+          '<leader>y',
+          icon = { icon = '󰆏' },
+        },
+        {
+          '<leader>i',
+          icon = { icon = '󱎸' },
+        },
+      }
+    end
+  )
+end)

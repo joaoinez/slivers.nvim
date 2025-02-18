@@ -4,7 +4,6 @@ return {
   enabled = true,
   cond = not vim.g.vscode,
   event = 'VeryLazy',
-  lazy = true,
   cmd = { 'DiffViewOpen' },
   keys = {
     {

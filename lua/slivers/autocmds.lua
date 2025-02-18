@@ -101,7 +101,7 @@ if not vim.g.vscode then
   })
 
   -- Show cursorline only on active windows
-  vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
+  autocmd({ 'InsertLeave', 'WinEnter' }, {
     callback = function()
       if vim.w.auto_cursorline then
         vim.wo.cursorline = true
@@ -109,7 +109,7 @@ if not vim.g.vscode then
       end
     end,
   })
-  vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
+  autocmd({ 'InsertEnter', 'WinLeave' }, {
     callback = function()
       if vim.wo.cursorline then
         vim.w.auto_cursorline = true
@@ -118,7 +118,7 @@ if not vim.g.vscode then
     end,
   })
 
-  -- SHow help buffer split at the top
+  -- Show help buffer split at the top
   autocmd('FileType', {
     desc = 'Automatically Split help Buffers to the top',
     pattern = 'help',
@@ -135,6 +135,13 @@ if not vim.g.vscode then
         callback = function() io.write '\027]111\027\\' end,
       })
     end,
+  })
+
+  -- Disable diagnostics for .env files
+  autocmd({ 'BufNewFile', 'BufRead' }, {
+    pattern = '.env*',
+    group = augroup 'env_dx',
+    callback = function() vim.diagnostic.enable(false) end,
   })
 
   -- [[ User Commands ]]

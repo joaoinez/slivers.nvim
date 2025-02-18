@@ -8,23 +8,16 @@ return {
   opts = {
     transparent_background = vim.g.transparent_bg,
     integrations = {
-      aerial = true,
-      alpha = true,
+      avante = {
+        enabled = true,
+        windows_sidebar_header_rounded = true,
+      },
       blink_cmp = true,
-      cmp = true,
-      dashboard = true,
-      flash = true,
-      fzf = true,
+      diffview = true,
       grug_far = true,
-      gitsigns = true,
-      headlines = true,
-      illuminate = true,
-      indent_blankline = { enabled = true },
-      leap = true,
+      harpoon = true,
       lsp_trouble = true,
       mason = true,
-      markdown = true,
-      mini = true,
       native_lsp = {
         enabled = true,
         underlines = {
@@ -34,16 +27,14 @@ return {
           information = { 'undercurl' },
         },
       },
-      navic = { enabled = true, custom_bg = 'lualine' },
       neotest = true,
-      neotree = true,
       noice = true,
-      notify = false,
+      overseer = true,
       semantic_tokens = true,
-      snacks = true,
-      telescope = true,
-      treesitter = true,
-      treesitter_context = true,
+      snacks = {
+        enabled = true,
+        -- indent_scope_color = '', -- catppuccin color (eg. `lavender`) Default: text
+      },
       which_key = true,
     },
     highlight_overrides = {

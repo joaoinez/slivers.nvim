@@ -11,6 +11,23 @@ return {
       },
     },
     'nvim-treesitter/nvim-treesitter-textobjects',
+    {
+      'hiphish/rainbow-delimiters.nvim',
+      config = function()
+        require('rainbow-delimiters.setup').setup {
+          query = {
+            javascript = 'rainbow-parens',
+            typescript = 'rainbow-parens',
+            tsx = 'rainbow-parens',
+            lua = 'rainbow-blocks',
+          },
+        }
+      end,
+    },
+    {
+      'bezhermoso/tree-sitter-ghostty',
+      build = 'make nvim_install',
+    },
   },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',

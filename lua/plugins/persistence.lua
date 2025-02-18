@@ -5,7 +5,7 @@ return {
   cond = not vim.g.vscode,
   event = 'BufReadPre',
   init = function()
-    vim.api.nvim_create_autocmd('User', {
+    Slivers.autocmds.autocmd('User', {
       pattern = 'PersistenceSavePre',
       callback = function()
         for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do

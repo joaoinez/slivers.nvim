@@ -23,7 +23,7 @@ return {
     words = { enabled = true },
   },
   init = function()
-    vim.api.nvim_create_autocmd('User', {
+    Slivers.autocmds.autocmd('User', {
       pattern = 'VeryLazy',
       callback = function()
         -- Setup some globals for debugging (lazy-loaded)

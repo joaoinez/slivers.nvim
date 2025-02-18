@@ -95,7 +95,9 @@ return {
         'avante_mentions',
         'avante_files',
       },
-      cmdline = {},
+    },
+    cmdline = {
+      sources = {},
     },
   },
   opts_extend = { 'sources.default' },
