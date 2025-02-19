@@ -15,12 +15,18 @@ return {
   event = 'InsertEnter',
   opts = {
     keymap = {
-      preset = 'enter',
+      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<C-e>'] = { 'hide', 'fallback' },
+      ['<Up>'] = { 'select_prev', 'fallback' },
+      ['<Down>'] = { 'select_next', 'fallback' },
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
       ['<CR>'] = { 'accept', 'fallback' },
       ['<C-j>'] = { 'select_next', 'fallback' },
       ['<C-k>'] = { 'select_prev', 'fallback' },
       ['<C-p>'] = { 'snippet_backward', 'fallback' },
       ['<C-n>'] = { 'snippet_forward', 'fallback' },
+      ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
     },
     appearance = {
       use_nvim_cmp_as_default = false,
