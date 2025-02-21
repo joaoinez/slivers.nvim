@@ -57,7 +57,7 @@ local M = {
     local lsp = Slivers.lsp
 
     map('n', 'gD', function()
-      local params = vim.lsp.util.make_position_params()
+      local params = vim.lsp.util.make_position_params(0, 'utf-8')
       lsp.execute {
         command = 'typescript.goToSourceDefinition',
         arguments = { params.textDocument.uri, params.position },

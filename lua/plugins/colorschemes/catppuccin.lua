@@ -9,7 +9,7 @@ return {
     transparent_background = vim.g.transparent_bg,
     integrations = {
       avante = {
-        enabled = true,
+        enabled = false,
         windows_sidebar_header_rounded = true,
       },
       blink_cmp = true,

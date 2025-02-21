@@ -9,6 +9,7 @@ M.langs = {
   require 'slivers.lang.yaml',
   require 'slivers.lang.bash',
   require 'slivers.lang.go',
+  require 'slivers.lang.python',
 }
 
 function M.get_highlighters()

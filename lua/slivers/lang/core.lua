@@ -6,7 +6,6 @@ M.highlighters = {
   'html',
   'http',
   'printf',
-  'python',
   'query',
   'regex',
   'toml',
