@@ -2,10 +2,6 @@ local map = Slivers.keymaps.safe_keymap_set
 
 map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Toggle terminal
-map('t', '<C-/>', '<cmd>close<cr>', { desc = 'Hide Terminal' })
-map('t', '<C-_>', '<cmd>close<cr>', { desc = 'which_key_ignore' })
-
 -- Move windows in terminal mode
 map('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move focus to the left window' })
 map('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move focus to the lower window' })

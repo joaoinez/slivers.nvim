@@ -124,22 +124,6 @@ done
     end,
     desc = 'Terminal (cwd)',
   },
-  {
-    '<C-/>',
-    function()
-      local git_root = Snacks.git.get_root()
-      Snacks.terminal(nil, { cwd = git_root })
-    end,
-    desc = 'Terminal',
-  },
-  {
-    '<C-_>',
-    function()
-      local git_root = Snacks.git.get_root()
-      Snacks.terminal(nil, { cwd = git_root })
-    end,
-    desc = 'which_key_ignore',
-  },
 
   -- [[ Misc ]]
   { '<leader>v', function() Snacks.picker.cliphist() end, desc = 'Clipboard' },
