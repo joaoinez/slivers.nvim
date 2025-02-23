@@ -35,11 +35,6 @@ return {
       '<cmd>Neogit log<cr>',
       desc = 'Log (project)',
     },
-    {
-      '<leader>gl',
-      '<cmd>NeogitLogCurrent<cr>',
-      desc = 'Log (file)',
-    },
   },
   opts = {
     graph_style = 'kitty',

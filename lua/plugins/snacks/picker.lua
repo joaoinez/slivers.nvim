@@ -3,6 +3,7 @@
 ---@type snacks.picker.Config
 local M = {
   enabled = true,
+  ui_select = true,
   win = {
     input = {
       keys = {
@@ -11,7 +12,7 @@ local M = {
           mode = { 'n', 'i' },
         },
         ['<a-s>'] = { 'flash', mode = { 'n', 'i' } },
-        ['ss'] = { 'flash' },
+        ['s'] = { 'flash' },
       },
     },
   },

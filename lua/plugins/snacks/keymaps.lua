@@ -5,12 +5,33 @@ local M = {
   { '<leader>kp', function() Snacks.picker() end, desc = 'Command Palette' },
   {
     '<leader><space>',
-    function() Snacks.picker.buffers { hidden = true, current = false } end,
+    function()
+      Snacks.picker.buffers {
+        hidden = true,
+        unloaded = false,
+        nofile = false,
+        win = {
+          input = {
+            footer = '┤ <c-w> close │ <a-s> flash ├ ',
+            footer_pos = 'right',
+            keys = {
+              ['<c-w>'] = { 'bufdelete', mode = { 'n', 'i' } },
+            },
+          },
+        },
+      }
+    end,
     desc = 'Open Buffers',
   },
   {
     '<leader>ff',
-    function() Snacks.picker.smart { multi = { 'buffers', 'files' }, hidden = true } end,
+    function()
+      Snacks.picker.smart {
+        multi = { 'buffers', 'files' },
+        hidden = true,
+        win = { input = { footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ', footer_pos = 'right' } },
+      }
+    end,
     desc = 'Find Files',
   },
   {
@@ -18,35 +39,123 @@ local M = {
     function()
       local current_dir = vim.fn.expand '%:p:h'
       if current_dir == '' or vim.fn.isdirectory(current_dir) == 0 then current_dir = vim.fn.getcwd() end
-      Snacks.picker.files { cwd = current_dir }
+      Snacks.picker.files {
+        cwd = current_dir,
+        win = {
+          input = {
+            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
+            footer_pos = 'right',
+          },
+        },
+      }
     end,
     desc = 'Find Files (cwd)',
   },
+  {
+    '<leader>ft',
+    function()
+      Snacks.picker.grep {
+        win = {
+          input = {
+            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
+            footer_pos = 'right',
+          },
+        },
+      }
+    end,
+    desc = 'Find Text',
+  },
+  {
+    '<leader>fw',
+    function()
+      Snacks.picker.grep_word {
+        win = {
+          input = {
+            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
+            footer_pos = 'right',
+          },
+        },
+      }
+    end,
+    desc = 'Find Word',
+  },
+  {
+    '<leader>fw',
+    function()
+      Snacks.picker.grep_word {
+        win = {
+          input = {
+            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
+            footer_pos = 'right',
+          },
+        },
+      }
+    end,
+    desc = 'Find Selection',
+    mode = 'x',
+  },
   { '<leader>fH', function() Snacks.picker.help() end, desc = 'Find Help' },
+  {
+    '<leader>fm',
+    function()
+      Snacks.picker.marks {
+        global = true,
+        ['local'] = true,
+        ---@type snacks.picker.transform
+        transform = function(item)
+          if item.text:match '^[0-9\'"%[%]^<>`]' then return false end
+          return item
+        end,
+        win = { input = { footer = '┤ <a-s> flash ├ ', footer_pos = 'right' } },
+      }
+    end,
+    desc = 'Find Marks',
+  },
   { '<leader>fM', function() Snacks.picker.man() end, desc = 'Man Pages' },
-  { '<leader>ft', function() Snacks.picker.grep() end, desc = 'Find Text' },
   { '<leader>fA', function() Snacks.picker.autocmds() end, desc = 'Auto Commands' },
   { '<leader>f/', function() Snacks.picker.lines() end, desc = 'Search' },
-  { '<leader>fw', function() Snacks.picker.grep_word() end, desc = 'Find Word', mode = { 'n', 'x' } },
-  { '<leader>fg', function() Snacks.picker.git_status() end, desc = 'Git Files' },
   { '<leader>fc', function() Snacks.picker.command_history() end, desc = 'Command History' },
   { '<leader>fj', function() Snacks.picker.jumps() end, desc = 'Jump History' },
   { '<leader>fu', function() Snacks.picker.undo() end, desc = 'Undo History' },
   { '<leader>fp', function() Snacks.picker.projects() end, desc = 'Projects' },
   { '<leader>f?', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
   { '<leader>f.', function() Snacks.picker.resume() end, desc = 'Resume' },
-  ---@diagnostic disable-next-line: assign-type-mismatch
-  { '<leader>f,', function() Snacks.picker.files { cwd = vim.fn.stdpath 'config' } end, desc = 'Neovim Config' },
+  {
+    '<leader>f,',
+    function()
+      Snacks.picker.files {
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        cwd = vim.fn.stdpath 'config',
+        win = {
+          input = {
+            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
+            footer_pos = 'right',
+          },
+        },
+      }
+    end,
+    desc = 'Neovim Config',
+  },
   { '<leader>:', function() Snacks.picker.commands() end, desc = 'Commands' },
 
   -- [[ Git ]]
-  { '<leader>gb', function() Snacks.picker.git_branches() end, desc = 'Git Branches' },
+  {
+    '<leader>gb',
+    function()
+      Snacks.picker.git_branches {
+        win = { input = { footer = '┤ <c-a> add │ <c-x> delete ├ ', footer_pos = 'right' } },
+      }
+    end,
+    desc = 'Git Branches',
+  },
   {
     '<leader>gs',
     function()
       Snacks.picker.git_status {
         win = {
           input = {
+            footer = '┤ <tab> (un)stage │ <c-g> git │ <c-c> commit ├ ',
+            footer_pos = 'right',
             keys = {
               ['<c-g>'] = {
                 'neogit_open',
@@ -69,6 +178,11 @@ local M = {
       }
     end,
     desc = 'Git Status',
+  },
+  {
+    '<leader>gl',
+    function() Snacks.picker.git_log_file() end,
+    desc = 'Git Log (file)',
   },
   {
     '<leader>g/',
