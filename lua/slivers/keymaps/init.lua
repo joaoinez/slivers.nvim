@@ -19,8 +19,11 @@
 require 'slivers.keymaps.disabled'
 require 'slivers.keymaps.fixes'
 require 'slivers.keymaps.niceties'
-require 'slivers.keymaps.terminal'
-require 'slivers.keymaps.tmux'
-require 'slivers.keymaps.windows'
 require 'slivers.keymaps.yanking'
-require 'slivers.keymaps.open'
+if not vim.g.vscode then
+  require 'slivers.keymaps.terminal'
+  require 'slivers.keymaps.tmux'
+  require 'slivers.keymaps.windows'
+  require 'slivers.keymaps.open'
+  require 'slivers.keymaps.marks'
+end

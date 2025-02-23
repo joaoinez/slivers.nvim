@@ -5,13 +5,13 @@ return {
   event = 'VeryLazy',
   keys = {
     {
-      'ss',
+      's',
       mode = { 'n', 'x', 'o' },
       function() require('flash').jump() end,
       desc = 'Flash',
     },
     {
-      'sb',
+      'mt',
       mode = { 'n', 'o', 'x' },
       function() require('flash').treesitter() end,
       desc = 'Flash Treesitter',

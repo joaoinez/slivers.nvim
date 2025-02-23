@@ -77,9 +77,6 @@ end
 -- Update lazy, mason and treesitter
 map('n', '<leader>,U', '<cmd>UpdateEverything<cr>', { desc = 'Update Everything' })
 
--- Clear all marks
-map('n', '<leader>,C', '<cmd>delm! | delm A-Z0-9<cr>jk', { desc = 'Clear All Marks' })
-
 -- Open slivers.json file
 map('n', '<leader>,o', function()
   -- TODO: Simplify this. The math.floor stuff should be inside create_floating_window

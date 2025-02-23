@@ -13,13 +13,17 @@ return {
   },
   opts = {
     preset = 'helix',
+    triggers = {
+      { '<auto>', mode = 'nixsotc' },
+      { 'm', mode = { 'n', 'v' } },
+    },
     spec = {
       -- [[ Actions ]]
       -- Breakpoint
       { '<leader>b', icon = { icon = '', color = 'red' } },
 
-      -- Harpoon
-      { '<leader>h', icon = { icon = '󱡀', color = 'azure' } },
+      -- DBee
+      { '<leader>l', icon = { icon = '󰾡', color = 'yellow' } },
 
       -- Compiler
       { '<leader>r', icon = { icon = '', color = 'green' } },
@@ -76,7 +80,7 @@ return {
       { '<leader>f', group = 'find', mode = { 'n', 'v' } },
       { '<leader>ff', icon = { icon = '', color = 'green' } },
       { '<leader>fe', icon = { icon = '󰙅', color = 'purple' } },
-      { '<leader>fh', icon = { icon = '󱡀', color = 'azure' } },
+      { '<leader>fm', icon = { icon = '󱡀', color = 'azure' } },
       { '<leader>fH', icon = { icon = '󰋖', color = 'grey' } },
       { '<leader>fM', icon = { icon = '', color = 'grey' } },
       { '<leader>ft', icon = { icon = '', color = 'blue' } },
@@ -104,8 +108,7 @@ return {
       { '<leader>kp', icon = { icon = '', color = 'cyan' } },
 
       -- Messages
-      { '<leader>m', group = 'messages', icon = { icon = '󰍡', color = 'purple' } },
-      { '<leader>mh', icon = { icon = '󰍡', color = 'purple' } },
+      { '<leader>n', group = 'messages', icon = { icon = '󰍡', color = 'purple' } },
 
       -- Quickfix/Diagnostics
       { '<leader>q', group = 'quicklist' },
@@ -140,6 +143,9 @@ return {
 
       -- [[ Windows ]]
       { '<leader>w', group = 'windows' },
+
+      -- [[ Marks ]]
+      { '<leader>m', group = 'marks', icon = { icon = '󱡀', color = 'azure' } },
     },
   },
 }
