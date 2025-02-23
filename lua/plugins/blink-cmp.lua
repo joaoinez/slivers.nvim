@@ -4,17 +4,45 @@ return {
   enabled = true,
   cond = not vim.g.vscode,
   dependencies = {
+    { 'saghen/blink.compat', version = '*', opts = {} },
     {
-      'saghen/blink.compat',
-      version = '*',
-      opts = {},
+      'L3MON4D3/LuaSnip',
+      version = 'v2.*',
+      dependencies = {
+        'rafamadriz/friendly-snippets',
+        config = function()
+          require('luasnip.loaders.from_vscode').lazy_load()
+          require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snippets' } }
+
+          local extends = {
+            typescript = { 'tsdoc' },
+            javascript = { 'jsdoc' },
+            lua = { 'luadoc' },
+            python = { 'pydoc' },
+            rust = { 'rustdoc' },
+            cs = { 'csharpdoc' },
+            java = { 'javadoc' },
+            c = { 'cdoc' },
+            cpp = { 'cppdoc' },
+            php = { 'phpdoc' },
+            kotlin = { 'kdoc' },
+            ruby = { 'rdoc' },
+            sh = { 'shelldoc' },
+          }
+          -- friendly-snippets - enable standardized comments snippets
+          for ft, snips in pairs(extends) do
+            require('luasnip').filetype_extend(ft, snips)
+          end
+        end,
+      },
     },
-    'rafamadriz/friendly-snippets',
   },
   version = '*',
   event = 'InsertEnter',
   opts = {
+    snippets = { preset = 'luasnip' },
     keymap = {
+      preset = 'none',
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
       ['<C-e>'] = { 'hide', 'fallback' },
       ['<Up>'] = { 'select_prev', 'fallback' },
@@ -40,6 +68,9 @@ return {
         },
       },
       menu = {
+        auto_show = function(ctx)
+          return ctx.mode ~= 'cmdline' or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
+        end,
         draw = {
           treesitter = { 'lsp' },
           columns = {
@@ -89,6 +120,16 @@ return {
           score_offset = 1000, -- show at a higher priority than lsp
           opts = {},
         },
+        cmdline = {
+          enabled = false,
+        },
+        buffer = {
+          opts = {
+            get_bufnrs = function()
+              return vim.tbl_filter(function(bufnr) return vim.bo[bufnr].buftype == '' end, vim.api.nvim_list_bufs())
+            end,
+          },
+        },
       },
       default = {
         'lazydev',
@@ -101,9 +142,6 @@ return {
         'avante_mentions',
         'avante_files',
       },
-    },
-    cmdline = {
-      sources = {},
     },
   },
   opts_extend = { 'sources.default' },
