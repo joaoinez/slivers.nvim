@@ -9,7 +9,6 @@ local M = {
     local palette = require 'rose-pine.palette'
 
     return {
-      Harpoon = { fg = palette.foam },
       Macro = { fg = palette.iris },
       Lsp = { fg = palette.rose },
       Lazy = { fg = palette.pine },

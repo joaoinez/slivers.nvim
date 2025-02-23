@@ -99,7 +99,6 @@ M.lualine = {
   component_separators = function()
     return vim.g.lualine_borders and { left = '┃', right = '┃' } or { left = '', right = '' }
   end,
-  harpoon_separator = '|',
   file = {
     modified = '',
     readonly = '',

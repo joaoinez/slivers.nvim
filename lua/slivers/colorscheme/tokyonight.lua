@@ -10,7 +10,6 @@ local M = {
     local palette = require('tokyonight.colors').setup()
 
     return {
-      Harpoon = { fg = palette.cyan },
       Macro = { fg = palette.purple },
       Lsp = { fg = palette.magenta },
       Lazy = { fg = palette.orange },

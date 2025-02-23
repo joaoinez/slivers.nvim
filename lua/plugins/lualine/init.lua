@@ -3,9 +3,6 @@ return {
   'nvim-lualine/lualine.nvim',
   enabled = true,
   cond = not vim.g.vscode,
-  dependencies = {
-    'letieu/harpoon-lualine',
-  },
   event = 'VeryLazy',
   opts = function()
     -- PERF: we don't need this lualine require madness 🤷
@@ -14,7 +11,6 @@ return {
 
     local utils = require 'plugins.lualine.utils'
     local get_color = utils.get_color
-    local get_harpoon_indicator = utils.get_harpoon_indicator
 
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
 
@@ -74,24 +70,6 @@ return {
             symbols = IconSliver.lualine.file,
             path = 4,
             padding = { left = 0, right = 1 },
-          },
-        },
-        lualine_x = {
-          {
-            'harpoon2',
-            indicators = {
-              get_harpoon_indicator(),
-              get_harpoon_indicator(),
-              get_harpoon_indicator(),
-            },
-            active_indicators = {
-              get_harpoon_indicator('[', ']'),
-              get_harpoon_indicator('[', ']'),
-              get_harpoon_indicator('[', ']'),
-            },
-            icon = '',
-            _separator = ' ' .. IconSliver.lualine.harpoon_separator .. ' ',
-            color = get_color 'Harpoon',
           },
         },
         lualine_y = {

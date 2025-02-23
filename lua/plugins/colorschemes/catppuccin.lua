@@ -15,7 +15,6 @@ return {
       blink_cmp = true,
       diffview = true,
       grug_far = true,
-      harpoon = true,
       lsp_trouble = true,
       mason = true,
       native_lsp = {

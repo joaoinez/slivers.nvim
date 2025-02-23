@@ -12,7 +12,6 @@ local M = {
     )
 
     return {
-      Harpoon = { fg = palette.sky },
       Macro = { fg = palette.lavender },
       Lsp = { fg = palette.pink },
       Lazy = { fg = palette.peach },
