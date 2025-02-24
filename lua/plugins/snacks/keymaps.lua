@@ -121,6 +121,11 @@ local M = {
   { '<leader>f?', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
   { '<leader>f.', function() Snacks.picker.resume() end, desc = 'Resume' },
   {
+    '<leader>fy',
+    function() Snacks.terminal('yazi', { win = { border = 'rounded' } }) end,
+    desc = 'File Explorer (yazi)',
+  },
+  {
     '<leader>f,',
     function()
       Snacks.picker.files {
