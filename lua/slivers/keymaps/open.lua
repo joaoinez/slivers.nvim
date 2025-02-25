@@ -37,14 +37,6 @@ map(
 -- https://joaoinez.me
 map('n', '<leader>oj', function() Slivers.misc.open_url 'https://joaoinez.me' end, { desc = 'joaoinez.me' })
 
--- Deepseek R1
-map(
-  'n',
-  '<leader>oc',
-  function() Slivers.misc.open_url 'https://chat.deepseek.com/a/chat' end,
-  { desc = 'AI Chat (deepseek-r1)' }
-)
-
 -- LazyVim
 map('n', '<leader>ol', function() Slivers.misc.open_url 'https://www.lazyvim.org' end, { desc = 'LazyVim' })
 
