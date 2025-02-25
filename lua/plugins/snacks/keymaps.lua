@@ -214,7 +214,7 @@ local M = {
   {
     '<leader>gl',
     function() Snacks.picker.git_log_file() end,
-    desc = 'Git Log (file)',
+    desc = 'Log (file)',
   },
   {
     '<leader>g/',
@@ -251,6 +251,11 @@ done
   },
   { '<leader>gG', function() Snacks.lazygit() end, desc = 'Lazygit' },
   { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Browse Repo (github)' },
+  {
+    '<leader>go',
+    function() Snacks.terminal('gh pr create', { win = { border = 'rounded' } }) end,
+    desc = 'Open PR (github)',
+  },
 
   -- [[ Terminal ]]
   {

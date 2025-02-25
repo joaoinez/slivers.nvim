@@ -80,7 +80,7 @@ return {
       { '<leader>ff', icon = { icon = '', color = 'green' } },
       { '<leader>fe', icon = { icon = '󰙅', color = 'purple' } },
       { '<leader>fm', icon = { icon = '󱡀', color = 'azure' } },
-      { '<leader>fH', icon = { icon = '󰋖', color = 'grey' } },
+      { '<leader>fh', icon = { icon = '󰋖', color = 'grey' } },
       { '<leader>fM', icon = { icon = '', color = 'grey' } },
       { '<leader>ft', icon = { icon = '', color = 'blue' } },
       { '<leader>f?', icon = { icon = '', color = 'grey' } },
