@@ -5,7 +5,17 @@ return {
   cond = not vim.g.vscode,
   event = 'VeryLazy',
   cmd = { 'Typr', 'TyprStats' },
-  opts = {
-    winblend = 0,
+  keys = {
+    {
+      '<leader>kt',
+      '<cmd>Typr<cr>',
+      desc = 'Typr',
+    },
+    {
+      '<leader>kS',
+      '<cmd>Typr<cr>',
+      desc = 'TyprStats',
+    },
   },
+  opts = {},
 }

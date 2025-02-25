@@ -7,9 +7,9 @@ return {
   event = 'VeryLazy',
   keys = {
     {
-      '<leader>l',
+      '<leader>kd',
       function() require('dbee').toggle() end,
-      desc = 'SQL Client (dbee)',
+      desc = 'DBee',
     },
   },
   config = function() require('dbee').setup() end,

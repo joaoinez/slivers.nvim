@@ -73,6 +73,33 @@ if not vim.g.vscode then
     end,
   })
 
+  -- Close slivers options window with q and exit code 1
+  autocmd('BufEnter', {
+    group = augroup 'close_options_with_q',
+    callback = function(event)
+      vim.schedule(function()
+        local is_slivers_options = pcall(function() return vim.api.nvim_buf_get_var(event.buf, 'slivers_options') end)
+
+        if is_slivers_options then
+          vim.bo[event.buf].buflisted = false
+          vim.keymap.set('n', 'q', function()
+            if vim.bo[event.buf].modified then
+              vim.cmd 'w'
+              vim.cmd 'cq'
+            else
+              vim.cmd 'close'
+            end
+            pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+          end, {
+            buffer = event.buf,
+            silent = true,
+            desc = 'Quit buffer',
+          })
+        end
+      end)
+    end,
+  })
+
   -- Effect: URL underline.
   vim.api.nvim_set_hl(0, 'HighlightURL', { underline = true })
   autocmd({ 'VimEnter', 'FileType', 'BufEnter', 'WinEnter' }, {

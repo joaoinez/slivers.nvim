@@ -27,7 +27,7 @@ M.load_keymaps = function()
         },
         {
           '<leader>ad',
-          desc = 'Toggle Debugging',
+          hidden = true,
         },
         {
           '<leader>af',
@@ -35,11 +35,11 @@ M.load_keymaps = function()
         },
         {
           '<leader>ah',
-          desc = 'Toggle Hint',
+          hidden = true,
         },
         {
           '<leader>ar',
-          desc = 'Refresh',
+          desc = 'Refresh Chat',
         },
         {
           '<leader>aR',
@@ -47,7 +47,11 @@ M.load_keymaps = function()
         },
         {
           '<leader>as',
-          desc = 'Toggle Suggestion',
+          hidden = true,
+        },
+        {
+          '<leader>a?',
+          desc = 'Select Model',
         },
         {
           '<leader>ta',

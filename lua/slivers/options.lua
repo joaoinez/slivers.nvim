@@ -14,11 +14,12 @@ if not vim.g.vscode then
   else
     local default_config = {
       transparent_bg = true, -- Set transparent background.
+      ai_architect_mode = false, -- Whether to use a reasoning model before coder model.
+      lualine_borders = true, -- Set lualine rounded borders.
       mode_len = 3, -- Set mode text length; 0 is Neovim's default.
       dark_mode = true, -- Set background dark mode.
-      lualine_borders = true, -- Set lualine rounded borders.
       trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
-      ai_architect_mode = false, -- Whether to use a reasoning model before coder model.
+      ai_local = false, -- Whether to use local ai models.
       dev = false, -- Enable or disable dev related plugins.
       server = false, -- Enable or disable server related plugins.
     }

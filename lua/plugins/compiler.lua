@@ -1,14 +1,14 @@
--- INFO: To Build and run a godot scene, use the command godot /my/scene.tscn on the terminal.
--- This works really well: It's fast and simple.
-
----@type LazySpec
 return {
   {
-    'Zeioth/compiler.nvim',
+    'zeioth/compiler.nvim',
     enabled = true,
     cond = not vim.g.vscode,
-    dependencies = { 'stevearc/overseer.nvim' },
-    cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
+    cmd = {
+      'CompilerOpen',
+      'CompilerToggleResults',
+      'CompilerRedo',
+      'CompilerStop',
+    },
     keys = {
       { '<leader>r', '<cmd>CompilerOpen<cr>', desc = 'Run Code' },
       { '<leader>R', '<cmd>CompilerStop<cr>' .. '<cmd>CompilerRedo<cr>', desc = 'Rerun Code' },
@@ -18,7 +18,21 @@ return {
   },
   {
     'stevearc/overseer.nvim',
-    cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },
+    cmd = {
+      'OverseerOpen',
+      'OverseerClose',
+      'OverseerToggle',
+      'OverseerSaveBundle',
+      'OverseerLoadBundle',
+      'OverseerDeleteBundle',
+      'OverseerRunCmd',
+      'OverseerRun',
+      'OverseerInfo',
+      'OverseerBuild',
+      'OverseerQuickAction',
+      'OverseerTaskAction',
+      'OverseerClearCache',
+    },
     opts = {
       task_list = {
         direction = 'bottom',

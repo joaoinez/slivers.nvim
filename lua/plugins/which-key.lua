@@ -22,9 +22,8 @@ return {
       -- Breakpoint
       { '<leader>b', icon = { icon = '', color = 'red' } },
 
-      -- DBee
-      { '<leader>l', icon = { icon = '󰾡', color = 'yellow' } },
-
+      -- Mark
+      { '<leader>m', icon = { icon = '󱡀', color = 'azure' } },
       -- Compiler
       { '<leader>r', icon = { icon = '', color = 'green' } },
       { '<leader>R', icon = { icon = '', color = 'green' } },
@@ -100,20 +99,22 @@ return {
 
       -- Misc
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
-      { '<leader>kc', group = 'colorpicker' },
-      { '<leader>kr', group = 'repl', icon = { icon = '', color = 'orange' } },
+      { '<leader>kd', icon = { icon = '󰾡', color = 'yellow' } },
       { '<leader>kk', icon = { icon = '', color = 'grey' } },
+      { '<leader>km', icon = { icon = '󱡀', color = 'azure' } },
       { '<leader>ks', icon = { icon = '󰢱', color = 'blue' } },
       { '<leader>kT', icon = { icon = '', color = 'blue' } },
       { '<leader>kp', icon = { icon = '', color = 'cyan' } },
+      { '<leader>kc', group = 'colorpicker' },
+      { '<leader>kr', group = 'repl', icon = { icon = '', color = 'orange' } },
 
       -- Messages
       { '<leader>n', group = 'messages', icon = { icon = '󰍡', color = 'purple' } },
 
-      -- Quickfix/Diagnostics
-      { '<leader>q', group = 'quicklist' },
+      -- Quicklist/Diagnostics
+      { '<leader>q', group = 'quicklist/diagnostics' },
       { '<leader>ql', icon = { icon = '󰙅', color = 'red' } },
-      -- { '<leader>qQ', icon = { icon = '󰙅', color = 'red' } },
+      { '<leader>qQ', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qx', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qX', icon = { icon = '󰙅', color = 'red' } },
 
@@ -143,9 +144,6 @@ return {
 
       -- [[ Windows ]]
       { '<leader>w', group = 'windows' },
-
-      -- [[ Marks ]]
-      { '<leader>m', group = 'marks', icon = { icon = '󱡀', color = 'azure' } },
     },
   },
 }

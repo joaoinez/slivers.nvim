@@ -1,19 +1,23 @@
 ---@diagnostic disable: missing-fields
 
 local M = {
-  -- [[ Finder ]]
-  { '<leader>kp', function() Snacks.picker() end, desc = 'Command Palette' },
+  -- [[ Pickers ]]
+  -- File related
   {
     '<leader><space>',
     function()
       Snacks.picker.buffers {
+        layout = {
+          preset = 'ivy',
+          preview = 'main',
+        },
         hidden = true,
         unloaded = false,
         nofile = false,
         win = {
           input = {
             footer = '┤ <c-w> close │ <a-s> flash ├ ',
-            footer_pos = 'right',
+            footer_pos = 'left',
             keys = {
               ['<c-w>'] = { 'bufdelete', mode = { 'n', 'i' } },
             },
@@ -55,10 +59,11 @@ local M = {
     '<leader>ft',
     function()
       Snacks.picker.grep {
+        layout = 'bottom',
         win = {
           input = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
-            footer_pos = 'right',
+            footer_pos = 'left',
           },
         },
       }
@@ -69,10 +74,11 @@ local M = {
     '<leader>fw',
     function()
       Snacks.picker.grep_word {
+        layout = 'bottom',
         win = {
           input = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
-            footer_pos = 'right',
+            footer_pos = 'left',
           },
         },
       }
@@ -83,10 +89,11 @@ local M = {
     '<leader>fw',
     function()
       Snacks.picker.grep_word {
+        layout = 'bottom',
         win = {
           input = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
-            footer_pos = 'right',
+            footer_pos = 'left',
           },
         },
       }
@@ -94,37 +101,57 @@ local M = {
     desc = 'Find Selection',
     mode = 'x',
   },
-  { '<leader>fH', function() Snacks.picker.help() end, desc = 'Find Help' },
   {
     '<leader>fm',
     function()
       Snacks.picker.marks {
+        layout = {
+          preset = 'ivy',
+          preview = 'main',
+        },
         global = true,
         ['local'] = true,
         ---@type snacks.picker.transform
         transform = function(item)
-          if item.text:match '^[0-9\'"%[%]^<>`]' then return false end
+          if item.text:match '^[0-9\'"%[%]^<>`.]' then return false end
           return item
         end,
-        win = { input = { footer = '┤ <a-s> flash ├ ', footer_pos = 'right' } },
+        win = { input = { footer = '┤ <a-s> flash ├ ', footer_pos = 'left' } },
       }
     end,
     desc = 'Find Marks',
   },
-  { '<leader>fM', function() Snacks.picker.man() end, desc = 'Man Pages' },
-  { '<leader>fA', function() Snacks.picker.autocmds() end, desc = 'Auto Commands' },
   { '<leader>f/', function() Snacks.picker.lines() end, desc = 'Search' },
-  { '<leader>fc', function() Snacks.picker.command_history() end, desc = 'Command History' },
-  { '<leader>fj', function() Snacks.picker.jumps() end, desc = 'Jump History' },
-  { '<leader>fu', function() Snacks.picker.undo() end, desc = 'Undo History' },
-  { '<leader>fp', function() Snacks.picker.projects() end, desc = 'Projects' },
-  { '<leader>f?', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
-  { '<leader>f.', function() Snacks.picker.resume() end, desc = 'Resume' },
   {
     '<leader>fy',
     function() Snacks.terminal('yazi', { win = { border = 'rounded' } }) end,
     desc = 'File Explorer (yazi)',
   },
+
+  -- Others
+  { '<leader>f.', function() Snacks.picker.resume() end, desc = 'Resume' },
+  {
+    '<leader>kp',
+    function() Snacks.picker { title = 'Command Palette', layout = 'vscode' } end,
+    desc = 'Command Palette',
+  },
+  { '<leader>fh', function() Snacks.picker.help { layout = 'vscode' } end, desc = 'Find Help' },
+  { '<leader>fp', function() Snacks.picker.projects { layout = 'vscode' } end, desc = 'Projects' },
+  { '<leader>:', function() Snacks.picker.commands { layout = 'vscode' } end, desc = 'Commands' },
+  { '<leader>fc', function() Snacks.picker.command_history() end, desc = 'Command History' },
+  {
+    '<leader>fj',
+    function() Snacks.picker.jumps { layout = { preset = 'ivy', preview = 'main' } } end,
+    desc = 'Jump History',
+  },
+  { '<leader>fu', function() Snacks.picker.undo { layout = 'dropdown' } end, desc = 'Undo History' },
+  {
+    '<leader>f?',
+    function() Snacks.picker.keymaps { layout = 'top' } end,
+    desc = 'Keymaps',
+  },
+  { '<leader>fM', function() Snacks.picker.man() end, desc = 'Man Pages' },
+  { '<leader>fA', function() Snacks.picker.autocmds() end, desc = 'Auto Commands' },
   {
     '<leader>f,',
     function()
@@ -141,14 +168,14 @@ local M = {
     end,
     desc = 'Neovim Config',
   },
-  { '<leader>:', function() Snacks.picker.commands() end, desc = 'Commands' },
 
   -- [[ Git ]]
   {
     '<leader>gb',
     function()
       Snacks.picker.git_branches {
-        win = { input = { footer = '┤ <c-a> add │ <c-x> delete ├ ', footer_pos = 'right' } },
+        layout = 'vscode',
+        win = { input = { footer = '┤ <c-a> add │ <c-x> delete ├ ', footer_pos = 'center' } },
       }
     end,
     desc = 'Git Branches',

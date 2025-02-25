@@ -1,7 +1,6 @@
 tags
 test.sh
 .luarc.json
-nvim
 
 spell/
 
@@ -9,3 +8,4 @@ spell/
 .slivers.json
 lazy-lock.json
 .aider*
+.DS_Store

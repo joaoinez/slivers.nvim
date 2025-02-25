@@ -50,7 +50,7 @@ map('x', 'A', function() return vim.fn.mode() == 'V' and '$<C-v>A' or 'A' end, {
 map('n', '<leader>cW', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = 'Rename Word' })
 
 -- Diagnostic keymap
--- map('n', '<leader>qQ', vim.diagnostic.setloclist, { desc = 'Diagnostic Quickfix List' })
+map('n', '<leader>qQ', vim.diagnostic.setloclist, { desc = 'Diagnostic Quicklist List' })
 map('n', '<leader>ql', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 
 -- Keywordprg
@@ -93,7 +93,7 @@ map('n', '<leader>,o', function()
 
   vim.api.nvim_set_current_buf(window.buf)
   vim.cmd('e ' .. vim.fn.stdpath 'config' .. '/.slivers.json')
-  vim.api.nvim_buf_set_keymap(window.buf, 'n', 'q', '<cmd>x<cr>', { noremap = true, silent = true })
+  vim.api.nvim_buf_set_var(0, 'slivers_options', true)
 end, { desc = 'Options' })
 
 -- Source file
@@ -101,3 +101,6 @@ map('n', '<leader>ks', '<cmd>source %<cr>', { desc = 'Source File' })
 
 -- Test file with Plenary
 map('n', '<leader>kT', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plenary)' })
+
+-- Close Neovim with exit code 1
+map('n', '<leader>wr', '<cmd>wa | cq<cr>', { desc = 'Restart Neovim' })
