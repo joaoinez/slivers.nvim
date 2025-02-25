@@ -3,13 +3,6 @@ return {
   'nvim-treesitter/nvim-treesitter',
   enabled = true,
   dependencies = {
-    {
-      'nvim-treesitter/nvim-treesitter-context',
-      cond = not vim.g.vscode,
-      opts = {
-        zindex = 1,
-      },
-    },
     'nvim-treesitter/nvim-treesitter-textobjects',
     {
       'hiphish/rainbow-delimiters.nvim',

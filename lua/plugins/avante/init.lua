@@ -30,8 +30,17 @@ return {
         timeout = 60000 * 5, -- Timeout in milliseconds
       },
       rag_service = {
-        enabled = true,
+        enabled = false,
       },
+      ------@type AvanteSupportedProvider
+      ---claude = {
+      ---  endpoint = 'https://api.anthropic.com',
+      ---  model = 'claude-3-7-sonnet-20250219',
+      ---  timeout = 30000,
+      ---  temperature = 0,
+      ---  max_tokens = 8000,
+      ---  disable_tools = true,
+      ---},
       ---@type {[string]: AvanteProvider}
       vendors = {
         ---@type AvanteSupportedProvider
@@ -40,6 +49,7 @@ return {
           temperature = 1,
           timeout = 30000,
           max_tokens = 8000,
+          disable_tools = true,
           thinking = {
             type = 'enabled',
             budget_tokens = 4000,

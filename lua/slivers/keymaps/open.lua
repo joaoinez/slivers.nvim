@@ -71,7 +71,7 @@ map('n', '<leader>oe', function() Slivers.misc.open_url 'https://excalidraw.com'
 map(
   'n',
   '<leader>oa',
-  function() Slivers.misc.open_url 'https://aider.chat/2024/12/21/polyglot.html' end,
+  function() Slivers.misc.open_url 'https://aider.chat/docs/leaderboards/' end,
   { desc = 'Aider Leaderboards' }
 )
 

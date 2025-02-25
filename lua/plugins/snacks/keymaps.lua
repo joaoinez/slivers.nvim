@@ -277,6 +277,7 @@ done
   },
 
   -- [[ Misc ]]
+  { '<leader>kD', function() Snacks.terminal 'lazydocker' end, desc = 'Lazydocker' },
   { '<leader>v', function() Snacks.picker.cliphist() end, desc = 'Clipboard' },
   {
     '<leader>,n',
