@@ -226,7 +226,7 @@ local M = {
     function()
       local command = [[
 bash -c '
-aider --commit --model groq/llama-3.3-70b-versatile || exit 1
+aider --commit || exit 1
 while true; do
   read -n 1 -s -p "Press \"q\" to quit or \"P\" to push: " key
   printf "\n"
