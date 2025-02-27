@@ -4,10 +4,12 @@ local M = {}
 
 M.highlighters = {
   'css',
+  'scss',
   'javascript',
   'tsx',
   'typescript',
   'vue',
+  'svelte',
 }
 
 M.servers = require('slivers.lang.typescript.lsp').get_servers()

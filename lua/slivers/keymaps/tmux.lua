@@ -34,7 +34,7 @@ map('n', '<C-/>', toggle_tiny_terminal, { desc = 'Toggle Tiny Terminal' })
 map('n', '<C-_>', toggle_tiny_terminal, { desc = 'which_key_ignore' })
 
 -- Oper Aider
-map('n', '<leader>aA', function()
+map('n', '<leader>ai', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
@@ -45,7 +45,7 @@ map('n', '<leader>aA', function()
 end, { desc = 'Aider' })
 
 -- Oper Claude Code
-map('n', '<leader>aC', function()
+map('n', '<leader>ac', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)

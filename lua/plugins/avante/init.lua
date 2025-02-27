@@ -64,12 +64,11 @@ Produce final response that represents the most technically sound integration of
         timeout = 60000 * 5,
       },
       rag_service = {
-        enabled = false,
+        enabled = true,
       },
       ---@type AvanteSupportedProvider
       claude = {
         max_tokens = 8192,
-        disable_tools = true,
       },
       vendors = {
         ---@type AvanteSupportedProvider
@@ -81,7 +80,6 @@ Produce final response that represents the most technically sound integration of
             type = 'enabled',
             budget_tokens = 4096,
           },
-          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['deepseek-r1'] = {
@@ -90,7 +88,6 @@ Produce final response that represents the most technically sound integration of
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'deepseek/deepseek-r1',
           max_tokens = 8192,
-          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['o3-mini-high'] = {
@@ -100,7 +97,6 @@ Produce final response that represents the most technically sound integration of
           model = 'openai/o3-mini-high',
           max_tokens = 8192,
           temperature = 0,
-          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['groq-llama'] = {
@@ -109,14 +105,17 @@ Produce final response that represents the most technically sound integration of
           endpoint = 'https://api.groq.com/openai/v1/',
           model = 'llama-3.3-70b-versatile',
           max_tokens = 32768,
-          disable_tools = true,
         },
         ['ollama-qwen'] = require('plugins.avante.ollama').model 'qwen2.5-coder:latest',
         ['ollama-fastapply'] = require('plugins.avante.ollama').model 'hf.co/Kortix/FastApply-1.5B-v1.0_GGUF:latest',
       },
       mappings = {
+        focus = '<leader>aF',
         toggle = {
           default = '<leader>ta',
+        },
+        files = {
+          add_current = '<leader>af',
         },
       },
       windows = {
@@ -132,5 +131,20 @@ Produce final response that represents the most technically sound integration of
   config = function(_, opts)
     require('avante').setup(opts)
     require('plugins.avante.keymaps').load_keymaps()
+  end,
+  init = function()
+    Slivers.autocmds.autocmd('User', {
+      pattern = 'VeryLazy',
+      callback = function()
+        _G.convert_to_qf = function()
+          require('avante.diff').conflicts_to_qf_items(function(items)
+            if #items > 0 then
+              vim.fn.setqflist(items, 'r')
+              vim.cmd 'copen'
+            end
+          end)
+        end
+      end,
+    })
   end,
 }

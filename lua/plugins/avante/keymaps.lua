@@ -22,7 +22,7 @@ M.load_keymaps = function()
           mode = 'v',
         },
         {
-          '<leader>ac',
+          '<leader>af',
           desc = 'Add File to Chat',
         },
         {
@@ -30,7 +30,7 @@ M.load_keymaps = function()
           hidden = true,
         },
         {
-          '<leader>af',
+          '<leader>aF',
           desc = 'Focus Window',
         },
         {
