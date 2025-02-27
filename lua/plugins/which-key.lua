@@ -106,7 +106,7 @@ return {
       { '<leader>kT', icon = { icon = '', color = 'blue' } },
       { '<leader>kp', icon = { icon = '', color = 'cyan' } },
       { '<leader>kc', group = 'colorpicker' },
-      { '<leader>kr', group = 'repl', icon = { icon = '', color = 'orange' } },
+      { '<leader>kR', group = 'repl', icon = { icon = '', color = 'orange' } },
 
       -- Messages
       { '<leader>n', group = 'messages', icon = { icon = '󰍡', color = 'purple' } },

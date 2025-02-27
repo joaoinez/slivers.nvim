@@ -9,10 +9,10 @@ map('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move focus to the upper window'
 map('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move focus to the right window' })
 
 -- REPL node
-map('n', '<leader>krn', function() Slivers.misc.open_term_with_cmd 'node' end, { desc = 'Node' })
+map('n', '<leader>kRn', function() Slivers.misc.open_term_with_cmd 'node' end, { desc = 'Node' })
 
 -- REPL lua
-map('n', '<leader>krl', function() Slivers.misc.open_term_with_cmd 'lua' end, { desc = 'Lua' })
+map('n', '<leader>kRl', function() Slivers.misc.open_term_with_cmd 'lua' end, { desc = 'Lua' })
 
 -- REPL python
-map('n', '<leader>krp', function() Slivers.misc.open_term_with_cmd 'python3' end, { desc = 'Python' })
+map('n', '<leader>kRp', function() Slivers.misc.open_term_with_cmd 'python3' end, { desc = 'Python' })

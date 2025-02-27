@@ -3,7 +3,7 @@
 ---@type LazySpec
 return {
   'yetone/avante.nvim',
-  enabled = not vim.g.dev,
+  enabled = true,
   cond = not vim.g.vscode,
   build = 'make',
   event = 'VeryLazy',
