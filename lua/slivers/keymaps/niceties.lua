@@ -104,3 +104,6 @@ map('n', '<leader>kT', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plen
 
 -- Close Neovim with exit code 1
 map('n', '<leader>wr', '<cmd>wa | cq<cr>', { desc = 'Restart Neovim' })
+
+-- Reload Buffer
+map('n', '<leader>kr', '<cmd>checktime<cr>', { desc = 'Reload Buffer' })

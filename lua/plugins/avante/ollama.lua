@@ -103,6 +103,7 @@ function M.model(model)
     parse_curl_args = parse_curl_args,
     parse_stream_data = parse_stream_data,
     model = model,
+    disable_tools = true,
   }
 end
 

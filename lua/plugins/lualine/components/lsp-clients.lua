@@ -9,6 +9,7 @@ local function M()
   for _, client in pairs(clients) do
     table.insert(c, IconSliver.lualine.lsp[client.name] or client.name)
   end
+
   return table.concat(c, ' ')
 end
 

@@ -28,7 +28,7 @@ function M.lsp_rename()
 
       -- after the edits are applied, the files are not saved automatically.
       -- let's remind ourselves to save those...
-      local total_files = vim.tbl_count(result.changes)
+      local total_files = result.changes and vim.tbl_count(result.changes) or 0
       print(string.format("Changed %s file%s. To save them run ':wa'", total_files, total_files > 1 and 's' or ''))
     end)
   end

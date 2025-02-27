@@ -13,6 +13,7 @@ return {
     local get_color = utils.get_color
 
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
+    local avante = require 'plugins.lualine.components.avante'
 
     -- Set global lualine
     vim.o.laststatus = vim.g.lualine_laststatus
@@ -47,7 +48,23 @@ return {
             },
           },
         },
-        lualine_b = { 'branch' },
+        lualine_b = {
+          'branch',
+          {
+            'diff',
+            symbols = IconSliver.lualine.diff,
+            source = function()
+              local gitsigns = vim.b.gitsigns_status_dict
+              if gitsigns then
+                return {
+                  added = gitsigns.added,
+                  modified = gitsigns.changed,
+                  removed = gitsigns.removed,
+                }
+              end
+            end,
+          },
+        },
         lualine_c = {
           {
             'diagnostics',
@@ -72,6 +89,27 @@ return {
             padding = { left = 0, right = 1 },
           },
         },
+        lualine_x = {
+          {
+            avante.init,
+            icon = avante.icon(),
+            color = { fg = avante.color() },
+            separator = '',
+          },
+          {
+            avante.provider1,
+            icon = avante.provider1_icon(),
+            color = { fg = avante.provider1_color() },
+            cond = avante.dual_boost,
+            separator = '󱖡',
+          },
+          {
+            avante.provider2,
+            icon = avante.provider2_icon(),
+            color = { fg = avante.provider2_color() },
+            cond = avante.dual_boost,
+          },
+        },
         lualine_y = {
           {
             ---@diagnostic disable-next-line: undefined-field
@@ -84,20 +122,6 @@ return {
             function() return '  ' .. require('dap').status() end,
             cond = function() return package.loaded['dap'] and require('dap').status() ~= '' end,
             color = get_color 'Stop',
-          },
-          {
-            'diff',
-            symbols = IconSliver.lualine.diff,
-            source = function()
-              local gitsigns = vim.b.gitsigns_status_dict
-              if gitsigns then
-                return {
-                  added = gitsigns.added,
-                  modified = gitsigns.changed,
-                  removed = gitsigns.removed,
-                }
-              end
-            end,
           },
           {
             lsp_clients,

@@ -29,17 +29,28 @@ local function toggle_tiny_terminal()
   end
 end
 
--- Map both key variations to the toggle function
+-- Toggle tiny terminal
 map('n', '<C-/>', toggle_tiny_terminal, { desc = 'Toggle Tiny Terminal' })
 map('n', '<C-_>', toggle_tiny_terminal, { desc = 'which_key_ignore' })
 
--- Map for opening aider in a right pane
-map('n', '<leader>ai', function()
+-- Oper Aider
+map('n', '<leader>aA', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
     return
   end
 
-  vim.fn.system 'tmux split-window -h -p 30 "aider --watch-files"'
+  vim.fn.system 'tmux split-window -h -p 33 "aider --architect"'
 end, { desc = 'Aider' })
+
+-- Oper Claude Code
+map('n', '<leader>aC', function()
+  local in_tmux = vim.fn.exists '$TMUX' == 1
+  if not in_tmux then
+    vim.notify('Not running inside tmux', vim.log.levels.WARN)
+    return
+  end
+
+  vim.fn.system 'tmux split-window -h -p 33 "claude"'
+end, { desc = 'Claude Code' })
