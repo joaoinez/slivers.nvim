@@ -30,11 +30,6 @@ return {
       '<cmd>Neogit stash<cr>',
       desc = 'Stash',
     },
-    {
-      '<leader>gL',
-      '<cmd>Neogit log<cr>',
-      desc = 'Log (project)',
-    },
   },
   opts = {
     graph_style = 'kitty',

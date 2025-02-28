@@ -217,6 +217,11 @@ local M = {
     desc = 'Log (file)',
   },
   {
+    '<leader>gL',
+    function() Snacks.picker.git_log() end,
+    desc = 'Log (project)',
+  },
+  {
     '<leader>g/',
     function() Snacks.terminal('git hook run pre-commit', { auto_close = false, win = { border = 'rounded' } }) end,
     desc = 'Run `pre-commit` hook',
@@ -275,13 +280,32 @@ done
     end,
     desc = 'Terminal (cwd)',
   },
+  {
+    '<C-/>',
+    function()
+      local git_root = Snacks.git.get_root()
+      Snacks.terminal(nil, { cwd = git_root })
+    end,
+    desc = 'Terminal',
+  },
+  {
+    '<C-_>',
+    function()
+      local git_root = Snacks.git.get_root()
+      Snacks.terminal(nil, { cwd = git_root })
+    end,
+    desc = 'which_key_ignore',
+  },
 
   -- [[ Misc ]]
   {
     '<leader>ko',
     function()
       Snacks.terminal(
-        'tgpt -i --provider openai --url https://api.fireworks.ai/inference/v1/chat/completions --model accounts/fireworks/models/deepseek-r1 --key $FIREWORKS_API_KEY',
+        -- TODO: Change this to open router r1
+        --
+        -- 'tgpt -i --provider openai --url https://api.fireworks.ai/inference/v1/chat/completions --model accounts/fireworks/models/deepseek-r1 --key $FIREWORKS_API_KEY',
+        nil,
         { win = { border = 'rounded' } }
       )
     end,

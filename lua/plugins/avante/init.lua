@@ -119,6 +119,7 @@ Produce final response that represents the most technically sound integration of
         },
       },
       windows = {
+        width = 40,
         input = {
           prefix = ' ',
         },
