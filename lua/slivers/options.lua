@@ -13,7 +13,7 @@ if not vim.g.vscode then
     end
   else
     local default_config = {
-      ai_architect = false, -- Whether to use a reasoning model before coder model. WARN: Disabled when `ai_local` is true.
+      ai_mode = 1, -- [ 1 - 6 ] Set which AI models to use. `1` is local, `3` and `5` is using `dual_boost`
       transparent_bg = true, -- Set transparent background.
       mode_len = 3, -- Set mode text length; 0 is Neovim's default.
       lualine_borders = true, -- Set lualine rounded borders.

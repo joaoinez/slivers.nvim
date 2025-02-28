@@ -15,17 +15,26 @@ return {
     },
   },
   opts = function()
+    local models = {
+      'ollama-qwen', -- mode 1
+      'qwen2.5-coder', -- mode 2
+      'qwen2.5-coder', -- mode 3
+      'claude', -- mode 4
+      'claude', -- mode 5
+      'claude-reasoning', -- mode 6
+    }
+
     ---@type avante.Config
     return {
-      provider = not vim.g.ai_local and 'claude' or 'ollama-qwen',
-      cursor_applying_provider = not vim.g.ai_local and 'groq-llama' or 'ollama-fastapply',
+      provider = models[vim.g.ai_mode] or nil,
+      cursor_applying_provider = vim.g.ai_mode > 1 and 'groq-llama' or 'ollama-fastapply',
       auto_suggestions_provider = nil,
       behaviour = {
         auto_suggestions = false,
         enable_cursor_planning_mode = true,
       },
       dual_boost = {
-        enabled = vim.g.ai_architect and not vim.g.ai_local,
+        enabled = vim.g.ai_mode == 3 or vim.g.ai_mode == 5,
         first_provider = 'deepseek-r1',
         second_provider = 'o3-mini-high',
         prompt = [[
@@ -71,6 +80,7 @@ Produce final response that represents the most technically sound integration of
         max_tokens = 8192,
       },
       vendors = {
+        -- Reasoning Models
         ---@type AvanteSupportedProvider
         ['claude-reasoning'] = {
           __inherited_from = 'claude',
@@ -88,6 +98,7 @@ Produce final response that represents the most technically sound integration of
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'deepseek/deepseek-r1',
           max_tokens = 8192,
+          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['o3-mini-high'] = {
@@ -96,7 +107,34 @@ Produce final response that represents the most technically sound integration of
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'openai/o3-mini-high',
           max_tokens = 8192,
-          temperature = 0,
+        },
+        -- Non-Reasoning Models
+        ---@type AvanteSupportedProvider
+        ['qwen2.5-coder'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'qwen/qwen-2.5-coder-32b-instruct',
+          max_tokens = 8192,
+          disable_tools = true,
+        },
+        ---@type AvanteSupportedProvider
+        ['mistral-small'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'deepseek/deepseek-chat',
+          max_tokens = 8192,
+          disable_tools = true,
+        },
+        ---@type AvanteSupportedProvider
+        ['codestral'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'mistralai/codestral-2501',
+          max_tokens = 128,
+          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['groq-llama'] = {
@@ -116,6 +154,12 @@ Produce final response that represents the most technically sound integration of
         },
         files = {
           add_current = '<leader>af',
+        },
+        suggestion = {
+          accept = '<Tab>',
+          next = '<M-]>',
+          prev = '<M-[>',
+          dismiss = '<M-e>',
         },
       },
       windows = {

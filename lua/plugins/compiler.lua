@@ -3,6 +3,9 @@ return {
     'zeioth/compiler.nvim',
     enabled = true,
     cond = not vim.g.vscode,
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
     cmd = {
       'CompilerOpen',
       'CompilerToggleResults',
