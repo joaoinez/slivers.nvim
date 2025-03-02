@@ -36,6 +36,8 @@ return {
 
           if deletable_ft[vim.bo[bufnr].filetype] then vim.api.nvim_buf_delete(bufnr, { force = true }) end
         end
+
+        vim.cmd 'delm A-Z'
       end,
     })
   end,

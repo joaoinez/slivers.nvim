@@ -28,7 +28,7 @@ return {
     return {
       provider = models[vim.g.ai_mode] or nil,
       cursor_applying_provider = vim.g.ai_mode > 1 and 'groq-llama' or 'ollama-fastapply',
-      auto_suggestions_provider = nil,
+      auto_suggestions_provider = 'codestral',
       behaviour = {
         auto_suggestions = false,
         enable_cursor_planning_mode = true,

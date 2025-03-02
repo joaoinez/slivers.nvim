@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd('User', {
 -- [[ Load VSCode Config ]]
 if vim.g.vscode then Slivers.load 'vscode' end
 
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme poimandres]]
 
 ColorSliver()
 

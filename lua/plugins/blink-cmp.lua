@@ -143,6 +143,9 @@ return {
         'avante_files',
       },
     },
+    cmdline = {
+      enabled = false,
+    },
   },
   opts_extend = { 'sources.default' },
 }
