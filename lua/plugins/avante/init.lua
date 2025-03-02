@@ -75,6 +75,9 @@ Produce final response that represents the most technically sound integration of
       rag_service = {
         enabled = true,
       },
+      disabled_tools = {
+        'python',
+      },
       ---@type AvanteSupportedProvider
       claude = {
         max_tokens = 8192,
