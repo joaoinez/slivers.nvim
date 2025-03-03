@@ -20,3 +20,77 @@ map('n', '<leader>kRl', function() Slivers.misc.open_term_with_cmd 'lua' end, { 
 
 -- REPL python
 map('n', '<leader>kRp', function() Slivers.misc.open_term_with_cmd 'python3' end, { desc = 'Python' })
+
+-- -- Open aider
+-- map('n', '<leader>ai', function()
+--   local autocmd = Slivers.autocmds.autocmd
+--   local augroup = Slivers.autocmds.augroup
+--
+--   autocmd('TermOpen', {
+--     group = augroup 'term_cmd',
+--     once = true,
+--     callback = function()
+--       vim.o.number = false
+--       vim.o.relativenumber = false
+--
+--       vim.cmd 'norm i'
+--     end,
+--   })
+--
+--   local buf = vim.api.nvim_create_buf(false, true)
+--
+--   vim.cmd.vnew()
+--   vim.api.nvim_win_set_buf(0, buf)
+--   vim.cmd.term 'aider --architect'
+--   vim.cmd.wincmd 'L'
+--   vim.api.nvim_win_set_width(0, math.floor(vim.o.columns * 0.40))
+--
+--   vim.api.nvim_create_autocmd('TermClose', {
+--     group = augroup 'term_cmd',
+--     once = true,
+--     buffer = buf,
+--     callback = function()
+--       vim.api.nvim_buf_delete(buf, { force = true })
+--       vim.cmd.checktime()
+--     end,
+--   })
+--
+--   vim.bo[buf].buflisted = false
+-- end, { desc = 'Aider' })
+--
+-- -- Open claude
+-- map('n', '<leader>ac', function()
+--   local autocmd = Slivers.autocmds.autocmd
+--   local augroup = Slivers.autocmds.augroup
+--
+--   autocmd('TermOpen', {
+--     group = augroup 'term_cmd',
+--     once = true,
+--     callback = function()
+--       vim.o.number = false
+--       vim.o.relativenumber = false
+--
+--       vim.cmd 'norm i'
+--     end,
+--   })
+--
+--   local buf = vim.api.nvim_create_buf(false, true)
+--
+--   vim.cmd.vnew()
+--   vim.api.nvim_win_set_buf(0, buf)
+--   vim.cmd.term 'claude'
+--   vim.cmd.wincmd 'L'
+--   vim.api.nvim_win_set_width(0, math.floor(vim.o.columns * 0.40))
+--
+--   vim.api.nvim_create_autocmd('TermClose', {
+--     group = augroup 'term_cmd',
+--     once = true,
+--     buffer = buf,
+--     callback = function()
+--       vim.api.nvim_buf_delete(buf, { force = true })
+--       vim.cmd.checktime()
+--     end,
+--   })
+--
+--   vim.bo[buf].buflisted = false
+-- end, { desc = 'Claude' })

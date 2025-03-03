@@ -298,19 +298,6 @@ done
   },
 
   -- [[ Misc ]]
-  {
-    '<leader>ko',
-    function()
-      Snacks.terminal(
-        -- TODO: Change this to open router r1
-        --
-        -- 'tgpt -i --provider openai --url https://api.fireworks.ai/inference/v1/chat/completions --model accounts/fireworks/models/deepseek-r1 --key $FIREWORKS_API_KEY',
-        nil,
-        { win = { border = 'rounded' } }
-      )
-    end,
-    desc = 'AI Chat (deepseek-r1)',
-  },
   { '<leader>kD', function() Snacks.terminal 'lazydocker' end, desc = 'Lazydocker' },
   { '<leader>v', function() Snacks.picker.cliphist() end, desc = 'Clipboard' },
   {

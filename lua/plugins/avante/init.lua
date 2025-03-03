@@ -75,6 +75,8 @@ Produce final response that represents the most technically sound integration of
       rag_service = {
         enabled = true,
       },
+      ---@type AvanteLLMToolPublic[]
+      custom_tools = {},
       disabled_tools = {
         'python',
       },

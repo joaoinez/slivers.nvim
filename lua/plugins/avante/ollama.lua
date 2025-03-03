@@ -1,3 +1,5 @@
+-- NOTE: From https://github.com/yetone/avante.nvim/issues/1149
+
 local M = {}
 
 -- Ollama API Documentation https://github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion

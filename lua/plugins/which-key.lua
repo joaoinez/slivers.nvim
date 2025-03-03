@@ -51,6 +51,10 @@ return {
       { '<leader><leader>', icon = { icon = '󱊔', color = 'azure' } },
 
       -- [[ Groups ]]
+      -- AI
+      { '<leader>a', group = 'ai', mode = { 'n', 'v' } },
+      { '<leader>ac', icon = { icon = '󰛄', color = 'orange' } },
+
       -- Code
       { '<leader>c', group = 'code', mode = { 'n', 'x' } },
       { '<leader>ca', icon = { icon = '󱐋', color = 'orange' } },
@@ -96,6 +100,9 @@ return {
       { '<leader>ofc', icon = { icon = '', color = 'cyan' } },
       { '<leader>ofz', icon = { icon = '', color = 'cyan' } },
       { '<leader>od', group = 'docs', icon = { icon = '', color = 'grey' } },
+      { '<leader>oa', group = 'ai' },
+      { '<leader>odu', group = 'ui' },
+      { '<leader>oda', group = 'awesome', icon = { icon = '󰓠', color = 'red' } },
 
       -- Misc
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
@@ -121,9 +128,6 @@ return {
       -- Toggles
       { '<leader>t', group = 'toggle' },
       { '<leader>tt', icon = { icon = '', color = 'red' } },
-
-      -- AI
-      { '<leader>a', group = 'ai', mode = { 'n', 'v' } },
 
       -- Settings
       { '<leader>,', group = 'settings', icon = { icon = '󰒓', color = 'grey' } },

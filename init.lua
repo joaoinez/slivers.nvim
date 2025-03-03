@@ -66,8 +66,10 @@ vim.api.nvim_create_autocmd('User', {
 -- [[ Load VSCode Config ]]
 if vim.g.vscode then Slivers.load 'vscode' end
 
-vim.cmd [[colorscheme poimandres]]
+if not vim.g.vscode then
+  vim.cmd [[colorscheme poimandres]]
 
-ColorSliver()
+  ColorSliver()
+end
 
 -- vim: ts=2 sts=2 sw=2 et
