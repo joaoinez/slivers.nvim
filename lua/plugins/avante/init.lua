@@ -15,26 +15,20 @@ return {
     },
   },
   opts = function()
-    local models = {
-      'ollama-qwen', -- mode 1
-      'qwen2.5-coder', -- mode 2
-      'qwen2.5-coder', -- mode 3
-      'claude', -- mode 4
-      'claude', -- mode 5
-      'claude-reasoning', -- mode 6
-    }
+    local model = vim.g.ai_model or ''
+    local provider = model:gsub('%-dual', '')
 
     ---@type avante.Config
     return {
-      provider = models[vim.g.ai_mode] or nil,
-      cursor_applying_provider = vim.g.ai_mode > 1 and 'groq-llama' or 'ollama-fastapply',
+      provider = provider,
+      cursor_applying_provider = model:match '%-local' and 'fastapply-local' or 'groq-llama',
       auto_suggestions_provider = 'codestral',
       behaviour = {
         auto_suggestions = false,
         enable_cursor_planning_mode = true,
       },
       dual_boost = {
-        enabled = vim.g.ai_mode == 3 or vim.g.ai_mode == 5,
+        enabled = model:match '%-dual' ~= nil,
         first_provider = 'deepseek-r1',
         second_provider = 'o3-mini-high',
         prompt = [[
@@ -149,8 +143,8 @@ Produce final response that represents the most technically sound integration of
           model = 'llama-3.3-70b-versatile',
           max_tokens = 32768,
         },
-        ['ollama-qwen'] = require('plugins.avante.ollama').model 'qwen2.5-coder:latest',
-        ['ollama-fastapply'] = require('plugins.avante.ollama').model 'hf.co/Kortix/FastApply-1.5B-v1.0_GGUF:latest',
+        ['qwen2.5-coder-local'] = require('plugins.avante.ollama').model 'qwen2.5-coder:latest',
+        ['fastapply-local'] = require('plugins.avante.ollama').model 'hf.co/Kortix/FastApply-1.5B-v1.0_GGUF:latest',
       },
       mappings = {
         focus = '<leader>aF',

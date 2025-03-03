@@ -116,18 +116,6 @@ M.lualine = {
     vtsls = '󰛦',
     gopls = '󰟓',
   },
-  ai = {
-    claude = '󰛄',
-    ['claude-reasoning'] = '󰛄',
-    ['deepseek-r1'] = '',
-    ['o3-mini-high'] = '',
-    ['qwen2.5-coder'] = '',
-    ['mistral-small'] = '',
-    ['groq-llama'] = '',
-    ['ollama-qwen'] = '',
-    gemini = '󰫢',
-    cohere = '󰺠',
-  },
 }
 
 return M
