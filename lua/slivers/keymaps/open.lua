@@ -207,6 +207,14 @@ map('n', '<leader>oag', function() Slivers.misc.open_url 'https://console.groq.c
 -- Copilot
 map('n', '<leader>oac', function() Slivers.misc.open_url 'https://github.com/copilot' end, { desc = 'Copilot' })
 
+-- OpenAI
+map(
+  'n',
+  '<leader>oaa',
+  function() Slivers.misc.open_url 'https://platform.openai.com/settings/organization/billing/overview' end,
+  { desc = 'OpenAI' }
+)
+
 -- [[ Awesome ]]
 -- Awesome Shadcn
 map(
