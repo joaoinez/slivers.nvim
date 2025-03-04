@@ -110,6 +110,15 @@ Produce final response that represents the most technically sound integration of
         },
         -- Non-Reasoning Models
         ---@type AvanteSupportedProvider
+        ['deepseek-v3'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'deepseek/deepseek-chat',
+          max_tokens = 8192,
+          disable_tools = true,
+        },
+        ---@type AvanteSupportedProvider
         ['qwen2.5-coder'] = {
           __inherited_from = 'openai',
           endpoint = 'https://openrouter.ai/api/v1',
