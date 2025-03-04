@@ -6,7 +6,7 @@ map('n', '<down>', '<nop>')
 map('n', '<up>', '<nop>')
 map('n', '<right>', '<nop>')
 
--- Disable `s` key for flash and surround plugins
+-- Disable `s` key for flash plugin
 map({ 'n', 'x' }, 's', '<nop>')
 
 -- Disable `m` for match operations
