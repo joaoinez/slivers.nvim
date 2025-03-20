@@ -210,7 +210,7 @@ map('n', '<leader>oac', function() Slivers.misc.open_url 'https://github.com/cop
 -- OpenAI
 map(
   'n',
-  '<leader>oaa',
+  '<leader>oaA',
   function() Slivers.misc.open_url 'https://platform.openai.com/settings/organization/billing/overview' end,
   { desc = 'OpenAI' }
 )

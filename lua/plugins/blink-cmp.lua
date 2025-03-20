@@ -3,6 +3,7 @@ return {
   'saghen/blink.cmp',
   enabled = true,
   cond = not vim.g.vscode,
+  version = '*',
   dependencies = {
     { 'saghen/blink.compat', version = '*', opts = {} },
     {
@@ -37,9 +38,10 @@ return {
       },
     },
   },
-  version = '*',
+  build = 'cargo +nightly build --release',
   event = 'InsertEnter',
   opts = {
+    fuzzy = { implementation = 'prefer_rust_with_warning' },
     snippets = { preset = 'luasnip' },
     keymap = {
       preset = 'none',

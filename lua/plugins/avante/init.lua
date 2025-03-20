@@ -25,7 +25,8 @@ return {
       auto_suggestions_provider = 'codestral',
       behaviour = {
         auto_suggestions = false,
-        enable_cursor_planning_mode = true,
+        enable_cursor_planning_mode = not model:match 'claude',
+        enable_claude_text_editor_tool_mode = model:match 'claude',
       },
       dual_boost = {
         enabled = model:match '%-dual' ~= nil,
@@ -67,7 +68,7 @@ Produce final response that represents the most technically sound integration of
         timeout = 60000 * 5,
       },
       rag_service = {
-        enabled = true,
+        enabled = false,
         embed_model = 'text-embedding-3-small',
       },
       ---@type AvanteLLMToolPublic[]
@@ -78,6 +79,7 @@ Produce final response that represents the most technically sound integration of
       ---@type AvanteSupportedProvider
       claude = {
         max_tokens = 8192,
+        disable_tools = true,
       },
       vendors = {
         -- Reasoning Models

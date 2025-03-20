@@ -7,7 +7,14 @@ M.highlighters = {
 }
 
 M.servers = {
-  basedpyright = {},
+  basedpyright = {
+    analysis = {
+      diagnosticMode = 'openFilesOnly',
+      inlayHints = {
+        callArgumentNames = true,
+      },
+    },
+  },
   ruff = {
     cmd_env = { RUFF_TRACE = 'messages' },
     init_options = {

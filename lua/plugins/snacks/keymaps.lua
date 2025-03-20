@@ -30,9 +30,11 @@ local M = {
   {
     '<leader>ff',
     function()
-      Snacks.picker.smart {
-        multi = { 'buffers', 'files' },
+      Snacks.picker.files {
         hidden = true,
+        matcher = {
+          frecency = true,
+        },
         win = { input = { footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ', footer_pos = 'right' } },
       }
     end,
@@ -144,7 +146,7 @@ local M = {
     function() Snacks.picker.jumps { layout = { preset = 'ivy', preview = 'main' } } end,
     desc = 'Jump History',
   },
-  { '<leader>fu', function() Snacks.picker.undo { layout = 'dropdown' } end, desc = 'Undo History' },
+  { '<leader>u', function() Snacks.picker.undo { layout = 'dropdown' } end, desc = 'Undo History' },
   {
     '<leader>f?',
     function() Snacks.picker.keymaps { layout = 'top' } end,

@@ -8,19 +8,33 @@ return {
   priority = 1002,
   lazy = false,
   keys = require 'plugins.snacks.keymaps',
+  ---@type snacks.Config
   opts = {
     bigfile = require 'plugins.snacks.bigfile',
     dashboard = require 'plugins.snacks.dashboard',
-    image = { enabled = true, force = true, doc = { inline = false } },
+    image = { enabled = true, force = true },
     indent = require 'plugins.snacks.indent',
     input = { enabled = true },
-    notifier = { enabled = true, timeout = 3000 },
+    notifier = {
+      enabled = true,
+      timeout = 3000,
+      ---@type snacks.notifier.style
+      style = 'fancy',
+    },
     picker = require 'plugins.snacks.picker',
     quickfile = { enabled = true },
     scope = { enabled = true },
     scratch = require 'plugins.snacks.scratch',
     statuscolumn = require 'plugins.snacks.statuscolumn',
     words = { enabled = true },
+    ---@type table<string, snacks.win.Config>
+    styles = {
+      notification = {
+        wo = {
+          wrap = true,
+        },
+      },
+    },
   },
   init = function()
     Slivers.autocmds.autocmd('User', {

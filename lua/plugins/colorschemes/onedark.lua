@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'navarasu/onedark.nvim',
-  enabled = true,
+  enabled = false,
   priority = 1000,
   lazy = Slivers.colorscheme.get_config(ColorSliver.colorschemes, vim.g.colors_name).name ~= 'onedark',
   opts = {
