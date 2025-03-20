@@ -6,9 +6,11 @@ local M = {
       { icon = ' ', key = 't', desc = 'Find Text', action = ':lua Snacks.picker.grep()' },
       { icon = '󰙅 ', key = 'e', desc = 'Explore Files', action = ':Oil' },
       { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+      { icon = '󰊢 ', key = 'g', desc = 'Git Status', action = ':lua Snacks.picker.git_status()' },
       { icon = '', key = 'r', desc = 'README', action = ':e README.md' },
       { desc = '' },
       { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
+      { icon = '󰊤 ', key = 'B', desc = 'Browse Repo', action = function() Snacks.gitbrowse() end },
       { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
       { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
     },
@@ -30,7 +32,7 @@ local M = {
   sections = {
     { section = 'header' },
     { text = '', padding = 1 },
-    { section = 'keys', gap = 2, padding = 1 },
+    { section = 'keys', gap = 1, padding = 1 },
     { text = '', padding = 2 },
     { text = [[
 ／l、
