@@ -14,7 +14,16 @@ local M = {
       { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
       { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
     },
-    header = [[
+    header = (function()
+      local headers = {
+        [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+        [[
            ▄ ▄                   
        ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     
        █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     
@@ -25,6 +34,16 @@ local M = {
 █▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █
     █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    
 ]],
+        [[
+／l、
+  (､ ｡ ７
+  l  ~ヽ
+      じしf_,)ノ
+    ]],
+      }
+      math.randomseed(os.time())
+      return headers[math.random(#headers)]
+    end)(),
   },
   formats = {
     header = { '%s', align = 'center', hl = 'SnacksDashboardFooter' },
@@ -34,12 +53,6 @@ local M = {
     { text = '', padding = 1 },
     { section = 'keys', gap = 1, padding = 1 },
     { text = '', padding = 2 },
-    { text = [[
-／l、
-  (､ ｡ ７
-  l  ~ヽ
-      じしf_,)ノ
-    ]], align = 'center' },
     { section = 'startup', align = 'center' },
   },
 }

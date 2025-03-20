@@ -155,8 +155,16 @@ Produce final response that represents the most technically sound integration of
           model = 'llama-3.3-70b-versatile',
           max_tokens = 32768,
         },
-        ['qwen2.5-coder-local'] = require('plugins.avante.ollama').model 'qwen2.5-coder:latest',
-        ['fastapply-local'] = require('plugins.avante.ollama').model 'hf.co/Kortix/FastApply-1.5B-v1.0_GGUF:latest',
+        ---@type AvanteSupportedProvider
+        ['qwen2.5-coder-local'] = {
+          __inherited_from = 'ollama',
+          model = 'qwen2.5-coder:latest',
+        },
+        ---@type AvanteSupportedProvider
+        ['fastapply-local'] = {
+          __inherited_from = 'ollama',
+          model = 'hf.co/Kortix/FastApply-1.5B-v1.0_GGUF:latest',
+        },
       },
       mappings = {
         focus = '<leader>aF',
