@@ -12,7 +12,7 @@ return {
   opts = {
     bigfile = require 'plugins.snacks.bigfile',
     dashboard = require 'plugins.snacks.dashboard',
-    image = { enabled = true, force = true },
+    image = { enabled = true, force = true, doc = { enabled = false } },
     indent = require 'plugins.snacks.indent',
     input = { enabled = true },
     notifier = {
