@@ -19,7 +19,7 @@ return {
     local provider = model:gsub('%-dual', '')
 
     ---@type avante.Config
-    return {
+    local config = {
       provider = provider,
       cursor_applying_provider = model:match '%-local' and 'fastapply-local' or 'groq-llama',
       auto_suggestions_provider = 'codestral',
@@ -79,6 +79,7 @@ Produce final response that represents the most technically sound integration of
       ---@type AvanteSupportedProvider
       claude = {
         max_tokens = 8192,
+        disable_tools = true,
       },
       vendors = {
         -- Reasoning Models
@@ -86,6 +87,7 @@ Produce final response that represents the most technically sound integration of
         ['claude-reasoning'] = {
           __inherited_from = 'claude',
           max_tokens = 8192,
+          disable_tools = true,
           temperature = 1,
           thinking = {
             type = 'enabled',
@@ -108,6 +110,7 @@ Produce final response that represents the most technically sound integration of
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'openai/o3-mini-high',
           max_tokens = 8192,
+          disable_tools = true,
         },
         -- Non-Reasoning Models
         ---@type AvanteSupportedProvider
@@ -153,16 +156,19 @@ Produce final response that represents the most technically sound integration of
           endpoint = 'https://api.groq.com/openai/v1/',
           model = 'llama-3.3-70b-versatile',
           max_tokens = 32768,
+          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['qwen2.5-coder-local'] = {
           __inherited_from = 'ollama',
           model = 'qwen2.5-coder:latest',
+          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['fastapply-local'] = {
           __inherited_from = 'ollama',
           model = 'hf.co/Kortix/FastApply-1.5B-v1.0_GGUF:latest',
+          disable_tools = true,
         },
       },
       mappings = {
@@ -190,6 +196,8 @@ Produce final response that represents the most technically sound integration of
         provider = 'snacks',
       },
     }
+
+    return config
   end,
   config = function(_, opts)
     require('avante').setup(opts)
