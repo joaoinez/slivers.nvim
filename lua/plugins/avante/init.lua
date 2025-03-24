@@ -79,7 +79,6 @@ Produce final response that represents the most technically sound integration of
       ---@type AvanteSupportedProvider
       claude = {
         max_tokens = 8192,
-        disable_tools = true,
       },
       vendors = {
         -- Reasoning Models
