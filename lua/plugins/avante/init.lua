@@ -78,16 +78,15 @@ Produce final response that represents the most technically sound integration of
       },
       ---@type AvanteSupportedProvider
       claude = {
+        model = 'claude-3-5-sonnet-20241022',
         max_tokens = 8192,
-        disable_tools = true,
       },
       vendors = {
-        -- Reasoning Models
+        -- [[ Reasoning Models ]]
         ---@type AvanteSupportedProvider
         ['claude-reasoning'] = {
           __inherited_from = 'claude',
           max_tokens = 8192,
-          disable_tools = true,
           temperature = 1,
           thinking = {
             type = 'enabled',
@@ -101,7 +100,6 @@ Produce final response that represents the most technically sound integration of
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'deepseek/deepseek-r1',
           max_tokens = 8192,
-          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['o3-mini-high'] = {
@@ -110,15 +108,14 @@ Produce final response that represents the most technically sound integration of
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'openai/o3-mini-high',
           max_tokens = 8192,
-          disable_tools = true,
         },
-        -- Non-Reasoning Models
+        -- [[ Non-Reasoning Models ]]
         ---@type AvanteSupportedProvider
         ['deepseek-v3'] = {
           __inherited_from = 'openai',
           endpoint = 'https://openrouter.ai/api/v1',
           api_key_name = 'OPENROUTER_API_KEY',
-          model = 'deepseek/deepseek-chat',
+          model = 'deepseek/deepseek-chat-v3-0324',
           max_tokens = 8192,
           disable_tools = true,
         },

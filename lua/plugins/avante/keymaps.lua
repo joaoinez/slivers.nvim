@@ -50,6 +50,10 @@ M.load_keymaps = function()
           hidden = true,
         },
         {
+          '<leader>aS',
+          desc = 'Stop Response',
+        },
+        {
           '<leader>a?',
           desc = 'Select Model',
         },
