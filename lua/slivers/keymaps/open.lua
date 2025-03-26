@@ -44,52 +44,53 @@ map(
   { desc = 'Lua Types' }
 )
 
+-- Supabase Docs
+map('n', '<leader>ods', function() Slivers.misc.open_url 'https://supabase.com/docs' end, { desc = 'Supabase' })
+
+-- GSAP
+map('n', '<leader>odG', function() Slivers.misc.open_url 'https://gsap.com/cheatsheet' end, { desc = 'GSAP' })
+
 -- [[ UI ]]
 -- Shadcn UI
-map('n', '<leader>odus', function() Slivers.misc.open_url 'https://ui.shadcn.com/docs' end, { desc = 'Shadcn UI' })
+map('n', '<leader>ous', function() Slivers.misc.open_url 'https://ui.shadcn.com/docs' end, { desc = 'Shadcn UI' })
 
 -- Origin UI
-map('n', '<leader>oduo', function() Slivers.misc.open_url 'https://originui.com/' end, { desc = 'Origin UI' })
+map('n', '<leader>ouo', function() Slivers.misc.open_url 'https://originui.com/' end, { desc = 'Origin UI' })
 
 -- Tailwind UI
 map(
   'n',
-  '<leader>odut',
+  '<leader>out',
   function() Slivers.misc.open_url 'https://tailwindui.com/components' end,
   { desc = 'Tailwind UI' }
 )
 
 -- Daisy UI
-map('n', '<leader>odud', function() Slivers.misc.open_url 'https://daisyui.com/docs/intro' end, { desc = 'Daisy UI' })
+map('n', '<leader>oud', function() Slivers.misc.open_url 'https://daisyui.com/docs/intro' end, { desc = 'Daisy UI' })
 
 -- Dot UI
 map(
   'n',
-  '<leader>oduD',
-  function() Slivers.misc.open_url 'https://next.dotui.org/docs/getting-started/introduction' end,
+  '<leader>ouD',
+  function() Slivers.misc.open_url 'https://dotui.org/docs/getting-started/introduction' end,
   { desc = 'Dot UI' }
 )
 
 -- Hero UI
 map(
   'n',
-  '<leader>oduh',
+  '<leader>ouh',
   function() Slivers.misc.open_url 'https://www.heroui.com/docs/guide/introduction' end,
   { desc = 'Hero UI' }
 )
 
 -- Indie UI
-map(
-  'n',
-  '<leader>odui',
-  function() Slivers.misc.open_url 'https://ui.indie-starter.dev/docs' end,
-  { desc = 'Indie UI' }
-)
+map('n', '<leader>oui', function() Slivers.misc.open_url 'https://ui.indie-starter.dev/docs' end, { desc = 'Indie UI' })
 
 -- Inspira UI
 map(
   'n',
-  '<leader>oduI',
+  '<leader>ouI',
   function() Slivers.misc.open_url 'https://inspira-ui.com/components' end,
   { desc = 'Inspira UI' }
 )
@@ -97,7 +98,7 @@ map(
 -- Gluestack UI
 map(
   'n',
-  '<leader>oduI',
+  '<leader>ouI',
   function() Slivers.misc.open_url 'https://gluestack.io/ui/docs/components/all-components' end,
   { desc = 'Gluestack UI' }
 )
@@ -105,7 +106,7 @@ map(
 -- 21st.dev
 map(
   'n',
-  '<leader>odu2',
+  '<leader>ou2',
   function() Slivers.misc.open_url 'https://21st.dev/?tab=components&sort=recommended' end,
   { desc = '21st.dev' }
 )
@@ -113,7 +114,7 @@ map(
 -- Aceternity UI
 map(
   'n',
-  '<leader>odua',
+  '<leader>oua',
   function() Slivers.misc.open_url 'https://ui.aceternity.com/components' end,
   { desc = 'Aceternity UI' }
 )
@@ -121,27 +122,27 @@ map(
 -- Motion Primitives
 map(
   'n',
-  '<leader>oduM',
+  '<leader>ouM',
   function() Slivers.misc.open_url 'https://motion-primitives.com/docs' end,
   { desc = 'Motion Primitives' }
 )
 
 -- Magic UI
-map('n', '<leader>odum', function() Slivers.misc.open_url 'https://magicui.design/docs' end, { desc = 'Magic UI' })
+map('n', '<leader>oum', function() Slivers.misc.open_url 'https://magicui.design/docs' end, { desc = 'Magic UI' })
 
 -- Flowbite
-map('n', '<leader>oduf', function() Slivers.misc.open_url 'https://flowbite.com/blocks' end, { desc = 'Flowbite' })
+map('n', '<leader>ouf', function() Slivers.misc.open_url 'https://flowbite.com/blocks' end, { desc = 'Flowbite' })
 
 -- Shadcn Blocks
 map(
   'n',
-  '<leader>oduS',
+  '<leader>ouS',
   function() Slivers.misc.open_url 'https://www.shadcnblocks.com/blocks' end,
   { desc = 'Shadcn Blocks' }
 )
 
 -- Tailkits
-map('n', '<leader>oduT', function() Slivers.misc.open_url 'https://tailkits.com/components' end, { desc = 'Tailkits' })
+map('n', '<leader>ouT', function() Slivers.misc.open_url 'https://tailkits.com/components' end, { desc = 'Tailkits' })
 
 -- [[ Web Links ]]
 -- https://joaoinez.me
@@ -149,14 +150,6 @@ map('n', '<leader>oj', function() Slivers.misc.open_url 'https://joaoinez.me' en
 
 -- LazyVim
 map('n', '<leader>ol', function() Slivers.misc.open_url 'https://www.lazyvim.org' end, { desc = 'LazyVim' })
-
--- Nerdfonts Cheatsheet
-map(
-  'n',
-  '<leader>on',
-  function() Slivers.misc.open_url 'https://www.nerdfonts.com/cheat-sheet' end,
-  { desc = 'Nerdfonts' }
-)
 
 -- Vim Colorschemes
 map(
@@ -175,13 +168,37 @@ map('n', '<leader>ow', function() Slivers.misc.open_url 'https://wakatime.com/da
 -- Advent of Code
 map('n', '<leader>oA', function() Slivers.misc.open_url 'https://adventofcode.com' end, { desc = 'Advent of Code' })
 
+-- Fontshare
+map('n', '<leader>oF', function() Slivers.misc.open_url 'https://www.fontshare.com' end, { desc = 'Fontshare' })
+
+-- Crontab
+map('n', '<leader>ot', function() Slivers.misc.open_url 'https://crontab.guru' end, { desc = 'Crontab' })
+
+-- [[ Icons ]]
+-- Nerdfonts Cheatsheet
+map(
+  'n',
+  '<leader>oin',
+  function() Slivers.misc.open_url 'https://www.nerdfonts.com/cheat-sheet' end,
+  { desc = 'Nerdfonts' }
+)
+
 -- Lucide Icons
-map('n', '<leader>oi', function() Slivers.misc.open_url 'https://lucide.dev/icons' end, { desc = 'Lucide Icons' })
+map('n', '<leader>oil', function() Slivers.misc.open_url 'https://lucide.dev/icons' end, { desc = 'Lucide Icons' })
+
+-- Phophor Icons
+map('n', '<leader>oip', function() Slivers.misc.open_url 'https://phosphoricons.com' end, { desc = 'Phophor Icons' })
 
 -- Fontshare
 map('n', '<leader>of', function() Slivers.misc.open_url 'https://www.fontshare.com' end, { desc = 'Fontshare' })
 
 -- [[ AI ]]
+-- Chat
+map('n', '<leader>oc', function() Slivers.misc.open_url 'https://chat.sphynx-ule.ts.net' end, { desc = 'AI Chat' })
+
+-- Search
+map('n', '<leader>os', function() Slivers.misc.open_url 'https://search.sphynx-ule.ts.net' end, { desc = 'AI Search' })
+
 -- Aider Leaderboards
 map(
   'n',
@@ -223,3 +240,18 @@ map(
   function() Slivers.misc.open_url 'https://github.com/birobirobiro/awesome-shadcn-ui' end,
   { desc = 'Awesome Shadcn' }
 )
+
+-- [[ Production ]]
+-- Vercel
+map(
+  'n',
+  '<leader>opv',
+  function() Slivers.misc.open_url 'https://vercel.com/joao-inezs-projects' end,
+  { desc = 'Vercel' }
+)
+
+-- Supabase
+map('n', '<leader>ops', function() Slivers.misc.open_url 'https://supabase.com/dashboard' end, { desc = 'Supabase' })
+
+-- Render
+map('n', '<leader>opr', function() Slivers.misc.open_url 'https://dashboard.render.com/web' end, { desc = 'Render' })

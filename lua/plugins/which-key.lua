@@ -99,9 +99,15 @@ return {
       { '<leader>of', group = 'file', icon = { icon = '', color = 'cyan' } },
       { '<leader>ofc', icon = { icon = '', color = 'cyan' } },
       { '<leader>ofz', icon = { icon = '', color = 'cyan' } },
-      { '<leader>od', group = 'docs', icon = { icon = '', color = 'grey' } },
       { '<leader>oa', group = 'ai' },
-      { '<leader>odu', group = 'ui' },
+      { '<leader>oi', group = 'icons', icon = { icon = '󱌝', color = 'azure' } },
+      { '<leader>op', group = 'production', icon = { icon = '', color = 'azure' } },
+      { '<leader>od', group = 'documentation', icon = { icon = '', color = 'grey' } },
+      { '<leader>ou', group = 'ui' },
+      { '<leader>ou2', icon = { icon = '', color = 'yellow' } },
+      { '<leader>oua', icon = { icon = '', color = 'yellow' } },
+      { '<leader>oum', icon = { icon = '', color = 'yellow' } },
+      { '<leader>ouM', icon = { icon = '', color = 'yellow' } },
       { '<leader>oda', group = 'awesome', icon = { icon = '󰓠', color = 'red' } },
 
       -- Misc
