@@ -25,8 +25,7 @@ return {
       auto_suggestions_provider = 'codestral',
       behaviour = {
         auto_suggestions = false,
-        enable_cursor_planning_mode = not model:match 'claude',
-        -- enable_claude_text_editor_tool_mode = model:match 'claude',
+        enable_cursor_planning_mode = true,
       },
       dual_boost = {
         enabled = model:match '%-dual' ~= nil,
@@ -83,9 +82,11 @@ Produce final response that represents the most technically sound integration of
       },
       vendors = {
         -- [[ Reasoning Models ]]
+
         ---@type AvanteSupportedProvider
         ['claude-reasoning'] = {
           __inherited_from = 'claude',
+          model = 'claude-3-7-sonnet-20250219',
           max_tokens = 8192,
           temperature = 1,
           thinking = {
@@ -117,7 +118,9 @@ Produce final response that represents the most technically sound integration of
           model = 'openai/o3-mini-high',
           max_tokens = 8192,
         },
+
         -- [[ Non-Reasoning Models ]]
+
         ---@type AvanteSupportedProvider
         ['claude-3.7'] = {
           __inherited_from = 'claude',

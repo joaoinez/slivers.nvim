@@ -36,7 +36,7 @@ if not vim.g.vscode then
   vim.o.breakindent = true -- Wrap indent to match line start.
   vim.o.cmdheight = 0 -- Hide command line unless needed.
   vim.o.colorcolumn = '80' -- Show character limit vertical bar.
-  vim.o.completeopt = { -- Options for insert mode completion.
+  vim.opt.completeopt = { -- Options for insert mode completion.
     'menu',
     'menuone',
     'noselect',
@@ -46,7 +46,7 @@ if not vim.g.vscode then
   vim.o.confirm = true -- Confirm to save changes before exiting modified buffer.
   vim.o.cursorline = true -- Highlight the text line of the cursor.
   vim.o.expandtab = true -- Enable the use of space in tab.
-  vim.o.fillchars = { -- Characters to fill the statuslines, vertical separators and special lines in the window.
+  vim.opt.fillchars = { -- Characters to fill the statuslines, vertical separators and special lines in the window.
     foldopen = '',
     foldclose = '',
     fold = ' ',
@@ -70,7 +70,7 @@ v-r-cr-o:hor20' -- Cursor styling
   vim.o.laststatus = 3 -- Show global status.
   vim.o.linebreak = true -- Wrap lines at convenient places (`breakat`).
   vim.o.list = true -- Show whitespace characters.
-  vim.o.listchars = { -- List of whitespace characters.
+  vim.opt.listchars = { -- List of whitespace characters.
     tab = '» ',
     trail = '·',
     nbsp = '␣',
@@ -84,7 +84,7 @@ v-r-cr-o:hor20' -- Cursor styling
   vim.o.scrolloff = 10 -- Number of lines to leave before/after the cursor when scrolling. Setting a high value keeps the cursor centered.
   vim.o.shiftround = true -- Round indent.
   vim.o.shiftwidth = 2 -- Number of space inserted for indentation.
-  vim.o.shortmess:append { W = true, I = true, c = true, C = true } -- Disable various messages.
+  vim.opt.shortmess:append { W = true, I = true, c = true, C = true } -- Disable various messages.
   vim.o.showmode = false -- Disable showing modes in command line.
   vim.o.sidescrolloff = 8 -- Same as vim.o.scrolloff but for side scrolling.
   vim.o.signcolumn = 'yes' -- Always show the sign column.

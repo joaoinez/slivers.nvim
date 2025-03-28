@@ -53,9 +53,8 @@ return {
           any = {
             { find = 'No information available' },
             { find = 'W325: Ignoring swapfile from Nvim process %d' },
-            {
-              find = 'Language server `vtsls` does not support command `_typescript.didOrganizeImports`. This command may require a client extension.',
-            },
+            { find = 'does not support command' },
+            { find = 'deprecated' },
           },
         },
         view = 'mini',
