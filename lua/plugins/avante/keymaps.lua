@@ -64,7 +64,7 @@ M.load_keymaps = function()
         {
           mode = { 'n', 'v' },
           {
-            '<leader>ak',
+            '<leader>aK',
             function() require('avante.api').ask { question = templates.avante_keywords } end,
             desc = 'Keywords',
           },

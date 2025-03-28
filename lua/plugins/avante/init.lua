@@ -26,7 +26,7 @@ return {
       behaviour = {
         auto_suggestions = false,
         enable_cursor_planning_mode = not model:match 'claude',
-        enable_claude_text_editor_tool_mode = model:match 'claude',
+        -- enable_claude_text_editor_tool_mode = model:match 'claude',
       },
       dual_boost = {
         enabled = model:match '%-dual' ~= nil,
@@ -94,6 +94,14 @@ Produce final response that represents the most technically sound integration of
           },
         },
         ---@type AvanteSupportedProvider
+        ['gemini-2.5-pro'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'google/gemini-2.5-pro-exp-03-25:free',
+          max_tokens = 8192,
+        },
+        ---@type AvanteSupportedProvider
         ['deepseek-r1'] = {
           __inherited_from = 'openai',
           endpoint = 'https://openrouter.ai/api/v1',
@@ -110,6 +118,12 @@ Produce final response that represents the most technically sound integration of
           max_tokens = 8192,
         },
         -- [[ Non-Reasoning Models ]]
+        ---@type AvanteSupportedProvider
+        ['claude-3.7'] = {
+          __inherited_from = 'claude',
+          model = 'claude-3-7-sonnet-20250219',
+          max_tokens = 8192,
+        },
         ---@type AvanteSupportedProvider
         ['deepseek-v3'] = {
           __inherited_from = 'openai',

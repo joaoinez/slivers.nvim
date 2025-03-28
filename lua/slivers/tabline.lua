@@ -33,4 +33,4 @@ function _G.TablineSliver()
 end
 
 -- Enable the custom tabline
-vim.opt.tabline = '%!v:lua.TablineSliver()'
+vim.o.tabline = '%!v:lua.TablineSliver()'
