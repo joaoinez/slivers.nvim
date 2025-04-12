@@ -3,6 +3,7 @@ return {
   'milanglacier/minuet-ai.nvim',
   enabled = true,
   cond = not vim.g.vscode,
+  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
     provider = 'openai_compatible',
     request_timeout = 2.5,
