@@ -17,6 +17,10 @@ M.load_keymaps = function()
           mode = 'v',
         },
         {
+          '<leader>aB',
+          desc = 'Add All Open Buffers to Chat',
+        },
+        {
           '<leader>ae',
           desc = 'Edit',
           mode = 'v',

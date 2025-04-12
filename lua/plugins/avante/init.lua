@@ -21,7 +21,7 @@ return {
     ---@type avante.Config
     local config = {
       provider = provider,
-      cursor_applying_provider = model:match '%-local' and 'fastapply-local' or 'groq-llama',
+      cursor_applying_provider = model:match '%-local' and 'fastapply-local' or 'llama',
       auto_suggestions_provider = 'codestral',
       behaviour = {
         auto_suggestions = false,
@@ -29,7 +29,7 @@ return {
       },
       dual_boost = {
         enabled = model:match '%-dual' ~= nil,
-        first_provider = 'deepseek-r1',
+        first_provider = 'gemini-2.5-pro',
         second_provider = 'o3-mini-high',
         prompt = [[
 Analyze and synthesize the two reference implementations below to create an optimal solution that:
@@ -134,16 +134,14 @@ Produce final response that represents the most technically sound integration of
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'deepseek/deepseek-chat-v3-0324',
           max_tokens = 8192,
-          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['qwen2.5-coder'] = {
           __inherited_from = 'openai',
-          endpoint = 'https://openrouter.ai/api/v1',
-          api_key_name = 'OPENROUTER_API_KEY',
-          model = 'qwen/qwen-2.5-coder-32b-instruct',
+          endpoint = 'https://api.groq.com/openai/v1/',
+          api_key_name = 'GROQ_API_KEY',
+          model = 'qwen-2.5-coder-32b',
           max_tokens = 8192,
-          disable_tools = true,
         },
         ---@type AvanteSupportedProvider
         ['mistral-small'] = {
@@ -164,12 +162,12 @@ Produce final response that represents the most technically sound integration of
           disable_tools = true,
         },
         ---@type AvanteSupportedProvider
-        ['groq-llama'] = {
+        ['llama'] = {
           __inherited_from = 'openai',
           api_key_name = 'GROQ_API_KEY',
           endpoint = 'https://api.groq.com/openai/v1/',
           model = 'llama-3.3-70b-versatile',
-          max_tokens = 32768,
+          max_tokens = 8192,
           disable_tools = true,
         },
         ---@type AvanteSupportedProvider

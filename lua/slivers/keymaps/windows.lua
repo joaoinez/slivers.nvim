@@ -50,7 +50,7 @@ if not vim.g.vscode then
   map(
     'n',
     '<leader>wt',
-    '<cmd>tabnew | lua Snacks.picker.smart { multi = { "buffers", "files" } }<cr>',
+    "<cmd>tabnew | lua Snacks.picker.files { hidden = true, matcher = { frecency = true }, win = { input = { footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ', footer_pos = 'right' } }, }<cr>",
     { desc = 'New Tab' }
   )
   map('n', '<leader>ww', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
