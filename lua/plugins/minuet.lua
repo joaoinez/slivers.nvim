@@ -26,6 +26,7 @@ return {
     },
     virtualtext = {
       auto_trigger_ft = { '*' },
+      auto_trigger_ignore_ft = { 'snacks_picker_input' },
       keymap = {
         accept = '<A-y>',
         accept_line = '<Tab>',

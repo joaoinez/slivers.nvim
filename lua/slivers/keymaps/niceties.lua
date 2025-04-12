@@ -39,7 +39,7 @@ map('x', '<', '<gv', { desc = 'unindent line' })
 map('x', '>', '>gv', { desc = 'indent line' })
 
 -- Enable `<C-backspace>` to delete
-map('i', '<C-BS>', '<C-W>', { desc = 'Enable `<C-backspace>` to delete.' })
+map('i', '<M-BS>', '<C-W>', { desc = 'Enable `<C-backspace>` to delete.' })
 
 -- Block insert in line visual mode
 map('x', 'I', function() return vim.fn.mode() == 'V' and '^<C-v>I' or 'I' end, { expr = true })

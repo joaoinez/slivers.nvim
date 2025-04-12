@@ -5,7 +5,6 @@ local function M()
   if next(clients) == nil then return '' end
 
   local c = {}
-  table.insert(c, 'lsp ~')
   for _, client in pairs(clients) do
     table.insert(c, IconSliver.lualine.lsp[client.name] or client.name)
   end

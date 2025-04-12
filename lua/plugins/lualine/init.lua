@@ -14,6 +14,7 @@ return {
 
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
     local avante = require 'plugins.lualine.components.avante'
+    local treesitter = require 'plugins.lualine.components.treesitter'
 
     -- Set global lualine
     vim.o.laststatus = vim.g.lualine_laststatus
@@ -122,6 +123,10 @@ return {
             function() return '  ' .. require('dap').status() end,
             cond = function() return package.loaded['dap'] and require('dap').status() ~= '' end,
             color = get_color 'Stop',
+          },
+          {
+            treesitter,
+            color = get_color 'Lsp',
           },
           {
             lsp_clients,

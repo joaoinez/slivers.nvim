@@ -115,9 +115,9 @@ M.lualine = {
     volar = '󰡄',
     vtsls = '󰛦',
     gopls = '󰟓',
-    ['Augment Server'] = '',
     basedpyright = '',
     ruff = '󰌠',
+    yamlls = '󰬆',
   },
 }
 

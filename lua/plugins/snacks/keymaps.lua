@@ -129,6 +129,33 @@ local M = {
     function() Snacks.terminal('yazi', { win = { border = 'rounded' } }) end,
     desc = 'File Explorer (yazi)',
   },
+  {
+    '<leader>tp',
+    function()
+      local bufnr = vim.api.nvim_get_current_buf()
+      Snacks.picker {
+        finder = function()
+          local parsers = require('nvim-treesitter.parsers').available_parsers()
+          return vim.tbl_map(function(lang) return { text = lang, value = lang } end, parsers)
+        end,
+        format = 'text',
+        title = 'Treesitter Parsers',
+        layout = { preset = 'vscode' },
+        confirm = function(picker, item)
+          picker:close()
+          vim.schedule(function()
+            local has_parser = require('nvim-treesitter.parsers').has_parser(item.value)
+            if has_parser then
+              vim.bo[bufnr].filetype = item.value
+              vim.treesitter.start(bufnr, item.value)
+              vim.cmd 'LspRestart'
+            end
+          end)
+        end,
+      }
+    end,
+    desc = 'Treesitter Parser',
+  },
 
   -- Others
   { '<leader>f.', function() Snacks.picker.resume() end, desc = 'Resume' },
