@@ -13,8 +13,8 @@ return {
       openai_compatible = {
         api_key = 'OPENROUTER_API_KEY',
         end_point = 'https://openrouter.ai/api/v1/chat/completions',
-        model = 'mistralai/codestral-2501',
-        -- model = 'google/gemini-2.0-flash-001',
+        -- model = 'mistralai/codestral-2501',
+        model = 'google/gemini-2.0-flash-001',
         name = 'Openrouter',
         optional = {
           max_tokens = 128,
@@ -29,8 +29,8 @@ return {
       auto_trigger_ft = { '*' },
       auto_trigger_ignore_ft = { 'snacks_picker_input' },
       keymap = {
-        accept = '<A-y>',
-        accept_line = '<Tab>',
+        accept = '<Tab>',
+        accept_line = '<A-l>',
         prev = '<A-[>',
         next = '<A-]>',
         dismiss = '<A-e>',
