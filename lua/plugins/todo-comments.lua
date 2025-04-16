@@ -19,7 +19,7 @@ return {
     {
       '<leader>qt',
       ---@diagnostic disable-next-line: undefined-field
-      function() Snacks.picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME' } } end,
+      function() Snacks.picker.todo_comments() end,
       desc = 'Todos (snacks)',
     },
     { '<leader>qT', '<cmd>Trouble todo toggle<cr>', desc = 'Todos (trouble)' },
