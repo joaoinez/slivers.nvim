@@ -62,7 +62,7 @@ return {
   init = function()
     Slivers.autocmds.autocmd('User', {
       group = Slivers.autocmds.augroup 'neogit_refresh',
-      pattern = { 'NeogitPullComplete', 'NeogitBranchCheckout' },
+      pattern = { 'NeogitPullComplete', 'NeogitBranchCheckout', 'NeogitStash' },
       callback = function()
         if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end
       end,

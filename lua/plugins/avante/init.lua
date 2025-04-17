@@ -30,7 +30,7 @@ return {
       dual_boost = {
         enabled = model:match '%-dual' ~= nil,
         first_provider = 'gemini-2.5-pro',
-        second_provider = 'o3-mini-high',
+        second_provider = 'o4-mini-high',
         prompt = [[
 Analyze and synthesize the two reference implementations below to create an optimal solution that:
 
@@ -111,11 +111,11 @@ Produce final response that represents the most technically sound integration of
           max_tokens = 8192,
         },
         ---@type AvanteSupportedProvider
-        ['o3-mini-high'] = {
+        ['o4-mini-high'] = {
           __inherited_from = 'openai',
           endpoint = 'https://openrouter.ai/api/v1',
           api_key_name = 'OPENROUTER_API_KEY',
-          model = 'openai/o3-mini-high',
+          model = 'openai/o4-mini-high',
           max_tokens = 8192,
         },
 
