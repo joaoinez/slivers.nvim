@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'milanglacier/minuet-ai.nvim',
-  enabled = true,
+  enabled = false,
   cond = not vim.g.vscode,
   event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
   opts = {
@@ -13,8 +13,8 @@ return {
       openai_compatible = {
         api_key = 'OPENROUTER_API_KEY',
         end_point = 'https://openrouter.ai/api/v1/chat/completions',
-        -- model = 'mistralai/codestral-2501',
-        model = 'google/gemini-2.0-flash-001',
+        model = 'mistralai/codestral-2501',
+        -- model = 'google/gemini-2.0-flash-001',
         name = 'Openrouter',
         optional = {
           max_tokens = 128,
