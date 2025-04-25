@@ -13,7 +13,7 @@ return {
     local get_color = utils.get_color
 
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
-    -- local avante = require 'plugins.lualine.components.avante'
+    local avante = require 'plugins.lualine.components.avante'
     local treesitter = require 'plugins.lualine.components.treesitter'
 
     -- Set global lualine
@@ -90,27 +90,27 @@ return {
             padding = { left = 0, right = 1 },
           },
         },
-        -- lualine_x = {
-        -- {
-        --   avante.init,
-        --   icon = avante.icon(),
-        --   color = { fg = avante.color() },
-        --   separator = '',
-        -- },
-        -- {
-        --   avante.provider1,
-        --   icon = avante.provider1_icon(),
-        --   color = { fg = avante.provider1_color() },
-        --   cond = avante.dual_boost,
-        --   separator = '󱖡',
-        -- },
-        -- {
-        --   avante.provider2,
-        --   icon = avante.provider2_icon(),
-        --   color = { fg = avante.provider2_color() },
-        --   cond = avante.dual_boost,
-        -- },
-        -- },
+        lualine_x = {
+          {
+            avante.init,
+            icon = avante.icon(),
+            color = { fg = avante.color() },
+            separator = '',
+          },
+          {
+            avante.provider1,
+            icon = avante.provider1_icon(),
+            color = { fg = avante.provider1_color() },
+            cond = avante.dual_boost,
+            separator = '󱖡',
+          },
+          {
+            avante.provider2,
+            icon = avante.provider2_icon(),
+            color = { fg = avante.provider2_color() },
+            cond = avante.dual_boost,
+          },
+        },
         lualine_y = {
           {
             ---@diagnostic disable-next-line: undefined-field

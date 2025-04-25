@@ -128,11 +128,27 @@ Produce final response that represents the most technically sound integration of
           max_tokens = 8192,
         },
         ---@type AvanteSupportedProvider
+        ['claude-3.5'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'anthropic/claude-3.5-sonnet',
+          max_tokens = 8192,
+        },
+        ---@type AvanteSupportedProvider
         ['deepseek-v3'] = {
           __inherited_from = 'openai',
           endpoint = 'https://openrouter.ai/api/v1',
           api_key_name = 'OPENROUTER_API_KEY',
           model = 'deepseek/deepseek-chat-v3-0324',
+          max_tokens = 8192,
+        },
+        ---@type AvanteSupportedProvider
+        ['gpt-4.1-mini'] = {
+          __inherited_from = 'openai',
+          endpoint = 'https://openrouter.ai/api/v1',
+          api_key_name = 'OPENROUTER_API_KEY',
+          model = 'openai/gpt-4.1-mini',
           max_tokens = 8192,
         },
         ---@type AvanteSupportedProvider
