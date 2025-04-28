@@ -37,13 +37,10 @@
 - Git stuff:
   - [lazygit](https://github.com/jesseduffield/lazygit)
   - [github-cli](https://github.com/cli/cli#installation)
-  - [gh-contrib](https://github.com/mislav/gh-contrib)
 - Local AI:
   - [ollama](https://ollama.com/download/linux)
   - [qwen2.5-coder](https://ollama.com/library/qwen2.5-coder)
-    - `ollama create qwen2.5-coder:7b-ctx -f ./qwen2.5-coder:7b-ctx.Modelfile`
   - [deepseek-r1](https://ollama.com/library/deepseek-r1)
-    - `ollama create deepseek-r1:7b-ctx -f ./deepseek-r1:7b-ctx.Modelfile`
 
 > [!NOTE]
 > If running into errors run `:checkhealth slivers`
@@ -65,4 +62,3 @@ Hopefully one day I can contribute to this incredible tool.
 - [ ] Writing more comments throught the code
 - [ ] Making some functionality more modular by better checking for any other plugins its using
 - [ ] Adding Hyprland lang support
-- [ ] Adding functions for picker operations

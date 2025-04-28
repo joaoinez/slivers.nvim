@@ -232,6 +232,7 @@ local M = {
         actions = {
           neogit_open = function() require('neogit').open() end,
           neogit_commit = function(picker)
+            vim.cmd 'tabnew'
             require('neogit').open { 'commit' }
             picker:close()
           end,
@@ -242,13 +243,13 @@ local M = {
   },
   {
     '<leader>gl',
-    function() Snacks.picker.git_log_file() end,
-    desc = 'Log (file)',
+    function() Snacks.picker.git_log() end,
+    desc = 'Log',
   },
   {
-    '<leader>gL',
-    function() Snacks.picker.git_log() end,
-    desc = 'Log (project)',
+    '<leader>gh',
+    function() Snacks.picker.git_log_file() end,
+    desc = 'History (file)',
   },
   {
     '<leader>g/',

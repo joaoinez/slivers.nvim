@@ -66,10 +66,6 @@ Produce final response that represents the most technically sound integration of
         ]],
         timeout = 60000 * 5,
       },
-      rag_service = {
-        enabled = false,
-        embed_model = 'text-embedding-3-small',
-      },
       ---@type AvanteLLMToolPublic[]
       custom_tools = {},
       disabled_tools = {
