@@ -22,7 +22,7 @@ map('n', '<leader>ac', function()
   vim.fn.system 'tmux split-window -h -p 40 "claude"'
 end, { desc = 'Claude Code' })
 
--- Open Anon Kode
+-- Open Codex
 map('n', '<leader>ak', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
@@ -30,8 +30,8 @@ map('n', '<leader>ak', function()
     return
   end
 
-  vim.fn.system 'tmux split-window -h -p 40 "kode"'
-end, { desc = 'Anon Kode' })
+  vim.fn.system 'tmux split-window -h -p 40 "codex --provider openrouter"'
+end, { desc = 'Codex' })
 
 -- Open AI Chat
 map('n', '<leader>ao', function()

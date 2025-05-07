@@ -3,8 +3,6 @@
 local M = {}
 
 M.highlighters = {
-  'css',
-  'scss',
   'javascript',
   'tsx',
   'typescript',

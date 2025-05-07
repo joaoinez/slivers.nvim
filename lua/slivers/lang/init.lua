@@ -2,14 +2,15 @@ local M = {}
 
 M.langs = {
   require 'slivers.lang.core',
-  require 'slivers.lang.lua',
-  require 'slivers.lang.typescript',
-  require 'slivers.lang.markdown',
-  require 'slivers.lang.json',
-  require 'slivers.lang.yaml',
   require 'slivers.lang.bash',
+  require 'slivers.lang.css',
   require 'slivers.lang.go',
+  require 'slivers.lang.json',
+  require 'slivers.lang.lua',
+  require 'slivers.lang.markdown',
   require 'slivers.lang.python',
+  require 'slivers.lang.typescript',
+  require 'slivers.lang.yaml',
 }
 
 function M.get_highlighters()

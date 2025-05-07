@@ -34,5 +34,38 @@ M.avante_explain_code = 'Explain the following code'
 M.avante_complete_code = 'Complete the following code written in ' .. vim.bo.filetype
 M.avante_add_docstring = 'Add comments to the following code'
 M.avante_add_tests = 'Implement tests for the following code'
+M.avante_dual_boost = [[
+Analyze and synthesize the two reference implementations below to create an optimal solution that:
+
+1. First evaluates technical merits:
+   - Identifies overlapping correct patterns between both solutions
+   - Flags any potential errors/antipatterns in either solution
+   - Prioritizes solutions that better match existing codebase conventions
+   - Prefers modern language features/idioms when appropriate
+
+2. Maintains strict SEARCH/REPLACE format integrity:
+   - Verify exact string matches for all SEARCH blocks against current file states
+   - Ensure replace blocks maintain surrounding context stability
+   - Cross-validate file paths between both solutions
+   - Eliminate redundant or conflicting blocks
+
+3. Resolve conflicts through:
+   - Preferring solutions with proper error handling
+   - Choosing better variable/function naming
+   - Maintaining consistency with existing architectural patterns
+   - Prioritizing performance where relevant
+
+4. Final synthesis must:
+   - Begin with clear explanation of combined approach
+   - Group related file changes together
+   - Maintain atomic, focused SEARCH/REPLACE blocks
+   - Explicitly note improvements over individual references
+   - Highlight any remaining tradeoffs/considerations
+
+Reference Output 1: [{{provider1_output}}]
+Reference Output 2: [{{provider2_output}}]
+
+Produce final response that represents the most technically sound integration of these approaches while strictly following all formatting rules.
+        ]]
 
 return M

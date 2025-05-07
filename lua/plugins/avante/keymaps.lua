@@ -1,5 +1,21 @@
 local M = {}
 
+M.mappings = {
+  focus = '<leader>aF',
+  toggle = {
+    default = '<leader>ta',
+  },
+  files = {
+    add_current = '<leader>af',
+  },
+  suggestion = {
+    accept = '<Tab>',
+    next = '<M-]>',
+    prev = '<M-[>',
+    dismiss = '<M-e>',
+  },
+}
+
 M.load_keymaps = function()
   local templates = require 'plugins.avante.templates'
   local prefill_edit_window = templates.prefill_edit_window
@@ -15,6 +31,10 @@ M.load_keymaps = function()
           '<leader>aa',
           desc = 'Ask',
           mode = 'v',
+        },
+        {
+          '<leader>an',
+          desc = 'New Chat',
         },
         {
           '<leader>aB',

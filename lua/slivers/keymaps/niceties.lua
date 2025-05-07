@@ -63,12 +63,14 @@ map('n', '<leader>cI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 map('n', '<leader>,l', function() require('lazy').check() end, { desc = 'Lazy' })
 
 -- Mason
+-- TODO: Move this to keys in mason plugin file
 if Slivers.lazy.is_available 'mason.nvim' then
   map('n', '<leader>,m', '<cmd>Mason<cr>', { desc = 'Mason' })
   map('n', '<leader>,M', '<cmd>MasonToolsUpdate<cr>', { desc = 'Mason Update' })
 end
 
 -- Treesitter
+-- TODO: Move this to keys in treesitter plugin file
 if Slivers.lazy.is_available 'nvim-treesitter' then
   map('n', '<leader>,t', '<cmd>TSInstallInfo<cr>', { desc = 'Treesitter' })
   map('n', '<leader>,T', '<cmd>TSUpdate<cr>', { desc = 'Treesitter Update' })

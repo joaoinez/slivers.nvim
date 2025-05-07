@@ -95,7 +95,7 @@ return {
             avante.init,
             icon = avante.icon(),
             color = { fg = avante.color() },
-            separator = '',
+            separator = avante.dual_boost() and '' or '',
           },
           {
             avante.provider1,
@@ -110,6 +110,7 @@ return {
             color = { fg = avante.provider2_color() },
             cond = avante.dual_boost,
           },
+          { require 'mcphub.extensions.lualine' },
         },
         lualine_y = {
           {

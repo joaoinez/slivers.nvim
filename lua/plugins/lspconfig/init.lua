@@ -10,7 +10,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     { 'WhoIsSethDaniel/mason-tool-installer.nvim', build = ':MasonToolsUpdate' },
   },
-  event = { 'BufReadPost', 'BufNewFile', 'BufWritePost' },
+  event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
   config = function()
     local autocmd = Slivers.autocmds.autocmd
     local augroup = Slivers.autocmds.augroup
