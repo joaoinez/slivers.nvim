@@ -32,7 +32,9 @@ local M = {
         actions = {
           neogit_open = function() require('neogit').open() end,
           neogit_commit = function(picker)
+            -- HACK: this is because neogit changes the current buffer's filetype
             vim.cmd 'tabnew'
+
             require('neogit').open { 'commit' }
             picker:close()
           end,

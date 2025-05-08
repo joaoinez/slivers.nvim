@@ -5,13 +5,15 @@ map('n', '<leader>y', 'gg0yG', { desc = 'Yank File' })
 
 -- Duplicate line
 map('n', 'yd', '<cmd>norm yy<cr>p', { desc = 'Duplicate line' })
-map('n', '<A-J>', '<cmd>norm yy<cr>p', { desc = 'Duplicate line' })
+map('n', '<A-J>', '<cmd>norm yy<cr>p', { desc = 'Duplicate line (down)' })
+map('n', '<A-K>', '<cmd>norm yy<cr>P', { desc = 'Duplicate line (up)' })
+
+-- Duplicate selection
+map('x', '<A-J>', 'y`>p', { desc = 'Duplicate selection (down)' })
+map('x', '<A-K>', 'y`>P', { desc = 'Duplicate selection (up)' })
 
 -- Duplicate line and comment the original
 map('n', 'yc', '<cmd>norm yygcc<cr>p', { desc = 'Duplicate line and comment original' })
-
--- Duplicate text selection
-map('x', '<A-J>', 'y`>p', { desc = 'Duplicate selection' })
 
 -- -- Select recently pasted, yanked or changed text
 map('n', 'gy', '`[v`]', { desc = 'Select recently pasted, yanked or changed text' })
