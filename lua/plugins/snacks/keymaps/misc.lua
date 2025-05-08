@@ -45,9 +45,49 @@ local M = {
     end,
     desc = 'Treesitter Parser',
   },
+  {
+    '<leader>,c',
+    function()
+      Snacks.picker {
+        finder = function()
+          local colorschemes = Slivers.colorscheme.get_installed_colorschemes()
+          return vim.tbl_map(function(color) return { text = color, value = color } end, colorschemes)
+        end,
+        on_change = function(_, item)
+          if not item then return end
+
+          vim.cmd('colorscheme ' .. item.value)
+          ColorSliver()
+        end,
+        format = 'text',
+        title = 'Colorschemes',
+        layout = { preset = 'vscode' },
+        confirm = function(picker, item)
+          picker:close()
+          vim.schedule(function()
+            local path = vim.fn.stdpath 'config' .. '/.slivers.json'
+
+            if Slivers.misc.file_exists(path) then
+              local config = vim.json.decode(Slivers.misc.read_file(path))
+
+              config.colorscheme = item.value
+
+              Slivers.misc.write_file(path, vim.json.encode(config))
+            end
+
+            vim.cmd('colorscheme ' .. item.value)
+
+            ColorSliver()
+
+            vim.cmd 'cq'
+          end)
+        end,
+      }
+    end,
+    desc = 'Treesitter Parser',
+  },
   { '<leader>tz', function() Snacks.zen() end, desc = 'Zen Mode' },
   { '<leader>.', function() Snacks.scratch() end, desc = 'Scratch Buffer' },
-  { '<leader>v', function() Snacks.picker.cliphist() end, desc = 'Clipboard' },
   {
     ']]',
     function() Snacks.words.jump(vim.v.count1) end,

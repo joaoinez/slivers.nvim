@@ -14,6 +14,7 @@ if not vim.g.vscode then
   else
     local default_config = {
       ai_model = 'claude', -- Set default ai model. Use `-local` to use local models and `-dual` to use dual boost.
+      colorscheme = 'cattppuccin', -- Set default colorscheme.
       transparent_bg = true, -- Set transparent background.
       mode_len = 3, -- Set mode text length; 0 is Neovim's default.
       lualine_borders = true, -- Set lualine rounded borders.

@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'Shatur/neovim-ayu',
-  enabled = false,
+  enabled = true,
   priority = 1000,
   lazy = Slivers.colorscheme.get_config(ColorSliver.colorschemes, vim.g.colors_name).name ~= 'ayu',
   config = function()
