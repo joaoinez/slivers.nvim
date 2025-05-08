@@ -84,7 +84,7 @@ local M = {
         end,
       }
     end,
-    desc = 'Treesitter Parser',
+    desc = 'Colorschemes',
   },
   { '<leader>tz', function() Snacks.zen() end, desc = 'Zen Mode' },
   { '<leader>.', function() Snacks.scratch() end, desc = 'Scratch Buffer' },
