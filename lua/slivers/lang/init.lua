@@ -23,18 +23,6 @@ function M.get_highlighters()
   return highlighters
 end
 
-function M.get_servers()
-  local servers = {}
-
-  for _, lang in ipairs(M.langs) do
-    for server, opts in pairs(lang.servers or {}) do
-      servers[server] = opts
-    end
-  end
-
-  return servers
-end
-
 function M.get_formatters()
   local formatters = {}
 

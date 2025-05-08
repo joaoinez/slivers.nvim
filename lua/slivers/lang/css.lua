@@ -5,8 +5,4 @@ M.highlighters = {
   'scss',
 }
 
-M.servers = {
-  cssls = {},
-}
-
 return M

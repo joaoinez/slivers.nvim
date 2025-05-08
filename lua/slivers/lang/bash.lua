@@ -4,10 +4,6 @@ M.highlighters = {
   'bash',
 }
 
-M.servers = {
-  bashls = {},
-}
-
 M.formatters = {
   'shfmt',
 }

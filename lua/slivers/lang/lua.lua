@@ -6,18 +6,6 @@ M.highlighters = {
   'luap',
 }
 
-M.servers = {
-  lua_ls = {
-    settings = {
-      Lua = {
-        completion = {
-          callSnippet = 'Replace',
-        },
-      },
-    },
-  }
-}
-
 M.formatters = {
   'stylua',
 }

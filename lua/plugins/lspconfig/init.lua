@@ -1,21 +1,45 @@
----@diagnostic disable: missing-fields
-
 ---@type LazySpec
 return {
   'neovim/nvim-lspconfig',
   enabled = true,
   cond = not (vim.g.vscode or vim.g.server),
   dependencies = {
-    { 'williamboman/mason.nvim', build = ':MasonUpdate', config = true },
-    'williamboman/mason-lspconfig.nvim',
+    {
+      'mason-org/mason.nvim',
+      build = ':MasonUpdate',
+      opts = {
+        registries = {
+          'github:mason-org/mason-registry',
+        },
+      },
+    },
+    'mason-org/mason-lspconfig.nvim',
     { 'WhoIsSethDaniel/mason-tool-installer.nvim', build = ':MasonToolsUpdate' },
   },
   event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
   config = function()
     local autocmd = Slivers.autocmds.autocmd
     local augroup = Slivers.autocmds.augroup
-    local servers = LangSliver.get_servers() or {}
     local icons = IconSliver.diagnostics
+    local servers = {}
+
+    for filename, filetype in vim.fs.dir(vim.fn.stdpath 'config' .. '/lsp') do
+      if filetype == 'file' then
+        local server_name = filename:match '^(.-)%.lua$'
+        if server_name and server_name ~= '' then table.insert(servers, server_name) end
+      end
+    end
+
+    vim.list_extend(servers, LangSliver.get_formatters() or {})
+    vim.list_extend(servers, LangSliver.get_linters() or {})
+    vim.list_extend(servers, LangSliver.get_debuggers() or {})
+
+    require('mason').setup()
+    require('mason-tool-installer').setup { ensure_installed = servers }
+    require('mason-lspconfig').setup {
+      ensure_installed = {},
+      automatic_enable = true,
+    }
 
     autocmd('LspAttach', {
       group = augroup 'lsp_attach',
@@ -53,39 +77,12 @@ return {
       },
     }
 
-    Slivers.autocmds.autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-      group = Slivers.autocmds.augroup 'diagnostic_refresh',
+    autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+      group = augroup 'diagnostic_refresh',
       callback = function()
         vim.diagnostic.hide()
         vim.diagnostic.show()
       end,
     })
-
-    local ensure_installed = vim.tbl_keys(servers)
-    vim.list_extend(ensure_installed, LangSliver.get_formatters() or {})
-    vim.list_extend(ensure_installed, LangSliver.get_linters() or {})
-    vim.list_extend(ensure_installed, LangSliver.get_debuggers() or {})
-
-    local has_blink, blink = pcall(require, 'blink.cmp')
-
-    require('mason').setup()
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-    require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-
-          server.capabilities = vim.tbl_deep_extend(
-            'force',
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            has_blink and blink.get_lsp_capabilities() or {},
-            server.capabilities or {}
-          )
-
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
-    }
   end,
 }

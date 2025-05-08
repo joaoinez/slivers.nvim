@@ -1,5 +1,3 @@
----@diagnostic disable: missing-fields, redundant-return-value
-
 local M = {}
 
 M.highlighters = {
@@ -9,8 +7,6 @@ M.highlighters = {
   'vue',
   'svelte',
 }
-
-M.servers = require('slivers.lang.typescript.lsp').get_servers()
 
 M.formatters = {
   'prettierd',
