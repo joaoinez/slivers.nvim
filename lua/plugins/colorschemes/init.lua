@@ -12,4 +12,5 @@ return vim.g.vscode and {}
     require 'plugins.colorschemes.rose-pine',
     require 'plugins.colorschemes.tokyonight',
     require 'plugins.colorschemes.vague',
+    require 'plugins.colorschemes.xcode',
   }

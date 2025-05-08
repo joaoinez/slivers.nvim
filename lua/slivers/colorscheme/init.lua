@@ -17,6 +17,7 @@ M.colorschemes = {
   ['rose-pine'] = require 'slivers.colorscheme.rose-pine',
   tokyonight = require 'slivers.colorscheme.tokyonight',
   vague = require 'slivers.colorscheme.vague',
+  xcode = require 'slivers.colorscheme.xcode',
 }
 
 function M.apply()
