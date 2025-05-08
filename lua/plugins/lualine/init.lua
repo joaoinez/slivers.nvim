@@ -15,6 +15,7 @@ return {
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
     local avante = require 'plugins.lualine.components.avante'
     local treesitter = require 'plugins.lualine.components.treesitter'
+    local mcphub = require 'mcphub.extensions.lualine'
 
     -- Set global lualine
     vim.o.laststatus = vim.g.lualine_laststatus
@@ -110,7 +111,7 @@ return {
             color = { fg = avante.provider2_color() },
             cond = avante.dual_boost,
           },
-          { require 'mcphub.extensions.lualine' },
+          { mcphub },
         },
         lualine_y = {
           {
