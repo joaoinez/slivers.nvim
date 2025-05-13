@@ -116,9 +116,10 @@ M.lualine = {
     volar = '󰡄',
     vtsls = '󰛦',
     gopls = '󰟓',
-    pyright = '',
-    ruff = '󰌠',
-    yamlls = '󰬆',
+    basedpyright = '󰌠',
+    ruff = '',
+    yamlls = '',
+    kulala = '󱜿',
   },
 }
 

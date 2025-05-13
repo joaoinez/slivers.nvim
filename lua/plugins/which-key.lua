@@ -44,8 +44,8 @@ return {
       { '<leader>?', icon = { icon = '', color = 'grey' } },
 
       -- Splits
-      { '<leader>\\', icon = { icon = '', color = 'purple' } },
-      { '<leader>|', icon = { icon = '', color = 'purple' } },
+      { '<leader>\\', icon = { icon = '', color = 'purple' } },
+      { '<leader>|', icon = { icon = '', color = 'purple' } },
 
       -- Open buffers
       { '<leader><leader>', icon = { icon = '󱊔', color = 'azure' } },

@@ -13,7 +13,7 @@ return {
     local get_color = utils.get_color
 
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
-    local avante = require 'plugins.lualine.components.avante'
+    local ai_model = require 'plugins.lualine.components.ai_model'
     local treesitter = require 'plugins.lualine.components.treesitter'
     local mcphub = require 'mcphub.extensions.lualine'
 
@@ -93,23 +93,9 @@ return {
         },
         lualine_x = {
           {
-            avante.init,
-            icon = avante.icon(),
-            color = { fg = avante.color() },
-            separator = avante.dual_boost() and '' or '',
-          },
-          {
-            avante.provider1,
-            icon = avante.provider1_icon(),
-            color = { fg = avante.provider1_color() },
-            cond = avante.dual_boost,
-            separator = '󱖡',
-          },
-          {
-            avante.provider2,
-            icon = avante.provider2_icon(),
-            color = { fg = avante.provider2_color() },
-            cond = avante.dual_boost,
+            ai_model.init,
+            icon = ai_model.icon(),
+            color = { fg = ai_model.color() },
           },
           { mcphub },
         },

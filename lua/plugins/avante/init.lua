@@ -3,7 +3,7 @@
 ---@type LazySpec
 return {
   'yetone/avante.nvim',
-  enabled = true,
+  enabled = vim.g.ai_chat == 'avante',
   cond = not vim.g.vscode,
   build = 'make',
   event = 'VeryLazy',
@@ -25,8 +25,8 @@ return {
       auto_suggestions_provider = 'codestral',
       behaviour = {
         auto_suggestions = false,
-        auto_apply_diff_after_generation = true,
-        jump_result_buffer_on_finish = true,
+        -- auto_apply_diff_after_generation = true,
+        -- jump_result_buffer_on_finish = true,
       },
       dual_boost = {
         enabled = model:match '%-dual' ~= nil,
