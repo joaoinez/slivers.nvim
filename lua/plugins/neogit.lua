@@ -12,10 +12,7 @@ return {
     },
     {
       '<leader>gc',
-      function()
-        vim.cmd 'tabnew'
-        vim.cmd 'Neogit commit'
-      end,
+      '<cmd>Neogit commit<cr>',
       desc = 'Commit',
     },
     {
@@ -74,14 +71,6 @@ return {
       callback = function()
         if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end
       end,
-    })
-
-    Slivers.autocmds.autocmd('User', {
-      group = Slivers.autocmds.augroup 'neogit_commit',
-      pattern = {
-        'NeogitCommitComplete',
-      },
-      callback = function() vim.cmd 'tabclose' end,
     })
   end,
 }

@@ -11,8 +11,8 @@ local M = {
         unloaded = false,
         nofile = false,
         win = {
-          input = {
-            footer = '┤ <c-w> close │ <a-s> flash ├ ',
+          preview = {
+            footer = '┤ <c-w> close │ <a-s> flash │ <a-g> refine ├ ',
             footer_pos = 'left',
             keys = {
               ['<c-w>'] = { 'bufdelete', mode = { 'n', 'i' } },
@@ -31,7 +31,12 @@ local M = {
         matcher = {
           frecency = true,
         },
-        win = { input = { footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ', footer_pos = 'right' } },
+        win = {
+          preview = {
+            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash │ <a-g> refine ├ ',
+            footer_pos = 'right',
+          },
+        },
       }
     end,
     desc = 'Find Files',
@@ -44,7 +49,7 @@ local M = {
       Snacks.picker.files {
         cwd = current_dir,
         win = {
-          input = {
+          preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
             footer_pos = 'right',
           },
@@ -59,7 +64,7 @@ local M = {
       Snacks.picker.grep {
         layout = 'bottom',
         win = {
-          input = {
+          preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
             footer_pos = 'left',
           },
@@ -74,7 +79,7 @@ local M = {
       Snacks.picker.grep_word {
         layout = 'bottom',
         win = {
-          input = {
+          preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
             footer_pos = 'left',
           },
@@ -89,7 +94,7 @@ local M = {
       Snacks.picker.grep_word {
         layout = 'bottom',
         win = {
-          input = {
+          preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
             footer_pos = 'left',
           },
@@ -114,7 +119,7 @@ local M = {
           if item.text:match '^[0-9\'"%[%]^<>`.]' then return false end
           return item
         end,
-        win = { input = { footer = '┤ <a-s> flash ├ ', footer_pos = 'left' } },
+        win = { preview = { footer = '┤ <a-s> flash ├ ', footer_pos = 'left' } },
       }
     end,
     desc = 'Find Marks',

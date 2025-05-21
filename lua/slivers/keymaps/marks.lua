@@ -99,6 +99,7 @@ end, { desc = 'Go to fourth most recent mark' })
 -- Clear marks
 map('n', '<leader>km', function()
   vim.cmd 'delm A-Z'
+  vim.cmd 'delm a-z'
   marks_stack = {}
   for mark, _ in pairs(state) do
     state[mark] = true

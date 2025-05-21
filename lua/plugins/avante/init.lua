@@ -22,7 +22,6 @@ return {
     local config = {
       provider = provider,
       memory_summary_provider = model:match '%-local' and 'qwen2.5-coder-local' or 'llama',
-      auto_suggestions_provider = 'codestral',
       behaviour = {
         auto_suggestions = false,
         -- auto_apply_diff_after_generation = true,
@@ -40,7 +39,7 @@ return {
         -- model = 'claude-3-5-sonnet-20241022',
         max_tokens = 8192,
       },
-      vendors = require 'plugins.avante.providers',
+      vendors = require('plugins.avante.providers').get_models(),
       mappings = require('plugins.avante.keymaps').mappings,
       windows = {
         width = 40,
@@ -58,8 +57,13 @@ return {
       -- [[ MCP Hub ]]
       -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
       system_prompt = function()
+        local prompt = nil
         local hub = require('mcphub').get_hub_instance()
-        return hub and hub:get_active_servers_prompt()
+
+        if model == 'qwen3' then prompt = '/no_think ' end
+        if hub then prompt = (prompt or '') .. hub:get_active_servers_prompt() end
+
+        return prompt
       end,
       -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
       custom_tools = function()

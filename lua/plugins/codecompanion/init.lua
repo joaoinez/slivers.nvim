@@ -53,53 +53,7 @@ return {
           adapter = provider,
         },
       },
-      adapters = {
-        opts = {
-          show_defaults = false,
-        },
-        ['claude-3.7'] = function()
-          return require('codecompanion.adapters').extend('openai_compatible', {
-            env = {
-              url = 'https://openrouter.ai/api',
-              api_key = 'OPENROUTER_API_KEY',
-              chat_url = '/v1/chat/completions',
-            },
-            schema = {
-              model = {
-                default = 'anthropic/claude-3.7-sonnet',
-              },
-            },
-          })
-        end,
-        ['deepseek-v3'] = function()
-          return require('codecompanion.adapters').extend('openai_compatible', {
-            env = {
-              url = 'https://openrouter.ai/api',
-              api_key = 'OPENROUTER_API_KEY',
-              chat_url = '/v1/chat/completions',
-            },
-            schema = {
-              model = {
-                default = 'deepseek/deepseek-chat-v3-0324',
-              },
-            },
-          })
-        end,
-        ['deepseek-r1'] = function()
-          return require('codecompanion.adapters').extend('openai_compatible', {
-            env = {
-              url = 'https://openrouter.ai/api',
-              api_key = 'OPENROUTER_API_KEY',
-              chat_url = '/v1/chat/completions',
-            },
-            schema = {
-              model = {
-                default = 'deepseek/deepseek-r1',
-              },
-            },
-          })
-        end,
-      },
+      adapters = require('plugins.codecompanion.adapters').get_models(),
       display = {
         chat = {
           window = {

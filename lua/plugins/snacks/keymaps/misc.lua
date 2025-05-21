@@ -86,6 +86,37 @@ local M = {
     end,
     desc = 'Colorschemes',
   },
+  {
+    '<leader>,a',
+    function()
+      Snacks.picker {
+        finder = function()
+          local models = vim.tbl_keys(require 'slivers.ai_models')
+          return vim.tbl_map(function(color) return { text = color, value = color } end, vim.fn.sort(models))
+        end,
+        format = 'text',
+        title = 'AI Models',
+        layout = { preset = 'vscode' },
+        confirm = function(picker, item)
+          picker:close()
+          vim.schedule(function()
+            local path = vim.fn.stdpath 'config' .. '/.slivers.json'
+
+            if Slivers.misc.file_exists(path) then
+              local config = vim.json.decode(Slivers.misc.read_file(path))
+
+              config.ai_model = item.value
+
+              Slivers.misc.write_file(path, vim.json.encode(config))
+            end
+
+            vim.cmd 'cq'
+          end)
+        end,
+      }
+    end,
+    desc = 'AI Models',
+  },
   { '<leader>tz', function() Snacks.zen() end, desc = 'Zen Mode' },
   { '<leader>.', function() Snacks.scratch() end, desc = 'Scratch Buffer' },
   {

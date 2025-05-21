@@ -10,7 +10,9 @@ map('n', '<right>', '<nop>')
 map({ 'n', 'x' }, 's', '<nop>')
 
 -- Disable `m` for match operations
-map('n', 'm', '<nop>')
+map({ 'n', 'x' }, 'm', '<nop>')
+-- TODO:
+map({ 'n', 'x' }, 'mb', '<nop>')
 
 -- Hide m[a-zA-Z] combinations from which-key
 Slivers.lazy.on_load('which-key.nvim', function()

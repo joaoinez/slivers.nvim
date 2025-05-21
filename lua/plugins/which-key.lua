@@ -63,7 +63,7 @@ return {
       { '<leader>cf', icon = { icon = '󰉺', color = 'azure' } },
       { '<leader>cI', icon = { icon = '', color = 'azure' } },
       { '<leader>cr', icon = { icon = '', color = 'blue' } },
-      { '<leader>cR', icon = { icon = '', color = 'azure' } },
+      -- { '<leader>cR', icon = { icon = '', color = 'azure' } },
       { '<leader>cs', icon = { icon = '󰀫', color = 'green' } },
       { '<leader>cW', icon = { icon = '', color = 'blue' } },
 
