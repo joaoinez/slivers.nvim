@@ -120,6 +120,7 @@ M.lualine = {
     ruff = '',
     yamlls = '',
     kulala = '󱜿',
+    bashls = '',
   },
 }
 
