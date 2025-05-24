@@ -3,6 +3,7 @@ return {
   'christoomey/vim-tmux-navigator',
   enabled = true,
   cond = not vim.g.vscode,
+  lazy = false,
   cmd = {
     'TmuxNavigateLeft',
     'TmuxNavigateDown',
