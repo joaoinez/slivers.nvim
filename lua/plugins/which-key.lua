@@ -53,7 +53,6 @@ return {
       -- [[ Groups ]]
       -- AI
       { '<leader>a', group = 'ai', mode = { 'n', 'v' } },
-      { '<leader>ac', icon = { icon = '󰛄', color = 'orange' } },
 
       -- Code
       { '<leader>c', group = 'code', mode = { 'n', 'x' } },

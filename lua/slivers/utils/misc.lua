@@ -102,6 +102,61 @@ function M.create_floating_window(opts)
   return { buf = buf, win = win }
 end
 
+function M.get_selected_code()
+  local start_pos = vim.fn.getpos 'v'
+  local end_pos = vim.fn.getpos '.'
+
+  -- Get the start and end line and column numbers
+  local start_line = start_pos[2]
+  local start_col = start_pos[3]
+  local end_line = end_pos[2]
+  local end_col = end_pos[3]
+  -- If the start point is after the end point, swap them
+  if start_line > end_line or (start_line == end_line and start_col > end_col) then
+    start_line, end_line = end_line, start_line
+    start_col, end_col = end_col, start_col
+  end
+  local content = '' -- luacheck: ignore
+  -- Check if it's a single-line selection
+  if start_line == end_line then
+    -- Get partial content of a single line
+    local line = vim.fn.getline(start_line)
+    -- content = string.sub(line, start_col, end_col)
+    content = line
+  else
+    -- Multi-line selection: Get all lines in the selection
+    local lines = vim.fn.getline(start_line, end_line)
+    if vim.fn.mode() == 'v' then
+      -- Extract partial content of the first line
+      lines[1] = string.sub(lines[1], start_col)
+      -- Extract partial content of the last line
+      lines[#lines] = string.sub(lines[#lines], 1, end_col)
+    end
+    -- Concatenate all lines in the selection into a string
+    if type(lines) == 'table' then
+      content = table.concat(lines, '\n')
+    else
+      content = lines
+    end
+  end
+
+  if not content then return nil end
+
+  -- Add line numbers to each line
+  local lines_with_numbers = {}
+  local content_lines = vim.split(content, '\n', { plain = true })
+  for i, line in ipairs(content_lines) do
+    local line_num = start_line + i - 1
+    table.insert(lines_with_numbers, string.format('%d | %s', line_num, line))
+  end
+  local numbered_content = table.concat(lines_with_numbers, '\n')
+
+  -- Wrap content in code blocks
+  local wrapped_content = '\n```\n' .. numbered_content .. '\n```\n\n'
+
+  return wrapped_content
+end
+
 --- Opens a url in the default browser.
 ---
 ---@param url string

@@ -1,6 +1,6 @@
 local M = {}
 
-local provider = vim.g.ai_model
+local provider = vim.g.ai_chat == 'claude-code' and 'claude' or vim.g.ai_model
 
 local function icon(provider_name)
   if provider_name:match 'claude' then

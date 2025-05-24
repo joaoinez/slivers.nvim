@@ -15,7 +15,6 @@ return {
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
     local ai_model = require 'plugins.lualine.components.ai_model'
     local treesitter = require 'plugins.lualine.components.treesitter'
-    local mcphub = require 'mcphub.extensions.lualine'
 
     -- Set global lualine
     vim.o.laststatus = vim.g.lualine_laststatus
@@ -97,7 +96,6 @@ return {
             icon = ai_model.icon(),
             color = { fg = ai_model.color() },
           },
-          { mcphub },
         },
         lualine_y = {
           {

@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'ravitemer/mcphub.nvim',
-  enabled = true,
+  enabled = vim.g.ai_chat == 'avante' or vim.g.ai_chat == 'codecompanion',
   cond = not vim.g.vscode,
   build = 'npm install -g mcp-hub@latest',
   cmd = { 'MCPHub' },
