@@ -1,7 +1,7 @@
 return {
   {
     'zeioth/compiler.nvim',
-    enabled = true,
+    enabled = false,
     cond = not vim.g.vscode,
     dependencies = {
       'nvim-telescope/telescope.nvim',

@@ -3,7 +3,7 @@
 ---@type LazySpec
 return {
   'mfussenegger/nvim-dap',
-  enabled = true,
+  enabled = false,
   cond = not vim.g.vscode,
   dependencies = {
     'nvim-neotest/nvim-nio',
