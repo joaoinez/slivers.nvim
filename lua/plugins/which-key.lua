@@ -53,6 +53,7 @@ return {
       -- [[ Groups ]]
       -- AI
       { '<leader>a', group = 'ai', mode = { 'n', 'v' } },
+      { '<leader>ac', group = 'claude-code', icon = { icon = '󰛄', color = 'orange' }, mode = { 'n', 'v' } },
 
       -- Code
       { '<leader>c', group = 'code', mode = { 'n', 'x' } },
@@ -82,10 +83,13 @@ return {
       { '<leader>f', group = 'find', mode = { 'n', 'v' } },
       { '<leader>ff', icon = { icon = '', color = 'green' } },
       { '<leader>fe', icon = { icon = '󰙅', color = 'purple' } },
+      { '<leader>fo', icon = { icon = '󰙅', color = 'purple' } },
+      { '<leader>ft', icon = { icon = '󰙅', color = 'purple' } },
+      { '<leader>fy', icon = { icon = '󰙅', color = 'purple' } },
       { '<leader>fm', icon = { icon = '󱡀', color = 'azure' } },
       { '<leader>fh', icon = { icon = '󰋖', color = 'grey' } },
       { '<leader>fM', icon = { icon = '', color = 'grey' } },
-      { '<leader>ft', icon = { icon = '', color = 'blue' } },
+      { '<leader>fg', icon = { icon = '', color = 'blue' } },
       { '<leader>f?', icon = { icon = '', color = 'grey' } },
 
       -- Git
