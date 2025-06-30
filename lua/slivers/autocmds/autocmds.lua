@@ -14,7 +14,7 @@ if not vim.g.vscode then
   autocmd({ 'FocusGained', 'TermClose', 'TermLeave', 'TabEnter' }, {
     group = augroup 'checktime',
     callback = function()
-      if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end
+      if vim.o.buftype ~= 'nofile' then vim.cmd 'set autoread | checktime' end
     end,
   })
 
@@ -159,12 +159,5 @@ if not vim.g.vscode then
         callback = function() io.write '\027]111\027\\' end,
       })
     end,
-  })
-
-  -- Disable diagnostics for .env files
-  autocmd({ 'BufNewFile', 'BufRead' }, {
-    pattern = '.env*',
-    group = augroup 'env_dx',
-    callback = function() vim.diagnostic.enable(false) end,
   })
 end

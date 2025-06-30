@@ -69,7 +69,7 @@ return {
         'NeogitStash',
       },
       callback = function()
-        if vim.o.buftype ~= 'nofile' then vim.cmd 'checktime' end
+        if vim.o.buftype ~= 'nofile' then vim.cmd 'set autoread | checktime' end
       end,
     })
   end,

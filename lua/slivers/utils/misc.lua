@@ -67,7 +67,7 @@ function M.open_term_with_cmd(cmd)
     buffer = buf,
     callback = function()
       vim.api.nvim_buf_delete(buf, { force = true })
-      vim.cmd.checktime()
+      vim.cmd 'set autoread | checktime'
     end,
   })
 

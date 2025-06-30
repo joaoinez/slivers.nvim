@@ -82,7 +82,7 @@ map('n', '<leader>,U', '<cmd>UpdateEverything<cr>', { desc = 'Update Everything'
 -- Open slivers.json file
 map('n', '<leader>,o', function()
   -- TODO: Simplify this. The math.floor stuff should be inside create_floating_window
-  local width = math.floor(vim.o.columns * 0.25)
+  local width = math.floor(vim.o.columns * 0.2)
   local window = Slivers.misc.create_floating_window {
     width = width,
     height = math.floor(vim.o.lines * 0.25),
@@ -108,4 +108,4 @@ map('n', '<leader>kT', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plen
 map('n', '<leader>wr', '<cmd>wa | cq<cr>', { desc = 'Restart Neovim' })
 
 -- Reload Buffer
-map('n', '<leader>kr', '<cmd>checktime<cr>', { desc = 'Reload Buffer' })
+map('n', '<leader>kr', '<cmd>set autoread | checktime<cr>', { desc = 'Reload Buffer' })
