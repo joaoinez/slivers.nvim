@@ -8,7 +8,7 @@ return {
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
-    file_types = { 'markdown', 'norg', 'rmd', 'org', 'Avante', 'codecompanion' },
+    file_types = { 'markdown', 'norg', 'rmd', 'org', 'Avante' },
     latex = { enabled = false },
     code = {
       sign = false,
