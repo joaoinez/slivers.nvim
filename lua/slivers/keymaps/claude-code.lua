@@ -57,7 +57,7 @@ map({ 'n', 'v' }, '<leader>acc', function()
           )
         end
       end
-    end, 800)
+    end, 1000)
   else
     vim.fn.system('tmux select-pane -t ' .. pane_id)
   end
@@ -95,7 +95,7 @@ map({ 'n', 'v' }, '<leader>acr', function()
           )
         end
       end
-    end, 800)
+    end, 1000)
   else
     vim.fn.system('tmux select-pane -t ' .. pane_id)
   end
@@ -136,7 +136,9 @@ map('v', '<leader>acs', function()
   local selected_code = Slivers.misc.get_selected_code()
 
   if selected_code then
-    vim.fn.system(string.format('tmux send-keys -t %s -l %s', vim.fn.trim(pane_id), vim.fn.shellescape(selected_code)))
+    vim.fn.system(
+      string.format('tmux send-keys -t %s -l %s', vim.fn.trim(pane_id or '0'), vim.fn.shellescape(selected_code))
+    )
   end
   vim.fn.system('tmux select-pane -t ' .. pane_id)
 end, { desc = 'Add Selection to Context' })
@@ -174,7 +176,7 @@ map('n', '<leader>gO', function()
 end, { desc = 'Create PR (claude-code)' })
 
 -- Toggle Claude Code
-map('n', '<leader>tA', function()
+map('n', '<leader>tc', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)

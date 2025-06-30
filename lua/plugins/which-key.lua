@@ -54,6 +54,8 @@ return {
       -- AI
       { '<leader>a', group = 'ai', mode = { 'n', 'v' } },
       { '<leader>ac', group = 'claude-code', icon = { icon = '󰛄', color = 'orange' }, mode = { 'n', 'v' } },
+      { '<leader>acc', icon = { icon = '󰛄', color = 'orange' }, mode = { 'n', 'v' } },
+      { '<leader>ag', group = 'gemini-cli', icon = { icon = '󰫢', color = 'blue' }, mode = { 'n', 'v' } },
 
       -- Code
       { '<leader>c', group = 'code', mode = { 'n', 'x' } },
