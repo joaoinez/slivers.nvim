@@ -33,5 +33,10 @@ return {
       end,
       desc = 'Diff (file)',
     },
+    {
+      '<leader>gf',
+      '<cmd>Git fetch<cr>',
+      desc = 'Fetch',
+    },
   },
 }
