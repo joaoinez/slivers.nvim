@@ -12,6 +12,11 @@ local avante_models = {
     },
   },
   ---@type AvanteSupportedProvider
+  ['claude'] = {
+    __inherited_from = 'claude',
+    max_tokens = 8192,
+  },
+  ---@type AvanteSupportedProvider
   ['qwen2.5-coder-local'] = {
     __inherited_from = 'ollama',
     model = 'qwen2.5-coder:latest',

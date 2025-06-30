@@ -1,17 +1,17 @@
 local M = {}
 
-local provider = vim.g.ai_chat == 'claude-code' and 'claude' or vim.g.ai_model
+local provider = vim.g.ai_model
 
 local function icon(provider_name)
   if provider_name:match 'claude' then
     return '󰛄'
   elseif provider_name:match 'deepseek' then
     return ''
-  elseif provider_name:match 'o3' then
+  elseif provider_name:match 'o4' then
     return ''
   elseif provider_name:match 'qwen' then
     return ''
-  elseif provider_name:match 'mistrall' then
+  elseif provider_name:match 'devstral' then
     return ''
   elseif provider_name:match 'llama' then
     return ''
@@ -29,11 +29,11 @@ local function color(provider_name)
     return '#d97757'
   elseif provider_name:match 'deepseek' then
     return '#4D6BFE'
-  elseif provider_name:match 'o3' then
+  elseif provider_name:match 'o4' then
     return '#76a89c'
   elseif provider_name:match 'qwen' then
     return '#6738F0'
-  elseif provider_name:match 'mistrall' then
+  elseif provider_name:match 'devstral' then
     return '#F97315'
   elseif provider_name:match 'llama' then
     return '#106AFF'

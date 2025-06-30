@@ -3,8 +3,28 @@
 ---@type LazySpec
 return {
   'yetone/avante.nvim',
-  enabled = vim.g.ai_chat == 'avante',
+  enabled = true,
   cond = not vim.g.vscode,
+  dependencies = {
+    'ravitemer/mcphub.nvim',
+    build = 'npm install -g mcp-hub@latest',
+    cmd = { 'MCPHub' },
+    keys = {
+      {
+        '<leader>,h',
+        '<cmd>MCPHub<cr>',
+        desc = 'MCP Hub',
+      },
+    },
+    opts = {
+      auto_approve = true,
+      extensions = {
+        avante = {
+          make_slash_commands = true,
+        },
+      },
+    },
+  },
   build = 'make',
   event = 'VeryLazy',
   keys = {
@@ -35,11 +55,7 @@ return {
         timeout = 60000 * 5,
       },
       ---@type AvanteSupportedProvider
-      claude = {
-        -- model = 'claude-3-5-sonnet-20241022',
-        max_tokens = 8192,
-      },
-      vendors = require('plugins.avante.providers').get_models(),
+      providers = require('plugins.avante.providers').get_models(),
       mappings = require('plugins.avante.keymaps').mappings,
       windows = {
         width = 40,

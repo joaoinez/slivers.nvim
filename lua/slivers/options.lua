@@ -14,7 +14,6 @@ if not vim.g.vscode then
   else
     local default_config = {
       ai_model = 'claude', -- Set default ai model. Use `-local` to use local models and `-dual` to use dual boost.
-      ai_chat = 'avante', -- Set default ai chat plugin. avante | codecompanion
       colorscheme = 'cattppuccin', -- Set default colorscheme.
       transparent_bg = true, -- Set transparent background.
       mode_len = 3, -- Set mode text length; 0 is Neovim's default.

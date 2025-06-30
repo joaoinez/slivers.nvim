@@ -8,14 +8,7 @@ local M = {
     avante = {
       max_tokens = 8192,
     },
-  },
-  ['deepseek-r1'] = {
-    endpoint = 'https://openrouter.ai/api/v1',
-    api_key_name = 'OPENROUTER_API_KEY',
-    model = 'deepseek/deepseek-r1',
-    avante = {
-      max_tokens = 8192,
-    },
+    cost = '1.25$/input  | 10.00$/output',
   },
   ['o4-mini-high'] = {
     endpoint = 'https://openrouter.ai/api/v1',
@@ -24,17 +17,28 @@ local M = {
     avante = {
       max_tokens = 8192,
     },
+    cost = '1.10$/input  |  4.40$/output',
+  },
+  ['deepseek-r1'] = {
+    endpoint = 'https://openrouter.ai/api/v1',
+    api_key_name = 'OPENROUTER_API_KEY',
+    model = 'deepseek/deepseek-r1-0528',
+    avante = {
+      max_tokens = 8192,
+    },
+    cost = '0.50$/input  |  2.18$/output',
   },
 
   -- [[ Non-Reasoning Models ]]
 
-  ['claude-3.7'] = {
+  ['claude-4'] = {
     endpoint = 'https://openrouter.ai/api/v1',
     api_key_name = 'OPENROUTER_API_KEY',
-    model = 'anthropic/claude-3.7-sonnet',
+    model = 'anthropic/claude-sonnet-4',
     avante = {
       max_tokens = 8192,
     },
+    cost = '3.00$/input  | 15.00$/output',
   },
   ['qwen3'] = {
     endpoint = 'https://openrouter.ai/api/v1',
@@ -43,6 +47,7 @@ local M = {
     avante = {
       max_tokens = 8192,
     },
+    cost = '0.14$/input  |  0.60$/output',
   },
   ['deepseek-v3'] = {
     endpoint = 'https://openrouter.ai/api/v1',
@@ -51,23 +56,26 @@ local M = {
     avante = {
       max_tokens = 8192,
     },
+    cost = '0.30$/input  |  0.88$/output',
   },
-  ['gpt-4.1-mini'] = {
+  ['gpt-4.1'] = {
     endpoint = 'https://openrouter.ai/api/v1',
     api_key_name = 'OPENROUTER_API_KEY',
-    model = 'openai/gpt-4.1-mini',
+    model = 'openai/gpt-4.1',
     avante = {
       max_tokens = 8192,
     },
+    cost = '2.00$/input  |  8.00$/output',
   },
-  ['mistral-small'] = {
+  ['devstral'] = {
     endpoint = 'https://openrouter.ai/api/v1',
     api_key_name = 'OPENROUTER_API_KEY',
-    model = 'mistralai/mistral-small-3.1-24b-instruct',
+    model = 'mistralai/devstral-small',
     avante = {
       max_tokens = 8192,
       disable_tools = true,
     },
+    cost = '0.07$/input  |  0.10$/output',
   },
   ['llama'] = {
     endpoint = 'https://api.groq.com/openai/v1/',
