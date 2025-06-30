@@ -16,15 +16,30 @@ function M.apply_user_lsp_mappings(client, bufnr)
   -- { "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
   -- { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
 
-  map('n', 'gd', function() Snacks.picker.lsp_definitions() end, { desc = 'Goto Definition (snacks)' })
+  map(
+    'n',
+    'gd',
+    function() Snacks.picker.lsp_definitions { layout = { preset = 'dropdown' } } end,
+    { desc = 'Goto Definition (snacks)' }
+  )
   map(
     'n',
     'gr',
-    function() Snacks.picker.lsp_references { layout = { preset = 'ivy', preview = 'main' } } end,
+    function() Snacks.picker.lsp_references { layout = { preset = 'dropdown' } } end,
     { desc = 'Goto References (snacks)', nowait = true }
   )
-  map('n', 'gI', function() Snacks.picker.lsp_implementations() end, { desc = 'Goto Implementation (snacks)' })
-  map('n', 'gt', function() Snacks.picker.lsp_type_definitions() end, { desc = 'Goto Type Definition (snacks)' })
+  map(
+    'n',
+    'gI',
+    function() Snacks.picker.lsp_implementations { layout = { preset = 'dropdown' } } end,
+    { desc = 'Goto Implementation (snacks)' }
+  )
+  map(
+    'n',
+    'gt',
+    function() Snacks.picker.lsp_type_definitions { layout = { preset = 'dropdown' } } end,
+    { desc = 'Goto Type Definition (snacks)' }
+  )
   map('n', 'gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
   map('n', 'gK', function() return vim.lsp.buf.signature_help() end, { desc = 'Signature Help' })
   map('i', '<C-k>', function() return vim.lsp.buf.signature_help() end, { desc = 'Signature Help' })

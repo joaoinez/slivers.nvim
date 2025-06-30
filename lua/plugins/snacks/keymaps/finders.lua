@@ -11,7 +11,7 @@ local M = {
   { '<leader>fc', function() Snacks.picker.command_history() end, desc = 'Command History' },
   {
     '<leader>fj',
-    function() Snacks.picker.jumps { layout = { preset = 'ivy', preview = 'main' } } end,
+    function() Snacks.picker.jumps { layout = { preset = 'bottom', preview = 'main' } } end,
     desc = 'Jump History',
   },
   { '<leader>u', function() Snacks.picker.undo { layout = 'dropdown' } end, desc = 'Undo History' },
@@ -29,7 +29,7 @@ local M = {
         ---@diagnostic disable-next-line: assign-type-mismatch
         cwd = vim.fn.stdpath 'config',
         win = {
-          input = {
+          preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
             footer_pos = 'right',
           },

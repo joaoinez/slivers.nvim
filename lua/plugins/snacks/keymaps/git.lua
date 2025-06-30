@@ -1,10 +1,14 @@
+---@diagnostic disable: missing-fields
+
+local layouts = require 'plugins.snacks.picker.layouts'
+
 local M = {
   {
     '<leader>gb',
     function()
       Snacks.picker.git_branches {
         layout = 'vscode',
-        win = { input = { footer = '┤ <c-a> add │ <c-x> delete ├ ', footer_pos = 'center' } },
+        win = { input = { footer = '┤ <c-a> add │ <c-x> delete ├ ', footer_pos = 'right' } },
       }
     end,
     desc = 'Git Branches',
@@ -13,10 +17,9 @@ local M = {
     '<leader>gs',
     function()
       Snacks.picker.git_status {
+        layout = layouts.default({}, 0.67),
         win = {
           input = {
-            footer = '┤ <tab> (un)stage │ <c-g> git │ <c-c> commit ├ ',
-            footer_pos = 'right',
             keys = {
               ['<c-g>'] = {
                 'neogit_open',
@@ -27,6 +30,10 @@ local M = {
                 mode = { 'n', 'i' },
               },
             },
+          },
+          preview = {
+            footer = '┤ <tab> (un)stage │ <c-g> git │ <c-c> commit ├ ',
+            footer_pos = 'right',
           },
         },
         actions = {
@@ -42,7 +49,11 @@ local M = {
   },
   {
     '<leader>gl',
-    function() Snacks.picker.git_log() end,
+    function()
+      Snacks.picker.git_log {
+        layout = layouts.dropdown({ layout = { width = 0.8, height = 0.9 } }, 0.75),
+      }
+    end,
     desc = 'Log',
   },
   {
@@ -54,34 +65,6 @@ local M = {
     '<leader>g/',
     function() Snacks.terminal('git hook run pre-commit', { auto_close = false, win = { border = 'rounded' } }) end,
     desc = 'Run `pre-commit` hook',
-  },
-  {
-    '<leader>gC',
-    function()
-      local command = [[
-bash -c '
-aider --commit --weak-model groq/llama-3.3-70b-versatile || exit 1
-while true; do
-  read -n 1 -s -p "Press \"q\" to quit or \"P\" to push: " key
-  printf "\n"
-  case "$key" in
-    q) echo "Quitting without pushing"; exit 0;;
-    P) git push
-       while true; do
-         read -n 1 -s -p "Push completed. Press \"q\" to quit: " key
-         printf "\n"
-         [ "$key" = "q" ] && exit 0
-       done
-       ;;
-    *) echo "Invalid option";;
-  esac
-done
-']]
-
-      vim.cmd 'w'
-      Snacks.terminal(command, { win = { border = 'rounded' } })
-    end,
-    desc = 'Commit (aider)',
   },
   { '<leader>gG', function() Snacks.lazygit() end, desc = 'Lazygit' },
   { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Browse Repo (github)' },

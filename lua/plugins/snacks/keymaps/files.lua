@@ -1,19 +1,23 @@
+---@diagnostic disable: missing-fields
+
+local layouts = require 'plugins.snacks.picker.layouts'
+
 local M = {
   {
     '<leader><space>',
     function()
       Snacks.picker.buffers {
         layout = {
-          preset = 'ivy',
+          preset = 'bottom',
           preview = 'main',
         },
         hidden = true,
         unloaded = false,
         nofile = false,
         win = {
-          preview = {
+          input = {
             footer = '┤ <c-w> close │ <a-s> flash │ <a-g> refine ├ ',
-            footer_pos = 'left',
+            footer_pos = 'right',
             keys = {
               ['<c-w>'] = { 'bufdelete', mode = { 'n', 'i' } },
             },
@@ -22,6 +26,18 @@ local M = {
       }
     end,
     desc = 'Open Buffers',
+  },
+  {
+    '<leader>ft',
+    function()
+      Snacks.picker.explorer {
+        hidden = true,
+        ignored = true,
+        layout = { cycle = false },
+        auto_close = true,
+      }
+    end,
+    desc = 'File Explorer (tree)',
   },
   {
     '<leader>ff',
@@ -59,29 +75,33 @@ local M = {
     desc = 'Find Files (cwd)',
   },
   {
-    '<leader>ft',
+    '<leader>fg',
     function()
       Snacks.picker.grep {
-        layout = 'bottom',
+        layout = layouts.dropdown({
+          layout = { width = 0.8, height = 0.9 },
+        }, 0.67),
         win = {
           preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
-            footer_pos = 'left',
+            footer_pos = 'right',
           },
         },
       }
     end,
-    desc = 'Find Text',
+    desc = 'Grep Text',
   },
   {
     '<leader>fw',
     function()
       Snacks.picker.grep_word {
-        layout = 'bottom',
+        layout = layouts.dropdown({
+          layout = { width = 0.8, height = 0.9 },
+        }, 0.67),
         win = {
           preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
-            footer_pos = 'left',
+            footer_pos = 'right',
           },
         },
       }
@@ -92,11 +112,13 @@ local M = {
     '<leader>fw',
     function()
       Snacks.picker.grep_word {
-        layout = 'bottom',
+        layout = layouts.dropdown({
+          layout = { width = 0.8, height = 0.9 },
+        }, 0.67),
         win = {
           preview = {
             footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
-            footer_pos = 'left',
+            footer_pos = 'right',
           },
         },
       }
@@ -109,7 +131,7 @@ local M = {
     function()
       Snacks.picker.marks {
         layout = {
-          preset = 'ivy',
+          preset = 'bottom',
           preview = 'main',
         },
         global = true,
@@ -119,7 +141,7 @@ local M = {
           if item.text:match '^[0-9\'"%[%]^<>`.]' then return false end
           return item
         end,
-        win = { preview = { footer = '┤ <a-s> flash ├ ', footer_pos = 'left' } },
+        win = { input = { footer = '┤ <a-s> flash ├ ', footer_pos = 'right' } },
       }
     end,
     desc = 'Find Marks',

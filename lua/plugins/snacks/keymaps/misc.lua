@@ -82,6 +82,10 @@ local M = {
             vim.cmd 'cq'
           end)
         end,
+        on_close = function()
+          -- test
+          vim.notify 'here'
+        end,
       }
     end,
     desc = 'Colorschemes',
@@ -91,8 +95,22 @@ local M = {
     function()
       Snacks.picker {
         finder = function()
-          local models = vim.tbl_keys(require 'slivers.ai_models')
-          return vim.tbl_map(function(color) return { text = color, value = color } end, vim.fn.sort(models))
+          local models = {}
+          local width = math.floor(vim.o.columns * 0.4)
+          for k, v in pairs(require 'slivers.ai_models') do
+            local model_width = k:len()
+            local cost = v.cost or 'free'
+            local cost_width = cost:len()
+            table.insert(models, {
+              label = k .. ((' '):rep(width - model_width - cost_width)) .. cost,
+              value = k,
+            })
+          end
+          return vim.tbl_map(function(model)
+            ---@type snacks.picker.finder.Item
+            local model_item = { text = model.label, value = model.value }
+            return model_item
+          end, vim.fn.sort(models))
         end,
         format = 'text',
         title = 'AI Models',

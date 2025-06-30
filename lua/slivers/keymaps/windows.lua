@@ -31,13 +31,13 @@ if not vim.g.vscode then
   map(
     'n',
     '<leader>|',
-    '<cmd>vsplit | lua Snacks.picker.buffers { hidden = true, current = false }<cr>',
+    '<cmd>vsplit | lua Snacks.picker.buffers { hidden = true, auto_confirm = true }<cr>',
     { desc = 'Vertical Split' }
   )
   map(
     'n',
     '<leader>\\',
-    '<cmd>split | lua Snacks.picker.buffers { hidden = true, current = false }<cr>',
+    '<cmd>split | lua Snacks.picker.buffers { hidden = true, auto_confirm = true }<cr>',
     { desc = 'Horizontal Split' }
   )
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })
@@ -45,12 +45,16 @@ if not vim.g.vscode then
   map('n', '<leader>w|', '<C-w>_', { desc = 'Max Out Split Height' })
   map('n', '<leader>we', '<C-w>=', { desc = 'Equal Out Splits' })
   map('n', '<leader>wo', '<C-w>o', { desc = 'Close Other Splits' })
+  map('n', '<leader>wh', '<C-w>H', { desc = 'Move Split Left' })
+  map('n', '<leader>wj', '<C-w>J', { desc = 'Move Split Down' })
+  map('n', '<leader>wk', '<C-w>K', { desc = 'Move Split Up' })
+  map('n', '<leader>wl', '<C-w>L', { desc = 'Move Split Right' })
 
   -- Tabs
   map(
     'n',
     '<leader>wt',
-    "<cmd>tabnew | lua Snacks.picker.files { hidden = true, matcher = { frecency = true }, win = { input = { footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ', footer_pos = 'right' } }, }<cr>",
+    '<cmd>tabnew | lua Snacks.picker.files { hidden = true, matcher = { frecency = true }, auto_confirm = true }<cr>',
     { desc = 'New Tab' }
   )
   map('n', '<leader>ww', '<cmd>tabclose<cr>', { desc = 'Close Tab' })

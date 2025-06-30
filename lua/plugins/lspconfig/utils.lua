@@ -4,6 +4,7 @@ local M = {}
 function M.lsp_rename()
   local curr_name = vim.fn.expand '<cword>'
   local params = vim.lsp.util.make_position_params(0, 'utf-8')
+
   local function on_submit(new_name)
     if not new_name or #new_name == 0 or curr_name == new_name then
       -- do nothing if `new_name` is empty or not changed.
