@@ -121,6 +121,8 @@ M.lualine = {
     yamlls = '',
     kulala = '󱜿',
     bashls = '',
+    jsonls = '',
+    cssls = '',
   },
 }
 
