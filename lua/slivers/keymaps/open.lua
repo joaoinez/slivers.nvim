@@ -232,6 +232,14 @@ map(
   { desc = 'OpenAI' }
 )
 
+-- Google AI Studio
+map(
+  'n',
+  '<leader>oaG',
+  function() Slivers.misc.open_url 'https://aistudio.google.com/usage' end,
+  { desc = 'Google AI Studio' }
+)
+
 -- [[ Awesome ]]
 -- Awesome Shadcn
 map(
