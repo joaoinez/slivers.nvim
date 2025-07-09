@@ -64,6 +64,24 @@ return {
       kind_icons = IconSliver.cmp,
     },
     completion = {
+      trigger = {
+        show_on_blocked_trigger_characters = function()
+          -- HACK: For some reason this is the only way for completions after
+          -- typing `!` in js|jsx|ts|tsx to show.
+          --
+          -- https://cmp.saghen.dev/configuration/reference.html#completion-trigger
+          if
+            vim.bo.filetype == 'javascript'
+            or vim.bo.filetype == 'javascriptreact'
+            or vim.bo.filetype == 'typescript'
+            or vim.bo.filetype == 'typescriptreact'
+          then
+            return { ' ', '\n', '\t', '!' }
+          end
+
+          return { ' ', '\n', '\t' }
+        end,
+      },
       accept = {
         auto_brackets = {
           enabled = false,
@@ -94,6 +112,16 @@ return {
     },
     sources = {
       providers = {
+        -- lsp = {
+        --   override = {
+        --     get_trigger_characters = function(self)
+        --       local trigger_characters = self:get_trigger_characters()
+        --       vim.list_extend(trigger_characters, { '!' })
+        --
+        --       return trigger_characters
+        --     end,
+        --   },
+        -- },
         lazydev = {
           name = 'LazyDev',
           module = 'lazydev.integrations.blink',

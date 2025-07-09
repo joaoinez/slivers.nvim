@@ -19,14 +19,15 @@ return {
     },
     spec = {
       -- [[ Actions ]]
-      -- Breakpoint
-      { '<leader>b', icon = { icon = '', color = 'red' } },
+      -- -- Breakpoint
+      -- { '<leader>b', icon = { icon = '', color = 'red' } },
 
       -- Mark
       { '<leader>m', icon = { icon = '󱡀', color = 'azure' } },
-      -- Compiler
-      { '<leader>r', icon = { icon = '', color = 'green' } },
-      { '<leader>R', icon = { icon = '', color = 'green' } },
+
+      -- -- Compiler
+      -- { '<leader>r', icon = { icon = '', color = 'green' } },
+      -- { '<leader>R', icon = { icon = '', color = 'green' } },
 
       -- Save file
       { '<leader>s', icon = { icon = '󰆓', color = 'azure' } },
