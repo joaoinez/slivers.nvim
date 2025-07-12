@@ -64,6 +64,7 @@ local M = {
         layout = { preset = 'vscode' },
         confirm = function(picker, item)
           picker:close()
+
           vim.schedule(function()
             local path = vim.fn.stdpath 'config' .. '/.slivers.json'
 
@@ -73,18 +74,23 @@ local M = {
               config.colorscheme = item.value
 
               Slivers.misc.write_file(path, vim.json.encode(config))
+
+              vim.cmd 'cq'
             end
-
-            vim.cmd('colorscheme ' .. item.value)
-
-            ColorSliver()
-
-            vim.cmd 'cq'
           end)
         end,
         on_close = function()
-          -- test
-          vim.notify 'here'
+          vim.schedule(function()
+            local path = vim.fn.stdpath 'config' .. '/.slivers.json'
+
+            if Slivers.misc.file_exists(path) then
+              local config = vim.json.decode(Slivers.misc.read_file(path))
+
+              vim.cmd('colorscheme ' .. config.colorscheme)
+
+              ColorSliver()
+            end
+          end)
         end,
       }
     end,
