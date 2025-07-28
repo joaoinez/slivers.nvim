@@ -28,18 +28,40 @@ if not vim.g.vscode then
   map('n', '<leader>wf', '<cmd>fc<cr>', { desc = 'Close Floating' })
 
   -- Splits
-  map(
-    'n',
-    '<leader>|',
-    '<cmd>vsplit | lua Snacks.picker.buffers { hidden = true, auto_confirm = true }<cr>',
-    { desc = 'Vertical Split' }
-  )
-  map(
-    'n',
-    '<leader>\\',
-    '<cmd>split | lua Snacks.picker.buffers { hidden = true, auto_confirm = true }<cr>',
-    { desc = 'Horizontal Split' }
-  )
+  map('n', '<leader>|', function()
+    vim.cmd 'vsplit'
+
+    -- // TODO: Reuse this function
+    Snacks.picker.files {
+      hidden = true,
+      matcher = {
+        frecency = true,
+      },
+      win = {
+        preview = {
+          footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash │ <a-g> refine ├ ',
+          footer_pos = 'right',
+        },
+      },
+    }
+  end, { desc = 'Vertical Split' })
+  map('n', '<leader>\\', function()
+    vim.cmd 'split'
+
+    -- // TODO: Reuse this function
+    Snacks.picker.files {
+      hidden = true,
+      matcher = {
+        frecency = true,
+      },
+      win = {
+        preview = {
+          footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash │ <a-g> refine ├ ',
+          footer_pos = 'right',
+        },
+      },
+    }
+  end, { desc = 'Horizontal Split' })
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })
   map('n', '<leader>w\\', '<C-w>|', { desc = 'Max Out Split Width' })
   map('n', '<leader>w|', '<C-w>_', { desc = 'Max Out Split Height' })

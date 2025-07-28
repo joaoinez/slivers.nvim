@@ -23,6 +23,7 @@ require 'slivers.keymaps.yanking'
 if not vim.g.vscode then
   require 'slivers.keymaps.claude-code'
   require 'slivers.keymaps.gemini-cli'
+  require 'slivers.keymaps.opencode'
   require 'slivers.keymaps.terminal'
   require 'slivers.keymaps.tmux'
   require 'slivers.keymaps.windows'

@@ -3,6 +3,9 @@ return {
   'NeogitOrg/neogit',
   enabled = true,
   cond = not vim.g.vscode,
+  dependencies = {
+    'sindrets/diffview.nvim',
+  },
   event = 'VeryLazy',
   keys = {
     {
@@ -14,6 +17,11 @@ return {
       '<leader>gc',
       '<cmd>Neogit commit<cr>',
       desc = 'Commit',
+    },
+    {
+      '<leader>gd',
+      '<cmd>Neogit diff<cr>',
+      desc = 'Diff',
     },
     {
       '<leader>gp',

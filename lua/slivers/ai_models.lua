@@ -40,6 +40,14 @@ local M = {
     },
     cost = '3.00$/input  | 15.00$/output',
   },
+  ['kimi-k2'] = {
+    endpoint = 'https://api.groq.com/openai/v1/',
+    api_key_name = 'GROQ_API_KEY',
+    model = 'moonshotai/kimi-k2-instruct',
+    avante = {
+      max_tokens = 8192,
+    },
+  },
   ['qwen3'] = {
     endpoint = 'https://openrouter.ai/api/v1',
     api_key_name = 'OPENROUTER_API_KEY',

@@ -57,6 +57,7 @@ return {
       { '<leader>ac', group = 'claude-code', icon = { icon = '󰛄', color = 'orange' }, mode = { 'n', 'v' } },
       { '<leader>acc', icon = { icon = '󰛄', color = 'orange' }, mode = { 'n', 'v' } },
       { '<leader>ag', group = 'gemini-cli', icon = { icon = '󰫢', color = 'blue' }, mode = { 'n', 'v' } },
+      { '<leader>ao', group = 'opencode', icon = { icon = '', color = 'white' }, mode = { 'n', 'v' } },
 
       -- Code
       { '<leader>c', group = 'code', mode = { 'n', 'x' } },
@@ -118,7 +119,7 @@ return {
 
       -- Misc
       { '<leader>k', group = 'misc', icon = { icon = '', color = 'purple' } },
-      { '<leader>kd', icon = { icon = '󰾡', color = 'yellow' } },
+      -- { '<leader>kd', icon = { icon = '󰾡', color = 'yellow' } },
       { '<leader>kk', icon = { icon = '', color = 'grey' } },
       { '<leader>km', icon = { icon = '󱡀', color = 'azure' } },
       { '<leader>ks', icon = { icon = '󰢱', color = 'blue' } },

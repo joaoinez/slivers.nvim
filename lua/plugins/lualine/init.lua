@@ -13,7 +13,7 @@ return {
     local get_color = utils.get_color
 
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
-    local ai_model = require 'plugins.lualine.components.ai_model'
+    -- local ai_model = require 'plugins.lualine.components.ai_model'
     local treesitter = require 'plugins.lualine.components.treesitter'
 
     -- Set global lualine
@@ -91,11 +91,11 @@ return {
           },
         },
         lualine_x = {
-          {
-            ai_model.init,
-            icon = ai_model.icon(),
-            color = { fg = ai_model.color() },
-          },
+          --   {
+          --     ai_model.init,
+          --     icon = ai_model.icon(),
+          --     color = { fg = ai_model.color() },
+          --   },
         },
         lualine_y = {
           {

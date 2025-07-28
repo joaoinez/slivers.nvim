@@ -3,7 +3,7 @@
 ---@type LazySpec
 return {
   'yetone/avante.nvim',
-  enabled = true,
+  enabled = false,
   cond = not vim.g.vscode,
   dependencies = {
     'ravitemer/mcphub.nvim',

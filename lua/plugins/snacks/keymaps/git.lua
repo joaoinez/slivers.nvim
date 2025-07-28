@@ -67,7 +67,8 @@ local M = {
     desc = 'Run `pre-commit` hook',
   },
   { '<leader>gG', function() Snacks.lazygit() end, desc = 'Lazygit' },
-  { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Browse Repo (github)' },
+  { '<leader>gB', function() Snacks.gitbrowse { what = 'repo' } end, desc = 'Browse Repo (github)' },
+  { '<leader>gx', function() Snacks.gitbrowse() end, desc = 'Browse Repo (github)' },
   {
     '<leader>go',
     function() Snacks.terminal('gh pr create', { win = { border = 'rounded' } }) end,

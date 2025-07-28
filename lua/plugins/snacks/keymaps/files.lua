@@ -42,6 +42,7 @@ local M = {
   {
     '<leader>ff',
     function()
+      -- // TODO: Reuse this function
       Snacks.picker.files {
         hidden = true,
         matcher = {

@@ -26,14 +26,6 @@ return {
       desc = 'Unstage (file)',
     },
     {
-      '<leader>gd',
-      function()
-        vim.cmd 'Gvdiffsplit'
-        vim.cmd 'wincmd l'
-      end,
-      desc = 'Diff (file)',
-    },
-    {
       '<leader>gf',
       '<cmd>Git fetch<cr>',
       desc = 'Fetch',

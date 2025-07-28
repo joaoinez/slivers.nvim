@@ -50,3 +50,17 @@ Snacks.toggle({
     end
   end,
 }):map '<leader>,b'
+
+Snacks.toggle({
+  name = 'Animated Scroll',
+  get = function() return vim.g.animated_scroll == true end,
+  set = function(state)
+    if state then
+      vim.g.animated_scroll = true
+      Snacks.scroll.enable()
+    else
+      vim.g.animated_scroll = false
+      Snacks.scroll.disable()
+    end
+  end,
+}):map '<leader>ta'

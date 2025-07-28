@@ -17,24 +17,16 @@ local function is_pane_zoomed()
   return tonumber(is_zoomed_str) == 1
 end
 
--- Open Claude Code
-map({ 'n', 'v' }, '<leader>acc', function()
+-- Open opencode
+map({ 'n', 'v' }, '<leader>aoc', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
     return
   end
 
-  local socket_path = vim.v.servername or vim.g.nvim_socket_path
-
   if not is_pane_open() then
-    pane_id = vim.fn.system(
-      string.format(
-        [[tmux split-window -P -F "#{pane_id}" -h -p 40 "claude --append-system-prompt 'You have access to a Neovim instance on socket %s. Use nvim --server %s --remote-send <cmd> for commands, --remote-expr <expr> for expressions, --remote-tab <file> for opening files. Integrate seamlessly for pair programming.'"]],
-        socket_path,
-        socket_path
-      )
-    )
+    pane_id = vim.fn.system "tmux split-window -P -F '#{pane_id}' -h -p 40 'opencode'"
 
     vim.defer_fn(function()
       vim.fn.system(
@@ -61,10 +53,10 @@ map({ 'n', 'v' }, '<leader>acc', function()
   else
     vim.fn.system('tmux select-pane -t ' .. pane_id)
   end
-end, { desc = 'Claude Code' })
+end, { desc = 'Opencode' })
 
--- Open Claude Code where you left off
-map({ 'n', 'v' }, '<leader>acr', function()
+-- Open opencode where you left off
+map({ 'n', 'v' }, '<leader>aor', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
@@ -72,7 +64,7 @@ map({ 'n', 'v' }, '<leader>acr', function()
   end
   local panes = (vim.fn.system 'tmux list-panes -F "#{pane_id}"'):gsub('\n', ' '):gsub('%%', '')
   if not pane_id or panes:find((vim.fn.trim(pane_id):gsub('%%', ''))) == nil then
-    pane_id = vim.fn.system 'tmux split-window -P -F "#{pane_id}" -h -p 40 "claude -c"'
+    pane_id = vim.fn.system 'tmux split-window -P -F "#{pane_id}" -h -p 40 "opencode -c"'
 
     vim.defer_fn(function()
       vim.fn.system(
@@ -102,7 +94,7 @@ map({ 'n', 'v' }, '<leader>acr', function()
 end, { desc = 'Resume Previous Chat' })
 
 -- Add current file as context
-map('n', '<leader>acf', function()
+map('n', '<leader>aof', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
@@ -110,7 +102,7 @@ map('n', '<leader>acf', function()
   end
   local panes = (vim.fn.system 'tmux list-panes -F "#{pane_id}"'):gsub('\n', ' '):gsub('%%', '')
   if not pane_id or panes:find((vim.fn.trim(pane_id):gsub('%%', ''))) == nil then
-    vim.notify('No Claude Code pane open', vim.log.levels.WARN)
+    vim.notify('No Opencode pane open', vim.log.levels.WARN)
     return
   end
 
@@ -122,14 +114,14 @@ map('n', '<leader>acf', function()
 end, { desc = 'Add File to Context' })
 
 -- Add selection as context
-map('v', '<leader>acs', function()
+map('v', '<leader>aos', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
     return
   end
   if not is_pane_open() then
-    vim.notify('No Claude Code pane open', vim.log.levels.WARN)
+    vim.notify('No Opencode pane open', vim.log.levels.WARN)
     return
   end
 
@@ -143,47 +135,49 @@ map('v', '<leader>acs', function()
   vim.fn.system('tmux select-pane -t ' .. pane_id)
 end, { desc = 'Add Selection to Context' })
 
--- -- Create a commit
--- map('n', '<leader>gC', function()
---   local in_tmux = vim.fn.exists '$TMUX' == 1
---   if not in_tmux then
---     vim.notify('Not running inside tmux', vim.log.levels.WARN)
---     return
---   end
---
---   if not pane_id or not is_pane_open() then
---     pane_id = vim.fn.system [[tmux split-window -P -F "#{pane_id}" -h -p 40 "claude commit"]]
---   end
--- end, { desc = 'Commit (claude-code)' })
---
--- -- Create a PR
--- map('n', '<leader>gO', function()
---   local in_tmux = vim.fn.exists '$TMUX' == 1
---   if not in_tmux then
---     vim.notify('Not running inside tmux', vim.log.levels.WARN)
---     return
---   end
---
---   local message = 'Create a pr. All changes have already been committed and pushed to origin.'
---
---   if not pane_id or not is_pane_open() then
---     pane_id = vim.fn.system(string.format([[tmux split-window -P -F "#{pane_id}" -h -p 40 "claude '%s'"]], message))
---   else
---     vim.fn.system('tmux select-pane -t ' .. pane_id)
---     vim.fn.system(string.format('tmux send-keys -t %s -l %s', vim.fn.trim(pane_id), vim.fn.shellescape(message)))
---     vim.fn.system 'tmux send-keys Enter'
---   end
--- end, { desc = 'Create PR (claude-code)' })
+-- Create a commit
+map('n', '<leader>gC', function()
+  local in_tmux = vim.fn.exists '$TMUX' == 1
+  if not in_tmux then
+    vim.notify('Not running inside tmux', vim.log.levels.WARN)
+    return
+  end
 
--- Toggle Claude Code
-map('n', '<leader>tc', function()
+  if not pane_id or not is_pane_open() then
+    pane_id =
+      vim.fn.system [[tmux split-window -P -F "#{pane_id}" -h -p 40 "opencode -p 'Create a commit. When writing the commit use the conventional commits convention.'"]]
+  end
+end, { desc = 'Commit (opencode)' })
+
+-- Create a PR
+map('n', '<leader>gO', function()
+  local in_tmux = vim.fn.exists '$TMUX' == 1
+  if not in_tmux then
+    vim.notify('Not running inside tmux', vim.log.levels.WARN)
+    return
+  end
+
+  local message = 'Create a pr. All changes have already been committed and pushed to origin.'
+
+  if not pane_id or not is_pane_open() then
+    pane_id =
+      vim.fn.system(string.format([[tmux split-window -P -F "#{pane_id}" -h -p 40 "opencode -p '%s'"]], message))
+  else
+    vim.fn.system('tmux select-pane -t ' .. pane_id)
+    vim.fn.system(string.format('tmux send-keys -t %s -l %s', vim.fn.trim(pane_id), vim.fn.shellescape(message)))
+    vim.fn.system 'tmux send-keys Enter'
+  end
+end, { desc = 'Create PR (opencode)' })
+
+-- Toggle Opencode
+map('n', '<leader>to', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
     return
   end
   if not is_pane_open() then
-    vim.notify('No Claude Code pane open', vim.log.levels.WARN)
+    vim.notify('No Opencode pane open', vim.log.levels.WARN)
     return
   end
 
@@ -192,4 +186,4 @@ map('n', '<leader>tc', function()
   else
     vim.fn.system 'tmux resize-pane -Z'
   end
-end, { desc = 'Toggle Claude Code' })
+end, { desc = 'Toggle Opencode' })
