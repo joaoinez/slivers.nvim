@@ -123,6 +123,7 @@ M.lualine = {
     bashls = '',
     jsonls = '',
     cssls = '',
+    copilot = '',
   },
 }
 
