@@ -79,6 +79,7 @@ local M = {
     '<leader>fg',
     function()
       Snacks.picker.grep {
+        hidden = true,
         layout = layouts.dropdown({
           layout = { width = 0.8, height = 0.9 },
         }, 0.67),
