@@ -3,9 +3,9 @@ return {
   'saghen/blink.cmp',
   enabled = true,
   cond = not vim.g.vscode,
-  version = '*',
+  version = vim.fn.has 'mac' == 1 and '*' or '1.*',
   dependencies = {
-    { 'saghen/blink.compat', version = '*', opts = {} },
+    { 'saghen/blink.compat', version = vim.fn.has 'mac' == 1 and '*' or '2.*', opts = {} },
     {
       'L3MON4D3/LuaSnip',
       version = 'v2.*',
@@ -38,7 +38,7 @@ return {
       },
     },
   },
-  build = 'cargo +nightly build --release',
+  build = vim.fn.has 'mac' == 1 and 'cargo +nightly build --release' or nil,
   event = 'InsertEnter',
   opts = {
     fuzzy = { implementation = 'prefer_rust_with_warning' },
