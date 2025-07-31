@@ -1,11 +1,10 @@
 local M = {}
 
-M.highlighters = {
+M.highlighters = vim.tbl_deep_extend('force', {
   'c',
   'diff',
   'html',
   'http',
-  'latex',
   'norg',
   'printf',
   'query',
@@ -16,7 +15,9 @@ M.highlighters = {
   'vimdoc',
   'xml',
   'kdl',
-}
+}, vim.fn.has 'macos' == 1 and {
+  'latex',
+} or {})
 
 M.ft_with_disabled_formatters = {
   c = true,
