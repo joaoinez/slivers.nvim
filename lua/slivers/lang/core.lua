@@ -15,6 +15,7 @@ M.highlighters = vim.tbl_deep_extend('force', {
   'vimdoc',
   'xml',
   'kdl',
+  'powershell',
 }, vim.fn.has 'macos' == 1 and {
   'latex',
 } or {})

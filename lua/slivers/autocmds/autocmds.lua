@@ -5,6 +5,7 @@ local augroup = Slivers.autocmds.augroup
 
 -- Highlight on yank
 autocmd('TextYankPost', {
+  desc = 'Highlight on yank',
   group = augroup 'highlight_yank',
   callback = function() (vim.hl or vim.highlight).on_yank() end,
 })
@@ -12,6 +13,7 @@ autocmd('TextYankPost', {
 if not vim.g.vscode then
   -- Check if we need to reload the file when it is changed
   autocmd({ 'FocusGained', 'TermClose', 'TermLeave', 'TabEnter' }, {
+    desc = 'Check if we need to reload the file when it is changed',
     group = augroup 'checktime',
     callback = function()
       if vim.o.buftype ~= 'nofile' then vim.cmd 'set autoread | checktime' end
@@ -20,6 +22,7 @@ if not vim.g.vscode then
 
   -- Resize splits if window got resized
   autocmd({ 'VimResized' }, {
+    desc = 'Resize splits if window got resized',
     group = augroup 'resize_splits',
     callback = function()
       local current_tab = vim.fn.tabpagenr()
@@ -30,6 +33,7 @@ if not vim.g.vscode then
 
   -- Close some filetypes with <q>
   autocmd('FileType', {
+    desc = 'Close filetypes with <q>',
     group = augroup 'close_with_q',
     pattern = {
       'PlenaryTestPopup',
@@ -72,6 +76,7 @@ if not vim.g.vscode then
 
   -- Close slivers options window with q and exit code 1
   autocmd('BufEnter', {
+    desc = 'Close slivers options window with q and exit code 1',
     group = augroup 'close_options_with_q',
     callback = function(event)
       vim.schedule(function()
@@ -118,6 +123,7 @@ if not vim.g.vscode then
 
   -- Automatically enter terminal buff
   autocmd('BufEnter', {
+    desc = 'Automatically enter terminal buffer',
     group = augroup 'term_focus',
     callback = function()
       if vim.bo.buftype == 'terminal' then vim.cmd 'norm i' end
@@ -126,6 +132,7 @@ if not vim.g.vscode then
 
   -- Show cursorline only on active windows
   autocmd({ 'InsertLeave', 'WinEnter' }, {
+    desc = 'Show cursorline only on active windows',
     callback = function()
       if vim.w.auto_cursorline then
         vim.wo.cursorline = true
@@ -134,6 +141,7 @@ if not vim.g.vscode then
     end,
   })
   autocmd({ 'InsertEnter', 'WinLeave' }, {
+    desc = 'Hide cursorline on inactive windows',
     callback = function()
       if vim.wo.cursorline then
         vim.w.auto_cursorline = true
@@ -149,6 +157,7 @@ if not vim.g.vscode then
     command = 'wincmd K',
   })
 
+  -- Corrects terminal background color according to colorscheme
   autocmd({ 'UIEnter', 'ColorScheme' }, {
     desc = 'Corrects terminal background color according to colorscheme, see: https://www.reddit.com/r/neovim/comments/1ehidxy/you_can_remove_padding_around_neovim_instance/',
     callback = function()
@@ -161,3 +170,10 @@ if not vim.g.vscode then
     end,
   })
 end
+
+-- Set `sh` filetype for .env files
+autocmd({ 'BufNewFile', 'BufReadPost' }, {
+  desc = 'Set sh filetype for .env files',
+  pattern = '.env*',
+  callback = function() vim.bo.filetype = 'sh' end,
+})

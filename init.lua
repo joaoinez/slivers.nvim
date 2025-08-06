@@ -23,7 +23,6 @@
 vim.filetype.add {
   extension = {
     ['http'] = 'http',
-    ['env'] = 'plain text',
   },
 }
 
