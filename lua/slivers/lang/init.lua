@@ -5,6 +5,7 @@ M.langs = {
   require 'slivers.lang.bash',
   require 'slivers.lang.css',
   require 'slivers.lang.go',
+  require 'slivers.lang.godot',
   require 'slivers.lang.json',
   require 'slivers.lang.lua',
   require 'slivers.lang.markdown',
@@ -21,6 +22,28 @@ function M.get_highlighters()
   end
 
   return highlighters
+end
+
+function M.get_linters()
+  local linters = {}
+
+  for _, lang in ipairs(M.langs) do
+    vim.list_extend(linters, lang.linters or {})
+  end
+
+  return linters
+end
+
+function M.get_linters_by_ft()
+  local linters_by_ft = {}
+
+  for _, lang in ipairs(M.langs) do
+    for filetype, linters in pairs(lang.linters_by_ft or {}) do
+      linters_by_ft[filetype] = linters
+    end
+  end
+
+  return linters_by_ft
 end
 
 function M.get_formatters()
@@ -53,28 +76,6 @@ function M.get_ft_with_disabled_formatters()
   end
 
   return ft_with_disabled_formatters
-end
-
-function M.get_linters()
-  local linters = {}
-
-  for _, lang in ipairs(M.langs) do
-    vim.list_extend(linters, lang.linters or {})
-  end
-
-  return linters
-end
-
-function M.get_linters_by_ft()
-  local linters_by_ft = {}
-
-  for _, lang in ipairs(M.langs) do
-    for filetype, linters in pairs(lang.linters_by_ft or {}) do
-      linters_by_ft[filetype] = linters
-    end
-  end
-
-  return linters_by_ft
 end
 
 function M.get_debuggers()

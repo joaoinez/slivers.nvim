@@ -124,6 +124,7 @@ M.lualine = {
     jsonls = '',
     cssls = '',
     copilot = '',
+    gdscript = '',
   },
 }
 

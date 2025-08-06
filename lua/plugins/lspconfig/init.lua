@@ -40,6 +40,8 @@ return {
       automatic_enable = true,
     }
 
+    vim.lsp.enable 'gdscript'
+
     autocmd('LspAttach', {
       group = augroup 'lsp_attach',
       callback = function(event)
@@ -47,6 +49,8 @@ return {
 
         require('plugins.lspconfig.keymaps').apply_user_lsp_mappings(client, event.buf)
         require('plugins.lspconfig.autocmds').apply_user_lsp_autocmds(client, event.buf)
+
+        if client and client.name == 'gdscript' then require('plugins.lspconfig.godot').init_nvim_server(client) end
       end,
     })
 
