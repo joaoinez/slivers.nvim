@@ -16,22 +16,6 @@ local M = {
     end,
     desc = 'Terminal (cwd)',
   },
-  {
-    '<C-/>',
-    function()
-      local git_root = Snacks.git.get_root()
-      Snacks.terminal(nil, { cwd = git_root, win = { height = 0.3 } })
-    end,
-    desc = 'Terminal',
-  },
-  {
-    '<C-_>',
-    function()
-      local git_root = Snacks.git.get_root()
-      Snacks.terminal(nil, { cwd = git_root, win = { height = 0.3 } })
-    end,
-    desc = 'which_key_ignore',
-  },
 }
 
 return M

@@ -1,3 +1,5 @@
+local layouts = require 'plugins.snacks.picker.layouts'
+
 local M = {
   {
     '<leader>kp',
@@ -14,7 +16,17 @@ local M = {
     function() Snacks.picker.jumps { layout = { preset = 'bottom', preview = 'main' } } end,
     desc = 'Jump History',
   },
-  { '<leader>u', function() Snacks.picker.undo { layout = 'dropdown' } end, desc = 'Undo History' },
+  {
+    '<leader>u',
+    function()
+      Snacks.picker.undo {
+        layout = layouts.dropdown({
+          layout = { width = 0.8, height = 0.9 },
+        }, 0.75),
+      }
+    end,
+    desc = 'Undo History',
+  },
   {
     '<leader>f?',
     function() Snacks.picker.keymaps { layout = 'top' } end,

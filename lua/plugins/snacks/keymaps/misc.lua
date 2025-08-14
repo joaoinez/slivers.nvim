@@ -96,51 +96,6 @@ local M = {
     end,
     desc = 'Colorschemes',
   },
-  {
-    '<leader>,a',
-    function()
-      Snacks.picker {
-        finder = function()
-          local models = {}
-          local width = math.floor(vim.o.columns * 0.4)
-          for k, v in pairs(require 'slivers.ai_models') do
-            local model_width = k:len()
-            local cost = v.cost or 'free'
-            local cost_width = cost:len()
-            table.insert(models, {
-              label = k .. ((' '):rep(width - model_width - cost_width)) .. cost,
-              value = k,
-            })
-          end
-          return vim.tbl_map(function(model)
-            ---@type snacks.picker.finder.Item
-            local model_item = { text = model.label, value = model.value }
-            return model_item
-          end, vim.fn.sort(models))
-        end,
-        format = 'text',
-        title = 'AI Models',
-        layout = { preset = 'vscode' },
-        confirm = function(picker, item)
-          picker:close()
-          vim.schedule(function()
-            local path = vim.fn.stdpath 'config' .. '/.slivers.json'
-
-            if Slivers.misc.file_exists(path) then
-              local config = vim.json.decode(Slivers.misc.read_file(path))
-
-              config.ai_model = item.value
-
-              Slivers.misc.write_file(path, vim.json.encode(config))
-            end
-
-            vim.cmd 'cq'
-          end)
-        end,
-      }
-    end,
-    desc = 'AI Models',
-  },
   { '<leader>tz', function() Snacks.zen() end, desc = 'Zen Mode' },
   { '<leader>.', function() Snacks.scratch() end, desc = 'Scratch Buffer' },
   {
