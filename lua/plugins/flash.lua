@@ -11,7 +11,7 @@ return {
       desc = 'Flash',
     },
     {
-      'mt',
+      'mb',
       mode = { 'n', 'x' },
       function() require('flash').treesitter() end,
       desc = 'Select Treesitter Block',
@@ -19,7 +19,7 @@ return {
     {
       'r',
       mode = 'o',
-      function() require('flash').jump() end,
+      function() require('flash').jump { jump = { inclusive = false } } end,
       desc = 'Remote',
     },
     {
@@ -29,5 +29,13 @@ return {
       desc = 'Matching Block',
     },
   },
-  opts = {},
+  opts = {
+    modes = {
+      char = {
+        highlight = {
+          backdrop = false,
+        },
+      },
+    },
+  },
 }
