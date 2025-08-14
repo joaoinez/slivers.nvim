@@ -15,6 +15,7 @@ M.colorschemes = {
   onedark = require 'slivers.colorscheme.onedark',
   poimandres = require 'slivers.colorscheme.poimandres',
   ['rose-pine'] = require 'slivers.colorscheme.rose-pine',
+  techbase = require 'slivers.colorscheme.techbase',
   tokyonight = require 'slivers.colorscheme.tokyonight',
   vague = require 'slivers.colorscheme.vague',
   xcode = require 'slivers.colorscheme.xcode',

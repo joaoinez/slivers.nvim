@@ -10,6 +10,7 @@ return vim.g.vscode and {}
     require 'plugins.colorschemes.onedark',
     require 'plugins.colorschemes.poimandres',
     require 'plugins.colorschemes.rose-pine',
+    require 'plugins.colorschemes.techbase',
     require 'plugins.colorschemes.tokyonight',
     require 'plugins.colorschemes.vague',
     require 'plugins.colorschemes.xcode',
