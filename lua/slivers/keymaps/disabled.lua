@@ -9,61 +9,18 @@ map('n', '<right>', '<nop>')
 -- Disable `s` key for flash plugin
 map({ 'n', 'x' }, 's', '<nop>')
 
--- Disable `m` for match operations
-map({ 'n', 'x' }, 'm', '<nop>')
--- TODO:
-map({ 'n', 'x' }, 'mb', '<nop>')
+-- Disable `m` for match operations and all m<letter> combinations
+for c in string.gmatch('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', '.') do
+  map({ 'n', 'x' }, 'm' .. c, '<nop>')
+end
 
 -- Hide m[a-zA-Z] combinations from which-key
 Slivers.lazy.on_load('which-key.nvim', function()
-  vim.schedule(
-    function()
-      require('which-key').add {
-        { 'ma', hidden = true, mode = { 'n', 'x' } },
-        { 'mb', hidden = true, mode = { 'n', 'x' } },
-        { 'mc', hidden = true, mode = { 'n', 'x' } },
-        { 'me', hidden = true, mode = { 'n', 'x' } },
-        { 'mg', hidden = true, mode = { 'n', 'x' } },
-        { 'mi', hidden = true, mode = { 'n', 'x' } },
-        { 'mj', hidden = true, mode = { 'n', 'x' } },
-        { 'mk', hidden = true, mode = { 'n', 'x' } },
-        { 'ml', hidden = true, mode = { 'n', 'x' } },
-        { 'mm', hidden = true, mode = { 'n', 'x' } },
-        { 'mo', hidden = true, mode = { 'n', 'x' } },
-        { 'mp', hidden = true, mode = { 'n', 'x' } },
-        { 'mq', hidden = true, mode = { 'n', 'x' } },
-        { 'mu', hidden = true, mode = { 'n', 'x' } },
-        { 'mv', hidden = true, mode = { 'n', 'x' } },
-        { 'mw', hidden = true, mode = { 'n', 'x' } },
-        { 'mx', hidden = true, mode = { 'n', 'x' } },
-        { 'my', hidden = true, mode = { 'n', 'x' } },
-        { 'mz', hidden = true, mode = { 'n', 'x' } },
-        { 'mA', hidden = true, mode = { 'n', 'x' } },
-        { 'mB', hidden = true, mode = { 'n', 'x' } },
-        { 'mC', hidden = true, mode = { 'n', 'x' } },
-        { 'mD', hidden = true, mode = { 'n', 'x' } },
-        { 'mE', hidden = true, mode = { 'n', 'x' } },
-        { 'mG', hidden = true, mode = { 'n', 'x' } },
-        { 'mH', hidden = true, mode = { 'n', 'x' } },
-        { 'mI', hidden = true, mode = { 'n', 'x' } },
-        { 'mJ', hidden = true, mode = { 'n', 'x' } },
-        { 'mK', hidden = true, mode = { 'n', 'x' } },
-        { 'mL', hidden = true, mode = { 'n', 'x' } },
-        { 'mM', hidden = true, mode = { 'n', 'x' } },
-        { 'mN', hidden = true, mode = { 'n', 'x' } },
-        { 'mO', hidden = true, mode = { 'n', 'x' } },
-        { 'mP', hidden = true, mode = { 'n', 'x' } },
-        { 'mQ', hidden = true, mode = { 'n', 'x' } },
-        { 'mR', hidden = true, mode = { 'n', 'x' } },
-        { 'mS', hidden = true, mode = { 'n', 'x' } },
-        { 'mT', hidden = true, mode = { 'n', 'x' } },
-        { 'mU', hidden = true, mode = { 'n', 'x' } },
-        { 'mV', hidden = true, mode = { 'n', 'x' } },
-        { 'mW', hidden = true, mode = { 'n', 'x' } },
-        { 'mX', hidden = true, mode = { 'n', 'x' } },
-        { 'mY', hidden = true, mode = { 'n', 'x' } },
-        { 'mZ', hidden = true, mode = { 'n', 'x' } },
-      }
+  vim.schedule(function()
+    local hidden_keys = {}
+    for c in string.gmatch('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', '.') do
+      table.insert(hidden_keys, { 'm' .. c, hidden = true, mode = { 'n', 'x' } })
     end
-  )
+    require('which-key').add(hidden_keys)
+  end)
 end)

@@ -49,7 +49,7 @@ map({ 'n', 'v' }, '<leader>aoc', function()
           )
         end
       end
-    end, 1000)
+    end, 1200)
   else
     vim.fn.system('tmux select-pane -t ' .. pane_id)
   end
@@ -87,7 +87,7 @@ map({ 'n', 'v' }, '<leader>aor', function()
           )
         end
       end
-    end, 1000)
+    end, 1200)
   else
     vim.fn.system('tmux select-pane -t ' .. pane_id)
   end

@@ -65,6 +65,10 @@ if not vim.g.vscode then
   map('n', '<leader>ws', '<C-w>r', { desc = 'Swap Splits' })
   map('n', '<leader>w\\', '<C-w>|', { desc = 'Max Out Split Width' })
   map('n', '<leader>w|', '<C-w>_', { desc = 'Max Out Split Height' })
+  map('n', '<leader>wm', function()
+    vim.cmd 'wincmd _'
+    vim.cmd 'wincmd |'
+  end, { desc = 'Maximise Split' })
   map('n', '<leader>we', '<C-w>=', { desc = 'Equal Out Splits' })
   map('n', '<leader>wo', '<C-w>o', { desc = 'Close Other Splits' })
   map('n', '<leader>wh', '<C-w>H', { desc = 'Move Split Left' })
