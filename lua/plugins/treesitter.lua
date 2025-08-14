@@ -21,6 +21,7 @@ return {
       'bezhermoso/tree-sitter-ghostty',
       build = 'make nvim_install',
     },
+    'andymass/vim-matchup',
   },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
