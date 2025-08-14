@@ -13,12 +13,11 @@ if not vim.g.vscode then
     end
   else
     local default_config = {
-      ai_model = 'claude', -- Set default ai model. Use `-local` to use local models and `-dual` to use dual boost.
+      ai_completion = 'copilot', -- AI completion plugin; copilot | neocodeium
       colorscheme = 'cattppuccin', -- Set default colorscheme.
       transparent_bg = true, -- Set transparent background.
       mode_len = 3, -- Set mode text length; 0 is Neovim's default.
       lualine_borders = true, -- Set lualine rounded borders.
-      ai_local = false, -- Whether to use local ai models.
       dark_mode = true, -- Set background dark mode.
       trouble_lualine = true, -- Show the current document symbols location from Trouble in lualine.
       dev = false, -- Enable or disable dev related plugins.
