@@ -53,5 +53,10 @@ return {
         }
       end,
     },
+    custom_highlights = function(colors)
+      return {
+        WinSeparator = { fg = colors.flamingo },
+      }
+    end,
   },
 }
