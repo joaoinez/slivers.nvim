@@ -64,7 +64,7 @@ function M.lsp_rename()
     },
     -- 25 cells wide, should be enough for most identifier names
     size = {
-      width = 25,
+      width = 33,
       height = 1,
     },
   }

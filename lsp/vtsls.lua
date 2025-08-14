@@ -58,6 +58,9 @@ return {
         propertyDeclarationTypes = { enabled = true },
         variableTypes = { enabled = false },
       },
+      preferences = {
+        preferTypeOnlyAutoImports = true,
+      },
     },
   },
   on_attach = function(client)
