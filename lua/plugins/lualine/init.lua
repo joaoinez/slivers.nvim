@@ -12,8 +12,8 @@ return {
     local utils = require 'plugins.lualine.utils'
     local get_color = utils.get_color
 
+    -- Lualine components
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
-    -- local ai_model = require 'plugins.lualine.components.ai_model'
     local treesitter = require 'plugins.lualine.components.treesitter'
 
     -- Set global lualine
@@ -50,7 +50,14 @@ return {
           },
         },
         lualine_b = {
-          'branch',
+          {
+            'branch',
+            ---@param str string
+            fmt = function(str)
+              local max_len = 15
+              return str:sub(1, max_len) .. (str:len() > max_len and '...' or '')
+            end,
+          },
           {
             'diff',
             symbols = IconSliver.lualine.diff,
@@ -91,11 +98,13 @@ return {
           },
         },
         lualine_x = {
-          --   {
-          --     ai_model.init,
-          --     icon = ai_model.icon(),
-          --     color = { fg = ai_model.color() },
-          --   },
+          {
+            ---@diagnostic disable-next-line: undefined-field
+            function() return require('noice').api.status.command.get() end,
+            ---@diagnostic disable-next-line: undefined-field
+            cond = function() return package.loaded['noice'] and require('noice').api.status.command.has() end,
+            color = get_color 'Macro',
+          },
         },
         lualine_y = {
           {
