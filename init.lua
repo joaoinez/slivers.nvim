@@ -22,7 +22,10 @@
 -- [[ Add File Extensions ]]
 vim.filetype.add {
   extension = {
-    ['http'] = 'http',
+    http = 'http',
+    ['code-snippets'] = 'jsonc',
+    razor = 'razor',
+    cshtml = 'razor',
   },
 }
 

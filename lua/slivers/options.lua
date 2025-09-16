@@ -13,7 +13,6 @@ if not vim.g.vscode then
     end
   else
     local default_config = {
-      ai_completion = 'copilot', -- AI completion plugin; copilot | neocodeium
       colorscheme = 'cattppuccin', -- Set default colorscheme.
       transparent_bg = true, -- Set transparent background.
       mode_len = 3, -- Set mode text length; 0 is Neovim's default.

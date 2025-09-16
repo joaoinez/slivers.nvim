@@ -10,6 +10,9 @@ map('x', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = 'Move cursor up
 map('n', '<C-d>', '<C-d>zz', { desc = 'Scrolls down the page and center the cursor' })
 map('n', '<C-u>', '<C-u>zz', { desc = 'Scrolls up the page and center the cursor' })
 
+-- `zz` centers cursor at the top
+map('n', 'zz', 'zt', { noremap = true, desc = 'Centers the cursor at the top of the screen' })
+
 -- Prevent Tab from behaving like `<C-i>`
 map('n', '<Tab>', '<Tab>', {
   noremap = true,

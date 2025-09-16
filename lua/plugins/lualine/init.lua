@@ -20,19 +20,19 @@ return {
     vim.o.laststatus = vim.g.lualine_laststatus
 
     -- Transparent Lualine
-    local auto_theme = require 'lualine.themes.auto'
+    local theme = require 'lualine.themes.auto'
     if vim.g.transparent_bg then
-      if auto_theme.inactive and auto_theme.inactive.c then auto_theme.inactive.c.bg = 'none' end
-      if auto_theme.visual and auto_theme.visual.c then auto_theme.visual.c.bg = 'none' end
-      if auto_theme.replace and auto_theme.replace.c then auto_theme.replace.c.bg = 'none' end
-      if auto_theme.normal and auto_theme.normal.c then auto_theme.normal.c.bg = 'none' end
-      if auto_theme.insert and auto_theme.insert.c then auto_theme.insert.c.bg = 'none' end
-      if auto_theme.command and auto_theme.command.c then auto_theme.command.c.bg = 'none' end
+      if theme.inactive and theme.inactive.c then theme.inactive.c.bg = 'none' end
+      if theme.visual and theme.visual.c then theme.visual.c.bg = 'none' end
+      if theme.replace and theme.replace.c then theme.replace.c.bg = 'none' end
+      if theme.normal and theme.normal.c then theme.normal.c.bg = 'none' end
+      if theme.insert and theme.insert.c then theme.insert.c.bg = 'none' end
+      if theme.command and theme.command.c then theme.command.c.bg = 'none' end
     end
 
     local opts = {
       options = {
-        theme = auto_theme,
+        theme = theme,
         globalstatus = vim.o.laststatus == 3,
         section_separators = IconSliver.lualine.section_separators(),
         component_separators = IconSliver.lualine.component_separators(),

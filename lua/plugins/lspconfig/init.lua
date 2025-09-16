@@ -10,6 +10,7 @@ return {
       opts = {
         registries = {
           'github:mason-org/mason-registry',
+          'github:Crashdummyy/mason-registry',
         },
       },
     },
@@ -34,13 +35,22 @@ return {
     vim.list_extend(servers, LangSliver.get_debuggers() or {})
 
     require('mason').setup()
-    require('mason-tool-installer').setup { ensure_installed = servers }
+    require('mason-tool-installer').setup {
+      ensure_installed = servers,
+      integrations = {
+        ['mason-lspconfig'] = true,
+        ['mason-null-ls'] = false,
+        ['mason-nvim-dap'] = true,
+      },
+    }
     require('mason-lspconfig').setup {
       ensure_installed = {},
       automatic_enable = true,
+      automatic_installation = false,
     }
 
     vim.lsp.enable 'gdscript'
+    vim.lsp.enable 'roslyn'
 
     -- TODO: Move this to `lang` folder, and then call it here
     local base_on_attach = vim.lsp.config.eslint.on_attach
@@ -51,7 +61,17 @@ return {
         base_on_attach(client, bufnr)
         vim.api.nvim_create_autocmd('BufWritePre', {
           buffer = bufnr,
-          command = 'LspEslintFixAll',
+          callback = function()
+            local clients = vim.lsp.get_clients { bufnr = bufnr, name = 'eslint' }
+            if
+              clients
+              and clients[1]
+              and clients[1].server_capabilities
+              and clients[1].server_capabilities.codeActionProvider
+            then
+              pcall(vim.cmd, 'LspEslintFixAll')
+            end
+          end,
         })
       end,
     })

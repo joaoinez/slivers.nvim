@@ -183,7 +183,6 @@ function M.open_file_in_editor(editor)
   ---@enum (key) slivers.Editor
   local editor_commands = {
     vscode = 'code -g %s:%d:%d',
-    trae = 'trae -g %s:%d:%d',
     zed = 'zed %s:%d:%d',
   }
 

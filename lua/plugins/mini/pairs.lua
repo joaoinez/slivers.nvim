@@ -1,6 +1,6 @@
 ---@type LazySpec
 return {
-  'echasnovski/mini.pairs',
+  'nvim-mini/mini.pairs',
   enabled = true,
   cond = not vim.g.vscode,
   version = false,

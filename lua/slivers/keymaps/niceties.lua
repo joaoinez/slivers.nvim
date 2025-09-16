@@ -2,7 +2,8 @@ local map = Slivers.keymaps.safe_keymap_set
 
 if not vim.g.vscode then
   -- Toggle comments
-  map({ 'n', 'x' }, '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' })
+  map('n', '<leader>/', '<cmd>norm gcc<cr>', { desc = 'Toggle comment line' })
+  map('x', '<leader>/', '<cmd>norm gb<cr>', { desc = 'Toggle comment line' })
 
   -- Save and quit Neovim
   map('n', '<leader>x', '<cmd>wqa<cr>', { desc = 'Save and Quit Neovim' })

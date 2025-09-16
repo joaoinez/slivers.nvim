@@ -59,6 +59,22 @@ return {
         },
         view = 'mini',
       },
+      {
+        filter = {
+          any = {
+            { find = 'Initializing: %s' },
+            { find = 'Roslyn project initialization complete' },
+            { find = 'Restore started' },
+            { find = 'Running dotnet restore on' },
+            {
+              find = 'error MSB4025: The project file could not be loaded. Data at the root level is invalid.',
+            },
+            { find = 'Failed to run restore on' },
+            { find = 'Restore complete' },
+          },
+        },
+        view = 'mini',
+      },
     },
   },
   config = function(_, opts)

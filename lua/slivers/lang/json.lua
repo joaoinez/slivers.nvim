@@ -7,4 +7,9 @@ M.highlighters = {
   'jsonc',
 }
 
+M.formatters_by_ft = {
+  json = { 'prettierd' },
+  jsonc = { 'prettierd' },
+}
+
 return M

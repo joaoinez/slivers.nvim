@@ -2,6 +2,7 @@ local M = {}
 
 M.langs = {
   require 'slivers.lang.core',
+  require 'slivers.lang.csharp',
   require 'slivers.lang.bash',
   require 'slivers.lang.css',
   require 'slivers.lang.go',

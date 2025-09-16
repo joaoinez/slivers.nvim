@@ -125,6 +125,8 @@ M.lualine = {
     cssls = '',
     copilot = '',
     gdscript = '',
+    c_sharp = '',
+    razor = '',
   },
 }
 

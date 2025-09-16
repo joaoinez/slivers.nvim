@@ -1,15 +1,8 @@
 local M = {
   name = 'techbase',
-  globals = function()
-    local trouble_lualine = vim.g.trouble_lualine
-
-    if not vim.g.transparent_bg then trouble_lualine = false end
-
-    return {
-      lualine_borders = false,
-      trouble_lualine = trouble_lualine,
-    }
-  end,
+  variants = {
+    'techbase-hc',
+  },
   hl_groups = function()
     local c = require 'techbase.palettes.techbase'
 
@@ -31,7 +24,6 @@ local M = {
       string.format('highlight SnacksPickerGitStatusModified guifg=%s guibg=%s', c.git_change_fg, c.git_change_bg)
     )
     vim.cmd(string.format('highlight SnacksPickerGitStatusUntracked guifg=%s guibg=%s', c.git_add_fg, c.git_add_bg))
-    vim.cmd(string.format('highlight WinSeparator guifg=%s', c.keyword))
 
     return require 'slivers.colorscheme._fallback'
   end,

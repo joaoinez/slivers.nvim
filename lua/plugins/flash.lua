@@ -2,11 +2,12 @@
 return {
   'folke/flash.nvim',
   enabled = true,
+  cond = not vim.g.vscode,
   event = 'VeryLazy',
   keys = {
     {
       's',
-      mode = { 'n', 'x' },
+      mode = { 'n', 'x', 'o' },
       function() require('flash').jump() end,
       desc = 'Flash',
     },

@@ -42,6 +42,21 @@ local M = {
   {
     '<leader>ff',
     function()
+      Snacks.picker.files {
+        hidden = true,
+        matcher = {
+          frecency = true,
+        },
+        layout = {
+          preset = 'vscode',
+        },
+      }
+    end,
+    desc = 'Find Files',
+  },
+  {
+    '<leader>fs',
+    function()
       -- // TODO: Reuse this function
       Snacks.picker.files {
         hidden = true,
@@ -56,7 +71,7 @@ local M = {
         },
       }
     end,
-    desc = 'Find Files',
+    desc = 'Search Files',
   },
   {
     '<leader>fd',

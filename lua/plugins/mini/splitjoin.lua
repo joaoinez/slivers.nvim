@@ -1,7 +1,8 @@
 ---@type LazySpec
 return {
-  'echasnovski/mini.splitjoin',
+  'nvim-mini/mini.splitjoin',
   enabled = true,
+  cond = true,
   version = false,
   event = 'VeryLazy',
   opts = {},

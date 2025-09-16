@@ -18,7 +18,7 @@ local function is_pane_zoomed()
 end
 
 -- Open opencode
-map({ 'n', 'v' }, '<leader>aoc', function()
+map({ 'n', 'v' }, '<leader>aa', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
@@ -56,7 +56,7 @@ map({ 'n', 'v' }, '<leader>aoc', function()
 end, { desc = 'Opencode' })
 
 -- Open opencode where you left off
-map({ 'n', 'v' }, '<leader>aor', function()
+map({ 'n', 'v' }, '<leader>ar', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
@@ -94,7 +94,7 @@ map({ 'n', 'v' }, '<leader>aor', function()
 end, { desc = 'Resume Previous Chat' })
 
 -- Add current file as context
-map('n', '<leader>aof', function()
+map('n', '<leader>af', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)
@@ -114,7 +114,7 @@ map('n', '<leader>aof', function()
 end, { desc = 'Add File to Context' })
 
 -- Add selection as context
-map('v', '<leader>aos', function()
+map('v', '<leader>as', function()
   local in_tmux = vim.fn.exists '$TMUX' == 1
   if not in_tmux then
     vim.notify('Not running inside tmux', vim.log.levels.WARN)

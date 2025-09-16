@@ -22,6 +22,12 @@ return {
       build = 'make nvim_install',
     },
     'andymass/vim-matchup',
+    {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      opts = {
+        enable_autocmd = false,
+      },
+    },
   },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',

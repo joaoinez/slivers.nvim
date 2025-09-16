@@ -2,7 +2,7 @@
 return {
   'zbirenbaum/copilot.lua',
   enabled = true,
-  cond = not vim.g.vscode and vim.g.ai_completion == 'copilot',
+  cond = not vim.g.vscode,
   cmd = 'Copilot',
   event = 'InsertEnter',
   opts = {

@@ -70,11 +70,7 @@ local M = {
   { '<leader>gB', function() Snacks.gitbrowse { what = 'repo' } end, desc = 'Browse Repo (branch)' },
   { '<leader>gx', function() Snacks.gitbrowse() end, desc = 'Browse Repo (github)' },
   { '<leader>gX', function() Snacks.gitbrowse { branch = 'main' } end, desc = 'Browse Repo (main)' },
-  {
-    '<leader>go',
-    function() Snacks.terminal('gh pr create', { win = { border = 'rounded' } }) end,
-    desc = 'Open PR (github)',
-  },
+  -- { '<leader>go', function() Snacks.gitbrowse { what = '' } end, desc = 'Browse PRs' },
 }
 
 return M

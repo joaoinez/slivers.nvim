@@ -1,7 +1,8 @@
 ---@type LazySpec
 return {
-  'echasnovski/mini.ai',
+  'nvim-mini/mini.ai',
   enabled = true,
+  cond = true,
   version = false,
   event = 'VeryLazy',
   opts = function()
