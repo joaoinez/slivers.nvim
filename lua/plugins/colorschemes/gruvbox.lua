@@ -6,5 +6,6 @@ return {
   lazy = Slivers.colorscheme.get_config(ColorSliver.colorschemes, vim.g.colors_name).name ~= 'gruvbox',
   opts = {
     transparent_mode = vim.g.transparent_bg,
+    contrast = 'hard',
   },
 }

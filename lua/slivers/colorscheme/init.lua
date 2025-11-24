@@ -18,6 +18,7 @@ M.colorschemes = {
   techbase = require 'slivers.colorscheme.techbase',
   tokyonight = require 'slivers.colorscheme.tokyonight',
   vague = require 'slivers.colorscheme.vague',
+  vscode = require 'slivers.colorscheme.vscode',
   xcode = require 'slivers.colorscheme.xcode',
 }
 

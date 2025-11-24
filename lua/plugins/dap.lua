@@ -7,7 +7,12 @@ return {
   cond = not vim.g.vscode,
   dependencies = {
     'nvim-neotest/nvim-nio',
-    'rcarriga/nvim-dap-ui',
+    -- 'rcarriga/nvim-dap-ui',
+    {
+      'igorlfs/nvim-dap-view',
+      ---@module 'dap-view'
+      opts = {},
+    },
     { 'theHamsta/nvim-dap-virtual-text', opts = {} },
     'jay-babu/mason-nvim-dap.nvim',
     {

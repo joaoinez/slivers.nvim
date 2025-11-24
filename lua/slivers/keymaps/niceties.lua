@@ -63,6 +63,30 @@ map('n', '<leader>cI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 -- Lazy
 map('n', '<leader>,l', function() require('lazy').check() end, { desc = 'Lazy' })
 
+-- Create .nvim.lua file in project root
+map('n', '<leader>,i', function()
+  local root = Snacks.git.get_root()
+  if not root then
+    vim.notify('Could not determine project root', vim.log.levels.ERROR)
+    return
+  end
+
+  local filepath = root .. '/.nvim.lua'
+  local content = ([[ vim.g.colorscheme = "%s"
+
+vim.cmd("colorscheme " .. vim.g.colorscheme)
+ColorSliver()]]):format(vim.g.colorscheme)
+
+  local file = io.open(filepath, 'w')
+  if file then
+    file:write(content)
+    file:close()
+    vim.notify('Created ' .. filepath, vim.log.levels.INFO)
+  else
+    vim.notify('Failed to create ' .. filepath, vim.log.levels.ERROR)
+  end
+end, { desc = 'Init .nvim.lua' })
+
 -- Mason
 -- TODO: Move this to keys in mason plugin file
 if Slivers.lazy.is_available 'mason.nvim' then
@@ -109,4 +133,7 @@ map('n', '<leader>kT', '<cmd>PlenaryBustedFile %<cr>', { desc = 'Test File (plen
 map('n', '<leader>wr', '<cmd>wa | cq<cr>', { desc = 'Restart Neovim' })
 
 -- Reload Buffer
-map('n', '<leader>kr', '<cmd>set autoread | checktime<cr>', { desc = 'Reload Buffer' })
+map('n', '<leader>kr', '<cmd>e!<cr>', { desc = 'Reload Buffer' })
+
+-- Inspect highlight group under cursor
+map('n', '<leader>ki', '<cmd>Inspect<cr>', { desc = 'Inspect Highlight' })

@@ -137,36 +137,38 @@ return {
     ---@return nil
     local function updateMiniWithGit(buf_id, gitStatusMap)
       vim.schedule(function()
-        local nlines = vim.api.nvim_buf_line_count(buf_id)
-        local cwd = vim.fs.root(buf_id, '.git')
-        local escapedcwd = cwd and vim.pesc(cwd)
-        escapedcwd = vim.fs.normalize(escapedcwd)
+        if vim.api.nvim_buf_is_valid(buf_id) then
+          local nlines = vim.api.nvim_buf_line_count(buf_id)
+          local cwd = vim.fs.root(buf_id, '.git')
+          local escapedcwd = cwd and vim.pesc(cwd)
+          escapedcwd = vim.fs.normalize(escapedcwd)
 
-        for i = 1, nlines do
-          local entry = MiniFiles.get_fs_entry(buf_id, i)
-          if not entry then break end
-          local relativePath = entry.path:gsub('^' .. escapedcwd .. '/', '')
-          local status = gitStatusMap[relativePath]
+          for i = 1, nlines do
+            local entry = MiniFiles.get_fs_entry(buf_id, i)
+            if not entry then break end
+            local relativePath = entry.path:gsub('^' .. escapedcwd .. '/', '')
+            local status = gitStatusMap[relativePath]
 
-          if status then
-            local symbol, hlGroup = mapSymbols(status, isSymlink(entry.path))
-            vim.api.nvim_buf_set_extmark(buf_id, nsMiniFiles, i - 1, 0, {
-              sign_text = symbol,
-              sign_hl_group = hlGroup,
-              priority = 2,
-            })
-            -- This below code is responsible for coloring the text of the items. comment it out if you don't want that
-            local line = vim.api.nvim_buf_get_lines(buf_id, i - 1, i, false)[1]
-            -- Find the name position accounting for potential icons
-            local nameStartCol = line:find(vim.pesc(entry.name)) or 0
-
-            if nameStartCol > 0 then
-              vim.api.nvim_buf_set_extmark(buf_id, nsMiniFiles, i - 1, nameStartCol - 1, {
-                end_col = nameStartCol + #entry.name - 1,
-                hl_group = hlGroup,
+            if status then
+              local symbol, hlGroup = mapSymbols(status, isSymlink(entry.path))
+              vim.api.nvim_buf_set_extmark(buf_id, nsMiniFiles, i - 1, 0, {
+                sign_text = symbol,
+                sign_hl_group = hlGroup,
+                priority = 2,
               })
+              -- This below code is responsible for coloring the text of the items. comment it out if you don't want that
+              local line = vim.api.nvim_buf_get_lines(buf_id, i - 1, i, false)[1]
+              -- Find the name position accounting for potential icons
+              local nameStartCol = line:find(vim.pesc(entry.name)) or 0
+
+              if nameStartCol > 0 then
+                vim.api.nvim_buf_set_extmark(buf_id, nsMiniFiles, i - 1, nameStartCol - 1, {
+                  end_col = nameStartCol + #entry.name - 1,
+                  hl_group = hlGroup,
+                })
+              end
+            else
             end
-          else
           end
         end
       end)

@@ -13,7 +13,8 @@ if not vim.g.vscode then
     end
   else
     local default_config = {
-      colorscheme = 'cattppuccin', -- Set default colorscheme.
+      colorscheme = 'techbase', -- Set default colorscheme.
+      random_colorscheme = false, -- Enable or disable random colorscheme on startup.
       transparent_bg = true, -- Set transparent background.
       mode_len = 3, -- Set mode text length; 0 is Neovim's default.
       lualine_borders = true, -- Set lualine rounded borders.
@@ -45,6 +46,7 @@ if not vim.g.vscode then
   vim.o.confirm = true -- Confirm to save changes before exiting modified buffer.
   vim.o.cursorline = true -- Highlight the text line of the cursor.
   vim.o.expandtab = true -- Enable the use of space in tab.
+  vim.o.exrc = true -- Enable reading project-local configuration files (.nvim.lua, .nvimrc, .exrc).
   vim.opt.fillchars = { -- Characters to fill the statuslines, vertical separators and special lines in the window.
     foldopen = '',
     foldclose = '',

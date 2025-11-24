@@ -11,11 +11,11 @@ return {
       mode = 'c',
       desc = 'Redirect Cmdline',
     },
-    { '<leader>nl', function() require('noice').cmd 'last' end, desc = 'Last Message' },
-    { '<leader>nh', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
-    { '<leader>nH', function() require('noice').cmd 'pick' end, desc = 'Message History (snacks)' },
-    { '<leader>nd', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
-    { '<leader>np', function() require('noice').cmd 'pick' end, desc = 'Pick Message' },
+    { '<leader>Nl', function() require('noice').cmd 'last' end, desc = 'Last Message' },
+    { '<leader>Nh', function() require('noice').cmd 'history' end, desc = 'Message History (noice)' },
+    { '<leader>NH', function() require('noice').cmd 'pick' end, desc = 'Message History (snacks)' },
+    { '<leader>Nd', function() require('noice').cmd 'dismiss' end, desc = 'Dismiss All Messages' },
+    { '<leader>Np', function() require('noice').cmd 'pick' end, desc = 'Pick Message' },
   },
   opts = {
     presets = {

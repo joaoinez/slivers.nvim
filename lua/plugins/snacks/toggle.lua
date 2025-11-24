@@ -20,17 +20,7 @@ Snacks.toggle({
 
 Snacks.toggle({
   name = 'Transparent Background',
-  get = function()
-    local path = vim.fn.stdpath 'config' .. '/.slivers.json'
-
-    if Slivers.misc.file_exists(path) then
-      local config = vim.json.decode(Slivers.misc.read_file(path))
-
-      return config.transparent_bg
-    end
-
-    return false
-  end,
+  get = function() return vim.g.transparent_bg == true end,
   set = function(state)
     local path = vim.fn.stdpath 'config' .. '/.slivers.json'
     if Slivers.misc.file_exists(path) then
@@ -64,3 +54,26 @@ Snacks.toggle({
     end
   end,
 }):map '<leader>ta'
+
+Snacks.toggle({
+  name = 'Random Colorscheme',
+  get = function() return vim.g.random_colorscheme == true end,
+  set = function(state)
+    local path = vim.fn.stdpath 'config' .. '/.slivers.json'
+    if Slivers.misc.file_exists(path) then
+      local config = vim.json.decode(Slivers.misc.read_file(path))
+
+      if state then
+        config.random_colorscheme = true
+
+        Slivers.misc.write_file(path, vim.json.encode(config))
+      else
+        config.random_colorscheme = false
+
+        Slivers.misc.write_file(path, vim.json.encode(config))
+      end
+
+      vim.schedule(function() vim.cmd 'cq' end)
+    end
+  end,
+}):map '<leader>,r'

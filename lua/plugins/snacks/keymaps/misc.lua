@@ -51,7 +51,18 @@ local M = {
       Snacks.picker {
         finder = function()
           local colorschemes = Slivers.colorscheme.get_installed_colorschemes()
-          return vim.tbl_map(function(color) return { text = color, value = color } end, colorschemes)
+          -- TODO: Light colorschemes should be flagged by the colorscheme itself,
+          -- and then filtered automatically in Slivers.colorscheme
+          local filtered_colorschemes = vim.tbl_filter(function(colorscheme)
+            local is_light = colorscheme:find 'light'
+              or colorscheme == 'catppuccin-latte'
+              or colorscheme == 'kanagawa-lotus'
+              or colorscheme == 'rose-pine-dawn'
+              or colorscheme == 'tokyonight-day'
+            return not is_light
+          end, colorschemes)
+
+          return vim.tbl_map(function(color) return { text = color, value = color } end, filtered_colorschemes)
         end,
         on_change = function(_, item)
           if not item then return end
@@ -75,21 +86,20 @@ local M = {
 
               Slivers.misc.write_file(path, vim.json.encode(config))
 
-              vim.cmd 'cq'
+              vim.g.colorscheme = item.value
+
+              vim.cmd('colorscheme ' .. item.value)
+              ColorSliver()
+
+              local choice = vim.fn.confirm('Reload Neovim to apply colorscheme?', '&Yes\n&No', 1)
+              if choice == 1 then vim.cmd 'cq' end
             end
           end)
         end,
         on_close = function()
           vim.schedule(function()
-            local path = vim.fn.stdpath 'config' .. '/.slivers.json'
-
-            if Slivers.misc.file_exists(path) then
-              local config = vim.json.decode(Slivers.misc.read_file(path))
-
-              vim.cmd('colorscheme ' .. config.colorscheme)
-
-              ColorSliver()
-            end
+            vim.cmd('colorscheme ' .. vim.g.colorscheme)
+            ColorSliver()
           end)
         end,
       }

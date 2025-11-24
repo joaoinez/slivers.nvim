@@ -2,9 +2,10 @@ local M = {}
 
 M.langs = {
   require 'slivers.lang.core',
-  require 'slivers.lang.csharp',
   require 'slivers.lang.bash',
+  require 'slivers.lang.csharp',
   require 'slivers.lang.css',
+  require 'slivers.lang.eslint',
   require 'slivers.lang.go',
   require 'slivers.lang.godot',
   require 'slivers.lang.json',
@@ -23,6 +24,16 @@ function M.get_highlighters()
   end
 
   return highlighters
+end
+
+function M.get_lsp_configs()
+  local lsp_configs = {}
+
+  for _, lang in ipairs(M.langs) do
+    if lang.lsp then table.insert(lsp_configs, lang.lsp) end
+  end
+
+  return lsp_configs
 end
 
 function M.get_linters()

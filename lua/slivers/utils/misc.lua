@@ -178,12 +178,43 @@ end
 
 --- Opens current file in another code editor
 ---
----@param editor slivers.Editor
+---@param editor slivers.EditorFileCmd
 function M.open_file_in_editor(editor)
-  ---@enum (key) slivers.Editor
+  ---@enum (key) slivers.EditorFileCmd
   local editor_commands = {
     vscode = 'code -g %s:%d:%d',
     zed = 'zed %s:%d:%d',
+    rider = '~/.local/bin/rider.sh %s --line %d --column %d',
+  }
+
+  local cmd_format = editor_commands[editor]
+  if not cmd_format then
+    vim.notify("Editor '" .. editor .. "' not configured", vim.log.levels.ERROR)
+    return
+  end
+
+  local file = vim.api.nvim_buf_get_name(0)
+  local line = vim.fn.line '.'
+  local col = vim.fn.col '.'
+
+  local command = string.format(cmd_format, vim.fn.shellescape(file), line, col)
+
+  if vim.fn.has 'win32' == 1 then
+    vim.fn.system('start cmd /c "' .. command .. '"')
+  else
+    vim.fn.system(command .. ' &')
+  end
+end
+
+--- Opens current project in another code editor
+---
+---@param editor slivers.EditorProjectCmd
+function M.open_project_in_editor(editor)
+  ---@enum (key) slivers.EditorProjectCmd
+  local editor_commands = {
+    vscode = 'code .',
+    zed = 'zed .',
+    rider = '~/.local/bin/rider.sh .',
   }
 
   local cmd_format = editor_commands[editor]

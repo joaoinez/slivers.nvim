@@ -37,8 +37,12 @@ local M = {
           },
         },
         actions = {
-          neogit_open = function() require('neogit').open() end,
+          neogit_open = function()
+            vim.cmd 'stopinsert'
+            require('neogit').open()
+          end,
           neogit_commit = function(picker)
+            vim.cmd 'stopinsert'
             require('neogit').open { 'commit' }
             picker:close()
           end,
@@ -68,8 +72,8 @@ local M = {
   },
   { '<leader>gG', function() Snacks.lazygit() end, desc = 'Lazygit' },
   { '<leader>gB', function() Snacks.gitbrowse { what = 'repo' } end, desc = 'Browse Repo (branch)' },
-  { '<leader>gx', function() Snacks.gitbrowse() end, desc = 'Browse Repo (github)' },
-  { '<leader>gX', function() Snacks.gitbrowse { branch = 'main' } end, desc = 'Browse Repo (main)' },
+  { '<leader>gx', function() Snacks.gitbrowse() end, desc = 'Browse File (github)' },
+  { '<leader>gX', function() Snacks.gitbrowse { branch = 'main' } end, desc = 'Browse File (main)' },
   -- { '<leader>go', function() Snacks.gitbrowse { what = '' } end, desc = 'Browse PRs' },
 }
 

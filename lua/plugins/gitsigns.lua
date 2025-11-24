@@ -31,6 +31,7 @@ return {
       map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset (hunk)' })
       map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset (file)' })
       map('n', '<leader>gi', gitsigns.preview_hunk, { desc = 'Inline Preview (hunk)' })
+      map('n', '<leader>gd', '<cmd>Gitsigns diffthis HEAD<cr>', { desc = 'Diff (worktree)' })
 
       -- [[ Toggles ]]
       map('n', '<leader>tB', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (git)' })

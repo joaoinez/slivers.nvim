@@ -14,6 +14,13 @@ local M = {
         hidden = true,
         unloaded = false,
         nofile = false,
+        filter = {
+          filter = function(item)
+            local name = item.file
+            if name:match '%__virtual.cs$' or name:match '%__virtual.html' then return false end
+            return true
+          end,
+        },
         win = {
           input = {
             footer = '┤ <c-w> close │ <a-s> flash │ <a-g> refine ├ ',

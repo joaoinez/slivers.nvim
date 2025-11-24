@@ -177,3 +177,32 @@ autocmd({ 'BufNewFile', 'BufReadPost' }, {
   pattern = '.env*',
   callback = function() vim.bo.filetype = 'sh' end,
 })
+
+-- Refresh Razor syntax highlighting
+autocmd('BufReadPost', {
+  desc = 'Run once when Razor file is opened',
+  pattern = '*.razor',
+  callback = function(args)
+    if vim.b[args.buf].razor_syntax_refreshed then return end
+
+    vim.defer_fn(function() vim.cmd 'e!' end, 5000)
+
+    vim.b[args.buf].razor_syntax_refreshed = true
+  end,
+})
+--[[ autocmd('BufEnter', {
+  desc = 'Run everytime when Razor file is entered',
+  pattern = '*.razor',
+  callback = function(args)
+    if vim.b[args.buf].razor_syntax_refreshed then return end
+
+    vim.schedule(function() vim.cmd 'e!' end)
+
+    vim.b[args.buf].razor_syntax_refreshed = true
+  end,
+})
+autocmd('BufLeave', {
+  desc = 'Run when Razor file is left',
+  pattern = '*.razor',
+  callback = function(args) vim.b[args.buf].razor_syntax_refreshed = false end,
+}) ]]

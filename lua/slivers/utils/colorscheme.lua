@@ -4,7 +4,7 @@ local M = {}
 M.default_colorschemes = {
   'blue',
   'darkblue',
-  'default',
+  -- 'default',
   'delek',
   'desert',
   'elflord',

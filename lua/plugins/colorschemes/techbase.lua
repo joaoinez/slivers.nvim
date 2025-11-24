@@ -17,6 +17,8 @@ return {
         ['WinSeparator'] = { fg = colors.keyword },
         ['RenderMarkdownH1Bg'] = { bg = colors.v_select },
         ['SnacksStatusColumnMark'] = { bg = '#EBCB8B', fg = '#2E3440' },
+        ['NeogitPopupSwitchEnabled'] = { fg = colors.error },
+        ['DiffText'] = { bg = colors.important, fg = colors.normal_fg },
       },
     }
   end,

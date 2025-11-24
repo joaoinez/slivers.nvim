@@ -67,7 +67,7 @@ return {
       { '<leader>cs', icon = { icon = '󰀫', color = 'green' } },
       { '<leader>cW', icon = { icon = '', color = 'blue' } },
 
-      -- Debug
+      --[[ -- Debug
       { '<leader>d', group = 'debug', mode = { 'n', 'v' } },
       { '<leader>dB', icon = { icon = '', color = 'red' } },
       { '<leader>dc', icon = { icon = '', color = 'green' } },
@@ -77,7 +77,7 @@ return {
       { '<leader>dO', icon = { icon = '', color = 'green' } },
       { '<leader>dp', icon = { icon = '', color = 'yellow' } },
       { '<leader>dr', icon = { icon = '', color = 'green' } },
-      { '<leader>dt', icon = { icon = '', color = 'red' } },
+      { '<leader>dt', icon = { icon = '', color = 'red' } }, ]]
 
       -- Find
       { '<leader>f', group = 'find', mode = { 'n', 'v' } },
@@ -105,7 +105,7 @@ return {
       { '<leader>ofz', icon = { icon = '', color = 'cyan' } },
       { '<leader>oa', group = 'ai' },
       { '<leader>oi', group = 'icons', icon = { icon = '󱌝', color = 'azure' } },
-      { '<leader>op', group = 'production', icon = { icon = '', color = 'azure' } },
+      { '<leader>op', group = 'deployment', icon = { icon = '', color = 'azure' } },
       { '<leader>od', group = 'documentation', icon = { icon = '', color = 'grey' } },
       { '<leader>ou', group = 'ui' },
       { '<leader>ou2', icon = { icon = '', color = 'yellow' } },
@@ -126,7 +126,7 @@ return {
       { '<leader>kR', group = 'repl', icon = { icon = '', color = 'orange' } },
 
       -- Messages
-      { '<leader>n', group = 'messages', icon = { icon = '󰍡', color = 'purple' } },
+      { '<leader>N', group = 'messages', icon = { icon = '󰍡', color = 'purple' } },
 
       -- Quicklist/Diagnostics
       { '<leader>q', group = 'quicklist/diagnostics' },

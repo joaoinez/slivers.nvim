@@ -23,9 +23,9 @@
 vim.filetype.add {
   extension = {
     http = 'http',
-    ['code-snippets'] = 'jsonc',
     razor = 'razor',
     cshtml = 'razor',
+    ['code-snippets'] = 'jsonc',
   },
 }
 
@@ -70,9 +70,36 @@ vim.api.nvim_create_autocmd('User', {
 if vim.g.vscode then Slivers.load 'vscode' end
 
 -- [[ Load Colorscheme ]]
-if not vim.g.vscode then
-  vim.cmd('colorscheme ' .. vim.g.colorscheme)
+-- NOTE: To set a project specific colorscheme, create a `.nvim.lua` file:
+--
+--[[
+vim.g.colorscheme = "techbase"
 
+vim.cmd("colorscheme " .. vim.g.colorscheme)
+ColorSliver()
+--]]
+if not vim.g.vscode then
+  local colorschemes = {
+    'catppuccin',
+    'gruvbox',
+    'tokyonight',
+    'nordic',
+    'onedark',
+    'ayu-dark',
+    'kanagawa',
+    'techbase',
+    'xcode',
+    'rose-pine',
+    'vague',
+    'ashen',
+    'poimandres',
+    'vscode',
+  }
+
+  math.randomseed(os.time())
+  local random_colorscheme = colorschemes[math.random(#colorschemes)]
+
+  vim.cmd('colorscheme ' .. (vim.g.random_colorscheme and random_colorscheme or vim.g.colorscheme))
   ColorSliver()
 end
 

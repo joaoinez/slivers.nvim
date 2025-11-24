@@ -1,0 +1,15 @@
+{
+  "Blazor Component": {
+    "prefix": "blazor",
+    "body": [
+      "@page \"/${1:route}\"",
+      "",
+      "<h3>${2:ComponentName}</h3>",
+      "",
+      "@code {",
+      "    $0",
+      "}"
+    ],
+    "description": "Create an empty Blazor component"
+  }
+}

@@ -17,10 +17,6 @@ return {
         }
       end,
     },
-    {
-      'bezhermoso/tree-sitter-ghostty',
-      build = 'make nvim_install',
-    },
     'andymass/vim-matchup',
     {
       'JoosepAlviste/nvim-ts-context-commentstring',
@@ -75,4 +71,9 @@ return {
       },
     },
   },
+  init = function()
+    -- HACK: This is needed for `nvim-html-css` to work with razor files.
+    -- I'm not sure if this breaks anything else.
+    vim.treesitter.language.register('html', 'razor')
+  end,
 }

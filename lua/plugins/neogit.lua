@@ -18,11 +18,11 @@ return {
       '<cmd>Neogit commit<cr>',
       desc = 'Commit',
     },
-    {
+    --[[ {
       '<leader>gd',
       '<cmd>Neogit diff<cr>',
       desc = 'Diff',
-    },
+    }, ]]
     {
       '<leader>gp',
       '<cmd>Neogit pull<cr>',

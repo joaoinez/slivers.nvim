@@ -24,8 +24,11 @@ if not vim.g.vscode then
   -- Close all windows
   map('n', '<leader>wa', '<cmd>qa!<cr>', { desc = 'Quit Neovim (without saving)' })
 
+  -- Focus floating windows
+  map('n', '<leader>wf', '<C-w>w', { desc = 'Focus Floating' })
+
   -- Close floating windows
-  map('n', '<leader>wf', '<cmd>fc<cr>', { desc = 'Close Floating' })
+  map('n', '<leader>wF', '<cmd>fc<cr>', { desc = 'Close Floating' })
 
   -- Splits
   map('n', '<leader>|', function()
@@ -79,12 +82,12 @@ if not vim.g.vscode then
   -- Tabs
   map(
     'n',
-    '<leader>wt',
+    '<leader>wT',
     '<cmd>tabnew | lua Snacks.picker.files { hidden = true, matcher = { frecency = true }, auto_confirm = true }<cr>',
     { desc = 'New Tab' }
   )
   map('n', '<leader>ww', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
   map('n', '<leader>wn', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
   map('n', '<leader>wp', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
-  map('n', '<leader>wT', '<C-w>T', { desc = 'Send to Tab' })
+  map('n', '<leader>wt', '<C-w>T', { desc = 'Send to Tab' })
 end

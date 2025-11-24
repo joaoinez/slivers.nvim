@@ -111,6 +111,7 @@ M.lualine = {
   },
   lsp = {
     lua_ls = '󰢱',
+    stylua = '',
     eslint = '󰱺',
     tailwindcss = '󱏿',
     volar = '󰡄',

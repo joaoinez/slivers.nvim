@@ -7,6 +7,18 @@ map('n', '<leader>ofc', function() Slivers.misc.open_file_in_editor 'vscode' end
 -- Open file in zed
 map('n', '<leader>ofz', function() Slivers.misc.open_file_in_editor 'zed' end, { desc = 'Zed' })
 
+-- Open file in rider
+map('n', '<leader>ofr', function() Slivers.misc.open_file_in_editor 'rider' end, { desc = 'Rider' })
+
+-- Open project in vscode
+map('n', '<leader>opc', function() Slivers.misc.open_project_in_editor 'vscode' end, { desc = 'Code' })
+
+-- Open project in zed
+map('n', '<leader>opz', function() Slivers.misc.open_project_in_editor 'zed' end, { desc = 'Zed' })
+
+-- Open project in rider
+map('n', '<leader>opr', function() Slivers.misc.open_project_in_editor 'rider' end, { desc = 'Rider' })
+
 -- [[ Documentation ]]
 -- Conventional Commits
 map(
@@ -246,17 +258,17 @@ map(
   { desc = 'Awesome Shadcn' }
 )
 
--- [[ Production ]]
+-- [[ Deployment ]]
 -- Vercel
 map(
   'n',
-  '<leader>opv',
+  '<leader>odv',
   function() Slivers.misc.open_url 'https://vercel.com/joao-inezs-projects' end,
   { desc = 'Vercel' }
 )
 
 -- Supabase
-map('n', '<leader>ops', function() Slivers.misc.open_url 'https://supabase.com/dashboard' end, { desc = 'Supabase' })
+map('n', '<leader>ods', function() Slivers.misc.open_url 'https://supabase.com/dashboard' end, { desc = 'Supabase' })
 
 -- Render
-map('n', '<leader>opr', function() Slivers.misc.open_url 'https://dashboard.render.com/web' end, { desc = 'Render' })
+map('n', '<leader>odr', function() Slivers.misc.open_url 'https://dashboard.render.com/web' end, { desc = 'Render' })

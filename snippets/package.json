@@ -5,6 +5,14 @@
       {
         "language": "lua",
         "path": "./lua.json"
+      },
+      {
+        "language": "cs",
+        "path": "./csharp.json"
+      },
+      {
+        "language": "razor",
+        "path": "./razor.json"
       }
     ]
   }

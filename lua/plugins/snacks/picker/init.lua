@@ -7,17 +7,18 @@ local M = {
   win = {
     input = {
       keys = {
-        ['<c-q>'] = {
-          'trouble_open',
-          mode = { 'n', 'i' },
-        },
+        ['<c-q>'] = { 'trouble_open', mode = { 'n', 'i' } },
+        ['<c-t>'] = { 'trouble_add', mode = { 'n', 'i' } },
         ['<a-s>'] = { 'flash', mode = { 'n', 'i' } },
         ['s'] = { 'flash' },
+        ['<a-c>'] = { 'toggle_cwd', mode = { 'n', 'i' } },
+        ['<a-t>'] = { 'tab', mode = { 'n', 'i' } },
       },
     },
   },
   actions = {
     trouble_open = function(...) return require('trouble.sources.snacks').actions.trouble_open.action(...) end,
+    trouble_add = function(...) return require('trouble.sources.snacks').actions.trouble_add.action(...) end,
     flash = function(picker)
       require('flash').jump {
         pattern = '^',

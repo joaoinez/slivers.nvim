@@ -13,5 +13,6 @@ return vim.g.vscode and {}
     require 'plugins.colorschemes.techbase',
     require 'plugins.colorschemes.tokyonight',
     require 'plugins.colorschemes.vague',
+    require 'plugins.colorschemes.vscode',
     require 'plugins.colorschemes.xcode',
   }
