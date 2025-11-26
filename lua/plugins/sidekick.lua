@@ -6,16 +6,8 @@ return {
   event = 'VeryLazy',
   keys = {
     {
-      '<tab>',
-      function()
-        if not require('sidekick').nes_jump_or_apply() then return '<Tab>' end
-      end,
-      expr = true,
-      desc = 'Goto/Apply Next Edit Suggestion',
-    },
-    {
       '<m-.>',
-      function() require('sidekick.cli').toggle() end,
+      function() require('sidekick.cli').toggle { name = 'opencode' } end,
       desc = 'Sidekick Toggle',
       mode = { 'n', 't', 'i', 'x' },
       expr = true,
@@ -27,39 +19,36 @@ return {
     },
     {
       '<leader>ad',
-      function() require('sidekick.cli').close() end,
+      function() require('sidekick.cli').close { name = 'opencode' } end,
       desc = 'Detach a CLI Session',
     },
     {
       '<leader>at',
-      function() require('sidekick.cli').send { msg = '{this}' } end,
+      function() require('sidekick.cli').send { name = 'opencode', msg = '{this}' } end,
       mode = { 'x', 'n' },
       desc = 'Send This',
     },
     {
       '<leader>af',
-      function() require('sidekick.cli').send { msg = '{file}' } end,
+      function() require('sidekick.cli').send { name = 'opencode', msg = '{file}' } end,
       desc = 'Send File',
     },
     {
       '<leader>as',
-      function() require('sidekick.cli').send { msg = '{selection}' } end,
+      function() require('sidekick.cli').send { name = 'opencode', msg = '{selection}' } end,
       mode = { 'x' },
       desc = 'Send Visual Selection',
     },
     {
       '<leader>ap',
-      function() require('sidekick.cli').prompt() end,
+      function() require('sidekick.cli').prompt { name = 'opencode' } end,
       mode = { 'n', 'x' },
       desc = 'Sidekick Select Prompt',
     },
   },
   opts = {
     nes = {
-      enabled = true,
-      trigger = {
-        events = { 'TextChanged', 'BufEnter' },
-      },
+      enabled = false,
     },
     cli = {
       win = {
