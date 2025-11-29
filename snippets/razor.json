@@ -1,13 +1,13 @@
 {
-  "Blazor Component": {
-    "prefix": "blazor",
+  "Blazor Component Page Empty": {
+    "prefix": "bzcpe",
     "body": [
       "@page \"/${1:route}\"",
       "",
-      "<h3>${2:ComponentName}</h3>",
+      "<PageTitle>${2:ComponentName}</PageTitle>",
       "",
       "@code {",
-      "    $0",
+      "\t$0",
       "}"
     ],
     "description": "Create an empty Blazor component"

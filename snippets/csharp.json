@@ -1,6 +1,6 @@
 {
-  "Blazor Code-Behind Component": {
-    "prefix": "component",
+  "Blazor Component": {
+    "prefix": "bzc",
     "body": [
       "using Microsoft.AspNetCore.Components;",
       "",
@@ -15,7 +15,7 @@
       "",
       "\tprotected override async Task OnInitializedAsync()",
       "\t{",
-      "\t\t${5:// Perform async initialization}",
+      "\t\t${0:// Perform async initialization}",
       "\t\tawait Task.CompletedTask;",
       "\t}",
       "}"
@@ -26,38 +26,69 @@
     "prefix": "bzp",
     "body": [
       "[Parameter]",
-      "public ${1:string} ${2:PropertyName} { get; set; } = ${3:default};"
+      "public ${1:string} ${2:PropertyName} { get; set; } = ${0:default};"
     ],
     "description": "Create a Blazor parameter property"
   },
-  "Blazor Input Event Handler": {
-    "prefix": "bzi",
+  "Blazor Event Input Handler": {
+    "prefix": "bzei",
     "body": [
       "private void ${1:HandlerName}(ChangeEventArgs ${2:e})",
       "{",
-      "\t{$3:throw new NotImplementedException();}",
+      "\t{$0:throw new NotImplementedException();}",
       "}"
     ],
     "description": "Create an input event handler for Blazor"
   },
-  "Blazor Mouse Event Handler": {
-    "prefix": "bzm",
+  "Blazor Event Mouse Handler": {
+    "prefix": "bzem",
     "body": [
       "private void ${1:HandlerName}(MouseEventArgs ${2:e})",
       "{",
-      "\t{$3:throw new NotImplementedException();}",
+      "\t{$0:throw new NotImplementedException();}",
       "}"
     ],
     "description": "Create a mouse event handler for Blazor"
   },
-  "Blazor Keyboard Event Handler": {
-    "prefix": "bzk",
+  "Blazor Event Keyboard Handler": {
+    "prefix": "bzek",
     "body": [
       "private void ${1:HandlerName}(KeyboardEventArgs ${2:e})",
       "{",
-      "\t{$3:throw new NotImplementedException();}",
+      "\t{$0:throw new NotImplementedException();}",
       "}"
     ],
     "description": "Create a keyboard event handler for Blazor"
+  },
+  "Blazor Event Focus Handler": {
+    "prefix": "bzef",
+    "body": [
+      "private void ${1:HandlerName}(FocusEventArgs  ${2:e})",
+      "{",
+      "\t{$0:throw new NotImplementedException();}",
+      "}"
+    ],
+    "description": "Create a focus event handler for Blazor"
+  },
+  "Blazor Data DbSet": {
+    "prefix": "bzdb",
+    "body": ["public DbSet<${1:Model}> ${1:Model}s { get; set; }"],
+    "description": "Create a DbSet property for Blazor data context"
+  },
+  "C# Standalone Script": {
+    "prefix": "cscript",
+    "body": [
+      "#:sdk Microsoft.NET.Sdk",
+      "",
+      "namespace ${1:MyNamespace};",
+      "",
+      "public class ${2:MyProgram}",
+      "{",
+      "\tpublic static void Main()",
+      "\t{",
+      "\t\t${0:// Your code here}",
+      "\t}",
+      "}"
+    ]
   }
 }

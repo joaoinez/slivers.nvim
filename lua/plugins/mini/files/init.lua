@@ -316,5 +316,14 @@ return {
         vim.keymap.set('n', 'gy', yank_path, { buffer = b, desc = 'Yank path' })
       end,
     })
+
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesBufferCreate',
+      callback = function(args)
+        local buf_id = args.data.buf_id
+
+        require('plugins.mini.files.scaffold').gen_scaffold_keymaps(buf_id)
+      end,
+    })
   end,
 }

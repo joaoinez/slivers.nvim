@@ -50,6 +50,7 @@ M.formatters = {
 
 M.formatters_by_ft = {
   cs = { 'csharpier' },
+  xml = { 'csharpier' },
 }
 
 return M
