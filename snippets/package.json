@@ -7,7 +7,10 @@
         "path": "./lua.json"
       },
       {
-        "language": "cs",
+        "language": [
+          "csharp",
+          "cs"
+        ],
         "path": "./csharp.json"
       },
       {

@@ -22,7 +22,9 @@ return {
     require('luasnip').filetype_extend('lua', { 'luadoc' })
     require('luasnip').filetype_extend('python', { 'pydoc' })
     require('luasnip').filetype_extend('rust', { 'rustdoc' })
+    require('luasnip').filetype_extend('csharp', { 'csharpdoc' })
     require('luasnip').filetype_extend('cs', { 'csharpdoc' })
+    require('luasnip').filetype_extend('razor', { 'csharpdoc', 'html' })
     require('luasnip').filetype_extend('java', { 'javadoc' })
     require('luasnip').filetype_extend('c', { 'cdoc' })
     require('luasnip').filetype_extend('cpp', { 'cppdoc' })
@@ -30,20 +32,25 @@ return {
     require('luasnip').filetype_extend('kotlin', { 'kdoc' })
     require('luasnip').filetype_extend('ruby', { 'rdoc' })
     require('luasnip').filetype_extend('sh', { 'shelldoc' })
-    require('luasnip').filetype_extend('razor', { 'csharpdoc', 'html' })
 
     vim.tbl_map(
       function(type) require('luasnip.loaders.from_' .. type).lazy_load() end,
       { 'vscode', 'snipmate', 'lua' }
     )
 
-    -- Load custom snippets
-    pcall(
-      function()
+    -- Load custom snippets from config directory
+    require('luasnip.loaders.from_vscode').lazy_load {
+      paths = { vim.fn.stdpath 'config' .. '/snippets' },
+    }
+
+    -- Load project-specific snippets if available
+    pcall(function()
+      local git_root = Snacks.git.get_root()
+      if git_root then
         require('luasnip.loaders.from_vscode').lazy_load {
-          paths = { vim.fn.stdpath 'config' .. '/snippets', Snacks.git.get_root() .. '/.vscode' },
+          paths = { git_root .. '/.vscode' },
         }
       end
-    )
+    end)
   end,
 }
