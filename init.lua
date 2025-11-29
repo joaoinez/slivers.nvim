@@ -93,13 +93,16 @@ if not vim.g.vscode then
     'vague',
     'ashen',
     'poimandres',
-    'vscode',
+    'oxocarbon',
   }
 
   math.randomseed(os.time())
   local random_colorscheme = colorschemes[math.random(#colorschemes)]
 
-  vim.cmd('colorscheme ' .. (vim.g.random_colorscheme and random_colorscheme or vim.g.colorscheme))
+  if vim.g.random_colorscheme then vim.g.colorscheme = random_colorscheme end
+
+  vim.cmd('colorscheme ' .. vim.g.colorscheme)
+
   ColorSliver()
 end
 

@@ -119,4 +119,16 @@ function M.set_globals(colorscheme_globals)
   end
 end
 
+function M.fix_transparent_bg()
+  if vim.g.transparent_bg then
+    vim.cmd 'highlight Normal guibg=NONE ctermbg=NONE'
+    vim.cmd 'highlight NormalFloat guibg=NONE'
+    vim.cmd 'highlight NormalNC guibg=NONE'
+    vim.cmd 'highlight FloatBorder guibg=NONE'
+    vim.cmd 'highlight FloatTitle guibg=NONE'
+    vim.cmd 'highlight WinBar guibg=NONE'
+    vim.cmd 'highlight WinBarNC guibg=NONE'
+  end
+end
+
 return M

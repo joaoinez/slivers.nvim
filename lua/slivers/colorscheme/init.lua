@@ -13,6 +13,7 @@ M.colorschemes = {
   kanagawa = require 'slivers.colorscheme.kanagawa',
   nordic = require 'slivers.colorscheme.nordic',
   onedark = require 'slivers.colorscheme.onedark',
+  oxocarbon = require 'slivers.colorscheme.oxocarbon',
   poimandres = require 'slivers.colorscheme.poimandres',
   ['rose-pine'] = require 'slivers.colorscheme.rose-pine',
   techbase = require 'slivers.colorscheme.techbase',
