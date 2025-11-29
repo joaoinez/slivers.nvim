@@ -14,10 +14,11 @@ return {
     suggestion = {
       auto_trigger = true,
       keymap = {
-        accept = '<Tab>',
+        accept = false,
+        accept_line = '<M-l>',
         next = '<M-]>',
         prev = '<M-[>',
-        dismiss = false,
+        dismiss = '<M-e>',
       },
     },
   },
