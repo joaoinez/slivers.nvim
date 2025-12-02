@@ -8,6 +8,13 @@ return {
   cond = not vim.g.vscode,
   cmd = 'Copilot',
   event = 'InsertEnter',
+  keys = {
+    {
+      '<leader>tc',
+      '<cmd>Copilot toggle<cr>',
+      desc = 'Copilot Suggestions',
+    },
+  },
   opts = {
     panel = { enabled = false },
     nes = { enabled = false },
