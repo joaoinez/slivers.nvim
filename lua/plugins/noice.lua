@@ -55,6 +55,7 @@ return {
             { find = 'W325: Ignoring swapfile from Nvim process %d' },
             { find = 'does not support command' },
             { find = 'deprecated' },
+            { find = 'Reloading **%s**' },
           },
         },
         view = 'mini',

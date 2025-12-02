@@ -91,6 +91,8 @@ local M = {
               vim.cmd('colorscheme ' .. item.value)
               ColorSliver()
 
+              vim.schedule(function() vim.cmd 'Lazy reload lualine.nvim' end)
+
               local choice = vim.fn.confirm('Reload Neovim to apply colorscheme?', '&Yes\n&No', 1)
               if choice == 1 then vim.cmd 'cq' end
             end

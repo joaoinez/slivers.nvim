@@ -38,6 +38,34 @@ _G.ColorSliver = require 'slivers.colorscheme'
 -- [[ Load Options ]]
 Slivers.load 'options'
 
+-- [[ Set Colorscheme ]]
+if not vim.g.vscode then
+  local colorschemes = {
+    'ashen',
+    'ayu-dark',
+    'catppuccin',
+    'github_dark_default',
+    'gruvbox',
+    'islands',
+    'kanagawa',
+    'nordic',
+    'onedark',
+    'oxocarbon',
+    'poimandres',
+    'rose-pine',
+    'srcery',
+    'techbase',
+    'tokyonight',
+    'vague',
+    'xcode',
+  }
+
+  math.randomseed(os.time())
+  local random_colorscheme = colorschemes[math.random(#colorschemes)]
+
+  if vim.g.random_colorscheme then vim.g.colorscheme = random_colorscheme end
+end
+
 -- [[ Load Tabline ]]
 Slivers.load 'tabline'
 
@@ -70,6 +98,12 @@ vim.api.nvim_create_autocmd('User', {
 if vim.g.vscode then Slivers.load 'vscode' end
 
 -- [[ Load Colorscheme ]]
+if not vim.g.vscode then
+  vim.cmd('colorscheme ' .. vim.g.colorscheme)
+
+  ColorSliver()
+end
+
 -- NOTE: To set a project specific colorscheme, create a `.nvim.lua` file:
 --
 --[[
@@ -77,33 +111,13 @@ vim.g.colorscheme = "techbase"
 
 vim.cmd("colorscheme " .. vim.g.colorscheme)
 ColorSliver()
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+  once = true,
+  callback = function()
+    vim.schedule(function() vim.cmd 'Lazy reload lualine.nvim' end)
+  end,
+})
 --]]
-if not vim.g.vscode then
-  local colorschemes = {
-    'catppuccin',
-    'gruvbox',
-    'tokyonight',
-    'nordic',
-    'onedark',
-    'ayu-dark',
-    'kanagawa',
-    'techbase',
-    'xcode',
-    'rose-pine',
-    'vague',
-    'ashen',
-    'poimandres',
-    'oxocarbon',
-  }
-
-  math.randomseed(os.time())
-  local random_colorscheme = colorschemes[math.random(#colorschemes)]
-
-  if vim.g.random_colorscheme then vim.g.colorscheme = random_colorscheme end
-
-  vim.cmd('colorscheme ' .. vim.g.colorscheme)
-
-  ColorSliver()
-end
 
 -- vim: ts=2 sts=2 sw=2 et
