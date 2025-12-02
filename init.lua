@@ -41,7 +41,6 @@ Slivers.load 'options'
 -- [[ Set Colorscheme ]]
 if not vim.g.vscode then
   local colorschemes = {
-    'ashen',
     'ayu-dark',
     'catppuccin',
     'github_dark_default',

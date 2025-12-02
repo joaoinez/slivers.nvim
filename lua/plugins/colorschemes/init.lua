@@ -1,6 +1,5 @@
 return vim.g.vscode and {}
   or {
-    require 'plugins.colorschemes.ashen',
     require 'plugins.colorschemes.ayu',
     require 'plugins.colorschemes.catppuccin',
     require 'plugins.colorschemes.cyberdream',

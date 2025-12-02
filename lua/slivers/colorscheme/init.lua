@@ -4,7 +4,6 @@ M.colorschemes = {
   _fallback = {
     hl_groups = function() return require 'slivers.colorscheme._fallback' end,
   },
-  ashen = require 'slivers.colorscheme.ashen',
   ayu = require 'slivers.colorscheme.ayu',
   catppuccin = require 'slivers.colorscheme.catppuccin',
   cyberdream = require 'slivers.colorscheme.cyberdream',
