@@ -1,6 +1,6 @@
 local map = Slivers.keymaps.safe_keymap_set
 
-map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+map('t', '<C-t>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Move windows in terminal mode
 map('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move focus to the left window' })

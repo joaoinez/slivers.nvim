@@ -52,18 +52,32 @@ return {
     },
     cli = {
       win = {
-        split = {
-          width = 100,
-        },
+        layout = 'float',
+      },
+      mux = {
+        backend = 'tmux',
+        enabled = true,
+      },
+      prompts = {
+        changes = 'Can you review my changes?',
+        diagnostics = 'Can you help me fix the diagnostics in {file}?\n{diagnostics}',
+        diagnostics_all = 'Can you help me fix these diagnostics?\n{diagnostics_all}',
+        document = 'Add documentation to {function|line}',
+        explain = 'Explain {this}',
+        fix = 'Can you fix {this}?',
+        optimize = 'How can {this} be optimized?',
+        review = 'Can you review {file} for any issues or improvements?',
+        tests = 'Can you write tests for {this}?',
+        -- simple context prompts
+        buffers = '{buffers}',
+        file = '{file}',
+        line = '{line}',
+        position = '{position}',
+        quickfix = '{quickfix}',
+        selection = '{selection}',
+        ['function'] = '{function}',
+        class = '{class}',
       },
     },
   },
-  -- init = function()
-  --   Slivers.autocmds.autocmd('InsertLeave', {
-  --     pattern = '*',
-  --     callback = function()
-  --       if not require('luasnip').in_snippet() and vim.fn.mode() == 'n' then require('sidekick.nes').update() end
-  --     end,
-  --   })
-  -- end,
 }
