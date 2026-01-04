@@ -2,8 +2,7 @@
 return {
   'lewis6991/satellite.nvim',
   enabled = true,
-  -- cond = not vim.g.vscode,
-  cond = false,
+  cond = not vim.g.vscode,
   event = 'VeryLazy',
   opts = {
     current_only = false,
