@@ -18,8 +18,7 @@ return {
     { 'WhoIsSethDaniel/mason-tool-installer.nvim', build = ':MasonToolsUpdate' },
     {
       'seblyng/roslyn.nvim',
-      ft = { 'cs', 'razor' },
-      dependencies = { { 'tris203/rzls.nvim', config = true } },
+      ft = { 'cs', 'cshtml', 'razor' },
       config = true,
     },
   },
@@ -67,7 +66,10 @@ return {
         require('plugins.lspconfig.keymaps').apply_user_lsp_mappings(client, event.buf)
         require('plugins.lspconfig.autocmds').apply_user_lsp_autocmds(client, event.buf)
 
-        if client and client.name == 'gdscript' then require('slivers.lang.godot').init_nvim_server(client) end
+        if not client then return end
+
+        if client.name == 'gdscript' then require('slivers.lang.godot').init_nvim_server(client) end
+        if client.name == 'gopls' then require('slivers.lang.go').semantic_token_workaround(client) end
       end,
     })
 

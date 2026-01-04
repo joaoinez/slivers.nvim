@@ -55,6 +55,7 @@ if not vim.g.vscode then
       'tsplayground',
       'query', -- InspectTree
       'dap-float', -- DAP floating widgets
+      'dap-view',
       'neotest-output-panel',
       'neotest-summary',
       'lazy',
@@ -177,75 +178,3 @@ autocmd({ 'BufNewFile', 'BufReadPost' }, {
   pattern = '.env*',
   callback = function() vim.bo.filetype = 'sh' end,
 })
-
---[[ -- HACK: This shouldn't be necessary, but Rzls doesn't load the Razor syntax properly.
---
--- Refresh Razor syntax highlighting
-autocmd('BufEnter', {
-  desc = 'Refresh Razor syntax highlighting on buffer enter',
-  pattern = { '*.razor', '*.cs' },
-  callback = function(args)
-    -- Check that we're entering a normal file buffer (not a popup or special buffer)
-    if vim.bo[args.buf].buftype ~= '' then return end
-
-    -- Skip if already refreshing to prevent duplicate runs
-    if vim.b[args.buf].razor_is_refreshing then return end
-
-    -- Check if this is the initial load (razor_initial_refresh not set yet)
-    if vim.b[args.buf].razor_initial_refresh == nil and vim.bo[args.buf].filetype == 'razor' then
-      -- First time opening this buffer - wait 5 seconds before refresh
-      vim.b[args.buf].razor_initial_refresh = false
-      vim.b[args.buf].razor_is_refreshing = true
-
-      -- Make buffer non-editable during initial load
-      vim.bo[args.buf].modifiable = false
-
-      vim.defer_fn(function()
-        if vim.api.nvim_buf_is_valid(args.buf) then
-          vim.cmd 'e!'
-          vim.b[args.buf].razor_initial_refresh = true
-          vim.b[args.buf].razor_syntax_refreshed = true
-          vim.b[args.buf].razor_is_refreshing = false
-          -- Re-enable editing after refresh
-          vim.bo[args.buf].modifiable = true
-        end
-      end, 5000)
-
-      return
-    end
-
-    -- Skip if already refreshed (for subsequent re-entries)
-    if vim.b[args.buf].razor_syntax_refreshed then
-      vim.bo[args.buf].modifiable = true
-      return
-    end
-
-    -- Mark as refreshing to prevent concurrent runs
-    vim.b[args.buf].razor_is_refreshing = true
-
-    -- Double-check the buffer is still valid and we're still in it
-    if vim.api.nvim_buf_is_valid(args.buf) and vim.api.nvim_get_current_buf() == args.buf then
-      vim.cmd 'e!'
-      vim.b[args.buf].razor_syntax_refreshed = true
-      vim.b[args.buf].razor_is_refreshing = false
-      vim.bo[args.buf].modifiable = true
-    else
-      vim.b[args.buf].razor_is_refreshing = false
-    end
-  end,
-})
-autocmd('BufLeave', {
-  desc = 'Reset Razor syntax refresh flag when leaving',
-  pattern = { '*.razor', '*.cs' },
-  callback = function(args)
-    -- Defer checking to ensure we can accurately detect the target buffer
-    if not vim.api.nvim_buf_is_valid(args.buf) then return end
-
-    -- Get the current buffer we switched to
-    local current_buf = vim.api.nvim_get_current_buf()
-
-    -- Only reset if we switched to a normal file buffer (not a popup/floating/special buffer)
-    -- This prevents resetting when opening mini.files, which uses buftype 'nofile'
-    if vim.bo[current_buf].buftype == '' then vim.b[args.buf].razor_syntax_refreshed = false end
-  end,
-}) ]]

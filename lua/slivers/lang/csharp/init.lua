@@ -6,26 +6,11 @@ M.highlighters = {
 }
 
 M.lsp = function()
-  local rzls_path = vim.fn.expand '$MASON/packages/rzls/libexec'
-  local cmd = {
-    'roslyn',
-    '--stdio',
-    '--logLevel=Information',
-    '--extensionLogDirectory=' .. vim.fs.dirname(vim.lsp.log.get_filename()),
-    '--razorSourceGenerator=' .. vim.fs.joinpath(rzls_path, 'Microsoft.CodeAnalysis.Razor.Compiler.dll'),
-    '--razorDesignTimePath=' .. vim.fs.joinpath(rzls_path, 'Targets', 'Microsoft.NET.Sdk.Razor.DesignTime.targets'),
-    '--extension',
-    vim.fs.joinpath(rzls_path, 'RazorExtension', 'Microsoft.VisualStudioCode.RazorExtension.dll'),
-  }
-
   vim.lsp.config('roslyn', {
-    cmd = cmd,
-    handlers = require 'rzls.roslyn_handlers',
     settings = {
       ['csharp|inlay_hints'] = {
         csharp_enable_inlay_hints_for_implicit_object_creation = true,
         csharp_enable_inlay_hints_for_implicit_variable_types = true,
-
         csharp_enable_inlay_hints_for_lambda_parameter_types = true,
         csharp_enable_inlay_hints_for_types = true,
         dotnet_enable_inlay_hints_for_indexer_parameters = true,
@@ -52,5 +37,13 @@ M.formatters_by_ft = {
   cs = { 'csharpier' },
   xml = { 'csharpier' },
 }
+
+M.debuggers = {
+  'netcoredbg',
+}
+
+M.dap_adapters = require('slivers.lang.csharp.dap').dap_adapters
+
+M.dap_configurations = require('slivers.lang.csharp.dap').dap_configurations
 
 return M

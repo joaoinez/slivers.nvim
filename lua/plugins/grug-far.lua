@@ -7,30 +7,44 @@ return {
   cmd = { 'GrugFar' },
   keys = {
     {
-      '<leader>fr',
+      '<leader>frw',
       function()
-        require('grug-far').with_visual_selection {
-          transient = true,
-          prefills = { paths = vim.fn.expand '%' },
-        }
+        require('grug-far').open { prefills = { search = vim.fn.expand '<cword>', paths = vim.fn.expand '%' } }
       end,
-      mode = { 'n', 'v' },
-      desc = 'Find and Replace',
+      mode = { 'n' },
+      desc = 'Word',
     },
     {
-      '<leader>fR',
+      '<leader>frf',
+      function() require('grug-far').open { prefills = { search = '', paths = vim.fn.expand '%' } } end,
+      mode = { 'n' },
+      desc = 'File',
+    },
+    {
+      '<leader>frp',
       function()
         local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
-
-        require('grug-far').open {
-          transient = true,
-          prefills = {
-            filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
-          },
+        require('grug-far').open { prefills = { search = '', filesFilter = ext and ext ~= '' and '*.' .. ext or nil } }
+      end,
+      mode = { 'n' },
+      desc = 'Project',
+    },
+    {
+      '<leader>frf',
+      function() require('grug-far').with_visual_selection { prefills = { paths = vim.fn.expand '%' } } end,
+      mode = { 'v' },
+      desc = 'File',
+    },
+    {
+      '<leader>frp',
+      function()
+        local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
+        require('grug-far').with_visual_selection {
+          prefills = { filesFilter = ext and ext ~= '' and '*.' .. ext or nil },
         }
       end,
-      mode = { 'n', 'v' },
-      desc = 'Find and Replace (project)',
+      mode = { 'v' },
+      desc = 'Project',
     },
   },
   opts = { headerMaxWidth = 80 },

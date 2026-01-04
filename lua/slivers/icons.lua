@@ -127,7 +127,6 @@ M.lualine = {
     copilot = '',
     gdscript = '',
     roslyn = '',
-    rzls = '',
     aftershave = '󱦗',
     html = '',
   },

@@ -25,6 +25,10 @@ M.debuggers = {
   'js-debug-adapter',
 }
 
+-- TODO: See https://codeberg.org/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript
+-- to compare with the current setup; if there's changes needed.
+-- I got the original form https://theosteiner.de/debugging-javascript-frameworks-in-neovim
+
 ---@param dap table
 function M.dap_adapters(dap)
   if not dap.adapters['pwa-node'] then
@@ -61,8 +65,8 @@ M.dap_filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptre
 ---@param dap table
 function M.dap_configurations(dap)
   local vscode = require 'dap.ext.vscode'
-  vscode.type_to_filetypes['node'] = M.dap_filetypes
   vscode.type_to_filetypes['pwa-node'] = M.dap_filetypes
+  vscode.type_to_filetypes['node'] = M.dap_filetypes
 
   for _, language in ipairs(M.dap_filetypes) do
     if not dap.configurations[language] then
@@ -73,6 +77,20 @@ function M.dap_configurations(dap)
           name = 'Launch file in new node process',
           program = '${file}',
           cwd = '${workspaceFolder}',
+        },
+        {
+          type = 'pwa-node',
+          request = 'launch',
+          name = 'Launch file in new deno process',
+          runtimeExecutable = 'deno',
+          runtimeArgs = {
+            'run',
+            '--inspect-wait',
+            '--allow-all',
+          },
+          program = '${file}',
+          cwd = '${workspaceFolder}',
+          attachSimplePort = 9229,
         },
         {
           type = 'pwa-node',

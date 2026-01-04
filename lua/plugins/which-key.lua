@@ -19,8 +19,8 @@ return {
     },
     spec = {
       -- [[ Actions ]]
-      -- -- Breakpoint
-      -- { '<leader>b', icon = { icon = '', color = 'red' } },
+      -- Breakpoint
+      { '<leader>b', icon = { icon = '', color = 'red' } },
 
       -- Mark
       { '<leader>m', icon = { icon = '󱡀', color = 'azure' } },
@@ -67,20 +67,21 @@ return {
       { '<leader>cs', icon = { icon = '󰀫', color = 'green' } },
       { '<leader>cW', icon = { icon = '', color = 'blue' } },
 
-      --[[ -- Debug
+      -- Debug
       { '<leader>d', group = 'debug', mode = { 'n', 'v' } },
       { '<leader>dB', icon = { icon = '', color = 'red' } },
       { '<leader>dc', icon = { icon = '', color = 'green' } },
       { '<leader>di', icon = { icon = '', color = 'green' } },
       { '<leader>dl', icon = { icon = '', color = 'green' } },
-      { '<leader>do', icon = { icon = '', color = 'green' } },
+      { '<leader>ds', icon = { icon = '', color = 'green' } },
       { '<leader>dO', icon = { icon = '', color = 'green' } },
       { '<leader>dp', icon = { icon = '', color = 'yellow' } },
       { '<leader>dr', icon = { icon = '', color = 'green' } },
-      { '<leader>dt', icon = { icon = '', color = 'red' } }, ]]
+      { '<leader>dt', icon = { icon = '', color = 'red' } },
 
       -- Find
       { '<leader>f', group = 'find', mode = { 'n', 'v' } },
+      { '<leader>fr', group = 'replace', mode = { 'n', 'v' } },
       { '<leader>ff', icon = { icon = '', color = 'green' } },
       { '<leader>fs', icon = { icon = '', color = 'green' } },
       { '<leader>fe', icon = { icon = '󰙅', color = 'purple' } },
