@@ -77,3 +77,25 @@ Snacks.toggle({
     end
   end,
 }):map '<leader>,r'
+
+Snacks.toggle({
+  name = 'Streamer Mode',
+  get = function() return vim.g.streamer_mode == true end,
+  set = function(state)
+    if state then
+      vim.g.streamer_mode = true
+      -- Scroll
+      vim.g.animated_scroll = true
+      Snacks.scroll.enable()
+      -- Line numbers
+      vim.wo.relativenumber = false
+    else
+      vim.g.streamer_mode = false
+      -- Scroll
+      vim.g.animated_scroll = false
+      Snacks.scroll.disable()
+      -- Line numbers
+      vim.wo.relativenumber = true
+    end
+  end,
+}):map '<leader>tS'

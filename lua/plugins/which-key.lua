@@ -139,6 +139,7 @@ return {
       -- Toggles
       { '<leader>t', group = 'toggle' },
       { '<leader>tt', icon = { icon = '', color = 'red' } },
+      { '<leader>tS', icon = { icon = '', color = 'purple' } },
 
       -- Settings
       { '<leader>,', group = 'settings', icon = { icon = '󰒓', color = 'grey' } },
