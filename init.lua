@@ -54,6 +54,7 @@ if not vim.g.vscode then
     'rose-pine',
     'srcery',
     'techbase',
+    'hellbound',
     'tokyonight',
     'vague',
     'xcode',

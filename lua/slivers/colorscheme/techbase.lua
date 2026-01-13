@@ -1,7 +1,8 @@
 local M = {
   name = 'techbase',
   variants = {
-    'techbase-hc',
+    'escape_velocity',
+    'hellbound',
   },
   hl_groups = function()
     Slivers.colorscheme.fix_transparent_bg()
