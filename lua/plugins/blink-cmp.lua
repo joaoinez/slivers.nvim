@@ -8,7 +8,7 @@ return {
     { 'saghen/blink.compat', version = vim.fn.has 'mac' == 1 and '*' or '2.*', opts = {} },
     'L3MON4D3/LuaSnip',
   },
-  build = vim.fn.has 'mac' == 1 and 'cargo build --release' or nil,
+  build = nil,
   event = 'InsertEnter',
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
