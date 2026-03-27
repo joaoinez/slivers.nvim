@@ -59,6 +59,7 @@ if not vim.g.vscode then
       'neotest-output-panel',
       'neotest-summary',
       'lazy',
+      'noice',
     },
     callback = function(event)
       vim.bo[event.buf].buflisted = false

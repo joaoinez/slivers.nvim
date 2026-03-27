@@ -21,6 +21,7 @@ require 'slivers.keymaps.fixes'
 require 'slivers.keymaps.niceties'
 require 'slivers.keymaps.yanking'
 if not vim.g.vscode then
+  require 'slivers.keymaps.diagnostics'
   require 'slivers.keymaps.terminal'
   require 'slivers.keymaps.windows'
   require 'slivers.keymaps.open'

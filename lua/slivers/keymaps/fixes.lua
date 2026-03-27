@@ -1,6 +1,6 @@
 local map = Slivers.keymaps.safe_keymap_set
 
--- -- Better up/down
+-- Better up/down
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = 'Move cursor down' })
 map('x', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = 'Move cursor down' })
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = 'Move cursor up' })
@@ -56,7 +56,7 @@ end, {
 })
 map('x', 'G', function() vim.cmd 'normal! G$' end, { desc = 'G and go to the last position (visual)' })
 
--- to move to the previous position press ctrl + oo
+-- To move to the previous position press ctrl + oo
 map('n', '<C-a>', function() vim.cmd 'normal! gg0vG$' end, { desc = 'Visually select all' })
 
 -- Swaps `^` and `0` around
@@ -69,3 +69,6 @@ map('v', '^', '0', { desc = 'Go to the beginning of the line (aliases ^ to 0)' }
 map('i', ',', ',<c-g>u')
 map('i', '.', '.<c-g>u')
 map('i', ';', ';<c-g>u')
+
+-- Remap gv to gV
+map('n', 'gV', 'gv', { desc = 'Reselect last visual selection' })

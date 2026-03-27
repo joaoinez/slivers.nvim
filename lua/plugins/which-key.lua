@@ -135,6 +135,7 @@ return {
       { '<leader>qQ', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qx', icon = { icon = '󰙅', color = 'red' } },
       { '<leader>qX', icon = { icon = '󰙅', color = 'red' } },
+      { '<leader>qp', group = 'project diagnostics' },
 
       -- Toggles
       { '<leader>t', group = 'toggle' },
