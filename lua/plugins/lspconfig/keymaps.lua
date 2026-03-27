@@ -22,6 +22,16 @@ function M.apply_user_lsp_mappings(client, bufnr)
     function() Snacks.picker.lsp_definitions { layout = { preset = 'dropdown' } } end,
     { desc = 'Goto Definition (snacks)' }
   )
+  map('n', 'gs', function()
+    vim.cmd 'split'
+
+    Snacks.picker.lsp_definitions { layout = { preset = 'dropdown' } }
+  end, { desc = 'Goto Definition (split)' })
+  map('n', 'gv', function()
+    vim.cmd 'vsplit'
+
+    Snacks.picker.lsp_definitions { layout = { preset = 'dropdown' } }
+  end, { desc = 'Goto Definition (vsplit)' })
   map(
     'n',
     'gr',

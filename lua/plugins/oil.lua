@@ -47,5 +47,14 @@ return {
         if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then oil.open_preview() end
       end),
     })
+
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'OilActionsPost',
+      callback = function(event)
+        if event.data.actions[1].type == 'move' then
+          Snacks.rename.on_rename_file(event.data.actions[1].src_url, event.data.actions[1].dest_url)
+        end
+      end,
+    })
   end,
 }

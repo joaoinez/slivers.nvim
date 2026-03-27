@@ -2,9 +2,17 @@
 return {
   'Jezda1337/nvim-html-css',
   enabled = true,
-  cond = not vim.g.vscode,
+  cond = not vim.g.vscode and vim.g.html_css_enabled == true,
   dependencies = {
     'saghen/blink.cmp',
+  },
+  ft = {
+    'html',
+    'htmldjango',
+    'php',
+    'templ',
+    'astro',
+    'razor',
   },
   event = 'BufReadPost',
   opts = {
@@ -37,6 +45,7 @@ return {
 -- INFO: To add project specific configurations, create a `.nvim.lua` file:
 --
 --[[
+vim.g.html_css_enabled = true  -- Enable the plugin for this project
 vim.g.html_css = {
   enable_on = { "html", "jsx" },  -- File types for this project only
   handlers = {

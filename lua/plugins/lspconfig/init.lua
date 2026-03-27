@@ -54,7 +54,6 @@ return {
     require('mason-lspconfig').setup {
       ensure_installed = {},
       automatic_enable = true,
-      automatic_installation = false,
     }
 
     for _, lsp in ipairs(LangSliver.get_lsp_configs() or {}) do
