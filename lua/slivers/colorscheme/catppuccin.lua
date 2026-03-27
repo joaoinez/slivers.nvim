@@ -1,6 +1,7 @@
 local M = {
-  name = 'catppuccin',
+  name = 'catppuccin-nvim',
   variants = {
+    'catppuccin',
     'catppuccin-mocha',
     'catppuccin-macchiato',
     'catppuccin-latte',

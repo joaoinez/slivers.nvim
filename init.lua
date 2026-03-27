@@ -42,7 +42,7 @@ Slivers.load 'options'
 if not vim.g.vscode then
   local colorschemes = {
     'ayu-dark',
-    'catppuccin',
+    'catppuccin-nvim',
     'github_dark_default',
     'gruvbox',
     'islands',

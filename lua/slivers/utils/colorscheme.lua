@@ -3,6 +3,7 @@ local M = {}
 
 M.default_colorschemes = {
   'blue',
+  'catppuccin',
   'darkblue',
   -- 'default',
   'delek',
@@ -128,6 +129,7 @@ function M.fix_transparent_bg()
     vim.cmd 'highlight FloatTitle guibg=NONE'
     vim.cmd 'highlight WinBar guibg=NONE'
     vim.cmd 'highlight WinBarNC guibg=NONE'
+    vim.cmd 'highlight EndOfBuffer guibg=NONE'
   end
 end
 
