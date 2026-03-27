@@ -19,7 +19,10 @@ return {
     {
       'seblyng/roslyn.nvim',
       ft = { 'cs', 'cshtml', 'razor' },
-      config = true,
+      opts = {
+        -- HACK: https://github.com/seblyng/roslyn.nvim/issues/261
+        filewatching = 'off',
+      },
     },
   },
   event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
