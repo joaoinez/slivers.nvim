@@ -7,6 +7,7 @@ return {
     'sindrets/diffview.nvim',
   },
   event = 'VeryLazy',
+  cmd = 'Neogit',
   keys = {
     {
       '<leader>gg',
@@ -18,16 +19,6 @@ return {
       '<cmd>Neogit commit<cr>',
       desc = 'Commit',
     },
-    --[[ {
-      '<leader>gd',
-      '<cmd>Neogit diff<cr>',
-      desc = 'Diff',
-    }, ]]
-    {
-      '<leader>gp',
-      '<cmd>Neogit pull<cr>',
-      desc = 'Pull',
-    },
     {
       '<leader>gP',
       '<cmd>Neogit push<cr>',
@@ -38,9 +29,17 @@ return {
       '<cmd>Neogit stash<cr>',
       desc = 'Stash',
     },
+    {
+      '<leader>gL',
+      '<cmd>Neogit log<cr>',
+      desc = 'Log (neogit)',
+    },
   },
   opts = {
     graph_style = 'kitty',
+    remember_settings = false,
+    use_per_project_settings = false,
+    diff_viewer = 'diffview',
     signs = {
       hunk = { '', '' },
       item = { '', '' },

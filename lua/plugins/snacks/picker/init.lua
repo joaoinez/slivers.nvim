@@ -4,15 +4,23 @@
 local M = {
   enabled = true,
   ui_select = true,
+  sources = {
+    files = {
+      exclude = { '.agents' },
+    },
+    grep = {
+      glob = { '!**/.agents/**' },
+    },
+  },
   win = {
     input = {
       keys = {
         ['<c-q>'] = { 'trouble_open', mode = { 'n', 'i' } },
-        ['<c-t>'] = { 'trouble_add', mode = { 'n', 'i' } },
+        ['<a-t>'] = { 'trouble_add', mode = { 'n', 'i' } },
         ['<a-s>'] = { 'flash', mode = { 'n', 'i' } },
         ['s'] = { 'flash' },
         ['<a-c>'] = { 'toggle_cwd', mode = { 'n', 'i' } },
-        ['<a-t>'] = { 'tab', mode = { 'n', 'i' } },
+        ['<c-t>'] = { 'tab', mode = { 'n', 'i' } },
       },
     },
   },

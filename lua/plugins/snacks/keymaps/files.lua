@@ -23,7 +23,7 @@ local M = {
         },
         win = {
           input = {
-            footer = '┤ <c-w> close │ <a-s> flash │ <a-g> refine ├ ',
+            footer = '┤ <c-w> close │ <a-s> flash ├ ',
             footer_pos = 'right',
             keys = {
               ['<c-w>'] = { 'bufdelete', mode = { 'n', 'i' } },
@@ -72,7 +72,7 @@ local M = {
         },
         win = {
           preview = {
-            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash │ <a-g> refine ├ ',
+            footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
             footer_pos = 'right',
           },
         },
@@ -101,6 +101,7 @@ local M = {
     '<leader>fg',
     function()
       Snacks.picker.grep {
+        regex = false,
         hidden = true,
         layout = layouts.dropdown({
           layout = { width = 0.8, height = 0.9 },

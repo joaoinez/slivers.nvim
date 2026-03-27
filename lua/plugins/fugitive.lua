@@ -25,10 +25,5 @@ return {
       '<cmd>Git restore --staged %<cr>',
       desc = 'Unstage (file)',
     },
-    {
-      '<leader>gf',
-      '<cmd>Git fetch<cr>',
-      desc = 'Fetch',
-    },
   },
 }

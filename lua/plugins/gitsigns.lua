@@ -31,7 +31,7 @@ return {
       map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset (hunk)' })
       map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset (file)' })
       map('n', '<leader>gi', gitsigns.preview_hunk, { desc = 'Inline Preview (hunk)' })
-      map('n', '<leader>gd', '<cmd>Gitsigns diffthis HEAD<cr>', { desc = 'Diff (worktree)' })
+      map('n', '<leader>gd', '<cmd>Gitsigns diffthis HEAD<cr>', { desc = 'Diff (file)' })
 
       -- [[ Toggles ]]
       map('n', '<leader>tB', gitsigns.toggle_current_line_blame, { desc = 'Blame Line (git)' })
@@ -41,14 +41,14 @@ return {
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else
-          gitsigns.nav_hunk 'next'
+          gitsigns.nav_hunk('next', { target = 'all' })
         end
       end, { desc = 'Next Change (git)' })
       map('n', '[c', function()
         if vim.wo.diff then
           vim.cmd.normal { '[c', bang = true }
         else
-          gitsigns.nav_hunk 'prev'
+          gitsigns.nav_hunk('prev', { target = 'all' })
         end
       end, { desc = 'Previous Git Change (git)' })
     end,

@@ -42,7 +42,7 @@ if not vim.g.vscode then
       },
       win = {
         preview = {
-          footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash │ <a-g> refine ├ ',
+          footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
           footer_pos = 'right',
         },
       },
@@ -59,7 +59,7 @@ if not vim.g.vscode then
       },
       win = {
         preview = {
-          footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash │ <a-g> refine ├ ',
+          footer = '┤ <a-h> hidden │ <a-i> ignored │ <a-s> flash ├ ',
           footer_pos = 'right',
         },
       },
@@ -90,4 +90,10 @@ if not vim.g.vscode then
   map('n', '<leader>wn', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
   map('n', '<leader>wp', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
   map('n', '<leader>wt', '<C-w>T', { desc = 'Send to Tab' })
+  -- Quick goto tabs 1-5
+  map('n', '<leader>w1', '<cmd>tabnext 1<cr>', { desc = 'Go To Tab 1' })
+  map('n', '<leader>w2', '<cmd>tabnext 2<cr>', { desc = 'Go To Tab 2' })
+  map('n', '<leader>w3', '<cmd>tabnext 3<cr>', { desc = 'Go To Tab 3' })
+  map('n', '<leader>w4', '<cmd>tabnext 4<cr>', { desc = 'Go To Tab 4' })
+  map('n', '<leader>w5', '<cmd>tabnext 5<cr>', { desc = 'Go To Tab 5' })
 end
