@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   'mistweaverco/kulala.nvim',
-  enabled = true,
+  enabled = false,
   cond = not vim.g.vscode,
   ft = 'http',
   event = 'VeryLazy',

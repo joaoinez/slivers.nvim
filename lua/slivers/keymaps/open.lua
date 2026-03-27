@@ -231,7 +231,12 @@ map('n', '<leader>oao', function() Slivers.misc.open_url 'https://openrouter.ai/
 map('n', '<leader>oag', function() Slivers.misc.open_url 'https://console.groq.com/playground' end, { desc = 'Groq' })
 
 -- Copilot
-map('n', '<leader>oac', function() Slivers.misc.open_url 'https://github.com/copilot' end, { desc = 'Copilot' })
+map(
+  'n',
+  '<leader>oac',
+  function() Slivers.misc.open_url 'https://github.com/settings/copilot' end,
+  { desc = 'Copilot' }
+)
 
 -- OpenAI
 map(

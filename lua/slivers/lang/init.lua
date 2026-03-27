@@ -6,6 +6,7 @@ M.langs = {
   require 'slivers.lang.csharp',
   require 'slivers.lang.css',
   require 'slivers.lang.eslint',
+  require 'slivers.lang.glsl',
   require 'slivers.lang.go',
   require 'slivers.lang.godot',
   require 'slivers.lang.json',

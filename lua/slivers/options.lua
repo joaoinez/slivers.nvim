@@ -32,6 +32,7 @@ if not vim.g.vscode then
   end
 
   -- [[ Options ]]
+  vim.o.autoread = true
   vim.o.background = vim.g.dark_mode and 'dark' or 'light' -- Set background to either dark or light.
   vim.o.breakindent = true -- Wrap indent to match line start.
   vim.o.cmdheight = 0 -- Hide command line unless needed.

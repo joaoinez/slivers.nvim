@@ -10,7 +10,28 @@ return {
     lualine_require.require = require
 
     local utils = require 'plugins.lualine.utils'
+
     local get_color = utils.get_color
+
+    local spinner_icons = {
+      '\u{00B7}', -- ·
+      '\u{2722}', -- ✢
+      '\u{2736}', -- ✶
+      '\u{273B}', -- ✻
+      '\u{273D}', -- ✽
+      '\u{2733}', -- ✳
+    }
+    local spinner_idx = 4
+
+    --[[ local spinner_timer = vim.uv.new_timer()
+    spinner_timer:start(
+      0,
+      250,
+      vim.schedule_wrap(function()
+        spinner_idx = (spinner_idx % #spinner_icons) + 1
+        require('lualine').refresh { force = true }
+      end)
+    ) ]]
 
     -- Lualine components
     local lsp_clients = require 'plugins.lualine.components.lsp-clients'
@@ -104,6 +125,11 @@ return {
             ---@diagnostic disable-next-line: undefined-field
             cond = function() return package.loaded['noice'] and require('noice').api.status.command.has() end,
             color = get_color 'Macro',
+          },
+          {
+            function() return spinner_icons[spinner_idx] .. ' opencode' end,
+            cond = function() return #require('sidekick.status').cli() > 0 end,
+            color = get_color 'Special',
           },
         },
         lualine_y = {

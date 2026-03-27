@@ -24,6 +24,7 @@ return {
         filewatching = 'off',
       },
     },
+    'tpope/vim-endwise',
   },
   event = { 'BufReadPre', 'BufNewFile', 'BufWritePost' },
   config = function()
