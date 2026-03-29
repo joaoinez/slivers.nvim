@@ -1,7 +1,7 @@
 ---@type LazySpec
 return vim.g.dev and {}
   or {
-    'joaoinez/sidekick.nvim',
+    'folke/sidekick.nvim',
     enabled = true,
     cond = not vim.g.vscode,
     event = 'VeryLazy',
