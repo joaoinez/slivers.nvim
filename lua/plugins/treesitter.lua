@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   'nvim-treesitter/nvim-treesitter',
+  -- HACK: We should use the main branch, but I can't make it work with razor
   branch = 'master',
   enabled = true,
   dependencies = {
